@@ -1,0 +1,81 @@
+.footer{
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 20px;
+    width: 65vw;
+    height: 80px;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+.footer__logo{
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+}
+.footer__text{
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
+.footer__text h2{
+    font-family: "Montserrat Alternates", serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+.footer__text p{
+    font-size: 16px;
+    font-family: "Montserrat", serif;
+    font-weight: 500;
+}
+@media screen and (max-width: 1000px) {
+    .footer__text p{
+        font-size: 14px;
+    }
+    .footer__text h2{
+        font-size: 18px;
+    }
+    .footer__logo{
+        width: 35px;
+        height: 35px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .footer{
+        width: 90vw;
+    }
+    .footer__text{
+        margin-left: 15px;
+        padding-right: 15px;
+    }
+    .footer__text p{
+        font-size: 12px;
+    }
+    .footer__text h2{
+        font-size: 16px;
+    }
+    .footer__logo{
+        display: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    .footer{
+        width: 95vw;
+    }
+    .footer__text h2{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 420px) {
+    .footer{
+        height: 90px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .footer{
+        height: 100px;
+    }
+}

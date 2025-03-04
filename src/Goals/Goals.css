@@ -1,0 +1,68 @@
+.goals__limit{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.goals__add .trackers__info input{
+    width: 100px;
+}
+.goals__add .goals__limit input{
+    width: 50px;
+    padding: 5px 0px 5px 5px;
+}
+.goals__input{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.goals__input input{
+    width: 50px;
+}
+.goalslist .titem__info{
+    gap: 40px;
+}
+@media screen and (max-width: 800px) {
+    .goals__add .trackers__info{
+        gap: 10px !important;
+    }
+    .goalslist{
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+    }
+    .tlist__list .goalslist .titem__info{
+        gap: 0px;
+        display: flex;
+        justify-content: space-between;
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 600px) {
+    .goals__add.trackers__add{
+        height: 110px !important;
+        width: calc(80vw - 40px) !important;
+    }
+    .goals__add .trackers__start img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+}
+@media screen and (max-width: 400px) {
+    .goalslist .titem__edit input{
+        max-width: 80px !important;
+        font-size: 14px !important;
+    }
+    .goals__input input{
+        width: 30px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .goals__add .trackers__info input{
+        width: 100px !important;
+    }
+    .goals__add .trackers__info .goals__limit input{
+        width: 40px !important;
+    }
+}
+

@@ -1,0 +1,201 @@
+.analytics{
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    margin: 85px 0px 0px 0px;
+    height: max-content;
+}
+.analytics__block{
+    border: 2px solid #000;
+    border-radius: 20px;
+    min-width: 40vw;
+    padding: 0px 30px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.wrapper.dark .analytics__block{
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
+}
+.analytics__header{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.analytics__time{
+    margin-right: 30px;
+}
+.analytics__header .dropdown{ /*ДРОПДАУН ТРЕБА ПОМІНЯТИ ЩОБ НЕ БУТИ ДАУНОМ!!!*/
+    margin-right: 25px;
+}
+.analytics__header .dropdown-btn{
+    height: 30px;
+}
+.analytics__header .dropdown-btn img{
+    width:15px;
+}
+.analytics__action{
+    display: flex;
+    gap: 10px;
+}
+.analytics__action img{
+    filter: invert(1);
+    width: 20px;
+    height: 20px;
+    transition: 0.3s ease all;
+    cursor: pointer;
+}
+.analytics__action img:hover{
+    transform: scale(1.05)
+}
+.wrapper.dark .analytics__action p{
+    color: #fff;
+}
+.analytics__action img:nth-child(2){
+    transform: rotate(90deg)
+}
+.analytics__action img:nth-child(3){
+    transform: rotate(270deg)
+}
+.wrapper.dark .analytics__action img{
+    filter: invert(0)
+}
+.analytics__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0px;
+    width: 100%;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    gap: 20px;
+}
+.wrapper.dark .analytics__content{
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+.aitem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.aitem h4{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.aitem__info{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.aitem h3{
+    font-size: 16px;
+    font-weight: 600;
+}
+.aitem__block{
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+}
+.aitem__color{
+    width: 40px;
+}
+.aitem__color:nth-child(1){
+    border-radius: 10px 10px 0px 0px;
+}
+.analytics__footer{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, auto);
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    column-gap: 40px;
+    height: 100px;
+    padding: 10px 20px;
+}
+.fitem{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.fitem__color{
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+}
+@media screen and (max-width: 1500px){
+    .bigAnal .analytics__content{
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 900px){
+    .analytics__content{
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+    }
+    .bigAnal .analytics__content{
+        grid-template-rows: repeat(3, auto);
+    }
+    .analytics__block{
+        min-width: 40vw;
+        max-width: 80vw;
+        padding: 0px 20px;
+    }
+    .analytics__footer{
+        grid-template-rows: repeat(7, auto);
+        column-gap: 30px;
+        height: 250px;
+    }
+}
+@media screen and (max-width: 540px){
+    .analytics{
+        margin-top: 140px;
+    }
+    .analytics__content{
+        grid-template-rows: repeat(3, auto);
+    }
+    .bigAnal .analytics__content{
+        grid-template-rows: repeat(5, auto);
+    }
+    .analytics__block{
+        width: 85vw;
+    }
+    .analytics__footer{
+        grid-template-rows: repeat(10, auto);
+        height: 350px;
+    }
+}
+@media screen and (max-width: 380px){
+    .analytics__content{
+        grid-template-rows: repeat(4, auto);
+    }
+    .bigAnal .analytics__content{
+        grid-template-rows: repeat(7, auto);
+    }
+    .analytics__footer{
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        justify-content: start;
+        column-gap: 30px;
+        height: max-content;
+    }
+    .analytics__time{
+        display: none;
+    }
+}

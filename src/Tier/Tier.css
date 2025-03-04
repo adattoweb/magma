@@ -1,0 +1,99 @@
+.tierlist .titem__circle{
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border: 4px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Montserrat Alternates", serif;
+}
+.wrapper.dark .tierlist .titem__circle{
+    border: 4px solid #fff;
+}
+.tierlist .titem__time img{
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+.wrapper.dark .tierlist .titem__time img{
+    filter: invert(1)
+}
+.tierlist .titem__time img:hover{
+    transform: scale(1.05)
+}
+.tierlist .titem__time img:nth-child(1){
+    transform: rotateX(180deg)
+}
+.tierlist .titem__time img:nth-child(1):hover{
+    transform: scale(1.05) rotateX(180deg);
+}
+.tierlist .titem__time{
+    gap: 10px;
+}
+.tierlist .titem__info{
+    width: max-content !important;
+    gap: 70px;
+}
+.tierlist.titem:nth-child(1){
+    border-top: none;
+}
+.tierlist .titem__edit input{
+    max-width: 250px;
+}
+.tier__error{
+    padding: 10px;
+    font-size: 16px;
+}
+@media screen and (max-width: 930px) {
+    .tierlist .titem__edit{
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    .tierlist .titem{
+        padding: 8px 20px !important;
+    }
+    .tierlist .titem__info{
+        width: auto !important;
+    }
+    .tierlist .titem__edit input{
+        max-width: 120px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .tierlist .titem__delete img{
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .tierlist .titem__edit input{
+        font-size: 16px !important;
+        max-width: 120px !important;
+        padding: 5px 5px !important;
+    }
+    .tierlist .titem__time{
+        flex-direction: row !important;
+        text-align: center;
+        gap: 10px !important;
+    }
+    .tierlist .titem__circle{
+        width: 20px;
+        height: 20px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .tierlist .titem__edit input{
+        max-width: 80px !important;
+    }
+    .tierlist .titem__info{
+        gap: 20px;
+    }
+    .tierlist .titem__info img{
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
