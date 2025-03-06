@@ -16,7 +16,7 @@ export default function TrackerStart({ update }) {
         for (let i = 0; i < arr.length; i++) { // шукаємо повторення, якщо є то зупиняємо додавання.
             if (arr[i][0] === name) counter++;
         }
-        if (counter > 1 || name.length === 0) return;
+        if (counter > 1 || name.length === 0 || name.length > 30) return;
         let index = localStorage.getItem("goals-index");
         localStorage.setItem("goals-index", +index + 1);
         if (readProjects.length === 0) {

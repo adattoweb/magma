@@ -13,7 +13,7 @@ export default function TrackerStart({update}) {
         for(let i = 0; i < arr.length; i++){
             if(arr[i] === name) counter++
         }
-        if(counter > 1 || name.length === 0) return
+        if(counter > 1 || name.length === 0 || name.length > 30) return
         if(readProjects.length === 0){
             localStorage.setItem("tracker-projects", `${newName}`)
         } else {

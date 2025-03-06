@@ -109,3 +109,24 @@
     font-family: "Montserrat Alternates", serif;
     cursor: pointer;
 }
+@media screen and (max-width: 570px){
+    .settings__main{
+        width: 300px;
+        padding: 10px 15px 15px 15px;
+    }
+    .settings__info{
+        font-size: 14px;
+    }
+    .lang__select{
+        width: 20px;
+        height: 20px;
+    }
+    .settings__block h2{
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 350px){
+    .settings__main{
+        width: 250px;
+    }
+}

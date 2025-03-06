@@ -9,7 +9,7 @@ export default function Main(){
         <div className="main content">
             <Block1/>
             <Block2/>
-            <Block3/>
+            {/* <Block3/> */}
             <Block4/>
         </div>
     )

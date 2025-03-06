@@ -13,7 +13,7 @@ export default function TrackerStart({update}) {
         for(let i = 0; i < arr.length; i++){
             if(arr[i][0] === name) counter++
         }
-        if(counter > 1 || name.length === 0) return
+        if(counter > 1 || name.length === 0 || name.length > 30) return
         let index = localStorage.getItem("tier-index")
         localStorage.setItem("tier-index", +index+1)
         if(readProjects.length === 0){
