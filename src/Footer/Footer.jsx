@@ -1,5 +1,5 @@
 import "./Footer.css";
-import adattologo from '../assets/adattologo.png';
+import adattologo from "../assets/adattologo.png";
 
 export default function Footer() {
     const isEn = localStorage.getItem("settings-lang") === "en"; // визначення мови

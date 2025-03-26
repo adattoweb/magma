@@ -1,7 +1,7 @@
-import analytics from '../assets/analytics.png'
-import projects from '../assets/projects.png'
-import tracker from '../assets/tracker.png'
-import './Main.css'
+import analytics from "../assets/analytics.png";
+import projects from "../assets/projects.png";
+import tracker from "../assets/tracker.png";
+import "./Main.css";
 
 export default function Block1() {
     return (
@@ -19,5 +19,5 @@ export default function Block1() {
             </div>
             <div className="block1__button">Почати</div>
         </div>
-    )
+    );
 }

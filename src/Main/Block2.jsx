@@ -1,7 +1,7 @@
-import idea from '../assets/idea.png'
-import local from '../assets/local.png'
-import padlock from '../assets/padlock.png'
-import './Main.css'
+import idea from "../assets/idea.png";
+import local from "../assets/local.png";
+import padlock from "../assets/padlock.png";
+import "./Main.css";
 
 export default function Block2() {
     function BlockItem({image, name, children}){
@@ -11,7 +11,7 @@ export default function Block2() {
                 <h4>{name}</h4>
                 <p>{children}</p>
             </div>
-        )
+        );
     }
     return (
         <div className="block2">
@@ -22,5 +22,5 @@ export default function Block2() {
                 <BlockItem image={idea} name="Функціональність">Наша платформа дає можливість Вам слідкувати і аналізувати свій час</BlockItem>
             </div>
         </div>
-    )
+    );
 }

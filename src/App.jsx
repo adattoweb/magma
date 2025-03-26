@@ -1,30 +1,30 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect} from "react";
 
-import Header from './Header/Header'
-import Footer from './Footer/Footer'
-import Menu from './Menu/Menu'
-import Main from './Main/Main'
-import Settings from './Settings/Settings'
-import LoadScreen from './LoadScreen/LoadScreen'
-import Trackers from './Trackers/Trackers'
-import Projects from './Projects/Projects'
-import Analytics from './Analytics/Analytics'
-import Page404 from './Page404/Page404'
-import Tier from './Tier/Tier'
-import Goals from './Goals/Goals'
-import Calendar from './Calendar/Calendar'
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import Menu from "./Menu/Menu";
+import Main from "./Main/Main";
+import Settings from "./Settings/Settings";
+import LoadScreen from "./LoadScreen/LoadScreen";
+import Trackers from "./Trackers/Trackers";
+import Projects from "./Projects/Projects";
+import Analytics from "./Analytics/Analytics";
+import Page404 from "./Page404/Page404";
+import Tier from "./Tier/Tier";
+import Goals from "./Goals/Goals";
+import Calendar from "./Calendar/Calendar";
 
 import { Routes, Route } from "react-router-dom";
 
 function App() {
 
-  if(localStorage.getItem("settings-lang") === null) localStorage.setItem("settings-lang", "ua")
-  if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light")
+  if(localStorage.getItem("settings-lang") === null) localStorage.setItem("settings-lang", "ua");
+  if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
 
-  console.log("App render")
+  console.log("App render");
   // const isFirstTime = useRef(0)
 
-  const [isRender, setIsRender] = useState(false)
+  const [isRender, setIsRender] = useState(false);
 
   // useEffect(() => {
   //   isFirstTime.current++;
@@ -41,20 +41,20 @@ function App() {
   //   }
   // })
 
-  let wrapper = document.querySelector('.wrapper') // короч якщо в localStorage тема обрана чорною, то даємо клас dark, інакше прибираємо
-  localStorage.getItem("settings-theme") === "dark" ? wrapper.classList.add('dark') : wrapper.classList.remove('dark')
+  let wrapper = document.querySelector(".wrapper"); // короч якщо в localStorage тема обрана чорною, то даємо клас dark, інакше прибираємо
+  localStorage.getItem("settings-theme") === "dark" ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
 
-  const [isLoading, setIsLoading] = useState(true)
-  const [isMenu, setIsMenu] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMenu, setIsMenu] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => { setIsLoading(false) }, 2000)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => { setIsLoading(false); }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  if (isLoading) return <LoadScreen></LoadScreen>
+  if (isLoading) return <LoadScreen></LoadScreen>;
 
-  if (isMenu) return <Menu isMenu={isMenu} onClick={() => setIsMenu(false)} />
+  if (isMenu) return <Menu isMenu={isMenu} onClick={() => setIsMenu(false)} />;
   else {
     return (
       <>
@@ -73,8 +73,8 @@ function App() {
         </Routes>
         <Footer />
       </>
-    )
+    );
   }
 }
 
-export default App
+export default App;

@@ -1,9 +1,9 @@
-import './Trackers.css'
-import { useState } from 'react'
-import formatTime from '../formatTime'
-import Dropdown from '../Dropdown'
-import deleteImg from '../assets/delete.png'
-import getDayDiff from '../getDayDiff'
+import "./Trackers.css";
+import { useState } from "react";
+import formatTime from "../formatTime";
+import Dropdown from "../Dropdown";
+import deleteImg from "../assets/delete.png";
+import getDayDiff from "../getDayDiff";
 
 export default function TrackerList() {    
     const isEn = localStorage.getItem("settings-lang") === "en";
@@ -12,7 +12,7 @@ export default function TrackerList() {
     let array = [];
     let arrayKeys = [];
     for (let key in localStorage) {
-        if(!key.includes("tracker-item")) continue
+        if(!key.includes("tracker-item")) continue;
         let date = key.split("^")[1];
         if (date === undefined) {
             continue;
@@ -55,51 +55,51 @@ export default function TrackerList() {
     }
 
     function TrackerItem({myKey, name, project, start, end, all}) {
-        const [newName, setNewName] = useState(name)
-        const [newProject, setNewProject] = useState(project)
-        const [newStart, setNewStart] = useState(start)
-        const [newEnd, setNewEnd] = useState(end)
-        const [newAll, setNewAll] = useState(all)
+        const [newName, setNewName] = useState(name);
+        const [newProject, setNewProject] = useState(project);
+        const [newStart, setNewStart] = useState(start);
+        const [newEnd, setNewEnd] = useState(end);
+        const [newAll, setNewAll] = useState(all);
 
         function editItem(name = newName, project = newProject, start=newStart, end=newEnd, all=newAll){
-            localStorage.setItem(myKey, `${name}^${project}^${start}^${end}^${all}`)
+            localStorage.setItem(myKey, `${name}^${project}^${start}^${end}^${all}`);
         }
 
         function editTime(e, start){
             if(!e.includes(":") || e.length > 5) return;
             if(+e.split(":")[1][0] >= 6) return;
-            if(start) setNewStart(e)
-            else setNewEnd(e)
-            let startArr = []
-            let endArr = []
+            if(start) setNewStart(e);
+            else setNewEnd(e);
+            let startArr = [];
+            let endArr = [];
             if(start) { 
                 startArr = e.split(":");
                 endArr = newEnd.split(":");
             }
             else {
-                startArr = newStart.split(":")
+                startArr = newStart.split(":");
                 endArr = e.split(":");
             }
-            let res = e.split(":")
-            res[0] = res[0].padStart(2, "0")
-            res[1] = res[1].padStart(2, "0")
-            res = res.join(":")
-            let myAll = Math.abs((+endArr[0] * 60 * 60 + +endArr[1] * 60) - (+startArr[0] * 60 * 60 + +startArr[1] * 60))
-            setNewAll(myAll)
-            if(start) editItem(newName, newProject, res, newEnd, myAll)
-            else editItem(newName, newProject, newStart, res, myAll)
+            let res = e.split(":");
+            res[0] = res[0].padStart(2, "0");
+            res[1] = res[1].padStart(2, "0");
+            res = res.join(":");
+            let myAll = Math.abs((+endArr[0] * 60 * 60 + +endArr[1] * 60) - (+startArr[0] * 60 * 60 + +startArr[1] * 60));
+            setNewAll(myAll);
+            if(start) editItem(newName, newProject, res, newEnd, myAll);
+            else editItem(newName, newProject, newStart, res, myAll);
         }
 
         return (
             <div className="titem">
                 <div className="titem__edit">
                     <input type="text" value={newName} onChange={(e) => {
-                        setNewName(e.target.value)
-                        editItem(e.target.value)
+                        setNewName(e.target.value);
+                        editItem(e.target.value);
                     }} />
                     <Dropdown startValue={newProject} editProject={(value) => {
-                        setNewProject(value)
-                        editItem(newName, value)
+                        setNewProject(value);
+                        editItem(newName, value);
                     }}/>
                 </div>
                 <div className="titem__info">
@@ -111,13 +111,13 @@ export default function TrackerList() {
                     <div className="titem__delete">
                         <p>{formatTime(newAll)}</p>
                         <img src={deleteImg} onClick={() => {
-                            localStorage.removeItem(myKey)
-                            setIsRender(!isRender)
+                            localStorage.removeItem(myKey);
+                            setIsRender(!isRender);
                         }}/>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     function sortTrackers(arrayKeys, array) {
@@ -150,10 +150,10 @@ export default function TrackerList() {
                    return <TrackerBlock key={el+index} header={el.split(".").map(el => el.padStart(2, "0")).join(".")} all={allTime}>{
                     array[index].map(key => {
                         let now = localStorage.getItem(key).split("^");
-                        return <TrackerItem key={key} myKey={key} name = {now[0]} project = {now[1]} start = {now[2]} end = {now[3]} all = {now[4]}/>
-                   })}</TrackerBlock>
+                        return <TrackerItem key={key} myKey={key} name = {now[0]} project = {now[1]} start = {now[2]} end = {now[3]} all = {now[4]}/>;
+                   })}</TrackerBlock>;
                 })}
             </div>
         </div>
-    )
+    );
 }

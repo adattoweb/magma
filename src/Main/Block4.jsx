@@ -1,14 +1,14 @@
-import './Main.css'
-import star from '../assets/nonstar1.png'
-import nonstar from '../assets/nonstar.png'
+import "./Main.css";
+import star from "../assets/nonstar1.png";
+import nonstar from "../assets/nonstar.png";
 
 
 export default function Block4() {
 
     function ReviewItem({ header, text, stars, author }) {
-        const arr = []
+        const arr = [];
         for (let i = 0; i < 5; i++) {
-            arr.push(i < stars)
+            arr.push(i < stars);
         }
         return (
             <div className="review">
@@ -16,7 +16,7 @@ export default function Block4() {
                 <p>{text}</p>
                 <p className="review__author">{author}</p>
             </div>
-        )
+        );
     }
 
     return (
@@ -45,5 +45,5 @@ export default function Block4() {
                     stars={4} author="adattoweb" />
             </div>
         </div>
-    )
+    );
 }

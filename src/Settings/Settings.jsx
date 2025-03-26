@@ -1,6 +1,6 @@
-import './Settings.css'
-import white from '../assets/white.png'
-import black from '../assets/black.png'
+import "./Settings.css";
+import white from "../assets/white.png";
+import black from "../assets/black.png";
 
 export default function Settings({onChange}) {
     // const [count, setCount] = useState(+localStorage.getItem("settings-size") || 0)
@@ -11,7 +11,7 @@ export default function Settings({onChange}) {
     //     localStorage.setItem("settings-size", count)
     // }
 
-    const isEn = localStorage.getItem("settings-lang") === "en"
+    const isEn = localStorage.getItem("settings-lang") === "en";
 
     return (
         <div className="settings content">
@@ -22,12 +22,12 @@ export default function Settings({onChange}) {
                         <p className="settings__name">{isEn ? "Language:" : "Мова:"}</p>
                         <div className="settings__select">
                             <p className="lang__select" onClick={() => {
-                                localStorage.setItem("settings-lang", "en")
-                                onChange()
+                                localStorage.setItem("settings-lang", "en");
+                                onChange();
                             }}>EN</p>
                             <p className="lang__select" onClick={() => {
-                                localStorage.setItem("settings-lang", "ua")
-                                onChange()
+                                localStorage.setItem("settings-lang", "ua");
+                                onChange();
                             }}>UA</p>
                         </div>
                     </div>
@@ -35,12 +35,12 @@ export default function Settings({onChange}) {
                         <p className="settings__name">{isEn ? "Theme:" : "Тема:"}</p>
                         <div className="settings__select">
                             <img src={white} onClick={() => {
-                                localStorage.setItem("settings-theme", "light")
-                                onChange()
+                                localStorage.setItem("settings-theme", "light");
+                                onChange();
                             }}/>
                             <img src={black} onClick={() => {
-                                localStorage.setItem("settings-theme", "dark")
-                                onChange()
+                                localStorage.setItem("settings-theme", "dark");
+                                onChange();
                             }}/>
                         </div>
                     </div>
@@ -68,5 +68,5 @@ export default function Settings({onChange}) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './Header.css';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
 
 export default function Header({ onClick }) {
 
@@ -16,15 +16,15 @@ export default function Header({ onClick }) {
             setIsHidden(false);
         }
         setLastScroll(currentScroll);
-    }
+    };
 
     useEffect(() => {
-        window.addEventListener('scroll', scroll);
-        return () => window.removeEventListener('scroll', scroll);
+        window.addEventListener("scroll", scroll);
+        return () => window.removeEventListener("scroll", scroll);
     }, [lastScroll]); // додано залежність
 
     return (
-        <div className={isHidden ? 'header hidden' : 'header'}>
+        <div className={isHidden ? "header hidden" : "header"}>
             <div className="header__logo"><Link to="/">Magma</Link></div>
             <ul className="header__menu">
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>

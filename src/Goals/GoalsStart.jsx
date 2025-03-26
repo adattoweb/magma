@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import start from '../assets/projectstart.png';
-import './Goals.css';
+import { useState } from "react";
+import start from "../assets/projectstart.png";
+import "./Goals.css";
 
 export default function TrackerStart({ update }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
@@ -9,7 +9,7 @@ export default function TrackerStart({ update }) {
     const [max, setMax] = useState(1);
     
     function addProject() {
-        let newName = name.replace(/(@|\^)+/g, ".")
+        let newName = name.replace(/(@|\^)+/g, ".");
         let readProjects = localStorage.getItem("goals-list");
         let arr = readProjects.split("^").map(el => el.split("@"));
         let counter = 1;

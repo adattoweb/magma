@@ -1,13 +1,13 @@
-import './Goals.css'
-import { useState, useRef } from 'react'
-import deleteImg from '../assets/delete.png'
-import arrow from '../assets/arrow.png'
+import "./Goals.css";
+import { useState} from "react";
+import deleteImg from "../assets/delete.png";
+import arrow from "../assets/arrow.png";
 
 export default function TrackerList() {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     if (localStorage.getItem("goals-list") !== null) {
-        localStorage.setItem("goals-list", localStorage.getItem("goals-list").replace(/\^{2,}/g, ""))
+        localStorage.setItem("goals-list", localStorage.getItem("goals-list").replace(/\^{2,}/g, ""));
     }
     const [isRender, setIsRender] = useState(false);
 

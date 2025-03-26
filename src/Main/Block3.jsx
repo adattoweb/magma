@@ -1,4 +1,4 @@
-import './Main.css'
+import "./Main.css";
 
 export default function Block3() {
     function BlockVersion({name, desc, plus, minus, price, isDeveloping, onMonth}){
@@ -18,11 +18,11 @@ export default function Block3() {
                     </ul>
                 </div>
                 <div className="version__bottom">
-                    <div className="version__button">{isDeveloping ? 'В розробці' : 'Почати'}</div>
-                    <div className="version__price">{price}₴{onMonth && '/місяць'}</div>
+                    <div className="version__button">{isDeveloping ? "В розробці" : "Почати"}</div>
+                    <div className="version__price">{price}₴{onMonth && "/місяць"}</div>
                 </div>
             </a>
-        )
+        );
     }
     return (
         <div className="block3">
@@ -48,5 +48,5 @@ export default function Block3() {
                 />
             </div>
         </div>
-    )
+    );
 }

@@ -1,5 +1,5 @@
-import './Page404.css'
-import { Link } from 'react-router-dom';
+import "./Page404.css";
+import { Link } from "react-router-dom";
 
 export default function PageNotFound() {
     return (
@@ -8,5 +8,5 @@ export default function PageNotFound() {
             <p>Сторінка не знайдена.</p>
             <Link to="/">На головну</Link>
         </div>
-    )
+    );
 }

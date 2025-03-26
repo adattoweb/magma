@@ -1,14 +1,14 @@
-import "./Menu.css"
-import React from 'react';
-import cross from '../assets/cross.png'
-import { Link } from 'react-router-dom';
+import "./Menu.css";
+import React from "react";
+import cross from "../assets/cross.png";
+import { Link } from "react-router-dom";
 
 export default function Menu({ isMenu, onClick }) {
 
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     return (
-        <div className={isMenu ? 'menu' : 'menu none'}>
+        <div className={isMenu ? "menu" : "menu none"}>
             <img src={cross} className="cross" onClick={onClick} />
             <ul className="menu__list" onClick={onClick}>
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>
@@ -20,5 +20,5 @@ export default function Menu({ isMenu, onClick }) {
                 <li><Link to="/settings">{isEn ? "Settings" : "Налаштування"}</Link></li>
             </ul>
         </div>
-    )
+    );
 }

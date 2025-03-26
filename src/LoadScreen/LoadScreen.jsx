@@ -1,4 +1,4 @@
-import './LoadScreen.css'
+import "./LoadScreen.css";
 
 export default function LoadScreen(){
     return (
@@ -6,5 +6,5 @@ export default function LoadScreen(){
             <h2 className='tracking-in-contract'>Magma</h2>
             <p className='tracking-in-contract'>track your day</p>
         </div>
-    )
+    );
 }
