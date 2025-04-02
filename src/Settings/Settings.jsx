@@ -59,7 +59,7 @@ export default function Settings({onChange}) {
                 </div>
                 <div className="settings__block">
                     <h2>{isEn ? "Version" : "Версія"}</h2>
-                    <p className="settings__name">{isEn ? "Current version: Atempus Local 0.0.1" : "Поточна версія: Atempus Local 0.0.1"}</p>
+                    <p className="settings__name">{isEn ? "Current version: Atempus Local 0.0.2" : "Поточна версія: Atempus Local 0.0.2"}</p>
                     <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
                 </div>
                 <div className="settings__block">

@@ -13,6 +13,9 @@ html, .wrapper{
 p, li, h1,h2,h3,h4,h5,h6,a,pre{
   font-family: "Montserrat Alternates", serif;
 }
+input{
+  outline: none;
+}
 .none{
   display: none !important;
 }
@@ -56,7 +59,23 @@ html{ scroll-behavior: smooth; }
 ::selection {
     background-color: #141416;
     color: #ffffff; 
+}
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: 0.5rem;
+    scrollbar-color: #000000 #ffffff;
   }
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge */
+  margin: 0;
+}
+
 /*
 ANIMATION
 */

@@ -8,6 +8,7 @@ export default function TrackerStart({ update }) {
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(1);
     function addProject() {
+        if(min < 0 || max <= 0) return
         let newName = name.replace(/(@|\^)+/g, ".");
         let readProjects = localStorage.getItem("goals-list") ?? "";
         let arr = readProjects.split("^").map(el => el.split("@"));
@@ -23,6 +24,7 @@ export default function TrackerStart({ update }) {
         } else {
             localStorage.setItem("goals-list", `${localStorage.getItem("goals-list") }^${newName}@${index}@${min}@${max}`);
         }
+        console.log(arr)
     }
     
     return (
@@ -53,7 +55,7 @@ export default function TrackerStart({ update }) {
                     src={start} 
                     alt={isEn ? "Start" : "Почати"} 
                     onClick={() => {
-                        if(min.length > 0 && max.length > 0){
+                        if((min + "").length > 0 && (max + "").length > 0){
                             addProject();
                             update();
                         }
