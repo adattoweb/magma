@@ -7,10 +7,9 @@ export default function TrackerStart({ update }) {
     const [name, setName] = useState("");
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(1);
-    
     function addProject() {
         let newName = name.replace(/(@|\^)+/g, ".");
-        let readProjects = localStorage.getItem("goals-list");
+        let readProjects = localStorage.getItem("goals-list") ?? "";
         let arr = readProjects.split("^").map(el => el.split("@"));
         let counter = 1;
         for (let i = 0; i < arr.length; i++) { // шукаємо повторення, якщо є то зупиняємо додавання.
@@ -39,13 +38,13 @@ export default function TrackerStart({ update }) {
                     <input 
                         type="number" 
                         value={min} 
-                        onChange={(e) => setMin(e.target.value)} 
+                        onChange={(e) => setMin(e.target.value)}
                     />
                     <p>/</p>
                     <input 
                         type="number" 
                         value={max} 
-                        onChange={(e) => setMax(e.target.value)} 
+                        onChange={(e) => setMax(e.target.value)}
                     />
                 </div>
             </div>
@@ -54,8 +53,10 @@ export default function TrackerStart({ update }) {
                     src={start} 
                     alt={isEn ? "Start" : "Почати"} 
                     onClick={() => {
-                        addProject();
-                        update();
+                        if(min.length > 0 && max.length > 0){
+                            addProject();
+                            update();
+                        }
                     }} 
                 />
             </div>

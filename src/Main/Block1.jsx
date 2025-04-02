@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import analytics from "../assets/analytics.png";
 import projects from "../assets/projects.png";
 import tracker from "../assets/tracker.png";
 import "./Main.css";
 
 export default function Block1() {
+    const isEn = localStorage.getItem("settings-lang") === "en";
     return (
         <div className="block1">
             <div className="block1__text">
@@ -17,7 +19,7 @@ export default function Block1() {
                     <img src={analytics} />
                 </div>
             </div>
-            <div className="block1__button">Почати</div>
+            <div className="block1__button"><Link to="/trackers">{isEn ? "Start" : "Почати"}</Link></div>
         </div>
     );
 }

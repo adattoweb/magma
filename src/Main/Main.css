@@ -63,14 +63,17 @@
     transform: rotateX(10deg) rotateY(-10deg);
 }
 .block1__button{
-    color: #fff;
     background-color: #000;
     border-radius: 10px;
     padding: 10px 20px;
+    cursor: pointer;
+}
+.block1__button a{
+    color: #fff;
     font-family: "Montserrat Alternates", serif;
     font-size: 18px;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
 }
 .wrapper.dark .block1__button{
     background-color: #fff;

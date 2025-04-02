@@ -10,7 +10,8 @@ export default function Analytics() {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     const [days, setDays] = useState(7);
-    const [maxHeight, setMaxHeight] = useState(100);
+    // const [maxHeight, setMaxHeight] = useState(100); // у майбутньому
+    const maxHeight = 100
     const [project, setProject] = useState("Всі");
 
     let array = []; // масив для групування за датами

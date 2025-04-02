@@ -22,24 +22,8 @@ function App() {
   if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
 
   console.log("App render");
-  // const isFirstTime = useRef(0)
 
   const [isRender, setIsRender] = useState(false);
-
-  // useEffect(() => {
-  //   isFirstTime.current++;
-  //   if(isFirstTime.current === 2){
-  //     console.log("Змінюю розмір")
-  //     document.querySelectorAll("*").forEach(el => {
-  //       const style = window.getComputedStyle(el);
-  //       const value = style.getPropertyValue('font-size');
-  //       const fontSize = parseFloat(value) || 16; // Переконуємось, що число коректне
-    
-  //       el.style.fontSize = fontSize + +localStorage.getItem("settings-size") + 'px';
-  //     });
-  //     isFirstTime.current++;
-  //   }
-  // })
 
   let wrapper = document.querySelector(".wrapper"); // короч якщо в localStorage тема обрана чорною, то даємо клас dark, інакше прибираємо
   localStorage.getItem("settings-theme") === "dark" ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");

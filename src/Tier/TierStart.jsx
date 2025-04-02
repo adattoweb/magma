@@ -7,7 +7,7 @@ export default function TrackerStart({update}) {
     const [name, setName] = useState("");
     function addProject() {
         let newName = name.replace(/(@|\^)+/g, ".");
-        let readProjects = localStorage.getItem("tier-list");
+        let readProjects = localStorage.getItem("tier-list") ?? [];
         let arr = readProjects.split("^").map(el => el.split("@"));
         let counter = 1;
         for(let i = 0; i < arr.length; i++){

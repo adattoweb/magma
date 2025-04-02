@@ -5,6 +5,7 @@ import arrow from "../assets/arrow.png";
 
 export default function TrackerList() {
     const isEn = localStorage.getItem("settings-lang") === "en";
+    const localList = localStorage.getItem("goals-list") ?? "" 
 
     if (localStorage.getItem("goals-list") !== null) {
         localStorage.setItem("goals-list", localStorage.getItem("goals-list").replace(/\^{2,}/g, ""));
@@ -17,7 +18,7 @@ export default function TrackerList() {
         const [max, setMax] = useState(startMax);
 
         if (index !== localIndex) {
-            localStorage.setItem("goals-list", localStorage.getItem("goals-list").replace(`${name}@${localIndex}@${min}@${max}`, `${name}@${index}@${min}@${max}`));
+            localStorage.setItem("goals-list", localList.replace(`${name}@${localIndex}@${min}@${max}`, `${name}@${index}@${min}@${max}`));
         }
 
         function editProperty(actualValue, propIndex) {
@@ -25,7 +26,7 @@ export default function TrackerList() {
             // if (propIndex === 2 && +actualValue > +max) return;
             // if (propIndex === 3 && +actualValue < +min) return;
 
-            let tierArr = localStorage.getItem("goals-list").split("^").map(el => el.split("@"));
+            let tierArr = localList.split("^").map(el => el.split("@"));
             for (let i = 0; i < tierArr.length; i++) {
                 if (tierArr[i][0] === name && +tierArr[i][1] === index) {
                     tierArr[i][propIndex] = actualValue;
@@ -37,7 +38,7 @@ export default function TrackerList() {
         }
 
         function editPosition(newIndex) {
-            let tierArr = localStorage.getItem("goals-list").split("^").map(el => el.split("@"));
+            let tierArr = localList.split("^").map(el => el.split("@"));
             if (newIndex - 1 >= tierArr.length || newIndex === 0) return;
             let temp = tierArr[newIndex - 1];
             tierArr[newIndex - 1] = tierArr[index - 1];
@@ -50,7 +51,7 @@ export default function TrackerList() {
         }
 
         function deleteItem() {
-            let tierArr = localStorage.getItem("goals-list").split("^");
+            let tierArr = localList.split("^");
             tierArr.splice(index - 1, 1);
             tierArr = tierArr.join("^");
             localStorage.setItem("goals-list", tierArr);
@@ -90,7 +91,7 @@ export default function TrackerList() {
         );
     }
 
-    let array = localStorage.getItem("goals-list").split("^").map(el => el.split("@"));
+    let array = localList.split("^").map(el => el.split("@"));
     let allMin = 0;
     let allMax = 0;
 
@@ -105,7 +106,7 @@ export default function TrackerList() {
                 {isEn ? "Goals" : "Цілі"} {allMin || 0}/{allMax || 0}
             </div>
             <div className="tlist__list">
-                {localStorage.getItem("goals-list").length === 0 ? 
+                {localList.length === 0 ? 
                     <p className="tier__error">{isEn ? "Unfortunately, there is nothing here!" : "Нажаль тут нічого немає!"}</p> 
                     : array.map((el, index) => (
                         <TrackerItem key={el + index} startName={el[0]} index={index + 1} localIndex={el[1]} startMin={el[2]} startMax={el[3]} />

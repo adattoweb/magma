@@ -45,7 +45,7 @@
     max-width: 250px;
 }
 .tier__error{
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
     font-size: 16px;
 }
 @media screen and (max-width: 930px) {

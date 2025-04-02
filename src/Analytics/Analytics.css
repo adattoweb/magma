@@ -1,5 +1,4 @@
 .analytics{
-    justify-content: center;
     align-items: center;
     width: 100vw;
     margin: 85px 0px 0px 0px;
@@ -13,6 +12,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    margin-top: 75px;
 }
 .wrapper.dark .analytics__block{
     background-color: rgba(0, 0, 0, 0.6);
@@ -163,9 +163,6 @@
     }
 }
 @media screen and (max-width: 540px){
-    .analytics{
-        margin-top: 140px;
-    }
     .analytics__content{
         grid-template-rows: repeat(3, auto);
     }
