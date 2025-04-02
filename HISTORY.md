@@ -9,6 +9,6 @@
 - 🎯 **Added conditions** when creating goals on the **"Goals"** page (minimum value **cannot be less than 0**, and maximum value **must be greater than 0**).  
 - 🎨 **Updated developer logo** (footer & more).  
 - 🦊 **Improved appearance in Firefox** for a smoother experience.  
-- 🔢 **Removed number input arrows** where only numbers should be entered.  
+- 🔢 **Removed number input arrows.**
 
 🚀 Keep tracking & stay awesome! 🚀  
