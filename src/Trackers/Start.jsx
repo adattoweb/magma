@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import formatTime from "../formatTime";
+import formatTime from "../helpers/formatTime";
 import pause from "../assets/pause.png";
 import start from "../assets/start.png";
 

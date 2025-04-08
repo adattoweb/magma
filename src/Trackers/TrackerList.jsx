@@ -1,9 +1,9 @@
 import "./Trackers.css";
 import { useState } from "react";
-import formatTime from "../formatTime";
-import Dropdown from "../Dropdown";
+import formatTime from "../helpers/formatTime";
+import Dropdown from "../Dropdown/Dropdown";
 import deleteImg from "../assets/delete.png";
-import getDayDiff from "../getDayDiff";
+import getDayDiff from "../helpers/getDayDiff";
 
 export default function TrackerList() {    
     const isEn = localStorage.getItem("settings-lang") === "en";

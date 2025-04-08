@@ -20,16 +20,6 @@
     background: none;
     color: #fff;
 }
-.titem__edit input, .tblock__miniheader input{
-    font-size: 18px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 2px;
-    border: none;
-    max-width: 100px;
-    outline: 2px solid #ffffff00;
-    transition: 0.3s ease all;
-}
 .titem__edit input:hover, .tblock__miniheader input:hover{
     outline: 2px solid #000;
 }

@@ -1,6 +1,6 @@
 import { useState} from "react";
 import Start from "./Start";
-import Dropdown from "../Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 import "./Trackers.css";
 
 export default function TrackerStart({changeAdd}) {

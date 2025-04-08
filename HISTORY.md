@@ -10,5 +10,7 @@
 - 🎨 **Updated developer logo** (footer & more).  
 - 🦊 **Improved appearance in Firefox** for a smoother experience.  
 - 🔢 **Removed number input arrows** where only numbers should be entered.  
-
+### 0.0.3  
+- 🧱 **Improved architecture** for better scalability and maintainability.  
+- 💅 **Enhanced design** of the **"Trackers"** and **"Projects"** pages for a cleaner and more modern look.
 🚀 Keep tracking & stay awesome! 🚀  

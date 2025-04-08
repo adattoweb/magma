@@ -66,83 +66,6 @@
 .trackers__start img:hover{
     transform: scale(1.05)
 }
-/* DROPDOWN */
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-btn {
-    font-family: "Montserrat Alternates", serif;
-    background-color: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    padding: 0px 10px;
-    font-weight: 500;
-    gap: 10px;
-    min-width: 100px;
-}
-.wrapper.dark .dropdown-btn{
-    background-color: #fff;
-    color: #000;
-}
-.dropdown-btn img{
-    width: 20px;
-    transition: 0.2s ease all;
-}
-.wrapper.dark .dropdown-btn img{
-    filter: invert(1)
-}
-.rotate{
-    transform: rotateX(180deg)
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 5;
-    border-radius: 10px;
-    overflow-y: auto;
-    max-height: 150px;
-    overflow-x: hidden !important;
-}
-.wrapper.dark .dropdown-content{
-    background-color: #fff;
-}
-
-.dropdown-content p {
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-    border-radius: 10px;
-}
-.wrapper.dark .dropdown-content p{
-    color: #000;
-}
-
-.dropdown-content p:hover {
-    background-color: #444;
-}
-.wrapper.dark .dropdown-content p:hover{
-    background-color: #dcdcdc;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 /* TRACKLIST */
 .tlist{
@@ -245,15 +168,18 @@
 .titem__edit .dropdown-content{
     border-radius: 5px;
 }
-.titem__edit input{
-    font-size: 18px;
+.titem__edit input,.tblock__miniheader input{
+    font-size: 16px;
     font-weight: 600;
     padding: 5px 10px;
     border-radius: 2px;
     border: none;
-    max-width: 100px;
+    max-width: 250px;
     outline: 2px solid #ffffff00;
     transition: 0.3s ease all;
+}
+.tblock__miniheader input{
+    max-width: 100px;
 }
 .titem__edit input:hover{
     outline: 2px solid #000;
@@ -325,10 +251,6 @@
     }
 }
 @media screen and (max-width: 1000px) {
-    .dropdown-btn{
-        min-width: 90px !important;
-        font-size: 16px !important;
-    }
     .trackers__start{
         gap: 20px !important;
     }
@@ -403,10 +325,17 @@
     .titem__info{
         width: 40% !important;
     }
+    .titem__edit input{
+        font-size: 14px;
+        max-width: 170px;
+    }
 }
 @media screen and (max-width: 1100px) {
     .tlist{
         width: calc(75vw - 40px) !important;
+    }
+    .titem__edit input{
+        max-width: 150px;
     }
 }
 @media screen and (max-width: 900px) {

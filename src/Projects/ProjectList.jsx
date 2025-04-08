@@ -1,7 +1,7 @@
 import "./Projects.css";
 import {useState} from "react";
-import formatTime from "../formatTime";
-import Dropdown from "../Dropdown";
+import formatTime from "../helpers/formatTime";
+import Dropdown from "../Dropdown/Dropdown";
 import deleteImg from "../assets/delete.png";
 import triangleBlack from "../assets/triangleBlack.png";
 
