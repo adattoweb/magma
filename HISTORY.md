@@ -15,6 +15,8 @@
 - 💅 **Enhanced design** of the **"Trackers"** and **"Projects"** pages for a cleaner and more modern look.
 ### 0.0.4
 - 🛠️ **Improved project structure** for better organization and scalability.  
-- 🎨 **Added CSS modules** for more maintainable and scoped styling.  
+- 🎨 **Added CSS modules** for more maintainable and scoped styling. 
+### 0.1.0
+- 🧱 **Improved project architecture**.
 
 🚀 **Keep tracking & stay awesome!** 🚀
