@@ -13,4 +13,8 @@
 ### 0.0.3  
 - 🧱 **Improved architecture** for better scalability and maintainability.  
 - 💅 **Enhanced design** of the **"Trackers"** and **"Projects"** pages for a cleaner and more modern look.
-🚀 Keep tracking & stay awesome! 🚀  
+### 0.0.4
+- 🛠️ **Improved project structure** for better organization and scalability.  
+- 🎨 **Added CSS modules** for more maintainable and scoped styling.  
+
+🚀 **Keep tracking & stay awesome!** 🚀
