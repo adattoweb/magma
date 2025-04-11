@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Calendar.css";
 import getDayDiff from "../../helpers/getDayDiff";
-import CalendarDay from "./CalendarDay";
+import CalendarDay from "./ui/CalendarDay";
 
 export default function Calendar(){
     if(localStorage.getItem("calendar-index") === null){
