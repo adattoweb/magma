@@ -1,7 +1,7 @@
 import { useState} from "react";
+import TierStart from "./ui/TierStart";
+import TierList from "./ui/TierList";
 import "./Tier.css";
-import TierStart from "./TierStart";
-import TierList from "./TierList";
 
 export default function Trackers() {
     if (localStorage.getItem("tier-index") === null) {
