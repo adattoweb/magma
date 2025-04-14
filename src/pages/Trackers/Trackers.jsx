@@ -1,7 +1,7 @@
 import { useState} from "react";
+import TrackerStart from "./ui/TrackerStart";
+import TrackerList from "./ui/TrackerList";
 import "./Trackers.css";
-import TrackerStart from "./TrackerStart";
-import TrackerList from "./TrackerList";
 
 export default function Trackers() {
     if (localStorage.getItem("tracker-index") === null) {

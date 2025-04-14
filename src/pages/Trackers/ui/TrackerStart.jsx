@@ -1,7 +1,6 @@
 import { useState} from "react";
 import Start from "./Start";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import "./Trackers.css";
+import Dropdown from "../../../components/Dropdown/Dropdown";
 
 export default function TrackerStart({changeAdd}) {
 
@@ -33,8 +32,6 @@ export default function TrackerStart({changeAdd}) {
         setTime(0);
         changeAdd();
     }
-
-
     
     return (
         <div className="trackers__add">

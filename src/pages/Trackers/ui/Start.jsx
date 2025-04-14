@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import formatTime from "../../helpers/formatTime";
-import pause from "../../assets/pause.png";
-import start from "../../assets/start.png";
+import formatTime from "../../../helpers/formatTime";
+import pause from "../../../assets/pause.png";
+import start from "../../../assets/start.png";
 
 export default function Start({changeTime, addItem}) {
     const [isTime, setIsTime] = useState(false);
