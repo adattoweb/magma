@@ -1,6 +1,6 @@
 import { useState} from "react";
-import GoalsStart from "./ui/GoalsStart";
-import GoalsList from "./ui/GoalsList";
+import GoalsStart from "./components/GoalsStart";
+import GoalsList from "./components/GoalsList";
 import "./Goals.css";
 
 export default function Trackers() {

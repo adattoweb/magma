@@ -1,6 +1,6 @@
 import { useState} from "react";
-import TrackerStart from "./ui/TrackerStart";
-import TrackerList from "./ui/TrackerList";
+import TrackerStart from "./components/TrackerStart";
+import TrackerList from "./components/TrackerList";
 import "./Trackers.css";
 
 export default function Trackers() {

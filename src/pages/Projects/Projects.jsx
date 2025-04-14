@@ -1,6 +1,6 @@
 import { useState} from "react";
-import ProjectStart from "./ui/ProjectStart";
-import ProjectList from "./ui/ProjectList";
+import ProjectStart from "./components/ProjectStart";
+import ProjectList from "./components/ProjectList";
 import "./Projects.css";
 
 export default function Trackers() {

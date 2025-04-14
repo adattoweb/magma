@@ -1,13 +1,13 @@
 import "./Analytics.css"
-import Dropdown from "./ui/Dropdown";
+import Dropdown from "./components/Dropdown";
 import triangle from "../../assets/triangle.png";
 import sortTrackers from "./helpers/sortTrackers"
 import diffDays from "./helpers/diffDays"
 import uniqueArray from "./helpers/uniqueArray";
 
-import AnalyticsBlock from "./ui/AnalyticsBlock";
-import AnalyticsItem from "./ui/AnalyticsItem"
-import FooterItem from "./ui/FooterItem"
+import AnalyticsBlock from "./components/AnalyticsBlock";
+import AnalyticsItem from "./components/AnalyticsItem"
+import FooterItem from "./components/FooterItem"
 
 import { useState, useRef } from "react";
 
