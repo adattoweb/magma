@@ -1,7 +1,6 @@
-import idea from "../../assets/idea.png";
-import local from "../../assets/local.png";
-import padlock from "../../assets/padlock.png";
-import "./Main.css";
+import idea from "../../../assets/idea.png";
+import local from "../../../assets/local.png";
+import padlock from "../../../assets/padlock.png";
 
 export default function Block2() {
     function BlockItem({image, name, children}){

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import analytics from "../../assets/analytics.png";
-import projects from "../../assets/projects.png";
-import tracker from "../../assets/tracker.png";
-import "./Main.css";
+import analytics from "../../../assets/analytics.png";
+import projects from "../../../assets/projects.png";
+import tracker from "../../../assets/tracker.png";
 
 export default function Block1() {
     const isEn = localStorage.getItem("settings-lang") === "en";

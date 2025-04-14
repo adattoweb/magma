@@ -1,7 +1,7 @@
 import { useState} from "react";
+import GoalsStart from "./ui/GoalsStart";
+import GoalsList from "./ui/GoalsList";
 import "./Goals.css";
-import GoalsStart from "./GoalsStart";
-import GoalsList from "./GoalsList";
 
 export default function Trackers() {
     if (localStorage.getItem("goals-index") === null) {

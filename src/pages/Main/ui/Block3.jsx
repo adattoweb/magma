@@ -1,5 +1,3 @@
-import "./Main.css";
-
 export default function Block3() {
     function BlockVersion({name, desc, plus, minus, price, isDeveloping, onMonth}){
         return (

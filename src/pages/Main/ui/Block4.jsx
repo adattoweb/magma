@@ -1,6 +1,5 @@
-import "./Main.css";
-import star from "../../assets/nonstar1.png";
-import nonstar from "../../assets/nonstar.png";
+import star from "../../../assets/nonstar1.png";
+import nonstar from "../../../assets/nonstar.png";
 
 
 export default function Block4() {
