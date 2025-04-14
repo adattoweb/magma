@@ -1,6 +1,5 @@
 import { useState } from "react";
-import start from "../../assets/projectstart.png";
-import "./Projects.css";
+import start from "../../../assets/projectstart.png";
 
 export default function TrackerStart({update}) {
     const isEn = localStorage.getItem("settings-lang") === "en";

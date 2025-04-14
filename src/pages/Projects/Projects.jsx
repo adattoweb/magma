@@ -1,7 +1,7 @@
 import { useState} from "react";
+import ProjectStart from "./ui/ProjectStart";
+import ProjectList from "./ui/ProjectList";
 import "./Projects.css";
-import ProjectStart from "./ProjectStart";
-import ProjectList from "./ProjectList";
 
 export default function Trackers() {
     if (localStorage.getItem("tracker-index") === null) {
