@@ -5,14 +5,16 @@ export default function TrackerStart({update}) {
     const isEn = localStorage.getItem("settings-lang") === "en"; // визначаємо мову
     const [name, setName] = useState("");
     function addProject() {
-        let newName = name.replace(/(@|\^)+/g, ".");
+        let smallName = name
+        if(name.length > 60) smallName = name.substring(0, 44) + "..."
+        let newName = smallName.replace(/(@|\^)+/g, ".");
         let readProjects = localStorage.getItem("tier-list") ?? [];
         let arr = readProjects.split("^").map(el => el.split("@"));
         let counter = 1;
         for(let i = 0; i < arr.length; i++){
-            if(arr[i][0] === name) counter++;
+            if(arr[i][0] === smallName) counter++;
         }
-        if(counter > 1 || name.length === 0 || name.length > 30) return;
+        if(counter > 1 || name.length === 0) return;
         let index = localStorage.getItem("tier-index");
         localStorage.setItem("tier-index", +index+1);
         if(readProjects.length === 0){

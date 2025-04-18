@@ -18,5 +18,11 @@
 - 🎨 **Added CSS modules** for more maintainable and scoped styling. 
 ### 0.1.0
 - 🧱 **Improved project architecture**.
+### 0.1.1
+- 🧱 **Fixed bugs**.
+### 0.1.2  
+- ⏸️ **Added pause button** in trackers.  
+- 🔠 **Removed limit** on title length.
+- 💾 **Added saving of last session** in trackers.
 
 🚀 **Keep tracking & stay awesome!** 🚀

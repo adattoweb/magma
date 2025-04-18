@@ -49,7 +49,7 @@
 .trackers__start{
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 20px;
 }
 .trackers__start p{
     font-size: 24px;

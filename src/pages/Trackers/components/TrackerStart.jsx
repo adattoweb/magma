@@ -3,6 +3,7 @@ import Start from "./Start";
 import Dropdown from "../../../components/Dropdown/Dropdown";
 
 export default function TrackerStart({changeAdd}) {
+    if(localStorage.getItem("tracker-time") === null) localStorage.setItem("tracker-time", "0")
 
     const isEn = localStorage.getItem("settings-lang") === "en";
 
@@ -11,14 +12,15 @@ export default function TrackerStart({changeAdd}) {
     const [project, setProject] = useState(localStorage.getItem("tracker-project") === null ? "Без проєкту" : localStorage.getItem("tracker-projects").split("^")[0]); // Треба зробити щоб спочатку було СТАНДАРТНЕ ЗНАЧЕННЯ коли будуть проекти зберігатися, array[0]
     const changeProject = value => setProject(value);
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(+localStorage.getItem("tracker-time"));
     const changeTime = value => setTime(value);
 
     let startTime = "00:00";
     let endTime = "00:00";
     function addItem(){
-        if (name.length > 30) return;
-        let newName = name.replace(/(@|\^)+/g, ".");
+        let smallName = name
+        if(name.length > 60) smallName = name.substring(0, 44) + "..."
+        let newName = smallName.replace(/(@|\^)+/g, ".");
         startTime = localStorage.getItem("start-time");
         const now = new Date();
         endTime = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
@@ -31,6 +33,7 @@ export default function TrackerStart({changeAdd}) {
         localStorage.setItem("tracker-index", +index + 1 + "");
         setTime(0);
         changeAdd();
+        localStorage.setItem("tracker-time", "0")
     }
     
     return (
