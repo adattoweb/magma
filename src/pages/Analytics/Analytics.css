@@ -25,6 +25,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
+    gap: 10px;
 }
 .analytics__time{
     margin-right: 30px;

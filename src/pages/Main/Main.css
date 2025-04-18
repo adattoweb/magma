@@ -77,6 +77,8 @@
 }
 .wrapper.dark .block1__button{
     background-color: #fff;
+}
+.wrapper.dark .block1__button a{
     color: #000;
 }
 

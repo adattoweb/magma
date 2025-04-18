@@ -1,5 +1,5 @@
-import {useState} from "react";
-import styles from './Dropdown.module.css'
+import { useState } from "react";
+import './Dropdown.css'
 import triangle from "../../assets/triangle.png";
 
 
@@ -12,9 +12,9 @@ export default function Dropdown({changeProject, startValue, editProject}) {
     const [isRotate, setIsRotate] = useState(false);
     const [select, setSelect] = useState(startValue);
     return (
-        <div className={styles['dropdown']} onMouseOver={() => setIsRotate(true)} onMouseOut={() => setIsRotate(false)}>
-            <button className={styles['dropdown-btn']}>{isEn && select === "Без проєкту" ? "Without project" : select} <img className={isRotate ? styles['rotate'] : ""} src={triangle} /></button>
-            <div className={styles['dropdown-content']}>
+        <div className='dropdown' onMouseOver={() => setIsRotate(true)} onMouseOut={() => setIsRotate(false)}>
+            <button className='dropdown-btn'>{isEn && select === "Без проєкту" ? "Without project" : select} <img className={isRotate ? 'rotate' : ""} src={triangle} /></button>
+            <div className='dropdown-content'>
                 {array.map((el, index) => <p onClick={() => {
                     setSelect(el);
                     changeProject !== undefined && changeProject(el);
