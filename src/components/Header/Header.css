@@ -1,19 +1,24 @@
 .header{
-    width: 65vw;
-    height: 60px;
+    width: 100vw;
+    height: 70px;
     display: flex;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: 20px;
-    color: #fff;
+    background: #fff;
+    color: #000;
     align-items: center;
     position: fixed;
     transform: translate(-50%, 0%);
     transition: 0.7s ease all;
-    top: 25px;
+    top: 0px;
     left: 50%;
     z-index: 10;
     backdrop-filter: blur(5px);
+    border-bottom: 1px solid #cecece;
+}
+.wrapper.dark .header{
+    background: #1a191e;
+    color: #fff;
+    border-bottom: none;
 }
 .hidden{
     transform: translate(-50%, -150%);
@@ -30,8 +35,11 @@
     cursor: pointer;
 }
 .header__menu li a{
-    color: #fff;
+    color: #000;
     text-decoration: none;
+}
+.wrapper.dark .header__menu li a{
+    color: #fff;
 }
 .header__logo{
     font-family: "Montserrat Alternates", serif;
@@ -42,14 +50,20 @@
     left: 40px;
 }
 .header__logo a{
-    color: #fff;
+    color: #000;
     text-decoration: none;
+}
+.wrapper.dark .header__logo a{
+    color: #fff;
 }
 /* BURGER */
 
 .line{
     height: 5px;
     border-radius: 5px;
+    background-color: #000;
+}
+.wrapper.dark .line{
     background-color: #fff;
 }
 .burger-menu{
@@ -97,9 +111,6 @@
 
 
 @media screen and (max-width: 1300px) {
-    .header{
-        width: 80vw;
-    }
     .header__logo{
         left: 30px;
     }
@@ -115,7 +126,6 @@
 }
 @media screen and (max-width: 1600px) {
     .header{
-        width: 80vw;
         justify-content: end;
     }
     .header__logo{

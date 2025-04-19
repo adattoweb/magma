@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
+import "./Header.css";
 
 export default function Header({ onClick }) {
 
@@ -24,9 +24,9 @@ export default function Header({ onClick }) {
     }, [lastScroll]);
 
     return (
-        <div className={`${styles['header']} ${isHidden ? styles['hidden'] : ""}`}>
-            <div className={styles['header__logo']}><Link to="/">Magma</Link></div>
-            <ul className={styles['header__menu']}>
+        <div className={`header ${isHidden ? 'hidden' : ""}`}>
+            <div className='header__logo'><Link to="/">Magma</Link></div>
+            <ul className='header__menu'>
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>
                 <li><Link to="/analytics">{isEn ? "Analytics" : "Аналітика"}</Link></li>
                 <li><Link to="/projects">{isEn ? "Projects" : "Проєкти"}</Link></li>
@@ -34,11 +34,12 @@ export default function Header({ onClick }) {
                 <li><Link to="/goalslist">{isEn ? "Goals" : "Цілі"}</Link></li>
                 <li><Link to="/calendar">{isEn ? "Calendar" : "Календар"}</Link></li>
                 <li><Link to="/settings">{isEn ? "Settings" : "Налаштування"}</Link></li>
+                <li><Link to="/help">{isEn ? "Допомога" : "Допомога"}</Link></li>
             </ul>
-            <div className={styles['burger-menu']} onClick={onClick}>
-                <div className={styles['line']}></div>
-                <div className={styles['line']}></div>
-                <div className={styles['line']}></div>
+            <div className='burger-menu' onClick={onClick}>
+                <div className='line'></div>
+                <div className='line'></div>
+                <div className='line'></div>
             </div>
         </div>
     );
