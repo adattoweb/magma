@@ -30,7 +30,7 @@ export default function Help() {
 
                 <HelpBlock title={isEn ? 'About the "Goals" page' : 'Про сторінку "Цілі"'}>
                     {isEn
-                        ? 'If you have a specific goal, for example to do X of something, you can use this page. It contains a goal counter that you can increase or decrease.'
+                        ? 'If you have a specific goal, for example to do X time of something, you can use this page. It contains a goal counter that you can increase or decrease.'
                         : 'Якщо у вас є певна ціль, наприклад, зробити щось X разів, ви можете скористатися цією сторінкою. Тут буде лічильник цілі, який можна збільшувати або зменшувати.'}
                 </HelpBlock>
 
