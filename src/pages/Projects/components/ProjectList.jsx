@@ -39,8 +39,8 @@ export default function ProjectList() {
     }
 
     return (
-        <div className="tlist">
-            <div className="tlist__header">
+        <div className="tlist newblock">
+            <div className="tlist__header newblock">
                 {isEn ? "All projects" : "Всі проєкти"}
             </div>
             <div className="tlist__list">

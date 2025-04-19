@@ -37,7 +37,7 @@ export default function TrackerStart({changeAdd}) {
     }
     
     return (
-        <div className="trackers__add">
+        <div className="trackers__add newblock">
             <div className="trackers__info">
                 <input type="text" placeholder={isEn ? "What are you doing right now?" : "Чим Ви зараз займаєтесь?"} onChange={(e) => { setName(e.target.value); }} value={name} />
                 <Dropdown changeProject={changeProject}/>

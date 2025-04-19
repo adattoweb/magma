@@ -29,7 +29,7 @@ export default function TrackerStart({ update }) {
     }
     
     return (
-        <div className="goals__add trackers__add project__add">
+        <div className="goals__add trackers__add project__add newblock">
             <div className="trackers__info">
                 <input 
                     type="text" 

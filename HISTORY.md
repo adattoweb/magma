@@ -24,5 +24,10 @@
 - ⏸️ **Added pause button** in trackers.  
 - 🔠 **Removed limit** on title length.
 - 💾 **Added saving of last session** in trackers.
+### 0.1.3  
+- 🎨 **Redesigned header** for a fresher look.  
+- 📘 **Added "Instructions" page**.
+### 0.2.0
+- 🎨 **Redesigned all pages** for a fresher look. 
 
 🚀 **Keep tracking & stay awesome!** 🚀

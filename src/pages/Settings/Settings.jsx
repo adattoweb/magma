@@ -15,7 +15,7 @@ export default function Settings({onChange}) {
 
     return (
         <div className="settings content">
-            <div className="settings__main">
+            <div className="settings__main newblock">
                 <div className="settings__block">
                     <h2>{isEn ? "Main Settings" : "Основні налаштування"}</h2>
                     <div className="settings__lang">
@@ -59,7 +59,7 @@ export default function Settings({onChange}) {
                 </div>
                 <div className="settings__block">
                     <h2>{isEn ? "Version" : "Версія"}</h2>
-                    <p className="settings__name">{isEn ? "Current version: Atempus Local 0.1.0" : "Поточна версія: Atempus Local 0.1.0"}</p>
+                    <p className="settings__name">{isEn ? "Current version: Atempus Local 0.1.0" : "Поточна версія: Atempus Local 0.2.0"}</p>
                     <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
                 </div>
                 <div className="settings__block">

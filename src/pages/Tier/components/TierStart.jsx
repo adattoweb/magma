@@ -24,7 +24,7 @@ export default function TrackerStart({update}) {
         }
     }
     return (
-        <div className="trackers__add project__add">
+        <div className="trackers__add project__add newblock">
             <div className="trackers__info">
                 <input type="text" placeholder={isEn ? "Task Name" : "Назва задачі"} value ={name} onChange={(e) => setName(e.target.value)}/>
             </div>

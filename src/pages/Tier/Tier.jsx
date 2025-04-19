@@ -1,6 +1,6 @@
 import { useState} from "react";
-import TierStart from "./ui/TierStart";
-import TierList from "./ui/TierList";
+import TierStart from "./components/TierStart";
+import TierList from "./components/TierList";
 import "./Tier.css";
 
 export default function Trackers() {

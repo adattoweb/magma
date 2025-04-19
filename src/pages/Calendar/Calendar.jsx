@@ -54,7 +54,7 @@ export default function Calendar(){
     });
     return (
         <div className="calendar content">
-            <div className="calendar__content">
+            <div className="calendar__content newblock">
                 {calendarKeys.map(el => {
                     return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} />;
                 })}

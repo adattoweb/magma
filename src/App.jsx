@@ -13,6 +13,7 @@ import Page404 from "./pages/Page404/Page404";
 import Tier from "./pages/Tier/Tier";
 import Goals from "./pages/Goals/Goals";
 import Calendar from "./pages/Calendar/Calendar";
+import Help from "./pages/Help/Help"
 
 import { Routes, Route } from "react-router-dom";
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/tierlist" element={<Tier />} />
           <Route path="/goalslist" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
+          <Route path="/help" element={<Help />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />

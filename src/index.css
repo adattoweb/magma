@@ -1,64 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* font-family: "Montserrat", serif;
 font-family: "Montserrat Alternates", serif;
 */
-html, .wrapper{
-    overflow-x: hidden;
-} 
-*{
-    margin: 0;
-    padding: 0;
+html,
+.wrapper {
+  overflow-x: hidden;
 }
-p, li, h1,h2,h3,h4,h5,h6,a,pre{
+* {
+  margin: 0;
+  padding: 0;
+}p,li,h1,h2,h3,h4,h5,h6,a,pre {
   font-family: "Montserrat Alternates", serif;
 }
-input{
+input {
   outline: none;
 }
-.none{
+.none {
   display: none !important;
 }
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    min-height: 100%;
-    background-image: url('./assets/mainback.png'); 
-    background-size: 100vw;
-    background-repeat: repeat-y;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  min-height: 100%;
+  background-image: url("./assets/mainback.png");
+  background-size: 100vw;
+  background-repeat: repeat-y;
 }
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 1 auto;
-    margin-top: 85px;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  margin-top: 160px;
 }
 
-html,body{
-    height: 100%
+html,
+body {
+  height: 100%;
 }
-html{ scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 ::-webkit-scrollbar {
-	width: 0.5rem;
-	border-radius: 0.125rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 0.12rem;
-	background-color: #000000;
+  border-radius: 0.12rem;
+  background-color: #000000;
 }
 
 ::-webkit-scrollbar-track {
-	border-radius: 0.125rem;
-	background-color: #ffffff;
+  border-radius: 0.125rem;
+  background-color: #ffffff;
 }
 ::selection {
-    background-color: #141416;
-    color: #ffffff; 
+  background-color: #141416;
+  color: #ffffff;
 }
 @supports (-moz-appearance: none) {
   * {
@@ -81,33 +84,53 @@ ANIMATION
 */
 
 .tracking-in-contract {
-	-webkit-animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  -webkit-animation: tracking-in-contract 0.8s
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
 
 @-webkit-keyframes tracking-in-contract {
-    0% {
-      letter-spacing: 1em;
-      opacity: 0;
-    }
-    40% {
-      opacity: 0.6;
-    }
-    100% {
-      letter-spacing: normal;
-      opacity: 1;
-    }
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
   }
-  @keyframes tracking-in-contract {
-    0% {
-      letter-spacing: 1em;
-      opacity: 0;
-    }
-    40% {
-      opacity: 0.6;
-    }
-    100% {
-      letter-spacing: normal;
-      opacity: 1;
-    }
+  40% {
+    opacity: 0.6;
   }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+/*
+BLOCK
+*/
+
+.newblock{
+  background-color: rgba(255,255,255,0.97);
+  color: #000;
+  border: 1px solid #cecece;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.25);
+  backdrop-filter: blur(2px)
+}
+.wrapper.dark .newblock{
+  /* background-color: #222222; */
+  background-color: rgba(22, 22, 22, 0.95);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+}

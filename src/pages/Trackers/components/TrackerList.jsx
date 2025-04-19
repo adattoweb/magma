@@ -37,8 +37,8 @@ export default function TrackerList() {
     array = sortedArray;
 
     return (
-        <div className="tlist">
-            <div className="tlist__header">
+        <div className="tlist newblock">
+            <div className="tlist__header newblock">
                 {isEn ? "This Week" : "Цим тижнем"}
             </div>
             <div className="tlist__list">

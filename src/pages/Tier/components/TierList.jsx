@@ -12,8 +12,8 @@ export default function TierList() {
     
     let array = localList().split("^").map(el => el.split("@"));
     return (
-        <div className="tlist">
-            <div className="tlist__header">
+        <div className="tlist newblock">
+            <div className="tlist__header newblock">
                 {isEn ? "Tier List of Tasks" : "Тірліст задач"}
             </div>
             <div className="tlist__list">

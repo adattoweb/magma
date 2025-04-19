@@ -20,8 +20,8 @@ export default function GoalsList() {
     }
 
     return (
-        <div className="tlist">
-            <div className="tlist__header">
+        <div className="tlist newblock">
+            <div className="tlist__header newblock">
                 {isEn ? "Goals" : "Цілі"} {allMin || 0}/{allMax || 0}
             </div>
             <div className="tlist__list">

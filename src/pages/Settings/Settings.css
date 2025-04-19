@@ -3,19 +3,11 @@
 }
 .settings__main{
     padding: 10px 15px 20px 15px;
-    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
     width: 500px;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-.wrapper.dark .settings__main{
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
-    color: #fff;
 }
 .settings__block{
     display: flex;

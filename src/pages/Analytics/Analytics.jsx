@@ -47,7 +47,7 @@ export default function Analytics() {
 
     return (
         <div className={+days === 14 ? `analytics content bigAnal` : `analytics content`}>
-            <div className='analytics__block'>
+            <div className='analytics__block newblock'>
                 <div className='analytics__header'>
                     <p className='analytics__time'>{isEn ? "Total:" : "Всього:"} {timeHour}:{timeMin} </p>
                     <Dropdown changeProject={(el) => setProject(el)} startValue={"Всі"} />
