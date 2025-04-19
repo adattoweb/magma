@@ -1,7 +1,7 @@
 export default function Block3() {
     function BlockVersion({name, desc, plus, minus, price, isDeveloping, onMonth}){
         return (
-            <a href="#" className="version">
+            <a href="#" className="version newblock">
                 <h3>{name}</h3>
                 <div className="version__text">
                     <h4>Опис</h4>

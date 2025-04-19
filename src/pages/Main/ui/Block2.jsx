@@ -5,7 +5,7 @@ import padlock from "../../../assets/padlock.png";
 export default function Block2() {
     function BlockItem({image, name, children}){
         return (
-            <div className="block2__item">
+            <div className="block2__item newblock">
                 <img src={image}/>
                 <h4>{name}</h4>
                 <p>{children}</p>

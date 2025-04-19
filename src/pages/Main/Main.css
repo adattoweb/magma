@@ -8,18 +8,9 @@
     flex-direction: column;
     gap: 25px;
     align-items: center;
-    color: #000;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
     width: 30vw;
     padding: 15px 30px;
-}
-.wrapper.dark .block1{
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
-    color: #fff;
 }
 .block1__text{
     display: flex;
@@ -141,7 +132,6 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    
 }
 .block2 h1{
     font-family: "Montserrat Alternates", serif;
@@ -156,20 +146,12 @@
 .block2__item{
     width: 250px;
     height: 270px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px 20px;
-    background-color: #fff;
     transition: 0.3s ease all;
-}
-.wrapper.dark .block2__item{
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
-    color: #fff;
 }
 .block2__item:hover{
     box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25);
@@ -251,25 +233,16 @@
 }
 
 .version{
-    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 300px;
     height: 400px;
     position: relative;
     transition: 0.3s ease all;
     cursor: pointer;
-    color: #000;
     text-decoration: none;
-    background-color: #fff;
-}
-.wrapper.dark .version{
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
-    color: #fff;
 }
 .version:hover{
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.5);
@@ -376,23 +349,15 @@
     padding: 0px 0px 0px 40px;
 }
 .review{
-    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
     cursor: default;
     max-width: 40vw;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 15px 15px 30px 15px;
-    border-radius: 20px;
-    background-color: #fff;
+    border-radius: 10px;
     position: relative;
     transition: 0.3s ease all
-}
-.wrapper.dark .review{
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
-    color: #fff;
 }
 .review:hover{
     box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.25); 

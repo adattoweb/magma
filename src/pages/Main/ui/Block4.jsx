@@ -10,7 +10,7 @@ export default function Block4() {
             arr.push(i < stars);
         }
         return (
-            <div className="review">
+            <div className="review newblock">
                 <h3>{header} <div className="stars">{arr.map((el, index) => el ? <img key={index} src={star} /> : <img key={index} src={nonstar} />)}</div></h3>
                 <p>{text}</p>
                 <p className="review__author">{author}</p>

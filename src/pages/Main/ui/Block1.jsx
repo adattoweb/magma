@@ -6,7 +6,7 @@ import tracker from "../../../assets/tracker.png";
 export default function Block1() {
     const isEn = localStorage.getItem("settings-lang") === "en";
     return (
-        <div className="block1">
+        <div className="block1 newblock">
             <div className="block1__text">
                 <h2>Magma</h2>
                 <h3>Безкоштовний веб-трекер часу</h3>
