@@ -63,9 +63,6 @@
     }
 }
 @media screen and (max-width: 500px) {
-    .footer{
-        width: 95vw;
-    }
     .footer__text h2{
         font-size: 15px;
     }

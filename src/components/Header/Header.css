@@ -125,6 +125,9 @@
     .header__menu{
         gap: 20px;
     }
+    .header{
+        width: 85vw
+    }
 }
 @media screen and (max-width: 1600px) {
     .header{
