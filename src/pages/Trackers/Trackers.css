@@ -80,8 +80,8 @@
     font-family: "Montserrat Alternates", serif;
     border-radius: 10px 10px 0px 0px;
     position: absolute;
-    left: -1px;
-    top: -42px;
+    left: 0px;
+    top: -40px;
     z-index: 1;
     box-shadow: none;
 }

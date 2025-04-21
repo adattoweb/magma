@@ -129,7 +129,7 @@ BLOCK
 }
 .wrapper.dark .newblock{
   /* background-color: #222222; */
-  background-color: rgba(22, 22, 22, 0.95);
+  background-color: rgba(25, 25, 34, 0.95);
   color: #fff;
   border: none;
   box-shadow: none;
