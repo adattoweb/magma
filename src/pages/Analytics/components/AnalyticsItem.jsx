@@ -6,6 +6,7 @@ export default function AnalyticsItem({ local, allTime, maxHeight, uniqueArr }) 
     // Уникаємо ділення на 0
     // let height = allTime > 0 ? +arr[4] / Math.max(1, Math.floor(allTime / maxHeight)) : 0;
     let height = allTime > 0 ? maxHeight / (allTime / +arr[4]) : 0;
+    if(height < 1) return
 
     let color = "#000";
     for (let i = 0; i < uniqueArr.length; i++) {

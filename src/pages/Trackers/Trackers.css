@@ -285,8 +285,18 @@
         width: 15px !important;
     }
     .dropdown-btn{
+        max-width: 150px;
         min-width: 80px !important;
         font-size: 15px !important;
+    }
+    .titem__edit .dropdown-btn{
+        max-width: 120px;
+        font-size: 14px;
+        height: 25px;
+        border-radius: 8px;
+    }
+    .titem__edit .dropdown-btn img{
+        width: 10px;
     }
 }
 @media screen and (max-width: 350px) {

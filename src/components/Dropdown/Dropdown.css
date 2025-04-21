@@ -20,6 +20,12 @@
     font-weight: 500;
     gap: 10px;
     min-width: 100px;
+    max-width: 200px;
+}
+.dropdown-btn p{
+    font-size: inherit;
+    overflow-x: hidden;
+    color: inherit;
 }
 .wrapper.dark .dropdown-btn{
     background-color: #fff;

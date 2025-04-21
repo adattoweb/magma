@@ -86,6 +86,7 @@ export default function Analytics() {
                 </div>
                 <div className='analytics__footer'>
                     {uniqueArr.map((el, index) => {
+                        console.log(el)
                         return <FooterItem key={el + index} str={el} />;
                     })}
                 </div>

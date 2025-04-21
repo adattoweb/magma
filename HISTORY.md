@@ -28,6 +28,8 @@
 - 🎨 **Redesigned header** for a fresher look.  
 - 📘 **Added "Instructions" page**.
 ### 0.2.0
-- 🎨 **Redesigned all pages** for a fresher look. 
+- 🎨 **Redesigned all pages** for a fresher look.
+### 0.2.1
+- ✅ **Fixed** bugs.
 
 🚀 **Keep tracking & stay awesome!** 🚀
