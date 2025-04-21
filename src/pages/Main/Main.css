@@ -287,6 +287,7 @@
     color: #fff;
     font-family: "Montserrat Alternates", serif;
     cursor: pointer;
+    white-space: nowrap;
 }
 .wrapper.dark .version__button{
     background-color: #fff;

@@ -4,8 +4,8 @@
     gap: 20px;
 }
 .tblock__miniheader img{
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     transform: rotate(180deg);
     transition: 0.3s ease all;
     cursor: pointer;

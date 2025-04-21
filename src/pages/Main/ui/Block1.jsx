@@ -9,9 +9,8 @@ export default function Block1() {
         <div className="block1 newblock">
             <div className="block1__text">
                 <h2>Magma</h2>
-                <h3>Безкоштовний веб-трекер часу</h3>
-                <p>Відслідковуйте скільки часу Ви витрачаєте на різні справи
-                    будь то сон, робота, тощо.</p>
+                <h3>{isEn ? "Free web time tracker" : "Безкоштовний веб-трекер часу"}</h3>
+                <p>{isEn ? "Track how much time you spend on different activities — whether it's sleep, work, or anything else." : "Відслідковуйте скільки часу Ви витрачаєте на різні справи — будь то сон, робота, тощо."}</p>
                 <div className="block1__images">
                     <img src={tracker} />
                     <img src={projects} />
