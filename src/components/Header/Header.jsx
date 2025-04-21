@@ -24,7 +24,7 @@ export default function Header({ onClick }) {
     }, [lastScroll]);
 
     return (
-        <div className={`header ${isHidden ? 'hidden' : ""}`}>
+        <div className={`header newblock ${isHidden ? 'hidden' : ""}`}>
             <div className='header__logo'><Link to="/">Magma</Link></div>
             <ul className='header__menu'>
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>

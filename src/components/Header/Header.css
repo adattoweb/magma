@@ -3,8 +3,6 @@
     height: 70px;
     display: flex;
     justify-content: center;
-    background: #fff;
-    color: #000;
     align-items: center;
     position: fixed;
     transform: translate(-50%, 0%);
@@ -16,11 +14,7 @@
     border: 2px solid #cecece;
     border-radius: 15px;
     margin-top: 20px;
-}
-.wrapper.dark .header{
-    background-color: rgba(22, 22, 22, 0.95);
-    color: #fff;
-    border: none;
+    box-shadow: none;
 }
 .hidden{
     transform: translate(-50%, -150%);

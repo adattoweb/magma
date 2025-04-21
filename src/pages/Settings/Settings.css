@@ -3,7 +3,7 @@
 }
 .settings__main{
     padding: 10px 15px 20px 15px;
-    width: 500px;
+    width: 900px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -18,6 +18,19 @@
     font-size: 20px;
     font-weight: 600;
     font-family: "Montserrat Alternates", serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.settings__triangle{
+    width: 18px;
+    transition: 0.3s ease all;
+    transform: rotate(180deg)
+}
+.settings__triangle.active{
+    transform: rotate(0deg)
 }
 .settings__name{
     font-size: 16px;
@@ -101,9 +114,65 @@
     font-family: "Montserrat Alternates", serif;
     cursor: pointer;
 }
+
+/*BACKITEM*/
+.settings__carousel{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.backitem{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 5px;
+    align-items: center;
+}
+.backitem.choosed{
+    outline: 2px solid #000;
+}
+.wrapper.dark .backitem.choosed{
+    outline: 2px solid #fff;
+}
+.backitem img{
+    width: 130px;
+    border-radius: 5px;
+}
+.backitem__footer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: auto;
+}
+.backitem p {
+    font-size: 16px;
+    font-weight: 500;
+}
+.backitem__button{
+    padding: 5px;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    border-radius: 5px;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 14px;
+    user-select: none;
+    cursor: pointer;
+}
+.backitem__button.choosed{
+
+}
+.wrapper.dark .backitem__button{
+    color: #000;
+    background-color: #fff;
+}
+
 @media screen and (max-width: 570px){
     .settings__main{
-        width: 300px;
+        width: 350px;
         padding: 10px 15px 15px 15px;
     }
     .settings__info{
@@ -116,9 +185,30 @@
     .settings__block h2{
         font-size: 18px;
     }
+    .backitem img{
+        width: 100px;
+    }
+    .backitem__button{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 400px){
+    .settings__main{
+        width: 300px;
+        padding: 10px 15px 15px 15px;
+    }
 }
 @media screen and (max-width: 350px){
     .settings__main{
-        width: 250px;
+        width: 240px;
+    }
+    .backitem img{
+        width: 80px;
+    }
+    .backitem__button{
+        font-size: 12px;
+    }
+    .backitem{
+        padding: 10px 5px;
     }
 }

@@ -24,6 +24,7 @@
     font-weight: 500;
     border-radius: 10px;
     border: 4px #000 solid;
+    background-color: rgba(255,255,255,0.7);
 }
 .wrapper.dark .trackers__info input{
     background: none;
@@ -149,11 +150,12 @@
     font-size: 16px;
     font-weight: 600;
     padding: 5px 10px;
-    border-radius: 2px;
+    border-radius: 5px;
     border: none;
     max-width: 250px;
     outline: 2px solid #ffffff00;
     transition: 0.3s ease all;
+    background-color: rgba(255,255,255,0.3)
 }
 .tblock__miniheader input{
     max-width: 100px;
@@ -189,6 +191,7 @@
     outline: 2px solid #ffffff00;
     transition: 0.3s ease all;
     text-align: center;
+    background-color: rgba(255,255,255,0.3);
 }
 .wrapper.dark .titem__time input{
     background: none;

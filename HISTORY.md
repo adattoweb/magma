@@ -31,5 +31,7 @@
 - 🎨 **Redesigned all pages** for a fresher look.
 ### 0.2.1
 - ✅ **Fixed** bugs.
+### 0.3.0
+- 🎨 **Added theme selection** (17 themes in total); you can choose a theme in the settings.
 
 🚀 **Keep tracking & stay awesome!** 🚀

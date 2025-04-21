@@ -21,7 +21,7 @@ export default function Block4() {
 
     return (
         <div className="block4">
-            <h1>{isEn ? "Reviews" : "Відгуки"}</h1>
+            <h1 className="newblock">{isEn ? "Reviews" : "Відгуки"}</h1>
             <div className="block4__list">
                 <ReviewItem header={isEn ? "Great experience" : "Чудовий досвід"} 
                             text="Як головний і єдиний розробник, рекомендую Atempus. Звичайно, в нього є і свої мінуси, але я буду його покращувати." 

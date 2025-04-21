@@ -26,10 +26,28 @@ input {
   align-items: center;
   gap: 30px;
   min-height: 100%;
-  background-image: url("./assets/mainback.png");
-  background-size: 100vw;
+  background-size: cover;
   background-repeat: repeat-y;
+  background-position: center;
 }
+.wrapper.theme0  { background-image: url("./assets/theme0.jpg"); }
+.wrapper.theme1  { background-image: url("./assets/theme1.jpg"); }
+.wrapper.theme2  { background-image: url("./assets/theme2.jpg"); }
+.wrapper.theme3  { background-image: url("./assets/theme3.jpg"); }
+.wrapper.theme4  { background-image: url("./assets/theme4.jpg"); }
+.wrapper.theme5  { background-image: url("./assets/theme5.jpg"); }
+.wrapper.theme6  { background-image: url("./assets/theme6.jpg"); }
+.wrapper.theme7  { background-image: url("./assets/theme7.jpg"); }
+.wrapper.theme8  { background-image: url("./assets/theme8.jpg"); }
+.wrapper.theme9  { background-image: url("./assets/theme9.jpg"); }
+.wrapper.theme10 { background-image: url("./assets/theme10.jpg"); }
+.wrapper.theme11 { background-image: url("./assets/theme11.jpg"); }
+.wrapper.theme12 { background-image: url("./assets/theme12.jpg"); }
+.wrapper.theme13 { background-image: url("./assets/theme13.jpg"); }
+.wrapper.theme14 { background-image: url("./assets/theme14.jpg"); }
+.wrapper.theme15 { background-image: url("./assets/theme15.jpg"); }
+.wrapper.theme16 { background-image: url("./assets/theme16.jpg"); }
+
 .content {
   display: flex;
   flex-direction: column;
@@ -121,7 +139,7 @@ BLOCK
 */
 
 .newblock{
-  background-color: rgba(255,255,255,0.97);
+  background-color: rgba(255,255,255,0.8);
   color: #000;
   border: 1px solid #cecece;
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.25);
@@ -129,7 +147,7 @@ BLOCK
 }
 .wrapper.dark .newblock{
   /* background-color: #222222; */
-  background-color: rgba(25, 25, 34, 0.95);
+  background-color: rgba(25, 25, 34, 0.8);
   color: #fff;
   border: none;
   box-shadow: none;
