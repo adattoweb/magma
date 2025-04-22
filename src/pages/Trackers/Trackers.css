@@ -23,13 +23,19 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 10px;
-    border: 4px #000 solid;
+    border: 2px #656565 solid;
     background-color: rgba(255,255,255,0.7);
+}
+.trackers__info input:focus{
+    border: 2px #000000 solid;
 }
 .wrapper.dark .trackers__info input{
     background: none;
-    border: 3px #fff solid;
+    border: 2px #c3c3c3 solid;
     color: #fff;
+}
+.wrapper.dark .trackers__info input:focus{
+    border: 2px #fff solid;
 }
 .trackers__info input::placeholder{
     color: #2D2D2D;
@@ -92,7 +98,7 @@
 .tblock{
     display: flex;
     flex-direction: column;
-    border-top: 5px solid #000;
+    border-top: 4px solid #2f2f2f;
 }
 .wrapper.dark .tblock{
     border-top: 4px solid #8b8b8b;
@@ -121,7 +127,7 @@
 .titem{
     display: flex;
     justify-content: space-between;
-    border-top: 2px solid #000;
+    border-top: 2px solid #2f2f2f;
     padding: 15px 20px;
 }
 .wrapper.dark .titem{

@@ -5,13 +5,13 @@
 
 .dropdown-btn {
     font-family: "Montserrat Alternates", serif;
-    background-color: black;
-    color: white;
+    background-color: rgba(255,255,255, 0);
+    color: #000;
     border: none;
     cursor: pointer;
     font-size: 18px;
     white-space: nowrap;
-    border-radius: 10px;
+    border-radius: 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,6 +21,7 @@
     gap: 10px;
     min-width: 100px;
     max-width: 200px;
+    border: 2px solid #656565;
 }
 .dropdown-btn p{
     font-size: inherit;
@@ -28,15 +29,17 @@
     color: inherit;
 }
 .wrapper.dark .dropdown-btn{
-    background-color: #fff;
-    color: #000;
+    color: #fff;
 }
 .dropdown-btn img{
-    width: 20px;
+    width: 15px;
     transition: 0.2s ease all;
 }
-.wrapper.dark .dropdown-btn img{
+.dropdown-btn img{
     filter: invert(1)
+}
+.wrapper.dark .dropdown-btn img{
+    filter: invert(0)
 }
 .rotate{
     transform: rotateX(180deg)
@@ -45,7 +48,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: black;
+    background-color: rgba(255, 255, 255, 0.7);
     width: 100%;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 5;
@@ -53,13 +56,14 @@
     overflow-y: auto;
     max-height: 150px;
     overflow-x: hidden !important;
+    backdrop-filter: blur(2px);
 }
 .wrapper.dark .dropdown-content{
-    background-color: #fff;
+    background-color: rgba(0,0,0,0.7);
 }
 
 .dropdown-content p {
-    color: white;
+    color: #000;
     padding: 10px;
     text-decoration: none;
     display: block;
@@ -67,14 +71,14 @@
     border-radius: 10px;
 }
 .wrapper.dark .dropdown-content p{
-    color: #000;
+    color: #fff;
 }
 
 .dropdown-content p:hover {
-    background-color: #444;
+    background-color: rgba(209, 209, 209, 0.9);
 }
 .wrapper.dark .dropdown-content p:hover{
-    background-color: #dcdcdc;
+    background-color: rgba(40, 40, 40, 0.9);
 }
 
 .dropdown:hover .dropdown-content {

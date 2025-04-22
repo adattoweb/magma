@@ -35,5 +35,7 @@
 - 🎨 **Added theme selection** (17 themes in total); you can choose a theme in the settings.
 ### 0.3.1
 - 🎨 **Added the ability** to choose your own themes.
+### 0.3.2
+- 🎨 **Redesigned some pages** for a fresher look.
 
 🚀 **Keep tracking & stay awesome!** 🚀
