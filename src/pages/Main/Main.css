@@ -435,5 +435,3 @@
 .block4, .block1, .block2, .block3{
     align-items: center;
 }
-@media screen and (max-width: 700px){
-}

@@ -5,6 +5,8 @@ import Block2 from "./ui/Block2";
 import Block4 from "./ui/Block4";
 export default function Main(){
 
+    // document.getElementById("root").style.backgroundImage = `url("/magma/src/assets/theme0.jpg")`;
+
     return (
         <div className="main content">
             <Block1/>

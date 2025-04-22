@@ -18,56 +18,82 @@ import theme13 from "../../assets/theme13.jpg"
 import theme14 from "../../assets/theme14.jpg"
 import theme15 from "../../assets/theme15.jpg"
 import theme16 from "../../assets/theme16.jpg"
-import triangle from "../../assets/triangle.png"
-import triangleBlack from "../../assets/triangleBlack.png"
+
 
 import { useState } from 'react'
+import isValidUrl from './helpers/isValidUrl'
 
 
 export default function Settings({onChange}) {
 
+    const isEn = localStorage.getItem("settings-lang") === "en";
+
     const [choosed, setChoosed] = useState(+localStorage.getItem("settings-bg"))
+
+    function addTheme(id){
+        setChoosed(id)
+        localStorage.setItem("settings-bg", id)
+        const root = document.getElementById("root")
+        root.classList.forEach(el => {
+            if(el !== "wrapper" && el !== "dark" && el !== "light") root.classList.remove(el)
+        })
+        root.classList.add(`theme${id}`)
+    }
 
     function BackItem({image, name, id}){
         return (
             <div className={choosed === id ? "backitem newblock choosed" : "backitem newblock"} onClick={() => {
-                setChoosed(id)
-                localStorage.setItem("settings-bg", id)
-                const root = document.getElementById("root")
-                root.classList.forEach(el => {
-                    if(el !== "wrapper") root.classList.remove(el)
-                })
-                root.classList.add(`theme${id}`)
+                addTheme(id)
             }}>
                 <img src={image} />
                 <div className="backitem__footer">
                     <p>{name}</p>
-                    <div className="backitem__button">Активувати</div>
                 </div>
             </div>
         )
     }
 
-    function SettingsBlock({children, isNeedOpen, header}){
-        // const [isOpen, setIsOpen] = useState(isNeedOpen)
+    function SettingsBlock({children, header}){
 
         return (
             <div className="settings__block">
                 <h2>
                     {header} 
-                    {/* {!isNeedOpen && <img className={isOpen ? "settings__triangle active" : "settings__triangle"} src={localStorage.getItem("settings-theme") === "dark" ? triangle : triangleBlack}/>} */}
                     </h2>
-                {/*isOpen &&*/ children}
+                {children}
             </div>
         )
     }
 
-    const isEn = localStorage.getItem("settings-lang") === "en";
+    function addItem(value){
+        if(!isValidUrl(value)) return
+        localStorage.setItem("settings-customize-theme", value)
+    }
+    function CustomizeTheme(){
+        const id = 100;
+        const getLink = localStorage.getItem("settings-customize-theme");
+        const [link, setLink] = useState(getLink === "not choosed" ? "" : getLink)
+        return (
+            <div className={choosed !== id ? "newblock customize" : "newblock customize choosed"} onClick={() => {
+                addTheme(id)
+            }}>
+                <img src={isValidUrl(link) ? link : ""} alt="" />
+                <div className="customize__field">
+                    <h4>{isEn ? "Choose your background image" : "Обрати своє фонове зображення"}</h4>
+                    <p>{isEn ? "Enter a link, example: " : "Введіть посилання, наприклад: "} <br/><a href="https://i.imgur.com/3FMGdsi.png" target="new_blank">https://i.imgur.com/3FMGdsi.png</a></p>
+                    <input className="newblock" type="text" value={link} onChange={(e) => {
+                        setLink(e.target.value)
+                        addItem(e.target.value)
+                    }}/>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className="settings content">
             <div className="settings__main newblock">
-                <SettingsBlock isNeedOpen={true} header={isEn ? "Main Settings" : "Основні налаштування"}>
+                <SettingsBlock header={isEn ? "Main Settings" : "Основні налаштування"}>
                     <div className="settings__lang">
                         <p className="settings__name">{isEn ? "Language:" : "Мова:"}</p>
                         <div className="settings__select">
@@ -95,7 +121,7 @@ export default function Settings({onChange}) {
                         </div>
                     </div>
                 </SettingsBlock>
-                <SettingsBlock isNeedOpen={false} header={isEn ? "Background image" : "Фонове зображення"}>
+                <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}>
                     <div className="settings__carousel">
                         <BackItem image={bgDefault} name="Theme 0" id={0}/>
                         <BackItem image={theme1} name="Theme 1" id={1}/>
@@ -114,15 +140,16 @@ export default function Settings({onChange}) {
                         <BackItem image={theme14} name="Theme 14" id={14}/>
                         <BackItem image={theme15} name="Theme 15" id={15}/>
                         <BackItem image={theme16} name="Theme 16" id={16}/>
+                        <CustomizeTheme/>
                     </div>
                 </SettingsBlock>
                 <div className="settings__block">
                 </div>
-                <SettingsBlock isNeedOpen={true} header={isEn ? "Version" : "Версія"}>
+                <SettingsBlock header={isEn ? "Version" : "Версія"}>
                     <p className="settings__name">{isEn ? "Current version: Magma Local 0.3.0" : "Поточна версія: Magma Local 0.3.0"}</p>
                     <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
                 </SettingsBlock>
-                <SettingsBlock isNeedOpen={true} header={isEn ? "Developer Contacts" : "Контакти розробника"}>
+                <SettingsBlock header={isEn ? "Developer Contacts" : "Контакти розробника"}>
                     <p className="settings__name">{isEn ? "Discord: @adattoweb" : "Діскорд: @adattoweb"}</p>
                 </SettingsBlock>
             </div>

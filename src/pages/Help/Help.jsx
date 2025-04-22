@@ -49,6 +49,27 @@ export default function Help() {
                         ? 'On this page, you can customize the appearance of the site. You can change the theme or language, and view the current version.'
                         : 'На цій сторінці можна налаштовувати зовнішній вигляд сайту. Користувач має можливість змінити тему або мову, а також переглянути поточну версію.'}
                 </HelpBlock>
+                <HelpBlock title={isEn ? 'How to add your own background image?' : 'Як додати своє фонове зображення?"'}>
+                    {isEn ? (
+                        <>
+                            Go to imgur.com, upload your image, and copy the link to the image.
+                            <br />
+                            The link should look something like this: https://i.imgur.com/3FMGdsi.png
+                            <br />
+                            Go to Settings, find the "Choose your own background image" field, and paste the link.
+                        </>
+                    ) : (
+                        <>
+                            Перейдіть на сайт imgur.com, завантажте своє зображення, скопіюйте посилання на зображення.
+                            <br />
+                            Посилання повинно виглядати приблизно так: https://i.imgur.com/3FMGdsi.png
+                            <br />
+                            Перейдіть у налаштування, знайдіть поле "Обрати своє фонове зображення", вставте посилання.
+                        </>
+                    )}
+                </HelpBlock>
+
+
             </div>
         </div>
     )

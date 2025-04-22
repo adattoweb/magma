@@ -33,5 +33,7 @@
 - ✅ **Fixed** bugs.
 ### 0.3.0
 - 🎨 **Added theme selection** (17 themes in total); you can choose a theme in the settings.
+### 0.3.1
+- 🎨 **Added the ability** to choose your own themes.
 
 🚀 **Keep tracking & stay awesome!** 🚀

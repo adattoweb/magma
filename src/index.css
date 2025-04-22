@@ -30,23 +30,26 @@ input {
   background-repeat: repeat-y;
   background-position: center;
 }
-.wrapper.theme0  { background-image: url("./assets/theme0.jpg"); }
-.wrapper.theme1  { background-image: url("./assets/theme1.jpg"); }
-.wrapper.theme2  { background-image: url("./assets/theme2.jpg"); }
-.wrapper.theme3  { background-image: url("./assets/theme3.jpg"); }
-.wrapper.theme4  { background-image: url("./assets/theme4.jpg"); }
-.wrapper.theme5  { background-image: url("./assets/theme5.jpg"); }
-.wrapper.theme6  { background-image: url("./assets/theme6.jpg"); }
-.wrapper.theme7  { background-image: url("./assets/theme7.jpg"); }
-.wrapper.theme8  { background-image: url("./assets/theme8.jpg"); }
-.wrapper.theme9  { background-image: url("./assets/theme9.jpg"); }
-.wrapper.theme10 { background-image: url("./assets/theme10.jpg"); }
-.wrapper.theme11 { background-image: url("./assets/theme11.jpg"); }
-.wrapper.theme12 { background-image: url("./assets/theme12.jpg"); }
-.wrapper.theme13 { background-image: url("./assets/theme13.jpg"); }
-.wrapper.theme14 { background-image: url("./assets/theme14.jpg"); }
-.wrapper.theme15 { background-image: url("./assets/theme15.jpg"); }
-.wrapper.theme16 { background-image: url("./assets/theme16.jpg"); }
+.wrapper.theme0  {
+  background-image: url("./assets/theme0.jpg") !important;
+  background-position: top;
+ }
+.wrapper.theme1  { background-image: url("./assets/theme1.jpg") !important; }
+.wrapper.theme2  { background-image: url("./assets/theme2.jpg") !important; }
+.wrapper.theme3  { background-image: url("./assets/theme3.jpg") !important; }
+.wrapper.theme4  { background-image: url("./assets/theme4.jpg") !important; }
+.wrapper.theme5  { background-image: url("./assets/theme5.jpg") !important; }
+.wrapper.theme6  { background-image: url("./assets/theme6.jpg") !important; }
+.wrapper.theme7  { background-image: url("./assets/theme7.jpg") !important; }
+.wrapper.theme8  { background-image: url("./assets/theme8.jpg") !important; }
+.wrapper.theme9  { background-image: url("./assets/theme9.jpg") !important; }
+.wrapper.theme10 { background-image: url("./assets/theme10.jpg") !important; }
+.wrapper.theme11 { background-image: url("./assets/theme11.jpg") !important; }
+.wrapper.theme12 { background-image: url("./assets/theme12.jpg") !important; }
+.wrapper.theme13 { background-image: url("./assets/theme13.jpg") !important; }
+.wrapper.theme14 { background-image: url("./assets/theme14.jpg") !important; }
+.wrapper.theme15 { background-image: url("./assets/theme15.jpg") !important; }
+.wrapper.theme16 { background-image: url("./assets/theme16.jpg") !important; }
 
 .content {
   display: flex;
@@ -147,8 +150,9 @@ BLOCK
 }
 .wrapper.dark .newblock{
   /* background-color: #222222; */
-  background-color: rgba(25, 25, 34, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
   border: none;
   box-shadow: none;
+  backdrop-filter: blur(5px)
 }

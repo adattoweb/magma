@@ -20,10 +20,16 @@ import { Routes, Route } from "react-router-dom";
 function App() {
 
   const choosedBackground = localStorage.getItem("settings-bg")
+  const customizeBackground = localStorage.getItem("settings-customize-theme")
   if(choosedBackground === null) localStorage.setItem("settings-bg", "0");
   if(localStorage.getItem("settings-lang") === null) localStorage.setItem("settings-lang", "ua");
   if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
-  document.getElementById("root").classList.add(`theme${choosedBackground}`)
+  if(customizeBackground === null) localStorage.setItem("settings-customize-theme", "not choosed");
+  if(customizeBackground !== "not choosed")
+  if(+choosedBackground !== 100) document.getElementById("root").classList.add(`theme${choosedBackground}`)
+  else {
+    document.getElementById("root").style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
+  }
 
   console.log("App render");
 

@@ -151,23 +151,59 @@
     font-size: 16px;
     font-weight: 500;
 }
-.backitem__button{
-    padding: 5px;
-    color: #fff;
-    background-color: #000;
-    text-align: center;
-    border-radius: 5px;
-    font-family: "Montserrat Alternates", serif;
-    font-size: 14px;
-    user-select: none;
-    cursor: pointer;
-}
-.backitem__button.choosed{
-
-}
 .wrapper.dark .backitem__button{
     color: #000;
     background-color: #fff;
+}
+
+.customize{
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 5px;
+    width: 250px;
+}
+.customize__button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #000;
+    color: #fff;
+    transition: 0.3s ease all;
+    width: max-content;
+    font-family: "Montserrat Alternates", serif;
+    user-select: none;
+    cursor: pointer;
+}
+.customize input{
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: auto;
+}
+.customize h4{
+    font-weight: 500;
+}
+.customize p{
+    font-weight: 400;
+    font-size: 16px;
+}
+.customize img{
+    width: 100%;
+    border-radius: 5px;
+}
+.customize__field{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: auto;
+}
+.customize.choosed{
+    outline: 2px solid #000;
+}
+.wrapper.dark .customize.choosed{
+    outline: 2px solid #fff;
 }
 
 @media screen and (max-width: 570px){
