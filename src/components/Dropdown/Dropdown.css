@@ -60,6 +60,7 @@
 }
 .wrapper.dark .dropdown-content{
     background-color: rgba(0,0,0,0.7);
+    scrollbar-color: #fff !important; /*хз не працює*/
 }
 
 .dropdown-content p {

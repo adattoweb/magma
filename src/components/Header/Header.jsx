@@ -27,6 +27,7 @@ export default function Header({ onClick }) {
         <div className={`header newblock ${isHidden ? 'hidden' : ""}`}>
             <div className='header__logo'><Link to="/">Magma</Link></div>
             <ul className='header__menu'>
+            <   li><Link to="/about">{isEn ? "About Magma" : "Про Magma"}</Link></li>
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>
                 <li><Link to="/analytics">{isEn ? "Analytics" : "Аналітика"}</Link></li>
                 <li><Link to="/projects">{isEn ? "Projects" : "Проєкти"}</Link></li>

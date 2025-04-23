@@ -68,7 +68,7 @@
 
 /* TRACKLIST */
 .tlist{
-    width: calc(65vw - 40px);
+    width: 65vw;
     padding: 5px 0px 10px 0px;
     border-radius: 0px 20px 20px 20px;
     position: relative;
