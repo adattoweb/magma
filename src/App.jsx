@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Menu from "./components/Menu/Menu";
 import About from "./pages/About/About";
+import Main from "./pages/Main/Main";
 import Settings from "./pages/Settings/Settings";
 import LoadScreen from "./components/LoadScreen/LoadScreen";
 import Trackers from "./pages/Trackers/Trackers";
@@ -24,6 +25,7 @@ function App() {
   if(choosedBackground === null) localStorage.setItem("settings-bg", "0");
   if(localStorage.getItem("settings-lang") === null) localStorage.setItem("settings-lang", "ua");
   if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
+  if(localStorage.getItem("magma-name") === null) localStorage.setItem("magma-name", "user");
   if(customizeBackground === null) localStorage.setItem("settings-customize-theme", "not choosed");
   if(customizeBackground !== "not choosed")
   if(+choosedBackground !== 100) document.getElementById("root").classList.add(`theme${choosedBackground}`)
@@ -55,6 +57,7 @@ function App() {
         <Menu isMenu={isMenu} onClick={() => setIsMenu(false)} />
         <Header onClick={() => setIsMenu(true)} />
         <Routes>
+        <Route path="/" element={<Main />} />
           <Route path="/about" element={<About />} />
           <Route path="/trackers" element={<Trackers />} />
           <Route path="/analytics" element={<Analytics />} />

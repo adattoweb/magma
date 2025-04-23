@@ -37,5 +37,6 @@
 - 🎨 **Added the ability** to choose your own themes.
 ### 0.3.2
 - 🎨 **Redesigned some pages** for a fresher look.
-
+### 0.3.3
+- 🎨 **New main page** for a fresher look.
 🚀 **Keep tracking & stay awesome!** 🚀
