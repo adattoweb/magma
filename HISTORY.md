@@ -39,4 +39,7 @@
 - 🎨 **Redesigned some pages** for a fresher look.
 ### 0.3.3
 - 🎨 **New main page** for a fresher look.
+### 0.3.4
+- 🎨 **New background images** for a fresher look.
+- 💾 **Optimize settings page** for a better work.
 🚀 **Keep tracking & stay awesome!** 🚀
