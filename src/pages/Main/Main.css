@@ -34,3 +34,62 @@
     font-size: 8vw;
     font-weight: 700;
 }
+@media screen and (max-width: 1300px){
+    .hello h1{
+        font-size: 50px;
+    }
+    .hello h2{
+        font-size: 100px;
+    }
+}
+@media screen and (max-width: 500px){
+    .hello h1{
+        font-size: 30px;
+    }
+    .hello h2{
+        font-size: 60px;
+    }
+}
+
+
+/* TRACKER */
+.hello .trackers__info{
+    margin-right: auto;
+}
+.hello .trackers__info input{
+    width: 200px;
+}
+.hello .trackers__add{
+    margin-top: 20px;
+    width: 500px;
+    flex-direction: column;
+    height: max-content;
+    padding: 10px;
+}
+@media screen and (max-width: 1000px){
+    .hello .trackers__add{
+        width: 500px !important;
+        flex-direction: column !important;
+        height: max-content !important;
+        padding: 10px !important;
+    }
+}
+@media screen and (max-width: 1000px){
+    .hello .trackers__info{
+        justify-content: start !important;
+        gap: 20px !important;
+    }
+}
+@media screen and (max-width: 600px){
+    .hello .trackers__add{
+        width: 300px !important;
+    }
+}
+@media screen and (max-width: 400px){
+    .hello .trackers__add{
+        width: 230px !important;
+    }
+}
+.hello .trackers__start{
+    margin-left: auto;
+}

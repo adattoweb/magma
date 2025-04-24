@@ -42,4 +42,6 @@
 ### 0.3.4
 - 🎨 **New background images** for a fresher look.
 - 💾 **Optimize settings page** for a better work.
+### 0.3.5
+- 🛠️ **Added a start tracking block** on a main page.
 🚀 **Keep tracking & stay awesome!** 🚀
