@@ -248,3 +248,8 @@
         padding: 10px 5px;
     }
 }
+.editnick{
+    width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+}

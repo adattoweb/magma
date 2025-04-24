@@ -89,6 +89,17 @@ export default function Settings({onChange}) {
             </div>
         )
     }
+    function EditNick(){
+        const [nick, setNick] = useState(localStorage.getItem("magma-name"))
+        return (
+            <input className="editnick newblock" type="text" placeholder="adattoweb123" value={nick} onChange={(e) => {
+                if(e.target.value.length < 30){
+                    setNick(e.target.value)
+                    localStorage.setItem("magma-name", e.target.value)
+                }
+            }}/>
+        )
+    }
 
     return (
         <div className="settings content">
@@ -120,6 +131,9 @@ export default function Settings({onChange}) {
                             }}/>
                         </div>
                     </div>
+                </SettingsBlock>
+                <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>
+                    <EditNick/>
                 </SettingsBlock>
                 <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}>
                     <div className="settings__carousel">
