@@ -34,6 +34,10 @@
     display: flex;
     gap: 10px;
 }
+.analytics__action p{
+    width: 10px;
+    margin-right: 10px;
+}
 .analytics__action img{
     filter: invert(1);
     width: 20px;

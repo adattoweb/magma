@@ -118,7 +118,7 @@ export default function Settings({onChange}) {
                             }}>UA</p>
                         </div>
                     </div>
-                    <div className="settings__theme">
+                    <div className="settings__theme settings__lang">
                         <p className="settings__name">{isEn ? "Theme:" : "Тема:"}</p>
                         <div className="settings__select">
                             <img src={white} onClick={() => {

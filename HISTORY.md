@@ -44,4 +44,6 @@
 - 💾 **Optimize settings page** for a better work.
 ### 0.3.5
 - 🛠️ **Added a start tracking block** on a main page.
+### 0.3.6
+- 🛠️ **Fixed** bugs.
 🚀 **Keep tracking & stay awesome!** 🚀

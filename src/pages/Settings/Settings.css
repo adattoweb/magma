@@ -60,7 +60,7 @@
     align-items: center;
     border-radius: 100%;
     background-color: #fff;
-    border: 2px solid #000;
+    outline: 2px solid #000;
     transition: 0.3s ease all;
 }
 .wrapper.dark .lang__select{
@@ -70,9 +70,7 @@
     transform: scale(1.1)
 }
 .settings__theme{
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    margin-top: 5px;
 }
 .settings__size{
     display: flex;
@@ -135,7 +133,7 @@
     outline: 2px solid #000;
 }
 .wrapper.dark .backitem.choosed{
-    outline: 2px solid #fff;
+    outline: 2px solid #ffffff;
 }
 .backitem img{
     width: 130px;
@@ -156,6 +154,19 @@
     background-color: #fff;
 }
 
+.editnick{
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 16px;
+    outline: none;
+    border: none;
+}
+.wrapper.dark .editnick{
+    color: #fff;
+}
 .customize{
     display: flex;
     padding: 10px;
@@ -182,6 +193,13 @@
     padding: 5px;
     margin-right: auto;
 }
+.wrapper.dark .customize input, .wrapper.dark .editnick{
+    border: 2px solid #1f1f1f;
+    background-color: #171717;
+}
+.wrapper.dark .customize input:focus, .wrapper.dark .editnick:focus{
+    border: 2px solid #343434;
+}
 .customize h4{
     font-weight: 500;
 }
@@ -206,6 +224,35 @@
     outline: 2px solid #fff;
 }
 
+@media screen and (max-width: 1100px){
+    .settings__main{
+        width: 500px;
+    }
+    .customize{
+        width: 200px;
+    }
+    .customize input{
+        width: 150px;
+    }
+}
+@media screen and (max-width: 650px){
+    .settings__main{
+        width: 400px;
+    }
+    .customize{
+        width: 130px;
+    }
+    .customize input{
+        width: 100px;
+        font-size: 14px;
+    }
+    .customize p{
+        display: none;
+    }
+    .customize h4{
+        font-size: 14px;
+    }
+}
 @media screen and (max-width: 570px){
     .settings__main{
         width: 350px;
@@ -247,9 +294,4 @@
     .backitem{
         padding: 10px 5px;
     }
-}
-.editnick{
-    width: 200px;
-    padding: 5px;
-    border-radius: 10px;
 }
