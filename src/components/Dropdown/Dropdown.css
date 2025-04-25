@@ -82,7 +82,7 @@
     background-color: rgba(40, 40, 40, 0.9);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content {
     display: block;
 }
 @media screen and (max-width: 1000px) {
