@@ -219,8 +219,8 @@
     font-weight: 600;
 }
 .titem__delete img{
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     transition: 0.3s ease all;
     cursor: pointer;
 }

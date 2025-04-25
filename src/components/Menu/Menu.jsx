@@ -11,6 +11,7 @@ export default function Menu({ isMenu, onClick }) {
         <div className={`${styles['menu']} ${!isMenu ? styles['none'] : ""}`}>
             <img src={cross} className={styles['cross']} onClick={onClick} />
             <ul className={styles['menu__list']} onClick={onClick}>
+                <li><Link to="/about">{isEn ? "About Magma" : "Про Magma"}</Link></li>
                 <li><Link to="/trackers">{isEn ? "Trackers" : "Трекери"}</Link></li>
                 <li><Link to="/analytics">{isEn ? "Analytics" : "Аналітика"}</Link></li>
                 <li><Link to="/projects">{isEn ? "Projects" : "Проєкти"}</Link></li>
