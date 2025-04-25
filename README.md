@@ -1,7 +1,7 @@
 # Magma v0.3.8
 ## UA
 Magma - це веб-сайт на якому можна детально відслідковувати та планувати свій час.
-Головна перевага Magma - це **комфорт** і **безпека**, адже **УСІ** дані зберігаються **локально** в Вашому браузері.
+Головна перевага Magma - це **надійність** і **безпека**, адже **УСІ** дані зберігаються **локально**, за допомогою кешу, в Вашому браузері.
 
 ### Функціонал Magma
 - **Трекери:** Створюй власні трекери і відслідковуй свій час.
@@ -17,7 +17,7 @@ Magma - це веб-сайт на якому можна детально від�
 
 ## EN
 Magma is a website where you can track and plan your time in detail.
-The main advantage of Magma is its **comfort** and **security**, as **ALL** data is stored **locally** in your browser.
+The main advantage of Magma is **reliability** and **security**, as **ALL** data is stored **locally** using cache in your browser.
 
 ### Magma Features
 - **Trackers:** Create your own trackers and track your time.
@@ -30,15 +30,8 @@ The main advantage of Magma is its **comfort** and **security**, as **ALL** data
 ### Technologies Used
 - React library
 - React Router library for routing
-![image](https://github.com/user-attachments/assets/3ad17880-baa4-410b-b220-b5e75d0f12ee)
-![image](https://github.com/user-attachments/assets/772c07d9-cbdc-40ed-968d-3ba645bcb761)
-![image](https://github.com/user-attachments/assets/86437914-1d2e-454a-88d0-fef028e81514)
-![image](https://github.com/user-attachments/assets/1c81b137-a973-42a8-aeec-c4d464b4d3bf)
-![image](https://github.com/user-attachments/assets/4bf46581-a9b7-4c5c-b419-e24c9a4385a4)
 
-
-
-
-
-
-
+![Screenshot 2025-04-25 at 20-48-39 Magma](https://github.com/user-attachments/assets/2313a39c-10a5-4361-87cf-2e8546647455)
+![Screenshot 2025-04-25 at 20-49-52 Magma](https://github.com/user-attachments/assets/6ca09c2b-c970-476d-aa0f-e9871e941b6c)
+![Screenshot 2025-04-25 at 20-49-43 Magma](https://github.com/user-attachments/assets/0f333a29-166a-404f-9fe3-c017a58e9d98)
+![Screenshot 2025-04-25 at 20-48-39 Magma](https://github.com/user-attachments/assets/bba54be1-cc80-4dad-911c-32f3f433b41b)
