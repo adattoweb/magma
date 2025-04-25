@@ -46,4 +46,6 @@
 - 🛠️ **Added a start tracking block** on a main page.
 ### 0.3.6
 - 🛠️ **Fixed** bugs.
+### 0.3.7
+- 🛠️ **Added a pages of trackers, projects and goals history,** if length history more than 15.
 🚀 **Keep tracking & stay awesome!** 🚀

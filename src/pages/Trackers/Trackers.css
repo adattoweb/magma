@@ -231,6 +231,35 @@
     filter: invert(1)
 }
 
+.tpages{
+    display: flex;
+    gap: 10px;
+    padding: 5px 20px;
+}
+
+.tpages__button{
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+.tpages__button.choosed{
+    border: #000 2px solid;
+}
+.wrapper.dark .tpages__button.choosed{
+    border: #ffffff 2px solid;
+}
+.wrapper.dark .tpages__button{
+    background-color:#262626;
+    border: 2px solid #3b3b3b;
+
+}
+
 @media screen and (max-width: 1300px) {
     .trackers__info input{
         width: 250px !important;

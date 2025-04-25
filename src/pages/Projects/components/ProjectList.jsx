@@ -37,6 +37,17 @@ export default function ProjectList() {
             break;
         }
     }
+    const [page, setPage] = useState(0)
+    const elementsOnPage = 15
+    let pagesArray = []
+    for(let i = 0; i < array.length / elementsOnPage; i++){
+        pagesArray.push(i)
+    }
+    let counterItems = 0;
+
+    function PagesButton({num, page, onClick}){
+        return <div className={page === num ? "tpages__button newblock choosed" : "tpages__button newblock"} onClick={onClick}>{num}</div>
+    }
 
     return (
         <div className="tlist newblock">
@@ -46,14 +57,24 @@ export default function ProjectList() {
             <div className="tlist__list">
                 {array.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : array.map((el, index) => {
                     let allTime = projects[el].reduce((total, key) => total + +localStorage.getItem(key).split("^")[4],0);
-                    return <ProjectBlock key={el+index} header={el} all={allTime} isRender={isRender} setIsRender={setIsRender}>
+                    counterItems++;
+                    if(counterItems-1 >= elementsOnPage * (page+1) - elementsOnPage && counterItems-1 < elementsOnPage * (page+1)){
+                        return <ProjectBlock key={el+index} header={el} all={allTime} isRender={isRender} setIsRender={setIsRender}>
                         {projects[el].map((childEl) =>{
                             let now = localStorage.getItem(childEl).split("^");
                             return <ProjectItem key={childEl} myKey={childEl} name={now[0]} project = {now[1]} start = {now[2]} end = {now[3]} all = {now[4]}/>;
                         })}
                     </ProjectBlock>;
+                    }
                 })}
             </div>
+            {
+                pagesArray.length > 1 && <div className="tpages">
+                    {pagesArray.map((el, index) => {
+                        return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)} />
+                    })}
+                </div>
+            }
         </div>
     );
 }
