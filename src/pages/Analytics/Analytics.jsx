@@ -38,6 +38,28 @@ export default function Analytics() {
     arrayKeys = sortedKeys;
     array = sortedArray;
 
+    const now = new Date(new Date().getTime() - 86400000 * (days - 7));
+    console.log(now.getDate())
+    let arrayAllKeys = []
+    for(let i = 0; i < 7; i++){
+        const date = new Date(now.getTime() - 86400000 * i)
+        arrayAllKeys.push(`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`)
+    }
+
+    arrayAllKeys = arrayAllKeys.reverse()
+
+    let objectKeys = {}
+    for(let i = 0; i < 7; i++){
+        if(!arrayKeys.includes(arrayAllKeys[i])) objectKeys[arrayAllKeys[i]] = [];
+        else {
+            objectKeys[arrayAllKeys[i]] = array[arrayKeys.indexOf(arrayAllKeys[i])]
+        }
+    }
+    console.log(array)
+    console.log(arrayKeys)
+    console.log(arrayAllKeys)
+    console.log(objectKeys)
+
     let uniqueArr = uniqueArray(array)
 
     // console.log(uniqueArr);
@@ -66,15 +88,18 @@ export default function Analytics() {
                     </div>
                 </div>
                 <div className='analytics__content'>
-                    {arrayKeys.length === 0 ? <p className='error'>{isEn ? "Unfortunately, there's nothing here" : "Нажаль, тут нічого нема"}</p> : arrayKeys.map((el, index) => {
+                    {arrayKeys.length === 0 ? <p className='error'>{isEn ? "Unfortunately, there's nothing here" : "Нажаль, тут нічого нема"}</p> : Object.keys(objectKeys).map((el, index) => {
                         let allTime = 0;
-                        for (let i = 0; i < array[index].length; i++) {
-                            let arrLocal = localStorage.getItem(array[index][i]).split("^");
+                        if (!arrayKeys.includes(el)){
+                            return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
+                        }
+                        for (let i = 0; i < objectKeys[el].length; i++) {
+                            let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
                             if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
                         }
-                        if (allTime === 0) return;
+                        if(allTime === 0) return 
                         return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight}>{
-                            array[index].map(key => {
+                            objectKeys[el].map(key => {
                                 let arrLocal = localStorage.getItem(key).split("^");
                                 let time = +arrLocal[4];
                                 let elProject = arrLocal[1];

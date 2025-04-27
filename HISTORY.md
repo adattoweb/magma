@@ -52,4 +52,7 @@
 - 🛠️ **Now, dropdowns works on click,** not a hover.
 ### 0.3.9
 - 🛠️ **Fixed bugs with background** on github pages.
+### 0.3.10
+- 🎨 **Improved the appearance and functionality** of the "Analytics" page..
+
 🚀 **Keep tracking & stay awesome!** 🚀

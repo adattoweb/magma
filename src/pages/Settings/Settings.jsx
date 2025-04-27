@@ -160,7 +160,7 @@ export default function Settings({onChange}) {
                 <div className="settings__block">
                 </div>
                 <SettingsBlock header={isEn ? "Version" : "Версія"}>
-                    <p className="settings__name">{isEn ? "Current version: Magma Local 0.3.0" : "Поточна версія: Magma Local 0.3.0"}</p>
+                    <p className="settings__name">{isEn ? "Current version: Magma Local 0.4.0" : "Поточна версія: Magma Local 0.4.0"}</p>
                     <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
                 </SettingsBlock>
                 <SettingsBlock header={isEn ? "Developer Contacts" : "Контакти розробника"}>

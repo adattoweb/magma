@@ -84,6 +84,10 @@ html {
   background-color: #141416;
   color: #ffffff;
 }
+.wrapper.dark ::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
 @supports (-moz-appearance: none) {
   * {
     scrollbar-width: 0.5rem;

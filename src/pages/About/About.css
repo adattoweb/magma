@@ -57,6 +57,7 @@
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
+    user-select: none;
 }
 .block1__button a{
     color: #fff;
