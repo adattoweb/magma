@@ -50,4 +50,6 @@
 - 🛠️ **Added a pages of trackers, projects and goals history,** if length history more than 15.
 ### 0.3.8
 - 🛠️ **Now, dropdowns works on click,** not a hover.
+### 0.3.9
+- 🛠️ **Fixed bugs with background** on github pages.
 🚀 **Keep tracking & stay awesome!** 🚀
