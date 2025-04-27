@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -27,11 +27,12 @@ function App() {
   if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
   if(localStorage.getItem("magma-name") === null) localStorage.setItem("magma-name", "user");
   if(customizeBackground === null) localStorage.setItem("settings-customize-theme", "not choosed");
-  if(customizeBackground !== "not choosed")
-  if(+choosedBackground !== 100) document.getElementById("root").classList.add(`theme${choosedBackground}`)
-  else {
-    document.getElementById("root").style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
-  }
+  useEffect(() => {
+    if(choosedBackground !== "100") document.getElementById("root").classList.add(`theme${choosedBackground}`)
+      else {
+        document.getElementById("root").style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
+      }
+  }, [])
 
   console.log("App render");
 
