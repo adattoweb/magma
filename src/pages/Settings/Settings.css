@@ -197,9 +197,6 @@
 .wrapper.dark .customize p a{
     color: #fff
 }
-.customize p a:visited{
-    color: #8277cf;
-}
 .wrapper.dark .customize input, .wrapper.dark .editnick{
     border: 2px solid #1f1f1f;
     background-color: #171717;
@@ -229,6 +226,22 @@
 }
 .wrapper.dark .customize.choosed{
     outline: 2px solid #fff;
+}
+.helpbtn{
+    padding: 6px;
+    border: 2px solid #c3c3c3;
+    border-radius: 7px;
+    margin-right: auto;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000;
+}
+.helpbtn a{
+    text-decoration: none;
+}
+.wrapper.dark .helpbtn{
+    border: 2px solid #1f1f1f;
 }
 
 @media screen and (max-width: 1100px){

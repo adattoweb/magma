@@ -54,5 +54,9 @@
 - 🛠️ **Fixed bugs with background** on github pages.
 ### 0.3.10
 - 🎨 **Improved the appearance and functionality** of the "Analytics" page..
+### 0.4.0 | 1.0.0 (RELEASE)
+- 📘 **Added "Notebook" page**.
+- 🛠️ **Improved "Analytics" and "Settings" pages**.
+- 🎨 **Redesigned header and footer** for a fresher look.
 
 🚀 **Keep tracking & stay awesome!** 🚀

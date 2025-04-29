@@ -15,6 +15,7 @@ import Tier from "./pages/Tier/Tier";
 import Goals from "./pages/Goals/Goals";
 import Calendar from "./pages/Calendar/Calendar";
 import Help from "./pages/Help/Help"
+import Note from "./pages/Notebook/Note"
 
 import { Routes, Route } from "react-router-dom";
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="/goalslist" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/notebook" element={<Note />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />

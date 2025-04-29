@@ -88,7 +88,7 @@ export default function Analytics() {
                     </div>
                 </div>
                 <div className='analytics__content'>
-                    {arrayKeys.length === 0 ? <p className='error'>{isEn ? "Unfortunately, there's nothing here" : "Нажаль, тут нічого нема"}</p> : Object.keys(objectKeys).map((el, index) => {
+                    {arrayKeys.length === 0 ? <p className='error'>{isEn ? "There's nothing here" : "Нажаль, тут нічого нема"}</p> : Object.keys(objectKeys).map((el, index) => {
                         let allTime = 0;
                         if (!arrayKeys.includes(el)){
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
@@ -97,16 +97,31 @@ export default function Analytics() {
                             let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
                             if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
                         }
-                        if(allTime === 0) return 
+                        if(allTime === 0) return
+
+                        let objectTasks = {}
+                        for(let i = 0; i < objectKeys[el].length; i++){
+                            let nameTask = localStorage.getItem(objectKeys[el][i]).split("^")[0]
+                            if(!objectTasks[nameTask]) objectTasks[nameTask] = [objectKeys[el][i]]
+                            else objectTasks[nameTask].push(objectKeys[el][i]) 
+                        }
+
+                        console.log(objectKeys[el])
+                        console.log(Object.values(objectKeys))
+
+                        console.log(objectTasks)
                         return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight}>{
-                            objectKeys[el].map(key => {
-                                let arrLocal = localStorage.getItem(key).split("^");
-                                let time = +arrLocal[4];
-                                let elProject = arrLocal[1];
-                                if (elProject !== project && project !== "Всі") return;
-                                if (time === 0) return;
-                                return <AnalyticsItem key={key} local={localStorage.getItem(key)} allTime={allTime} maxHeight={maxHeight} uniqueArr={uniqueArr} />;
-                            })}</AnalyticsBlock>;
+                            Object.keys(objectTasks).map(NU => 
+                                objectTasks[NU].map(key => {
+                                    let arrLocal = localStorage.getItem(key).split("^");
+                                    let time = +arrLocal[4];
+                                    if (time === 0) return;
+                                    let elProject = arrLocal[1];
+                                    console.log(objectKeys)
+                                    if (elProject !== project && project !== "Всі") return;
+                                    return <AnalyticsItem key={key} local={localStorage.getItem(key)} allTime={allTime} maxHeight={maxHeight} uniqueArr={uniqueArr} />;
+                                })
+                            )}</AnalyticsBlock>;
                     })}
                 </div>
                 <div className='analytics__footer'>

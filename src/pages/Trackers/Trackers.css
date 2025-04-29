@@ -26,6 +26,12 @@
     border: 2px #656565 solid;
     background-color: rgba(255,255,255,0.7);
 }
+.trackers__info input::placeholder{
+    color: #5b5b5b !important;
+}
+.wrapper.dark .trackers__info input::placeholder{
+    color: #9d9d9d !important;
+}
 .trackers__info input:focus{
     border: 2px #000000 solid;
 }

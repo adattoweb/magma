@@ -1,0 +1,130 @@
+.note__add{
+    height: max-content;
+    padding: 15px 20px;
+}
+.note__add .trackers__info{
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+.note__add .trackers__info input{
+    width: 200px;
+}
+.trackers__info textarea{
+    min-width: 95%;
+    width: 95%;
+    max-width: 95%;
+    padding: 10px 0px 10px 10px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 2px #656565 solid;
+    background-color: rgba(255,255,255,0.7);
+    min-height: 60px;
+    height: 120px;
+    max-height: 240px;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 16px;
+}
+.tblock__list textarea{
+    color: #000;
+    min-width: 95%;
+    width: 95%;
+    max-width: 95%;
+    padding: 10px 0px 10px 10px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 2px #656565 solid;
+    background-color: rgba(255, 255, 255, 0);
+    min-height: 120px;
+    height: 120px;
+    max-height: 120px;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 16px;
+    margin: 10px;
+}
+.trackers__info textarea:focus, .tblock__list textarea:focus{
+    outline: none;
+    border: 2px #000000 solid;
+}
+.wrapper.dark .trackers__info textarea:focus, .wrapper.dark .tblock__list textarea:focus{
+    outline: none;
+    border: 2px #ffffff solid;
+}
+.trackers__info textarea::placeholder{
+    color: #5b5b5b !important;
+}
+.wrapper.dark .trackers__info textarea::placeholder, .wrapper.dark .tblock__list textarea::placeholder{
+    color: #9d9d9d !important;
+}
+.wrapper.dark .trackers__info textarea, .wrapper.dark .tblock__list textarea{
+    background: none;
+    border: 2px #c3c3c3 solid;
+    color: #fff;
+    scrollbar-color: #fff #000;
+}
+.wrapper.dark .tblock__list textarea{
+    border: 2px #8b8b8b solid;
+}
+.notebutton{
+    font-family: "Montserrat Alternates", serif;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    background-color: #000;
+    color: #fff;
+}
+.wrapper.dark .notebutton{
+    background-color: #fff;
+    color: #000;
+}
+.markdown{
+    font-family: "Montserrat Alternates", serif;
+    color: #000;
+    padding: 10px 10px 10px 30px;
+    height: max-content;
+    white-space: pre-line;
+    display: flex;
+    flex-direction: column;
+}
+.markdown li{
+    list-style-position: inside;
+}
+
+@media screen and (max-width: 1000px) {
+    .note__add{
+        width: calc(75vw - 40px) !important;
+        height: max-content !important;
+    }
+    .tblock__list textarea{
+        min-width: 85%;
+        width: 85%;
+        max-width: 85%;
+        min-height: 120px;
+        height: 120px;
+        max-height: 120px;
+        font-size: 16px;
+        margin: 10px;
+    }
+}
+@media screen and (max-width: 840px) {
+    .note .trackers__info{
+        gap: 20px !important;
+    }
+    .trackers__info textarea{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .note .note__add{
+        height: max-content !important;
+    }
+}
+@media screen and (max-width: 500px) {
+    .notebutton{
+        padding: 8px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+}

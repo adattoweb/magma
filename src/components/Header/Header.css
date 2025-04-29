@@ -1,6 +1,6 @@
 .header{
     width: 70vw;
-    height: 65px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
     z-index: 10;
     backdrop-filter: blur(5px);
     outline: 2px solid #cecece;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-top: 20px;
     box-shadow: none;
 }
@@ -29,7 +29,7 @@
 .header__menu li{
     list-style: none;
     font-family: "Montserrat Alternates", serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -108,7 +108,11 @@
     transform: rotate(180deg)
 }
 
-
+@media screen and (max-width: 1800px) {
+    .header__menu{
+        gap: 15px;
+    }
+}
 @media screen and (max-width: 1300px) {
     .header__logo{
         left: 30px;
@@ -126,7 +130,7 @@
         width: 85vw
     }
 }
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1650px) {
     .header{
         justify-content: end;
     }

@@ -19,7 +19,7 @@ import theme14 from "../../assets/smalltheme14.jpg"
 import theme15 from "../../assets/smalltheme15.jpg"
 import theme16 from "../../assets/smalltheme16.jpg"
 
-
+import { Link } from "react-router-dom";
 import { useState } from 'react'
 import isValidUrl from './helpers/isValidUrl'
 
@@ -80,7 +80,7 @@ export default function Settings({onChange}) {
                 <img src={isValidUrl(link) ? link : ""} alt="" />
                 <div className="customize__field">
                     <h4>{isEn ? "Choose your background image" : "Обрати своє фонове зображення"}</h4>
-                    <p>{isEn ? "Enter a link, example: " : "Введіть посилання, наприклад: "} <br/><a href="https://i.imgur.com/3FMGdsi.png" target="new_blank">https://i.imgur.com/3FMGdsi.png</a></p>
+                    <p className="helpbtn"><Link to="/help">{isEn ? "Help" : "Допомога"}</Link></p>
                     <input className="newblock" type="text" value={link} onChange={(e) => {
                         setLink(e.target.value)
                         addItem(e.target.value)

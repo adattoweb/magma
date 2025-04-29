@@ -68,6 +68,25 @@ export default function Help() {
                         </>
                     )}
                 </HelpBlock>
+                <HelpBlock title={isEn ? 'How to use the "Notebook" page?' : 'Як користуватись сторінкою "Нотатки"?'}>
+                    {isEn ? (
+                        <>
+                            On this page, you can create your own notes using Markdown syntax.
+                            <br />
+                            Start a line with <code>#</code> for headings, <code>-</code> for lists,
+                            <br />
+                            wrap text with <code>*text*</code> for *italic*, or <code>**text**</code> for <b>bold</b> text.
+                        </>
+                    ) : (
+                        <>
+                            На цій сторінці можна створювати свої нотатки, використовуючи мову розмітки Markdown.
+                            <br />
+                            Починайте рядок з <code>#</code> для заголовків, <code>-</code> для списків,
+                            <br />
+                            обгорніть текст у <code>*текст*</code>, щоб був <i>курсив</i>, або у <code>**текст**</code>, щоб текст був <b>жирний</b>.
+                        </>
+                    )}
+                </HelpBlock>
 
 
             </div>
