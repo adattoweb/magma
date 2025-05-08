@@ -18,6 +18,7 @@ import theme13 from "../../assets/smalltheme13.jpg"
 import theme14 from "../../assets/smalltheme14.jpg"
 import theme15 from "../../assets/smalltheme15.jpg"
 import theme16 from "../../assets/smalltheme16.jpg"
+import theme17 from "../../assets/smalltheme17.jpg"
 
 import { Link } from "react-router-dom";
 import { useState } from 'react'
@@ -154,6 +155,7 @@ export default function Settings({onChange}) {
                         <BackItem image={theme14} name="Theme 14" id={14}/>
                         <BackItem image={theme15} name="Theme 15" id={15}/>
                         <BackItem image={theme16} name="Theme 16" id={16}/>
+                        <BackItem image={theme17} name="Theme 17" id={17}/>
                         <CustomizeTheme/>
                     </div>
                 </SettingsBlock>

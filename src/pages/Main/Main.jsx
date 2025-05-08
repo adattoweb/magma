@@ -15,7 +15,7 @@ export default function Main(){
         return () => clearInterval(timeInterval)
     }, [])
     const helloRef = useRef()
-    const idThemes = [0, 1, 2, 5, 7, 8] // Теми (ID), де колір тексту повинен бути чорний
+    const idThemes = [0, 1, 2, 5, 7, 10, 14] // Теми (ID), де колір тексту повинен бути чорний
     useEffect(() => {
         if(idThemes.includes(+localStorage.getItem("settings-bg"))) helloRef.current.style.color="#000"
     }, [])

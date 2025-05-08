@@ -50,6 +50,7 @@ input {
 .wrapper.theme14 { background-image: url("./assets/theme14.jpg") !important; }
 .wrapper.theme15 { background-image: url("./assets/theme15.jpg") !important; }
 .wrapper.theme16 { background-image: url("./assets/theme16.jpg") !important; }
+.wrapper.theme17 { background-image: url("./assets/theme17.jpg") !important; }
 
 .content {
   display: flex;

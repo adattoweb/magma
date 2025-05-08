@@ -58,5 +58,7 @@
 - 📘 **Added "Notebook" page**.
 - 🛠️ **Improved "Analytics" and "Settings" pages**.
 - 🎨 **Redesigned header and footer** for a fresher look.
+### 1.0.1
+- 🎨 **Added a new themes** for a better look.
 
 🚀 **Keep tracking & stay awesome!** 🚀
