@@ -113,19 +113,23 @@
 
 /*BACKITEM*/
 .settings__carousel{
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding-top: 10px;
+    column-count: 4;
+    width: 80%;
+    margin: auto;
+    text-align: center;
 }
 
 .backitem{
-    display: flex;
+    display: inline-flex;
     padding: 10px;
     flex-direction: column;
     border-radius: 10px;
     gap: 5px;
     align-items: center;
+    margin: 0 1em 1em 1em;
+    width: min-content;
+    break-inside: avoid; /* Щоб не було перенесень */
 }
 .backitem.choosed{
     outline: 2px solid #000;
@@ -136,6 +140,7 @@
 .backitem img{
     width: 130px;
     border-radius: 5px;
+    pointer-events: none;
 }
 .backitem__footer{
     display: flex;
@@ -166,27 +171,15 @@
     color: #fff;
 }
 .customize{
+    width: 150px;
     display: flex;
     padding: 10px;
     border-radius: 10px;
     flex-direction: column;
     gap: 5px;
-    width: 265px;
-}
-.customize__button{
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 15px;
-    background-color: #000;
-    color: #fff;
-    transition: 0.3s ease all;
-    width: max-content;
-    font-family: "Montserrat Alternates", serif;
-    user-select: none;
-    cursor: pointer;
 }
 .customize input{
-    width: 200px;
+    width: 90%;
     border-radius: 5px;
     padding: 5px;
     margin-right: auto;
@@ -228,7 +221,7 @@
     outline: 2px solid #fff;
 }
 .helpbtn{
-    padding: 6px;
+    padding: 4px;
     border: 2px solid #c3c3c3;
     border-radius: 7px;
     margin-right: auto;
@@ -236,6 +229,7 @@
     margin-top: 5px;
     margin-bottom: 5px;
     color: #000;
+    font-size: 14px !important;
 }
 .helpbtn a{
     text-decoration: none;
@@ -248,14 +242,11 @@
     .settings__main{
         width: 500px;
     }
-    .customize{
-        width: 200px;
-    }
-    .customize input{
-        width: 150px;
-    }
     .customize p{
         display: none;
+    }
+    .settings__carousel{
+        column-count: 2;
     }
 }
 @media screen and (max-width: 650px){
@@ -300,18 +291,12 @@
         width: 300px;
         padding: 10px 15px 15px 15px;
     }
+    .settings__carousel{
+        column-count: 1;
+    }
 }
 @media screen and (max-width: 350px){
     .settings__main{
         width: 240px;
-    }
-    .backitem img{
-        width: 80px;
-    }
-    .backitem__button{
-        font-size: 12px;
-    }
-    .backitem{
-        padding: 10px 5px;
     }
 }
