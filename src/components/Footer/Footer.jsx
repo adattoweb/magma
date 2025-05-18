@@ -33,7 +33,6 @@ export default function Footer() {
                     <MyLink to="/analytics"><img src={anal1} alt="analytics" /></MyLink>
                 </div>
                 <MyLink to="/goalslist"><img src={goal} alt="goalslist" /></MyLink>
-                <MyLink to="/help"><img src={info} alt="help" /></MyLink>
                 <MyLink to="/notebook"><img src={notebook} alt="notebook" /></MyLink>
                 <MyLink to="/settings"><img src={settings} alt="settings" /></MyLink>
             </div>

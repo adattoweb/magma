@@ -62,5 +62,11 @@
 - 🎨 **Added a new themes** for a better look.
 ### 0.4.2
 - 🎨 **Improved a settings appearance** for a better look.
+### 0.5.0
+- 🎨 **Redesigned the entire site** for a cleaner and more modern look.  
+- 🗂️ **Added tabs** to the Settings page for better navigation.  
+- ℹ️ **Moved the "Information" page** into a tab within the Settings page.  
+- 🗑️ **Removed the "Projects" page** — its functionality is now fully integrated into the "Trackers" page.
+
 
 🚀 **Keep tracking & stay awesome!** 🚀
