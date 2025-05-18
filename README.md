@@ -33,8 +33,6 @@ You can fully customize everything to your liking — switch between light and d
 - React library
 - React Router library for routing
 
-![Screenshot 2025-04-25 at 20-48-39 Magma](https://github.com/user-attachments/assets/2313a39c-10a5-4361-87cf-2e8546647455)
-![Screenshot 2025-04-25 at 20-49-52 Magma](https://github.com/user-attachments/assets/6ca09c2b-c970-476d-aa0f-e9871e941b6c)
-![Screenshot 2025-04-25 at 20-49-43 Magma](https://github.com/user-attachments/assets/0f333a29-166a-404f-9fe3-c017a58e9d98)
-![Screenshot 2025-04-25 at 20-53-29 Magma](https://github.com/user-attachments/assets/03dcd7fa-12c6-4509-b72c-e6b595528f19)
-![Screenshot 2025-04-25 at 20-53-51 Magma](https://github.com/user-attachments/assets/759e86bb-d89b-493a-a3d9-39865156f574)
+<img width="800" alt="Screenshot 2025-05-19 at 00-35-41 Magma" src="https://github.com/user-attachments/assets/4d351027-f354-49be-a83d-ef6e5153a04f" />
+<img width="800" alt="Screenshot 2025-05-19 at 00-42-17 Magma" src="https://github.com/user-attachments/assets/6f747159-014a-4c88-827b-361d8c4f3ed9" />
+<img width="800" alt="Screenshot 2025-05-19 at 00-48-12 Magma" src="https://github.com/user-attachments/assets/c9fd3ee3-57c0-4dac-ab3b-4c393d93e9f1" />
