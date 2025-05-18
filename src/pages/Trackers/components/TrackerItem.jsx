@@ -3,7 +3,8 @@ import formatTime from "../../../helpers/formatTime";
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import deleteImg from "../../../assets/delete.png";
 
-export default function TrackerItem({ myKey, name, project, start, end, all, isRender, setIsRender}) {
+export default function TrackerItem({ localKey, isRender, setIsRender}) {
+    const [name, project, start, end, all] = localStorage.getItem(localKey).split("^")
     const [newName, setNewName] = useState(name);
     const [newProject, setNewProject] = useState(project);
     const [newStart, setNewStart] = useState(start);
@@ -11,7 +12,7 @@ export default function TrackerItem({ myKey, name, project, start, end, all, isR
     const [newAll, setNewAll] = useState(all);
 
     function editItem(name = newName, project = newProject, start = newStart, end = newEnd, all = newAll) {
-        localStorage.setItem(myKey, `${name}^${project}^${start}^${end}^${all}`);
+        localStorage.setItem(localKey, `${name}^${project}^${start}^${end}^${all}`);
     }
 
     function editTime(e, start) {
@@ -60,7 +61,7 @@ export default function TrackerItem({ myKey, name, project, start, end, all, isR
                 <div className="titem__delete">
                     <p>{formatTime(newAll)}</p>
                     <img src={deleteImg} onClick={() => {
-                        localStorage.removeItem(myKey);
+                        localStorage.removeItem(localKey);
                         setIsRender(!isRender);
                     }} />
                 </div>

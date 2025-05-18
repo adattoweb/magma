@@ -63,7 +63,7 @@
     scrollbar-color: #fff !important; /*хз не працює*/
 }
 
-.dropdown-content p {
+.dropdown-content p, .dropdown__item {
     color: #000;
     padding: 10px;
     text-decoration: none;
@@ -71,19 +71,88 @@
     cursor: pointer;
     border-radius: 10px;
 }
-.wrapper.dark .dropdown-content p{
+.wrapper.dark .dropdown-content p, .wrapper.dark .dropdown__item{
     color: #fff;
 }
 
-.dropdown-content p:hover {
+.dropdown-content p:hover, .dropdown__item:hover {
     background-color: rgba(209, 209, 209, 0.9);
 }
-.wrapper.dark .dropdown-content p:hover{
+.wrapper.dark .dropdown-content p:hover, .wrapper.dark .dropdown__item:hover{
     background-color: rgba(40, 40, 40, 0.9);
 }
-
+.dropdown__add{
+    margin-top: 10px;
+    border-top: 2px solid #2f2f2f;
+    padding: 10px 0px 0px 3px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.wrapper.dark .dropdown__add{
+    border-top: 2px solid #717171;
+}
+.dropdown__create{
+    font-size: 16px;
+    padding: 5px 0px;
+    cursor: pointer;
+}
 .dropdown-content {
     display: block;
+}
+.dropdown-content input{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    border: 2px solid #717171;
+    padding: 5px;
+    width: 85%;
+    background-color: #fff;
+    color: #000;
+    font-family: inherit;
+}
+.wrapper.dark .dropdown-content input{
+    background-color: #161616;
+    color: #fff;
+}
+.wrapper.dark .dropdown-content input::placeholder{
+    color: #c9c9c9;
+}
+.dropdown__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 5px 0px 0px;
+}
+.dropdown__edit{
+    display: flex;
+    gap: 10px;
+}
+.dropdown__item img{
+    width: 20px;
+    transition: 0.2s ease all;
+    filter: invert(0.3)
+}
+.dropdown__item img:hover{
+    filter: invert(0)
+}
+.wrapper.dark .dropdown__item img{
+    filter: invert(0.7)
+}
+.wrapper.dark .dropdown__item img:hover{
+    filter: invert(1)
+}
+.dropdown__item p{
+    width: 90%;
+    word-break: break-word;
+}
+.dropdown__item p:hover{
+    background-color: rgba(255,255,255,0) !important;
+}
+.dropdown__item input{
+    padding: 4px;
 }
 @media screen and (max-width: 1000px) {
     .dropdown-btn{

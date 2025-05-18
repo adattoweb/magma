@@ -1,79 +1,63 @@
 .footer{
     display: flex;
     align-items: center;
-    border-radius: 15px 15px 0px 0px;
-    width: 60vw;
-    height: 70px;
-    gap: 10px;
+    justify-content: space-between;
+    width: 97vw;
+    margin: 20px 15px;
     padding: 5px;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
 }
-.footer__logo{
-    width: 40px;
-    height: 40px;
-    margin-left: 15px;
+.footer__right, .footer__left{
+    display: flex;
+    gap: 15px;
+    padding: 10px;
     border-radius: 5px;
-    padding: 5px;
+}
+.footer img{
+    width: 22px;
+    height: 22px;
+    transition: 0.2s ease all;
+}
+.footer a{
+    display: flex;
+    background-color: #fff;
+    padding: 7px;
+    border-radius: 10px;
+    transition: 0.3s ease all;
+}
+.mylink.active a{
     background-color: #000;
 }
-.footer__text{
+.mylink.active a img{
+    filter: invert(1)
+}
+.footer a:hover{
+    background-color: #000;
+}
+.footer a:hover img{
+    filter: invert(1)
+}
+.footer__union{
     display: flex;
-    gap: 3px;
-    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
 }
-
-.footer__text h2{
-    font-family: "Montserrat Alternates", serif;
-    font-size: 19px;
-    font-weight: 700;
-}
-.footer__text p{
-    font-size: 15px;
-    font-family: "Montserrat", serif;
-    font-weight: 500;
-}
-@media screen and (max-width: 1000px) {
-    .footer__text p{
-        font-size: 13px;
-    }
-    .footer__text h2{
-        font-size: 16px;
-    }
-    .footer__logo{
-        width: 30px;
-        height: 30px;
-    }
-}
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .footer{
-        width: 90vw;
-    }
-    .footer__text{
-        margin-left: 15px;
-        padding-right: 15px;
-    }
-    .footer__text p{
-        font-size: 12px;
-    }
-    .footer__text h2{
-        font-size: 15px;
-    }
-    .footer__logo{
-        display: none;
+        justify-content: center;
+        flex-direction: row-reverse;
     }
 }
-@media screen and (max-width: 500px) {
-    .footer__text h2{
-        font-size: 15px;
-    }
-}
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 600px) {
     .footer{
-        height: 90px;
+        justify-content: center;
+        flex-direction: row-reverse;
     }
-}
-@media screen and (max-width: 360px) {
-    .footer{
-        height: 100px;
+    .footer__right, .footer__left{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
 }

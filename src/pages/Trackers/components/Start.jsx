@@ -4,7 +4,7 @@ import pause from "../../../assets/pause.png";
 import stoppause from "../../../assets/stoppause.png";
 import start from "../../../assets/start.png";
 
-export default function Start({ changeTime, addItem }) {
+export default function Start({ changeTime, addItem, devAdd }) {
     const [isTimeRunning, setIsTimeRunning] = useState(false);
     const [time, setTime] = useState(+localStorage.getItem("tracker-time"));
 
@@ -31,7 +31,7 @@ export default function Start({ changeTime, addItem }) {
                     const now = new Date();
                     localStorage.setItem("start-time", `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`);
                 }
-            }} src={isTimeRunning ? stoppause : start} alt="почати" />
+            }} src={isTimeRunning ? stoppause : start} alt="почати" onDragOver={devAdd} />
             {time > 0 &&
                 <img onClick={() => {
                     addItem();

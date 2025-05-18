@@ -4,6 +4,7 @@
 .settings__main{
     padding: 10px 15px 20px 15px;
     width: 900px;
+    min-height: 300px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -236,6 +237,89 @@
 }
 .wrapper.dark .helpbtn{
     border: 2px solid #1f1f1f;
+}
+.tab{
+    display: none;
+}
+.tab.active{ /*хай бургер буде особливим і винести його крч, absolute зробити*/
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 200px;
+    border-radius: 10px 0px 0px 10px;
+    height: 100%;
+    box-shadow: none;
+    border: none;
+    border-right: 2px solid #cecece;
+}
+.wrapper.dark .tab.active{
+    border-right: 2px solid #1f1f1f
+}
+.tab__burger{
+    width: 50px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    z-index: 10;
+}
+.tab__burger .burger-menu{
+    align-items: center;
+}
+.wrapper.dark .tab__burger .burger-menu .line{
+    background-color: #fff;
+}
+.tab__list{
+    margin-top: 70px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+.tab__list.active{
+    display: flex;
+}
+.tab__item{
+    width: 100%;
+    padding: 7px 0px;
+    display: flex;
+    gap: 10px;
+    font-weight: 500;
+    color: #000;
+    font-family: "Montserrat Alternates", serif;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease all;
+    background-color: #e8e8e8;
+}
+.tab__item:hover{
+    background-color: #d8d8d8;
+}
+.tab__item.active{
+    background-color: #cecece;
+}
+.wrapper.dark .tab__item{
+    color: #fff;
+    background-color: #1e1e1e;
+}
+.wrapper.dark .tab__item.active{
+    background-color: #484848;
+}
+.wrapper.dark .tab__item:hover{
+    background-color: #232323;  
+}
+.tab__item img{
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+}
+.wrapper.dark .tab__item img{
+    filter: invert(1)
 }
 
 @media screen and (max-width: 1100px){

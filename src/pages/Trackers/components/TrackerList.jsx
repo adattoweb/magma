@@ -2,9 +2,12 @@ import { useState } from "react";
 import TrackerBlock from "./TrackerBlock";
 import TrackerItem from "./TrackerItem";
 import sortTrackers from "../helpers/sortTrackers";
+import Dropdown from "./Dropdown"
 
-export default function TrackerList() {    
+
+export default function TrackerList() {
     const isEn = localStorage.getItem("settings-lang") === "en";
+    const [project, setProject] = useState(isEn ? "All" : "Всі")
 
     const [isRender, setIsRender] = useState(false);
     let array = [];
@@ -45,27 +48,36 @@ export default function TrackerList() {
 
     let counterItems = 0;
     let pagesArray = []
-    for(let i = 0; i < arrayKeys.length; i++){
+    array = array.map(el => el.filter(key => {
+        return localStorage.getItem(key).split("^")[1] === project || (project === "All" || project === "Всі")
+    })).filter(el => el.length > 0)
+    for(let i = 0; i < array.length; i++){
         if(counterItems >= elementsOnPage) counterItems = 0
         if(counterItems === 0) pagesArray.push([])
         counterItems += array[i].length
         pagesArray[pagesArray.length - 1].push(arrayKeys[i])
     }
-    const flatArray = pagesArray.flat()
+    let flatArray = pagesArray.flat()
+    flatArray = flatArray.filter((el, index) => array[index].length > 0)
+    pagesArray = pagesArray.map(el => el.filter(el => flatArray.includes(el)))
+    console.log("------------")
     console.log(pagesArray)
+    console.log(flatArray)
+    console.log(array)
+    console.log("------------")
 
     return (
         <div className="tlist newblock">
             <div className="tlist__header newblock">
-                {isEn ? "This Week" : "Цим тижнем"}
+                <Dropdown project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)}/>
             </div>
             <div className="tlist__list">
-                {arrayKeys.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : pagesArray[page].map((el, index) => {
+                {arrayKeys.length === 0 || pagesArray.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : pagesArray[page].map((el, index) => {
+                    console.log(el)
                     let allTime = array[flatArray.indexOf(el)].reduce((total, key) => total + +localStorage.getItem(key).split("^")[4],0);
                         return <TrackerBlock key={el+index} header={el.split(".").map(el => el.padStart(2, "0")).join(".")} all={allTime}>{
                             array[flatArray.indexOf(el)].map(key => {
-                                let now = localStorage.getItem(key).split("^");
-                                return <TrackerItem key={key} myKey={key} name = {now[0]} project = {now[1]} start = {now[2]} end = {now[3]} all = {now[4]} isRender={isRender} setIsRender={setIsRender}/>;   
+                                return <TrackerItem key={key} localKey={key} isRender={isRender} setIsRender={setIsRender}/>
                         })}</TrackerBlock>;
                 })}
             </div>

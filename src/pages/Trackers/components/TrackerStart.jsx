@@ -20,7 +20,7 @@ export default function TrackerStart({changeAdd}) {
     function addItem(){
         let smallName = name
         if(name.length > 30) smallName = name.substring(0, 29) + "..."
-        let newName = smallName.replace(/(@|\^)+/g, ".");
+        let newName = smallName?? smallName.replace(/(@|\^)+/g, ".");
         startTime = localStorage.getItem("start-time");
         const now = new Date();
         endTime = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
@@ -35,6 +35,14 @@ export default function TrackerStart({changeAdd}) {
         changeAdd();
         localStorage.setItem("tracker-time", "0")
     }
+    function devAdd(j){
+        console.log("Dev function is activated.")
+        for(let i = 0; i < j; i++){
+            addItem()
+            console.log("+")
+            setName(j)
+        }
+    }
     
     return (
         <div className="trackers__add newblock">
@@ -42,7 +50,7 @@ export default function TrackerStart({changeAdd}) {
                 <input type="text" placeholder={isEn ? "What are you doing right now?" : "Чим Ви зараз займаєтесь?"} onChange={(e) => { setName(e.target.value); }} value={name} />
                 <Dropdown changeProject={changeProject}/>
             </div>
-            <Start changeTime={changeTime} addItem={addItem}/>
+            <Start changeTime={changeTime} addItem={addItem} devAdd={() => devAdd(0)}/>
         </div>
     );
 }
