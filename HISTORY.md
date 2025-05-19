@@ -69,6 +69,8 @@
 - 🗑️ **Removed the "Projects" page** — its functionality is now fully integrated into the "Trackers" page.
 ### 0.5.1
 - 🛠️ **Fixed bugs**.
+### 0.5.2
+- 🔢 **Added a clock modes** for better user experience.
 
 
 🚀 **Keep tracking & stay awesome!** 🚀

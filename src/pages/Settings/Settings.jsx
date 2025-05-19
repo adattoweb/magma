@@ -53,7 +53,8 @@ export default function Settings({ onChange }) {
             </>
         )
     }
-
+    if(!localStorage.getItem("magma-clock")) localStorage.setItem("magma-clock", "24")
+    const [isTwelve, setIsTwelve] = useState(localStorage.getItem("magma-clock") === "12")
 
     return (
         <div className="settings content">
@@ -85,6 +86,19 @@ export default function Settings({ onChange }) {
                                     localStorage.setItem("settings-theme", "dark");
                                     onChange();
                                 }} />
+                            </div>
+                        </div>
+                        <div className="settings__theme settings__lang">
+                            <p className="settings__name">{isEn ? "Clock:" : "Годинник:"}</p>
+                            <div className="settings__select">
+                                <p className={isTwelve ? "clock__item active" : "clock__item"} onClick={() => {
+                                    setIsTwelve(true)
+                                    localStorage.setItem("magma-clock", "12")
+                                }}>12</p>
+                                <p className={isTwelve ? "clock__item" : "clock__item active"} onClick={() => {
+                                    setIsTwelve(false)
+                                    localStorage.setItem("magma-clock", "24")
+                                }}>24</p>
                             </div>
                         </div>
                     </SettingsBlock>
