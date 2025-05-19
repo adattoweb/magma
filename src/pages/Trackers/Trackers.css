@@ -110,7 +110,7 @@
     min-width: 200px;
 }
 .tlist__header .dropdown .dropdown-content{
-    backdrop-filter: blur(2px) !important;
+    background-color: #fff;
 }
 .error{
     padding: 10px;

@@ -1,7 +1,7 @@
 {
   "name": "magma",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "homepage": "https://adattoweb.github.io/magma",
   "type": "module",
   "scripts": {
