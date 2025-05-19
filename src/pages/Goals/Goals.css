@@ -28,7 +28,7 @@
     height: 40px;
     top: -40px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 840px) {
     .goals__add .trackers__info{
         gap: 10px !important;
     }
@@ -37,21 +37,45 @@
         align-items: start;
         gap: 20px;
     }
-    .tlist__list .goalslist .titem__info{
-        gap: 0px;
-        display: flex;
-        justify-content: space-between;
-        width: 100% !important;
+    .goals__add{
+        height: 80px !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
-}
-@media screen and (max-width: 400px) {
+    .goals__add .trackers__info{
+        justify-content: flex-start !important;
+    }
+    .glist .titem__time img, .glist .titem__delete img{
+        width: 26px !important;
+        height: 26px !important;
+    }
     .goalslist .titem__edit input{
-        max-width: 80px !important;
+        max-width: 30px !important;
         font-size: 14px !important;
     }
     .goals__input input{
-        width: 30px;
+        width: 20px;
         font-size: 14px;
+    }
+    .glist .titem__info{
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .glist .titem{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .glist .titem__info{
+        width: min-content !important;
+        padding: 0px 0px 5px 0px;
+        margin-left: auto;
+    }
+}
+@media screen and (max-width: 650px) {
+    .goals__add{
+        height: 100px !important;
     }
 }
 @media screen and (max-width: 1300px) {

@@ -1,11 +1,8 @@
-import { useState } from 'react'
 import "./Burger.css"
 
-export default function Burger({ onClick }) {
-    const [isOpen, setIsOpen] = useState(false)
+export default function Burger({ isOpen, onClick }) {
     return (
         <div className={isOpen ? "burger-menu active" : "burger-menu"} onClick={() => {
-            setIsOpen(!isOpen)
             onClick()
         }}>
             <div className='line'></div>

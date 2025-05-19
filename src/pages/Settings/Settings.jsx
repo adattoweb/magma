@@ -41,7 +41,7 @@ export default function Settings({ onChange }) {
         return (
             <>
                 <div className="tab__burger newblock">
-                    <Burger onClick={() => setIsOpen(!isOpen)} />
+                    <Burger isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
                 </div>
                 <div className={isOpen ? "tab active newblock" : "tab newblock"}>
                     <div className={isOpen ? "tab__list active" : "tab__list"}>

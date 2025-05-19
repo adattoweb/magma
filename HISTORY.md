@@ -71,6 +71,8 @@
 - 🛠️ **Fixed bugs**.
 ### 0.5.2
 - 🔢 **Added a clock modes** for better user experience.
+### 0.5.3
+- 🎨 **Fixed bugs and improved design**.
 
 
 🚀 **Keep tracking & stay awesome!** 🚀

@@ -8,7 +8,7 @@
     width: 100%;
 }
 .note__add .trackers__info input{
-    width: 200px;
+    width: 350px;
 }
 .trackers__info textarea{
     min-width: 95%;
@@ -90,6 +90,10 @@
 }
 .markdown li{
     list-style-position: inside;
+}
+.note .tlist__header{
+    height: 40px;
+    top: -40px;
 }
 
 @media screen and (max-width: 1000px) {
