@@ -172,24 +172,20 @@
     color: #fff;
 }
 .customize{
-    width: 150px;
-    display: flex;
+    width: 130px;
+    display: inline-flex;
     padding: 10px;
     border-radius: 10px;
     flex-direction: column;
     gap: 5px;
+    margin: 0 1em 1em 1em;
+    break-inside: avoid;
 }
 .customize input{
     width: 90%;
     border-radius: 5px;
     padding: 5px;
     margin-right: auto;
-}
-.customize p a{
-    color: #000;
-}
-.wrapper.dark .customize p a{
-    color: #fff
 }
 .wrapper.dark .customize input, .wrapper.dark .editnick{
     border: 2px solid #1f1f1f;
@@ -199,11 +195,9 @@
     border: 2px solid #343434;
 }
 .customize h4{
+    text-align: start;
     font-weight: 500;
-}
-.customize p{
-    font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
 }
 .customize img{
     width: 100%;
@@ -363,11 +357,17 @@
     .settings__block h2{
         font-size: 18px;
     }
-    .backitem img{
+    .backitem img, .customize img{
         width: 100px;
     }
     .backitem__button{
         font-size: 13px;
+    }
+    .customize{
+        width: 100px;
+    }
+    .customize input{
+        width: 85%;
     }
 }
 @media screen and (max-width: 400px){

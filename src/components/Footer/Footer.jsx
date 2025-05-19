@@ -1,10 +1,9 @@
 import './Footer.css';
 
-import { Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import time from '../../assets/time.png'
 import anal1 from '../../assets/anal1.png'
 import home from '../../assets/home.png'
-import info from '../../assets/info.png'
 import notebook from '../../assets/notebook.png'
 import goal from '../../assets/goal.png'
 import settings from '../../assets/settings.png'
@@ -32,7 +31,7 @@ export default function Footer() {
                     <MyLink to="/calendar"><img src={calendar} alt="calendar" /></MyLink>
                     <MyLink to="/analytics"><img src={anal1} alt="analytics" /></MyLink>
                 </div>
-                <MyLink to="/goalslist"><img src={goal} alt="goalslist" /></MyLink>
+                <MyLink to="/goals"><img src={goal} alt="goals" /></MyLink>
                 <MyLink to="/notebook"><img src={notebook} alt="notebook" /></MyLink>
                 <MyLink to="/settings"><img src={settings} alt="settings" /></MyLink>
             </div>

@@ -11,12 +11,12 @@ export default function Dropdown({changeProject, startValue}) {
     const [select, setSelect] = useState(startValue);
     return (
         <div className='dropdown' onClick={() => setIsOpen(!isOpen)}>
-            <button className='dropdown-btn'>{select} <img className={isOpen ? 'rotate' : ""} src={triangle} /></button>
+            <button className='dropdown-btn'>{select === "Всі" ? "All" : select === "Без проєкту" ? "Without project" : select} <img className={isOpen ? 'rotate' : ""} src={triangle} /></button>
             {isOpen && <div className='dropdown-content'>
                 {array.map((el, index) => <p onClick={() => {
                     setSelect(el);
                     changeProject !== undefined && changeProject(el);
-                }} key={el + index}>{el}</p>)}
+                }} key={el + index}>{el === "Всі" ? "All" : el === "Без проєкту" ? "Without project" : el}</p>)}
             </div>}
         </div>
     );

@@ -19,7 +19,6 @@ import theme17 from "../../../assets/smalltheme17.jpg"
 
 import { useState } from "react"
 import isValidUrl from '../helpers/isValidUrl'
-import { Link } from "react-router-dom";
 
 export default function Carousel({ choosed, setChoosed}) {
     const isEn = localStorage.getItem("settings-lang") === "en";
@@ -49,8 +48,7 @@ export default function Carousel({ choosed, setChoosed}) {
             }}>
                 <img src={isValidUrl(link) ? link : ""} alt="" />
                 <div className="customize__field">
-                    <h4>{isEn ? "Choose your background image" : "Обрати своє фонове зображення"}</h4>
-                    <p className="helpbtn"><Link to="/help">{isEn ? "Help" : "Допомога"}</Link></p>
+                    <h4>{isEn ? "Enter a link on your background page, in more detail on information page." : "Введіть посилання на ваше фонове зображення, детальніше в інформації."}</h4>
                     <input className="newblock" type="text" value={link} onChange={(e) => {
                         setLink(e.target.value)
                         addItem(e.target.value)

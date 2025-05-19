@@ -1,7 +1,9 @@
+import "./Note.css";
+import "./Projects.css";
+
 import { useState} from "react";
 import NoteStart from "./components/NoteStart";
 import NoteList from "./components/NoteList";
-import "./Note.css";
 
 export default function Notebook() {
     if (localStorage.getItem("note-index") === null) {

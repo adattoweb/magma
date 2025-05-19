@@ -18,7 +18,7 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
     }
 
     return (
-        <div className="titem tierlist goalslist">
+        <div className="titem tierlist gitem">
             <div className="titem__edit">
                 <div className="titem__circle">{+index}</div>
                 <input type="text" value={name} onChange={(e) => {

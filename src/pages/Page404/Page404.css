@@ -1,39 +1,42 @@
 .page404{
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page404__block{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    padding: 40px;
+    backdrop-filter: blur(2px);
 }
 .page404 h1{
     font-size: 100px;
     font-weight: 800;
-    color: #000;
+    color: #fff;
 }
 .page404 p{
     font-size: 40px;
     font-weight: 700;
-    color: #000;
-}
-.wrapper.dark .page404 h1,.wrapper.dark .page404 p{
     color: #fff;
 }
+/* .wrapper.dark .page404 h1,.wrapper.dark .page404 p{
+    color: #fff;
+} */
 .page404 a{
-    padding: 20px 40px;
+    padding: 15px 30px;
     text-decoration: none;
-    background-color: #000;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    font-size: 30px;
+    color: #000;
+    font-size: 26px;
     font-weight: 600;
     transition: 0.3s ease all;
-    border-radius: 5px;
-}
-.wrapper.dark .page404 a{
-    background-color: #fff;
-    color: #000;
+    border-radius: 10px;
 }
 .page404 a:hover{
     background-color: #fff;

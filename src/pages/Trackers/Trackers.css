@@ -109,6 +109,9 @@
 .tlist__header .dropdown-btn{
     min-width: 200px;
 }
+.tlist__header .dropdown .dropdown-content{
+    backdrop-filter: blur(2px) !important;
+}
 .error{
     padding: 10px;
 }

@@ -63,7 +63,7 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/settings" element={<Settings onChange={() => setIsRender(!isRender)}/>} />
           <Route path="/tierlist" element={<Tier />} />
-          <Route path="/goalslist" element={<Goals />} />
+          <Route path="/goals" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/notebook" element={<Note />} />
           <Route path="*" element={<Page404 />} />

@@ -48,7 +48,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
     width: 100%;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 5;
@@ -59,7 +59,7 @@
     backdrop-filter: blur(2px);
 }
 .wrapper.dark .dropdown-content{
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0,0,0,0.8);
     scrollbar-color: #fff !important; /*хз не працює*/
 }
 
