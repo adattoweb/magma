@@ -73,6 +73,8 @@
 - 🔢 **Added a clock modes** for better user experience.
 ### 0.5.3
 - 🎨 **Fixed bugs and improved design**.
+### 0.5.4
+- 🎨 **Remade and improved navigation**.
 
 
 🚀 **Keep tracking & stay awesome!** 🚀
