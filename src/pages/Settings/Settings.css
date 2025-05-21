@@ -61,9 +61,10 @@
     background-color: #fff;
     outline: 2px solid #000;
     transition: 0.3s ease all;
+    color: #000;
 }
 .wrapper.dark .lang__select{
-    color: #000;
+    outline: 2px solid #b0b0b0;
 }
 .lang__select:hover{
     transform: scale(1.1)
@@ -81,9 +82,14 @@
     height: 24px;
     cursor: pointer;
     transition: 0.3s ease all;
+    opacity: 0.9;
 }
 .settings__theme img:hover{
-    transform: scale(1.1)
+    opacity: 1;
+}
+.wrapper.dark .settings__theme img{
+    outline: 2px solid #b0b0b0;
+    border-radius: 200px;
 }
 .settings__info{
     font-size: 16px;
@@ -331,12 +337,26 @@
     transition: 0.3s ease all;
     color: #000;
 }
+.wrapper.dark .clock__item{
+    border: 2px solid #b0b0b0;
+}
 .settings__select .clock__item:nth-child(2).active{
     color: #fff;
 }
 .clock__item.active{
     background-color: #000;
     color: #fff;
+}
+.settings__btn{
+    font-family: "Montserrat Alternates", serif;
+    font-weight: 500;
+    background-color: #000;
+    cursor: pointer;
+    transition: 0.2s ease all;
+    border-radius: 5px;
+    color: #fff;
+    padding: 3px 9px;
+    user-select: none;
 }
 
 @media screen and (max-width: 1100px){

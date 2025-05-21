@@ -113,7 +113,7 @@
     box-sizing: border-box;
 }
 .audio__item{
-    height: 50px;
+    height: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,7 +122,6 @@
     padding: 5px;
     border: 2px #3f3f3f solid;
     border-radius: 5px;
-    cursor: pointer;
     transition: 0.3s ease all;
     opacity: 0.7;
 }
@@ -135,6 +134,18 @@
 }
 .audio__item p{
     font-weight: 600;
+}
+.audio__range{
+    height: 10px;
+    width: 80%;
+}
+.audio__parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
 }
 
 @media screen and (max-width: 800px) {

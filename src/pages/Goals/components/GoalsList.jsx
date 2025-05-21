@@ -40,7 +40,7 @@ export default function GoalsList() {
                     <p className="tier__error">{isEn ? "Unfortunately, there is nothing here!" : "Нажаль тут нічого немає!"}</p> 
                     : array.map((el, index) => {
                         if(index >= elementsOnPage * (page+1) - elementsOnPage && index < elementsOnPage * (page+1)){
-                            return <GoalsItem key={el[0] + index} startName={el[0]} index={index + 1} localIndex={el[1]} startMin={el[2]} startMax={el[3]} isRender={isRender} setIsRender={setIsRender}/>
+                            return <GoalsItem key={el[0] + index} startName={el[0]} index={index + 1} localIndex={el[1]} startMin={el[2]} startMax={el[3]} isRender={isRender} setIsRender={setIsRender} length={array.length}/>
                         }
                     }
                     )}

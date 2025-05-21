@@ -6,7 +6,7 @@ import deleteImg from "../../../assets/delete.png";
 import arrow from "../../../assets/arrow.png";
 
 
-export default function GoalsItem({ startName, index, localIndex, startMin, startMax, isRender, setIsRender}) {
+export default function GoalsItem({ startName, index, localIndex, startMin, startMax, isRender, setIsRender, length}) {
     const isEn = localStorage.getItem("settings-lang") === "en";
     const [name, setName] = useState(startName);
     const [min, setMin] = useState(startMin);
@@ -16,6 +16,7 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
     if (index !== localIndex) {
         localStorage.setItem("goals-list", localList().replace(`${name}@${localIndex}@${min}@${max}`, `${name}@${index}@${min}@${max}`));
     }
+    console.log(index, index < length, index > 1)
 
     return (
         <div className="titem tierlist gitem">
@@ -39,8 +40,8 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
             </div>
             <div className="titem__info">
                 <div className="titem__time">
-                    <img src={arrow} onClick={() => editPosition(index + 1, index, localList, setIsRender, isRender)} alt={isEn ? "Move up" : "Перемістити вгору"} />
-                    <img src={arrow} onClick={() => editPosition(index - 1, index, localList, setIsRender, isRender)} alt={isEn ? "Move down" : "Перемістити вниз"} />
+                    {index < length && <img className="movedown" src={arrow} onClick={() => editPosition(index + 1, index, localList, setIsRender, isRender)} alt={isEn ? "Move down" : "Перемістити вниз"} />}
+                    {index > 1 && <img src={arrow} onClick={() => editPosition(index - 1, index, localList, setIsRender, isRender)} alt={isEn ? "Move up" : "Перемістити вгору"} />}
                 </div>
                 <div className="titem__delete">
                     <img src={deleteImg} onClick={() => deleteItem(index, localList, isRender, setIsRender)} alt={isEn ? "Delete" : "Видалити"} />

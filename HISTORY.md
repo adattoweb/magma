@@ -75,6 +75,9 @@
 - 🎨 **Fixed bugs and improved design**.
 ### 0.5.4
 - 🎨 **Remade and improved navigation**.
+### 0.6.0
+- 🔊 **Added background sounds** — 12 different ambient tracks are now available.
+- 💬 **Added motivational quotes** to inspire and support your productivity.
 
 
 🚀 **Keep tracking & stay awesome!** 🚀

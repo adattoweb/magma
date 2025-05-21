@@ -55,6 +55,8 @@ export default function Settings({ onChange }) {
     }
     if(!localStorage.getItem("magma-clock")) localStorage.setItem("magma-clock", "24")
     const [isTwelve, setIsTwelve] = useState(localStorage.getItem("magma-clock") === "12")
+    if(!localStorage.getItem("magma-quotes")) localStorage.setItem("magma-quotes", "true")
+    const [isQuotesEnabled, setIsQuotesEnabled] = useState(localStorage.getItem("magma-quotes") === "enabled")
 
     return (
         <div className="settings content">
@@ -101,6 +103,16 @@ export default function Settings({ onChange }) {
                                 }}>24</p>
                             </div>
                         </div>
+                        <div className="settings__theme settings__lang">
+                            <p className="settings__name">{isEn ? "Quotes:" : "Цитати:"}</p>
+                            <div className="settings__btn" onClick={() => {
+                                setIsQuotesEnabled(!isQuotesEnabled)
+                                localStorage.setItem("magma-quotes", `${!isQuotesEnabled ? "true" : "false"}`)
+                                onChange()
+                            }}>
+                                {isQuotesEnabled ? "Enabled" : "Disabled"}
+                            </div>
+                        </div>
                     </SettingsBlock>
                         <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>
                             <EditNick />
@@ -113,7 +125,7 @@ export default function Settings({ onChange }) {
                             <Info/>
                         </SettingsBlock>
                         <SettingsBlock header={isEn ? "Version" : "Версія"}>
-                            <p className="settings__name">{isEn ? "Current version: Magma Local 0.5.0" : "Поточна версія: Magma Local 0.5.0"}</p>
+                            <p className="settings__name">{isEn ? "Current version: Magma Local 0.5.5" : "Поточна версія: Magma Local 0.5.5"}</p>
                             <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
                         </SettingsBlock>
                         <SettingsBlock header={isEn ? "Developer Contacts" : "Контакти розробника"}>

@@ -25,11 +25,11 @@
 .tierlist .titem__time img:hover{
     transform: scale(1.05)
 }
-.tierlist .titem__time img:nth-child(1){
+.movedown{
     transform: rotateX(180deg)
 }
-.tierlist .titem__time img:nth-child(1):hover{
-    transform: scale(1.05) rotateX(180deg);
+.movedown:hover{
+    transform: scale(1.05) rotateX(180deg) !important;
 }
 .tierlist .titem__time{
     gap: 10px;
