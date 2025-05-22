@@ -17,31 +17,25 @@ import Note from "./pages/Notebook/Note"
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
-function App() {
-  if(!localStorage.getItem("magma-clock")) localStorage.setItem("magma-clock", "24")
-  if(!localStorage.getItem("magma-quotes")) localStorage.setItem("magma-quotes", "true")
-  if(!localStorage.getItem("magma-darkness")) localStorage.setItem("magma-darkness", "20")
+export default function App() {
+  let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", "ua"], ["magma-theme", "light"], ["magma-name", "user"], ["settings-bg", "0"], ["settings-customize-theme", "not choosed"]]
+
+  for(let i = 0; i < array.length; i++){
+    if(!localStorage.getItem(array[i][0])) localStorage.setItem(array[i][0], array[i][1])
+  }
 
   let location = useLocation()
-  let currentPath = location.pathname;
 
   const choosedBackground = localStorage.getItem("settings-bg")
-  const customizeBackground = localStorage.getItem("settings-customize-theme")
-  if(choosedBackground === null) localStorage.setItem("settings-bg", "0");
-  if(!localStorage.getItem("settings-lang")) localStorage.setItem("settings-lang", "ua");
-  if(!localStorage.getItem("settings-theme")) localStorage.setItem("settings-theme", "light");
-  if(!localStorage.getItem("magma-name")) localStorage.setItem("magma-name", "user");
-  if(customizeBackground === null) localStorage.setItem("settings-customize-theme", "not choosed");
   const root = document.getElementById("root")
   root.style.setProperty(`--darkness`, `rgba(0,0,0,${+localStorage.getItem("magma-darkness") / 100})`)
   useEffect(() => {
-    if(choosedBackground !== "100") root.classList.add(`theme${choosedBackground}`)
+    if(choosedBackground !== "100") root.classList.add(`theme${choosedBackground}`) // 100 - своя тем
       else {
         root.style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
       }
   }, [])
-  console.log(currentPath)
-  if(currentPath.includes("about")) root.classList.add(`theme0`)
+  if(location.pathname.includes("about")) root.classList.add(`theme0`)
 
   console.log("App render");
 
@@ -49,7 +43,7 @@ function App() {
 
   const now = new Date()
   const activeTheme = localStorage.getItem("settings-theme")
-  let wrapper = document.querySelector(".wrapper"); // короч якщо в localStorage тема обрана чорною, то даємо клас dark, інакше прибираємо
+  let wrapper = document.querySelector(".wrapper");
   activeTheme === "dark" || (activeTheme === "auto" && now.getHours() >= 18) ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
 
   const [isLoading, setIsLoading] = useState(true);
@@ -85,5 +79,3 @@ function App() {
     );
   }
 }
-
-export default App;

@@ -27,10 +27,9 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 export default function Footer() {
     const [isPause, setIsPause] = useState(false)
-    console.log(isPause)
 
     let location = useLocation()
-    let currentPath = location.pathname;
+    let currentPath = location.pathname
 
     const [array, setArray] = useState([])
     const audioRefs = useRef([]);
@@ -53,10 +52,10 @@ export default function Footer() {
     }, [array, isPause]);
 
     const sounds = [rainSound, thunderSound, waveSound, campfireSound, windSound, marchSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, scarySound]
-
     function MyLink({to, children}){
+        console.log(currentPath, to)
         return (
-            <div className={currentPath === to ? "mylink active" : "mylink"}>
+            <div className={(currentPath.includes(to) && (currentPath !== "/" && to !== "/")) || (currentPath === "/" && to === "/") ? "mylink active" : "mylink"}>
                 <Link to={to}>{children}</Link>
             </div>
         )

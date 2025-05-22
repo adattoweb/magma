@@ -85,5 +85,7 @@
 - 💾 **Optimize audio** for a better work (84mb --> 13mb).
 ### 0.6.3
 - 🎨 **Added ability to change background darkness**.
+### 0.6.4
+- **Improved structure for App.jsx**.
 
 🚀 **Keep tracking & stay awesome!** 🚀

@@ -55,7 +55,7 @@ export default function Settings({ onChange }) {
         )
     }
     const [isTwelve, setIsTwelve] = useState(localStorage.getItem("magma-clock") === "12")
-    const [isQuotesEnabled, setIsQuotesEnabled] = useState(localStorage.getItem("magma-quotes") === "enabled")
+    const [isQuotesEnabled, setIsQuotesEnabled] = useState(localStorage.getItem("magma-quotes") === "true")
     const [darkness, setDarkness] = useState(+localStorage.getItem("magma-darkness"))
 
     return (
