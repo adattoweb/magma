@@ -84,6 +84,9 @@
     cursor: pointer;
     transition: 0.3s ease all;
 }
+.settings__theme input{
+    width: 100px;
+}
 .wrapper.dark .settings__auto{
     filter: invert(1)
 }

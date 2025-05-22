@@ -34,7 +34,7 @@ input {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--darkness, rgba(0,0,0,0.2));
   height: 100%;
 }
 body .wrapper.theme0  {

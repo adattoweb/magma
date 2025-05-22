@@ -83,5 +83,7 @@
 - ⏸️ **Added pause and reset button** in sound menu.  
 ### 0.6.2
 - 💾 **Optimize audio** for a better work (84mb --> 13mb).
+### 0.6.3
+- 🎨 **Added ability to change background darkness**.
 
 🚀 **Keep tracking & stay awesome!** 🚀

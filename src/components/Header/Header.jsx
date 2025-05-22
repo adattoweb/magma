@@ -5,7 +5,6 @@ import "./Header.css";
 import { useEffect, useState } from "react";
 
 export default function Header() {
-    if(!localStorage.getItem("magma-quotes")) localStorage.setItem("magma-quotes", "true")
     let isQuotesEnabled = localStorage.getItem("magma-quotes") === "true"
     const [rand, setRand] = useState(0)
     useEffect(() => {

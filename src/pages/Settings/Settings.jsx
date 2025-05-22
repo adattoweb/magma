@@ -54,10 +54,9 @@ export default function Settings({ onChange }) {
             </>
         )
     }
-    if(!localStorage.getItem("magma-clock")) localStorage.setItem("magma-clock", "24")
     const [isTwelve, setIsTwelve] = useState(localStorage.getItem("magma-clock") === "12")
-    if(!localStorage.getItem("magma-quotes")) localStorage.setItem("magma-quotes", "true")
     const [isQuotesEnabled, setIsQuotesEnabled] = useState(localStorage.getItem("magma-quotes") === "enabled")
+    const [darkness, setDarkness] = useState(+localStorage.getItem("magma-darkness"))
 
     return (
         <div className="settings content">
@@ -117,6 +116,14 @@ export default function Settings({ onChange }) {
                             }}>
                                 {isQuotesEnabled ? "Enabled" : "Disabled"}
                             </div>
+                        </div>
+                        <div className="settings__theme settings__lang">
+                            <p className="settings__name">{isEn ? "Background darkness" : "Темнота фону:"}</p>
+                            <input type="range" min="5" max="30" step="1" value={darkness} onChange={(e) => {
+                                setDarkness(e.target.value)
+                                localStorage.setItem("magma-darkness", e.target.value)
+                                onChange()
+                            }}/>
                         </div>
                     </SettingsBlock>
                         <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>

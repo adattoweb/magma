@@ -18,6 +18,9 @@ import Note from "./pages/Notebook/Note"
 import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
+  if(!localStorage.getItem("magma-clock")) localStorage.setItem("magma-clock", "24")
+  if(!localStorage.getItem("magma-quotes")) localStorage.setItem("magma-quotes", "true")
+  if(!localStorage.getItem("magma-darkness")) localStorage.setItem("magma-darkness", "20")
 
   let location = useLocation()
   let currentPath = location.pathname;
@@ -25,18 +28,20 @@ function App() {
   const choosedBackground = localStorage.getItem("settings-bg")
   const customizeBackground = localStorage.getItem("settings-customize-theme")
   if(choosedBackground === null) localStorage.setItem("settings-bg", "0");
-  if(localStorage.getItem("settings-lang") === null) localStorage.setItem("settings-lang", "ua");
-  if(localStorage.getItem("settings-theme") === null) localStorage.setItem("settings-theme", "light");
-  if(localStorage.getItem("magma-name") === null) localStorage.setItem("magma-name", "user");
+  if(!localStorage.getItem("settings-lang")) localStorage.setItem("settings-lang", "ua");
+  if(!localStorage.getItem("settings-theme")) localStorage.setItem("settings-theme", "light");
+  if(!localStorage.getItem("magma-name")) localStorage.setItem("magma-name", "user");
   if(customizeBackground === null) localStorage.setItem("settings-customize-theme", "not choosed");
+  const root = document.getElementById("root")
+  root.style.setProperty(`--darkness`, `rgba(0,0,0,${+localStorage.getItem("magma-darkness") / 100})`)
   useEffect(() => {
-    if(choosedBackground !== "100") document.getElementById("root").classList.add(`theme${choosedBackground}`)
+    if(choosedBackground !== "100") root.classList.add(`theme${choosedBackground}`)
       else {
-        document.getElementById("root").style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
+        root.style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
       }
   }, [])
   console.log(currentPath)
-  if(currentPath.includes("about")) document.getElementById("root").classList.add(`theme0`)
+  if(currentPath.includes("about")) root.classList.add(`theme0`)
 
   console.log("App render");
 
