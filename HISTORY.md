@@ -78,6 +78,10 @@
 ### 0.6.0
 - 🔊 **Added background sounds** — 12 different ambient tracks are now available.
 - 💬 **Added motivational quotes** to inspire and support your productivity.
-
+### 0.6.1
+- 🎨 **Added an autotheme mode** for better user experience.
+- ⏸️ **Added pause and reset button** in sound menu.  
+### 0.6.2
+= 💾 **Optimize audio** for a better work (84mb --> 13mb).
 
 🚀 **Keep tracking & stay awesome!** 🚀

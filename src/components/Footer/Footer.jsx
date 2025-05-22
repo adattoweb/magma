@@ -9,18 +9,18 @@ import settings from '../../assets/settings.png'
 import calendar from '../../assets/calendar.png'
 import audio from '../../assets/audio.png'
 
-import rainSound from '../../assets/audio/rain.wav';
-import thunderSound from '../../assets/audio/thunder.wav';
-import waveSound from '../../assets/audio/wave.wav';
-import campfireSound from '../../assets/audio/campfire.wav';
-import windSound from '../../assets/audio/wind.wav';
-import marchSound from '../../assets/audio/march.wav';
-import keyboardSound from '../../assets/audio/keyboard.wav';
-import trainSound from '../../assets/audio/train.wav';
-import forestSound from '../../assets/audio/forest.wav';
-import forest2Sound from '../../assets/audio/forest2.wav';
-import riverSound from '../../assets/audio/river.wav';
-import scarySound from '../../assets/audio/scary.wav';
+import rainSound from '../../assets/audio/rain.mp3';
+import thunderSound from '../../assets/audio/thunder.mp3';
+import waveSound from '../../assets/audio/wave.mp3';
+import campfireSound from '../../assets/audio/campfire.mp3';
+import windSound from '../../assets/audio/wind.mp3';
+import marchSound from '../../assets/audio/march.mp3';
+import keyboardSound from '../../assets/audio/keyboard.mp3';
+import trainSound from '../../assets/audio/train.mp3';
+import forestSound from '../../assets/audio/forest.mp3';
+import forest2Sound from '../../assets/audio/forest2.mp3';
+import riverSound from '../../assets/audio/river.mp3';
+import scarySound from '../../assets/audio/scary.mp3';
 
 import Audio from './components/Audio';
 import { Link, useLocation } from "react-router-dom";
