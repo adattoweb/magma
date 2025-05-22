@@ -82,6 +82,6 @@
 - 🎨 **Added an autotheme mode** for better user experience.
 - ⏸️ **Added pause and reset button** in sound menu.  
 ### 0.6.2
-= 💾 **Optimize audio** for a better work (84mb --> 13mb).
+- 💾 **Optimize audio** for a better work (84mb --> 13mb).
 
 🚀 **Keep tracking & stay awesome!** 🚀
