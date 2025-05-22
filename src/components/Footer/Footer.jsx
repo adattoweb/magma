@@ -26,6 +26,9 @@ import Audio from './components/Audio';
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
 export default function Footer() {
+    const [isPause, setIsPause] = useState(false)
+    console.log(isPause)
+
     let location = useLocation()
     let currentPath = location.pathname;
 
@@ -37,19 +40,17 @@ export default function Footer() {
             array.map(el => {
                 if(el.id === index) {
                     ref.volume = el.volume / 100
-                    console.log(ref.volume)
-                    console.log(el.volume)
                 }
             })
-
-            if (array.some(el => el.id === index)) {
+            if (array.some(el => el.id === index) && !isPause) {
                 ref.play();
-            } else {
+            }
+            else {
                 ref.pause();
                 ref.currentTime = 0;
             }
         });
-    }, [array]);
+    }, [array, isPause]);
 
     const sounds = [rainSound, thunderSound, waveSound, campfireSound, windSound, marchSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, scarySound]
 
@@ -64,7 +65,7 @@ export default function Footer() {
         <div className='footer'>
             {sounds.map((el, index) => <audio key={index} ref={el => audioRefs.current[index] = el} src={el} preload="auto" loop/>)}
             <div className="footer__left">
-                <Audio array={array} setArray={(e) => setArray(e)}><img className="footer__img" src={audio} alt="audio" /></Audio>
+                <Audio array={array} setArray={(e) => setArray(e)} isPause={isPause} setIsPause={setIsPause}><img className="footer__img" src={audio} alt="audio" /></Audio>
             </div>
             <div className="footer__right">
                 <div className="footer__union">

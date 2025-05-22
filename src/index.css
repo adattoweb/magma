@@ -37,7 +37,7 @@ input {
   background: rgba(0, 0, 0, 0.2);
   height: 100%;
 }
-.wrapper.theme0  {
+body .wrapper.theme0  {
   background-image: url("./assets/theme0.jpg") !important;
   background-position: top;
  }

@@ -10,15 +10,17 @@ import forest from '../../../assets/forest.png'
 import river from '../../../assets/river.png'
 import scary from '../../../assets/scary.png'
 
+import pause from '../../../assets/pause2.png'
+import reset from '../../../assets/reset.png'
+import start from '../../../assets/start.png'
 
 import { useState } from "react"
 
-export default function Audio({ children, array, setArray }) {
+export default function Audio({ children, array, setArray, isPause, setIsPause }) {
     console.log(array)
     const isEn = localStorage.getItem("settings-lang") === "en";
     function ModalItem({ name, img, alt, id }) {
         let isActive = array.some(el => el.id === id)
-        console.log(array)
         const [localVolume, setLocalVolume] = useState(array.find(el => el.id === id)?.volume ?? 50)
         return (
             <div className={isActive ? "audio__item active" : "audio__item"}>
@@ -63,7 +65,10 @@ export default function Audio({ children, array, setArray }) {
     return (
         <div className="audio">
             {isActive && <div className="audio__modal newblock">
-                <div className="audio__header"><h3>{isEn ? "Sounds" : "Звуки"}</h3></div>
+                <div className="audio__header"><h3>{isEn ? "Sounds" : "Звуки"} <div className="audio__images"><img src={isPause ? start : pause} alt="pause" onClick={() => {
+                    setIsPause(!isPause)
+
+                }}/> <img src={reset} alt="reset audio" onClick={() => setArray([])}/></div></h3></div>
                 <div className="audio__list">
                     {items.map((el, index) => {
                         return <ModalItem key={index} id={index} name={el[0]} alt={el[0]} img={el[1]} />

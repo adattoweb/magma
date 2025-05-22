@@ -15,9 +15,12 @@ import Goals from "./pages/Goals/Goals";
 import Calendar from "./pages/Calendar/Calendar";
 import Note from "./pages/Notebook/Note"
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
+
+  let location = useLocation()
+  let currentPath = location.pathname;
 
   const choosedBackground = localStorage.getItem("settings-bg")
   const customizeBackground = localStorage.getItem("settings-customize-theme")
@@ -32,13 +35,17 @@ function App() {
         document.getElementById("root").style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
       }
   }, [])
+  console.log(currentPath)
+  if(currentPath.includes("about")) document.getElementById("root").classList.add(`theme0`)
 
   console.log("App render");
 
   const [isRender, setIsRender] = useState(false);
 
+  const now = new Date()
+  const activeTheme = localStorage.getItem("settings-theme")
   let wrapper = document.querySelector(".wrapper"); // короч якщо в localStorage тема обрана чорною, то даємо клас dark, інакше прибираємо
-  localStorage.getItem("settings-theme") === "dark" ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
+  activeTheme === "dark" || (activeTheme === "auto" && now.getHours() >= 18) ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
 
   const [isLoading, setIsLoading] = useState(true);
   const [isMenu, setIsMenu] = useState(false);

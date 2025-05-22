@@ -101,6 +101,19 @@
 .audio__header h3{
     font-size: 18px;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.audio__images{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.audio__images img{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
 }
 .audio__list{
     width: 100%;

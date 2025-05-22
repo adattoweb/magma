@@ -4,6 +4,7 @@ import black from "../../assets/black.png"
 import general from "../../assets/home.png"
 import themeIcon from "../../assets/themeIcon.png"
 import info from "../../assets/info.png"
+import update from "../../assets/update.png"
 
 import { useState } from 'react'
 
@@ -86,6 +87,10 @@ export default function Settings({ onChange }) {
                                 }} />
                                 <img src={black} onClick={() => {
                                     localStorage.setItem("settings-theme", "dark");
+                                    onChange();
+                                }} />
+                                <img className="settings__auto" src={update} onClick={() => {
+                                    localStorage.setItem("settings-theme", "auto");
                                     onChange();
                                 }} />
                             </div>
