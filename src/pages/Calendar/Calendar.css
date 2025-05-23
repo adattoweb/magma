@@ -1,7 +1,7 @@
 .calendar__content{
     border-radius: 15px;
     width: 80vw;
-    height: 600px;
+    height: 500px;
     display: flex;
     gap: 20px;
     padding: 15px 20px;
@@ -17,8 +17,8 @@
     padding: 10px 15px;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 300px;
-    min-width: 300px;
+    width: 250px;
+    min-width: 250px;
 }
 .wrapper.dark .calendarday{
     color: #fff;
@@ -124,7 +124,7 @@
     align-items: center;
 }
 .calendaradd p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
 }

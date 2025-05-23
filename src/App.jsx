@@ -18,7 +18,7 @@ import Note from "./pages/Notebook/Note"
 import { Routes, Route, useLocation } from "react-router-dom";
 
 export default function App() {
-  let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", "ua"], ["magma-theme", "light"], ["magma-name", "user"], ["settings-bg", "0"], ["settings-customize-theme", "not choosed"]]
+  let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", "ua"], ["settings-theme", "light"], ["magma-name", "user"], ["settings-bg", "0"], ["settings-customize-theme", "not choosed"]]
 
   for(let i = 0; i < array.length; i++){
     if(!localStorage.getItem(array[i][0])) localStorage.setItem(array[i][0], array[i][1])

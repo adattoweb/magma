@@ -1,17 +1,15 @@
 import "./Settings.css"
-import white from "../../assets/white.png"
-import black from "../../assets/black.png"
 import general from "../../assets/home.png"
 import themeIcon from "../../assets/themeIcon.png"
 import info from "../../assets/info.png"
-import update from "../../assets/update.png"
-
-import { useState } from 'react'
 
 import Burger from "../../components/Burger/Burger"
 import Info from "./components/Info"
 import Carousel from "./components/Carousel"
 import SettingsBlock from "./components/SettingsBlock"
+import Main from "./components/Main"
+
+import { useState } from 'react'
 
 
 export default function Settings({ onChange }) {
@@ -19,18 +17,6 @@ export default function Settings({ onChange }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     const [choosed, setChoosed] = useState(+localStorage.getItem("settings-bg"))
-
-    function EditNick() {
-        const [nick, setNick] = useState(localStorage.getItem("magma-name"))
-        return (
-            <input className="editnick newblock" type="text" placeholder="adattoweb123" value={nick} onChange={(e) => {
-                if (e.target.value.length < 20) {
-                    setNick(e.target.value)
-                    localStorage.setItem("magma-name", e.target.value)
-                }
-            }} />
-        )
-    }
     function TabItem({ isActive, setActive, children }) {
         return (
             <div className={isActive ? "tab__item active" : "tab__item"} onClick={setActive}>{children}</div>
@@ -54,87 +40,19 @@ export default function Settings({ onChange }) {
             </>
         )
     }
-    const [isTwelve, setIsTwelve] = useState(localStorage.getItem("magma-clock") === "12")
-    const [isQuotesEnabled, setIsQuotesEnabled] = useState(localStorage.getItem("magma-quotes") === "true")
-    const [darkness, setDarkness] = useState(+localStorage.getItem("magma-darkness"))
 
     return (
         <div className="settings content">
             <div className="settings__main newblock">
                 <Tab />
                 <div>
-                    {tabSelect === 0 && <><SettingsBlock header={isEn ? "Main Settings" : "Основні налаштування"}>
-                        <div className="settings__lang">
-                            <p className="settings__name">{isEn ? "Language:" : "Мова:"}</p>
-                            <div className="settings__select">
-                                <p className="lang__select" onClick={() => {
-                                    localStorage.setItem("settings-lang", "en");
-                                    onChange();
-                                }}>EN</p>
-                                <p className="lang__select" onClick={() => {
-                                    localStorage.setItem("settings-lang", "ua");
-                                    onChange();
-                                }}>UA</p>
-                            </div>
-                        </div>
-                        <div className="settings__theme settings__lang">
-                            <p className="settings__name">{isEn ? "Theme:" : "Тема:"}</p>
-                            <div className="settings__select">
-                                <img src={white} onClick={() => {
-                                    localStorage.setItem("settings-theme", "light");
-                                    onChange();
-                                }} />
-                                <img src={black} onClick={() => {
-                                    localStorage.setItem("settings-theme", "dark");
-                                    onChange();
-                                }} />
-                                <img className="settings__auto" src={update} onClick={() => {
-                                    localStorage.setItem("settings-theme", "auto");
-                                    onChange();
-                                }} />
-                            </div>
-                        </div>
-                        <div className="settings__theme settings__lang">
-                            <p className="settings__name">{isEn ? "Clock:" : "Годинник:"}</p>
-                            <div className="settings__select">
-                                <p className={isTwelve ? "clock__item active" : "clock__item"} onClick={() => {
-                                    setIsTwelve(true)
-                                    localStorage.setItem("magma-clock", "12")
-                                }}>12</p>
-                                <p className={isTwelve ? "clock__item" : "clock__item active"} onClick={() => {
-                                    setIsTwelve(false)
-                                    localStorage.setItem("magma-clock", "24")
-                                }}>24</p>
-                            </div>
-                        </div>
-                        <div className="settings__theme settings__lang">
-                            <p className="settings__name">{isEn ? "Quotes:" : "Цитати:"}</p>
-                            <div className="settings__btn" onClick={() => {
-                                setIsQuotesEnabled(!isQuotesEnabled)
-                                localStorage.setItem("magma-quotes", `${!isQuotesEnabled ? "true" : "false"}`)
-                                onChange()
-                            }}>
-                                {isQuotesEnabled ? "Enabled" : "Disabled"}
-                            </div>
-                        </div>
-                        <div className="settings__theme settings__lang">
-                            <p className="settings__name">{isEn ? "Background darkness" : "Темнота фону:"}</p>
-                            <input type="range" min="5" max="30" step="1" value={darkness} onChange={(e) => {
-                                setDarkness(e.target.value)
-                                localStorage.setItem("magma-darkness", e.target.value)
-                                onChange()
-                            }}/>
-                        </div>
-                    </SettingsBlock>
-                        <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>
-                            <EditNick />
-                        </SettingsBlock></>}
+                    {tabSelect === 0 && <Main onChange={onChange}/>}
                     {tabSelect === 1 && <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}>
-                        <Carousel choosed={choosed} setChoosed={setChoosed}/>
+                        <Carousel choosed={choosed} setChoosed={setChoosed} />
                     </SettingsBlock>}
                     {tabSelect === 2 && <>
                         <SettingsBlock>
-                            <Info/>
+                            <Info />
                         </SettingsBlock>
                         <SettingsBlock header={isEn ? "Version" : "Версія"}>
                             <p className="settings__name">{isEn ? "Current version: Magma Local 0.5.5" : "Поточна версія: Magma Local 0.5.5"}</p>

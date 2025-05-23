@@ -86,6 +86,7 @@
 ### 0.6.3
 - 🎨 **Added ability to change background darkness**.
 ### 0.6.4
-- **Improved structure for App.jsx**.
-
+- 💾 **Improved structure for App.jsx**.
+### 0.6.5
+- 💾 **Improved structure settings page**.
 🚀 **Keep tracking & stay awesome!** 🚀

@@ -4,11 +4,15 @@
 .settings__main{
     padding: 10px 15px 20px 15px;
     width: 900px;
-    min-height: 300px;
+    min-height: 350px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+.maintab{
+    position: absolute;
+    top: 70px;
 }
 .settings__block{
     display: flex;
