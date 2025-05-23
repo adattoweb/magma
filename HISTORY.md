@@ -88,5 +88,7 @@
 ### 0.6.4
 - 💾 **Improved structure for App.jsx**.
 ### 0.6.5
-- 💾 **Improved structure settings page**.
+- 💾 **Improved settings page**.
+### 0.6.6
+- 🎨 **Improved desing analytics and calendar page**.
 🚀 **Keep tracking & stay awesome!** 🚀

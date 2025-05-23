@@ -64,7 +64,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 0px;
     width: 100%;
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
@@ -74,6 +73,7 @@
     scrollbar-width: thin;
     scrollbar-color: #000000 #ffffff;
     margin: auto;
+    min-height: 280px;
 }
 .wrapper.dark .analytics__content{
     scrollbar-width: thin;
@@ -91,7 +91,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 78px; */
+    width: 78px;
 }
 .aitem h4{
     font-size: 16px;
@@ -128,6 +128,7 @@
     gap: 10px;
     column-gap: 40px;
     padding: 15px 20px 20px 20px;
+    min-height: 100px;
 }
 .fitem{
     display: flex;

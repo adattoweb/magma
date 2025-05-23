@@ -1,6 +1,6 @@
 .calendar__content{
     border-radius: 15px;
-    width: 80vw;
+    max-width: 80vw;
     height: 500px;
     display: flex;
     gap: 20px;
@@ -17,8 +17,8 @@
     padding: 10px 15px;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 250px;
-    min-width: 250px;
+    width: 230px;
+    min-width: 230px;
 }
 .wrapper.dark .calendarday{
     color: #fff;
@@ -43,7 +43,7 @@
     gap: 15px;
     justify-content: start;
     align-items: center;
-    width: 280px;
+    width: 210px;
     padding: 5px 5px 5px 10px;
 }
 .wrapper.dark .calendaritem{
@@ -75,20 +75,22 @@
     flex-direction: column;
     gap: 3px;
     justify-content: center;
-    width: 185px;
+    width: 90%;
 }
 .calendaritem__text input{
+    width: 100%;
     outline: none;
     border-radius: 5px;
     padding-left: 2px;
     border: 2px solid #fff;
     transition: 0.3s ease all;
+    background: rgba(255,255,255,0);
 }
 .calendaritem__text input:hover{
     border: 2px solid #000;
 }
 .wrapper.dark .calendaritem__text input{
-    background: none;
+    background: rgba(255,255,255,0);
     color: #fff;
     border: 2px solid rgba(0, 0, 0, 0)
 }
@@ -239,16 +241,28 @@
         width: 85vw;
     }
 }
+@media screen and (max-width: 1600px){
+    .calendarday{
+        width: 215px;
+        min-width: 215px;
+    }
+    .calendaritem{
+        width: 200px;
+    }
+    .calendaradd p{
+        font-size: 16px;
+    }
+}
 @media screen and (max-width: 1200px){
     .calendar__content{
         width: 90vw;
     }
     .calendarday{
-        width: 230px;
-        min-width: 230px;
+        width: 200px;
+        min-width: 200px;
     }
     .calendaritem{
-        width: 210px;
+        width: 185px;
     }
     .calendaritem__text{
         width: 135px;
@@ -260,7 +274,7 @@
 }
 @media screen and (max-width: 900px){
     .calendar__content{
-        width: 100vw;
+        min-width: 100vw;
         border-radius: 0px;
     }
     .calendar__content .calendarday:nth-child(1){

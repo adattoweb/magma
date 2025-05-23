@@ -88,7 +88,7 @@ export default function Analytics() {
                     </div>
                 </div>
                 <div className='analytics__content'>
-                    {arrayKeys.length === 0 ? <p className='error'>{isEn ? "There's nothing here" : "Нажаль, тут нічого нема"}</p> : Object.keys(objectKeys).map((el, index) => {
+                     {Object.keys(objectKeys).map((el, index) => {
                         let allTime = 0;
                         if (!arrayKeys.includes(el)){
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
