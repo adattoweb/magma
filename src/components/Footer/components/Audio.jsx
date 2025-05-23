@@ -22,6 +22,14 @@ export default function Audio({ children, array, setArray, isPause, setIsPause }
     function ModalItem({ name, img, alt, id }) {
         let isActive = array.some(el => el.id === id)
         const [localVolume, setLocalVolume] = useState(array.find(el => el.id === id)?.volume ?? 50)
+        function changeArray(){
+            setArray(array.map(el => {
+                if (el.id === id) {
+                    return { id, volume: +localVolume}
+                }
+                return el
+            }))
+        }
         return (
             <div className={isActive ? "audio__item active" : "audio__item"}>
                 <div className="audio__parent" onClick={() => {
@@ -35,14 +43,7 @@ export default function Audio({ children, array, setArray, isPause, setIsPause }
                     <img src={img} alt={alt} />
                     <p>{name}</p>
                 </div>
-                <input type="range" min="0" max="100" step="5" disabled={!isActive} value={localVolume} onChange={(e) => setLocalVolume(e.target.value)} onMouseUp={() => {
-                    setArray(array.map(el => {
-                        if (el.id === id) {
-                            return { id, volume: +localVolume}
-                        }
-                        return el
-                    }))
-                }} className="audio__range" />
+                <input type="range" min="0" max="100" step="5" disabled={!isActive} value={localVolume} onChange={(e) => setLocalVolume(e.target.value)} onMouseUp={changeArray} onTouchEnd={changeArray} className="audio__range" />
             </div>
         )
     }

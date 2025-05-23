@@ -145,6 +145,9 @@
     width: 25px;
     height: 25px;
 }
+.wrapper.dark .audio__images img, .wrapper.dark .audio__item img{
+    filter: invert(1)
+}
 .audio__item p{
     font-weight: 600;
 }

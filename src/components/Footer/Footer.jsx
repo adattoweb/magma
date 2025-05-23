@@ -45,8 +45,8 @@ export default function Footer() {
                 ref.play();
             }
             else {
-                ref.pause();
-                ref.currentTime = 0;
+                if(!isPause) ref.currentTime = 0;
+                ref.pause()
             }
         });
     }, [array, isPause]);

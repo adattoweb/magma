@@ -45,8 +45,23 @@ export default function Main({ onChange }) {
                     localStorage.setItem("settings-theme", "auto")
                     localTheme !== "auto" && setIsAuto(true)
                     onChange()}}>
-                    {isAuto && localTheme === "auto" ? "Enabled" : "Disabled"}
+                    {isAuto && localTheme === "auto" ? isEn ? "Enabled" : "Увімкнено" : isEn ? "Disabled" : "Вимкнено"}
                 </div>
+            </SettingsItem>
+            <SettingsItem header={isEn ? "Quotes:" : "Цитати:"}>
+                <div className="settings__btn" onClick={() => {
+                    setIsQuotesEnabled(!isQuotesEnabled)
+                    localStorage.setItem("magma-quotes", `${!isQuotesEnabled ? "true" : "false"}`)
+                    onChange()}}>
+                    {isQuotesEnabled ? isEn ? "Enabled" : "Увімкнено" : isEn ? "Disabled" : "Вимкнено"}
+                </div>
+            </SettingsItem>
+            <SettingsItem header={isEn ? "Background darkness" : "Темнота фону:"}>
+                <input type="range" min="5" max="30" step="1" value={darkness} onChange={(e) => {
+                    setDarkness(e.target.value)
+                    localStorage.setItem("magma-darkness", e.target.value)
+                    onChange()
+                }} />
             </SettingsItem>
             <SettingsItem header={isEn ? "Clock:" : "Годинник:"}>
                 <div className="settings__select">
@@ -59,21 +74,6 @@ export default function Main({ onChange }) {
                         localStorage.setItem("magma-clock", "24")
                     }}>24</p>
                 </div>
-            </SettingsItem>
-            <SettingsItem header={isEn ? "Quotes:" : "Цитати:"}>
-                <div className="settings__btn" onClick={() => {
-                    setIsQuotesEnabled(!isQuotesEnabled)
-                    localStorage.setItem("magma-quotes", `${!isQuotesEnabled ? "true" : "false"}`)
-                    onChange()}}>
-                    {isQuotesEnabled ? "Enabled" : "Disabled"}
-                </div>
-            </SettingsItem>
-            <SettingsItem header={isEn ? "Background darkness" : "Темнота фону:"}>
-                <input type="range" min="5" max="30" step="1" value={darkness} onChange={(e) => {
-                    setDarkness(e.target.value)
-                    localStorage.setItem("magma-darkness", e.target.value)
-                    onChange()
-                }} />
             </SettingsItem>
         </SettingsBlock>
             <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>
