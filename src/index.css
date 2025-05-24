@@ -178,13 +178,8 @@ input[type="range"]{
   outline: none;
   background: none;
 }
-input[type="range"]::-webkit-slider-runnable-track {
-  background: #540707;
-  height: 6px;
-  border-radius: 5px;
-}
 
-input[type="range"]::-moz-range-track {
+input[type="range"]::-moz-range-track, input[type="range"]::-webkit-slider-runnable-track {
   height: 6px;
   background: #404040;
   border-radius: 5px;
@@ -194,15 +189,9 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
-  background: #000000;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -5px; /* центр повзунка */
 }
 
-input[type="range"]::-moz-range-thumb {
+input[type="range"]::-moz-range-thumb, input[type="range"]::-webkit-slider-thumb {
   width: 12px;
   height: 12px;
   background: #333;

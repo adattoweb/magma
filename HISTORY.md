@@ -93,4 +93,5 @@
 - 🎨 **Improved desing analytics and calendar page**.
 ### 0.6.7
 - 🛠️ **Fixed bugs** with a audio (didn't work on mobile phones).
+- 🎨 **Improved desing audio on phones**.
 🚀 **Keep tracking & stay awesome!** 🚀

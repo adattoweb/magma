@@ -184,10 +184,6 @@
         grid-template-columns: 1fr 1fr 1fr;
         max-height: 250px;
     }
-    .audio__item{
-        height: 45px;
-        padding: 4px;
-    }
 }
 @media screen and (max-width: 400px) {
     .audio__list{
