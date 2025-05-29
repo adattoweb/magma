@@ -90,15 +90,13 @@ export default function Analytics() {
                 <div className='analytics__content'>
                      {Object.keys(objectKeys).map((el, index) => {
                         let allTime = 0;
-                        if (!arrayKeys.includes(el)){
-                            return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
-                        }
                         for (let i = 0; i < objectKeys[el].length; i++) {
                             let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
                             if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
                         }
-                        if(allTime === 0) return
-
+                        if (!arrayKeys.includes(el) || allTime === 0){
+                            return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
+                        }
                         let objectTasks = {}
                         for(let i = 0; i < objectKeys[el].length; i++){
                             let nameTask = localStorage.getItem(objectKeys[el][i]).split("^")[0]

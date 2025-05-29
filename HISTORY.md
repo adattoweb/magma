@@ -96,4 +96,6 @@
 - 🎨 **Improved desing audio on phones**.
 ### 0.6.8
 - 🛠️ **Fixed bugs** with a task name on main, it didn't save.
+### 0.6.9
+- 🛠️ **Fixed bugs** and improved instructions.
 🚀 **Keep tracking & stay awesome!** 🚀

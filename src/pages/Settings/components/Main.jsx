@@ -42,8 +42,15 @@ export default function Main({ onChange }) {
             </SettingsItem>
             <SettingsItem header={isEn ? "Auto theme" : "Авто тема"}>
                 <div className="settings__btn" onClick={() => {
-                    localStorage.setItem("settings-theme", "auto")
-                    localTheme !== "auto" && setIsAuto(true)
+                    if(localTheme !== "auto"){
+                        localStorage.setItem("settings-theme", "auto")
+                        setIsAuto(true)
+                    }
+                    else {
+                        let now = new Date();
+                        (now.getHours() >= 20 || now.getHours <= 6) ? localStorage.setItem("settings-theme", "dark") : localStorage.setItem("settings-theme", "light")
+                        setIsAuto(false)
+                    }
                     onChange()}}>
                     {isAuto && localTheme === "auto" ? isEn ? "Enabled" : "Увімкнено" : isEn ? "Disabled" : "Вимкнено"}
                 </div>

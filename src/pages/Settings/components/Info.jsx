@@ -49,6 +49,34 @@ export default function Info() {
                     </>
                 )}
             </HelpBlock>
+            <HelpBlock title={isEn ? "How to Set a Custom Background Image?" : "Як встановити власне фонове зображення?"}>
+                {isEn ? (
+                    <>
+                        First, find an image you like on the internet (preferably in high resolution).
+                        <br />
+                        Right-click on the image and select “Copy image address”.
+                        <br />
+                        Then go to <b>Settings → Customization</b>, scroll to the bottom of the list and find the last input field.
+                        <br />
+                        Paste the copied link there.
+                        <br />
+                        Finally, refresh the page.
+                    </>
+                ) : (
+                    <>
+                        Спочатку знайдіть в інтернеті зображення, яке вам подобається (бажано у високій роздільній здатності).
+                        <br />
+                        Натисніть ПКМ на зображення та виберіть “Копіювати посилання на зображення”.
+                        <br />
+                        Потім відкрийте <b>Налаштування → Кастомізація</b>, прокрутіть донизу списку та знайдіть останнє поле вводу.
+                        <br />
+                        Вставте туди скопійоване посилання.
+                        <br />
+                        Нарешті, оновіть сторінку.
+                    </>
+                )}
+            </HelpBlock>
+
 
             <HelpBlock title={isEn ? "Technologies Used" : "Використані технології"}>
                 {isEn ? (

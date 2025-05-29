@@ -1,5 +1,5 @@
 export default function isValidUrl(str) {
-    const pattern = /^https?:\/\/(?:i\.)?imgur\.com\/[\w-]+\.(png|jpe?g|gif|webp)$/i;
+    const pattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
     return pattern.test(str);
 }
   

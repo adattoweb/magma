@@ -45,7 +45,7 @@ export default function App() {
   const now = new Date()
   const activeTheme = localStorage.getItem("settings-theme")
   let wrapper = document.querySelector(".wrapper");
-  activeTheme === "dark" || (activeTheme === "auto" && now.getHours() >= 20 && now.getHours <= 6) ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
+  activeTheme === "dark" || (activeTheme === "auto" && (now.getHours() >= 20 || now.getHours <= 6)) ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
 
   const [isLoading, setIsLoading] = useState(true);
   const [isMenu, setIsMenu] = useState(false);
