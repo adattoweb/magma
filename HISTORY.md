@@ -94,4 +94,6 @@
 ### 0.6.7
 - 🛠️ **Fixed bugs** with a audio (didn't work on mobile phones).
 - 🎨 **Improved desing audio on phones**.
+### 0.6.8
+- 🛠️ **Fixed bugs** with a task name on main, it didn't save.
 🚀 **Keep tracking & stay awesome!** 🚀
