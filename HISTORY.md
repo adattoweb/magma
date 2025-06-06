@@ -98,4 +98,6 @@
 - 🛠️ **Fixed bugs** with a task name on main, it didn't save.
 ### 0.6.9
 - 🛠️ **Fixed bugs** and improved instructions.
+### 0.7.0
+- 🛠️ **Improved analytics**.
 🚀 **Keep tracking & stay awesome!** 🚀

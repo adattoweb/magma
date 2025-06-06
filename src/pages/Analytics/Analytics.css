@@ -113,6 +113,7 @@
     display: flex;
     flex-direction: column;
     width: 40px;
+    justify-content: end;
 }
 .aitem__color{
     width: 40px;

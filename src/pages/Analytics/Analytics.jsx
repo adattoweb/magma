@@ -1,13 +1,13 @@
 import "./Analytics.css"
-import Dropdown from "./components/Dropdown";
+
 import triangle from "../../assets/triangle.png";
 import sortTrackers from "./helpers/sortTrackers"
 import diffDays from "./helpers/diffDays"
 import uniqueArray from "./helpers/uniqueArray";
 
 import AnalyticsBlock from "./components/AnalyticsBlock";
-import AnalyticsItem from "./components/AnalyticsItem"
 import FooterItem from "./components/FooterItem"
+import Dropdown from "./components/Dropdown";
 
 import { useState, useRef } from "react";
 
@@ -67,11 +67,27 @@ export default function Analytics() {
     const timeHour = (Math.floor(timeAll / 3600) + "").padStart(2, "0"); // Вираховуємо години
     const timeMin = (Math.floor((timeAll % 3600) / 60) + "").padStart(2, "0"); // Вираховуємо хвилини
 
+    let max = 0;
+
+    function findAllTime(el){
+        let allTime = 0;
+        for (let i = 0; i < objectKeys[el].length; i++) {
+            let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
+            if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
+        }
+        return allTime
+    }
+
+    Object.keys(objectKeys).map(el => {
+        let allTime = findAllTime(el)
+        if(allTime > max) max = allTime
+    })
+
     return (
         <div className={+days === 14 ? `analytics content bigAnal` : `analytics content`}>
             <div className='analytics__block newblock'>
                 <div className='analytics__header'>
-                    <p className='analytics__time'>{isEn ? "Total:" : "Всього:"} {timeHour}:{timeMin} </p>
+                    <p className='analytics__time'>{isEn ? "Total" : "Всього"} {timeHour}:{timeMin} </p>
                     <Dropdown changeProject={(el) => setProject(el)} startValue={"Всі"} />
                     <div className='analytics__action'>
                         <p>{(page.current - 1) * -1}</p>
@@ -89,11 +105,9 @@ export default function Analytics() {
                 </div>
                 <div className='analytics__content'>
                      {Object.keys(objectKeys).map((el, index) => {
-                        let allTime = 0;
-                        for (let i = 0; i < objectKeys[el].length; i++) {
-                            let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
-                            if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
-                        }
+                        let allTime = findAllTime(el);
+                        if(allTime > max) max = allTime
+                        console.log(allTime, max)
                         if (!arrayKeys.includes(el) || allTime === 0){
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
                         }
@@ -108,18 +122,7 @@ export default function Analytics() {
                         console.log(Object.values(objectKeys))
 
                         console.log(objectTasks)
-                        return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight}>{
-                            Object.keys(objectTasks).map(NU => 
-                                objectTasks[NU].map(key => {
-                                    let arrLocal = localStorage.getItem(key).split("^");
-                                    let time = +arrLocal[4];
-                                    if (time === 0) return;
-                                    let elProject = arrLocal[1];
-                                    console.log(objectKeys)
-                                    if (elProject !== project && project !== "Всі") return;
-                                    return <AnalyticsItem key={key} local={localStorage.getItem(key)} allTime={allTime} maxHeight={maxHeight} uniqueArr={uniqueArr} />;
-                                })
-                            )}</AnalyticsBlock>;
+                        return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project} uniqueArr={uniqueArr}/>
                     })}
                 </div>
                 <div className='analytics__footer'>
