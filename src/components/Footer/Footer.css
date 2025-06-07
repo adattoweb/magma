@@ -88,7 +88,7 @@
     flex-direction: column;
     gap: 5px;
     border-radius: 10px;
-    width: 500px;
+    width: 550px;
     bottom: 60px;
     z-index: 1000;
 }
@@ -185,7 +185,7 @@
         max-height: 250px;
     }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     .audio__list{
         grid-template-columns: 1fr 1fr;
     }
