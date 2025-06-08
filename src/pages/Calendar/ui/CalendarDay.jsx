@@ -29,13 +29,7 @@ export default function CalendarDay({ date, keyArr, onChange }) {
     <div className="calendarday">
         <h4 className="calendarday__header">{newDate}, {displayHeader}</h4>
         <div className="calendarlist">
-            {keyArr.map(el => {
-                let array = el.split("@")[1].split("^");
-                let index = el.split("@")[0].split("-")[2];
-                console.log(index, array);
-                let isActive = localStorage.getItem(el) === "true" ? true : false;
-                return <CalendarItem index={index} key={el} elKey={el} name={array[0]} desc={array[1]} isActive={isActive} />;
-            })}
+            {keyArr.map(el => <CalendarItem key={el} elKey={el} />)}
         </div>
         <div className="calendaradd">
             <p onClick={() => setIsOpenAdd(!isOpenAdd)}>+ {isEn ? "Add Task" : "Додати задачу"}</p>

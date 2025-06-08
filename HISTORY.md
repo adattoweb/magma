@@ -98,10 +98,14 @@
 - 🛠️ **Fixed bugs** with a task name on main, it didn't save.
 ### 0.6.9
 - 🛠️ **Fixed bugs** and improved instructions.
-### 0.7.0
+### 0.6.10
 - 🛠️ **Improved analytics**.
-### 0.7.1
+### 0.6.11
 - 🎨 **A checkmark has been added** in the calendar to indicate a completed task.
-### 0.7.2
+### 0.6.12
 - 🔊 **Added a new background sounds** — many different ambient tracks are now available.
+### 0.7.0
+- ⏱️ Added the ability to track time for tasks in the calendar.
+- 🚫 Disabled image dragging when clicking and holding on them.
+- 🧱 Improved the calendar's structure from a development perspective.
 🚀 **Keep tracking & stay awesome!** 🚀

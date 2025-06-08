@@ -4,6 +4,7 @@ import formatDate from "../helpers/formatDate"
 import AnalyticsItem from "./AnalyticsItem"
 
 export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueArr }) {
+    const dateArr = date.split('.')
     function BlockLayout({ children }) {
         return (
             <div className="aitem">
@@ -12,7 +13,7 @@ export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, 
                 </div>
                 <div className="aitem__info">
                     <h3>{conSecTime(allTime)}</h3>
-                    <h3>{formatDate(date)}</h3>
+                    <h3>{`${dateArr[0].padStart(2, "0")}.${dateArr[1].padStart(2, "0")}`}, {formatDate(date)}</h3>
                 </div>
             </div>
         )

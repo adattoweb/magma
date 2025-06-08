@@ -1,8 +1,9 @@
+import pause from "../../../assets/pause.png";
+import stoppause from "../../../assets/pause2.png";
+import start from "../../../assets/start.png";
+
 import { useState, useEffect } from "react";
 import formatTime from "../../../helpers/formatTime";
-import pause from "../../../assets/pause.png";
-import stoppause from "../../../assets/stoppause.png";
-import start from "../../../assets/start.png";
 
 export default function Start({ changeTime, addItem, devAdd }) {
     const [isTimeRunning, setIsTimeRunning] = useState(false);
@@ -25,7 +26,7 @@ export default function Start({ changeTime, addItem, devAdd }) {
     return (
         <div className="trackers__start">
             <p>{formatTime(time)}</p>
-            <img onClick={() => {
+            <img draggable={false} onClick={() => {
                 setIsTimeRunning(!isTimeRunning)
                 if(!isTimeRunning){
                     const now = new Date();
@@ -33,7 +34,7 @@ export default function Start({ changeTime, addItem, devAdd }) {
                 }
             }} src={isTimeRunning ? stoppause : start} alt="почати" onDragOver={devAdd} />
             {time > 0 &&
-                <img onClick={() => {
+                <img draggable={false} onClick={() => {
                     addItem();
                     setTime(0);
                     setIsTimeRunning(false);

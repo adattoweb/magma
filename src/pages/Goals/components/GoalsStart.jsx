@@ -53,7 +53,7 @@ export default function TrackerStart({ update }) {
             </div>
             <div className="trackers__start">
                 <img 
-                    src={start} 
+                    draggable={false} src={start} 
                     alt={isEn ? "Start" : "Почати"} 
                     onClick={() => {
                         if((min + "").length > 0 && (max + "").length > 0){

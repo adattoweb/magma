@@ -21,7 +21,6 @@ import forest2Sound from '../../assets/audio/forest2.mp3';
 import relaxingSound from '../../assets/audio/relaxing.mp3';
 import relaxing2Sound from '../../assets/audio/relaxing2.mp3';
 import riverSound from '../../assets/audio/river.mp3';
-import urbanAmbienceSound from '../../assets/audio/urban-ambience.mp3';
 import rain2Sound from '../../assets/audio/rain2.mp3';
 import nightingaleSound from '../../assets/audio/nightingale.mp3';
 import studyAmbienceSound from '../../assets/audio/study-ambience.mp3';
@@ -29,6 +28,7 @@ import happySantaSound from '../../assets/audio/happy-santa.mp3';
 import snowAmbienceSound from '../../assets/audio/snow-ambience.mp3';
 import pianoSound from '../../assets/audio/piano.mp3';
 import piano2Sound from '../../assets/audio/piano2.mp3';
+import piano3Sound from '../../assets/audio/piano3.mp3';
 
 
 import Audio from './components/Audio';
@@ -60,32 +60,32 @@ export default function Footer() {
         });
     }, [array, isPause]);
 
-    const sounds = [rainSound, rain2Sound, thunderSound, waveSound, campfireSound, windSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, relaxingSound, relaxing2Sound, urbanAmbienceSound, nightingaleSound, studyAmbienceSound, happySantaSound, snowAmbienceSound, pianoSound, piano2Sound]
+    const sounds = [rainSound, rain2Sound, thunderSound, waveSound, campfireSound, windSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, relaxingSound, relaxing2Sound, nightingaleSound, studyAmbienceSound, happySantaSound, snowAmbienceSound, pianoSound, piano2Sound, piano3Sound]
 
     function MyLink({to, children}){
         console.log(currentPath, to)
         return (
             <div className={(currentPath.includes(to) && (currentPath !== "/" && to !== "/")) || (currentPath === "/" && to === "/") ? "mylink active" : "mylink"}>
-                <Link to={to}>{children}</Link>
+                <Link to={to} draggable={false}>{children}</Link>
             </div>
         )
     }
     return (
         <div className='footer'>
-            {sounds.map((el, index) => <audio key={index} ref={el => audioRefs.current[index] = el} src={el} preload="auto" loop/>)}
+            {sounds.map((el, index) => <audio key={index} ref={el => audioRefs.current[index] = el} src={el} preload="none" loop/>)}
             <div className="footer__left">
-                <Audio array={array} setArray={(e) => setArray(e)} isPause={isPause} setIsPause={setIsPause}><img className="footer__img" src={audio} alt="audio" /></Audio>
+                <Audio array={array} setArray={(e) => setArray(e)} isPause={isPause} setIsPause={setIsPause}><img draggable={false} className="footer__img" src={audio} alt="audio" /></Audio>
             </div>
             <div className="footer__right">
                 <div className="footer__union">
-                    <MyLink to="/"><img className="footer__img" src={home} alt="home" /></MyLink>
-                    <MyLink to="/trackers"><img className="footer__img" src={time} alt="trackers" /></MyLink>
-                    <MyLink to="/calendar"><img className="footer__img" src={calendar} alt="calendar" /></MyLink>
-                    <MyLink to="/analytics"><img className="footer__img" src={anal1} alt="analytics" /></MyLink>
+                    <MyLink to="/"><img className="footer__img" src={home} alt="home" draggable={false}/></MyLink>
+                    <MyLink to="/trackers"><img className="footer__img" src={time} alt="trackers" draggable={false}/></MyLink>
+                    <MyLink to="/calendar"><img className="footer__img" src={calendar} alt="calendar" draggable={false}/></MyLink>
+                    <MyLink to="/analytics"><img className="footer__img" src={anal1} alt="analytics" draggable={false}/></MyLink>
                 </div>
-                <MyLink to="/goals"><img className="footer__img" src={goal} alt="goals" /></MyLink>
-                <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" /></MyLink>
-                <MyLink to="/settings"><img className="footer__img" src={settings} alt="settings" /></MyLink>
+                <MyLink to="/goals"><img className="footer__img" src={goal} alt="goals" draggable={false}/></MyLink>
+                <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" draggable={false}/></MyLink>
+                <MyLink to="/settings"><img className="footer__img" src={settings} alt="settings" draggable={false}/></MyLink>
             </div>
         </div>
     );

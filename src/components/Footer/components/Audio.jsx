@@ -9,7 +9,6 @@ import forest from '../../../assets/forest.png'
 import river from '../../../assets/river.png'
 import happySanta from '../../../assets/happy-santa.png';
 import piano from '../../../assets/piano.png';
-import urbanAmbience from '../../../assets/urban-ambience.png';
 import snowAmbience from '../../../assets/snow-ambience.png';
 import studyAmbience from '../../../assets/study-ambience.png';
 import relaxing from '../../../assets/relaxing.png';
@@ -45,7 +44,7 @@ export default function Audio({ children, array, setArray, isPause, setIsPause }
                         setArray([...array, { id, volume: +localVolume }])
                     }
                 }}>
-                    <img src={img} alt={alt} />
+                    <img draggable={false} src={img} alt={alt} />
                     <p>{name}</p>
                 </div>
                 <input type="range" min="0" max="100" step="5" disabled={!isActive} value={localVolume} onChange={(e) => setLocalVolume(e.target.value)} onMouseUp={changeArray} onTouchEnd={changeArray} className="audio__range" />
@@ -67,22 +66,22 @@ export default function Audio({ children, array, setArray, isPause, setIsPause }
         ["River", river],
         ["Relaxing", relaxing],
         ["Relaxing 2", relaxing],
-        ["Urban", urbanAmbience],
         ["Nightingale", nightingale],
         ["Study", studyAmbience],
         ["Santa", happySanta],
         ["Winter", snowAmbience],
         ["Piano", piano],
-        ["Piano 2", piano]
+        ["Piano 2", piano],
+        ["Piano 3", piano]
     ];
 
     return (
         <div className="audio">
             {isActive && <div className="audio__modal newblock">
-                <div className="audio__header"><h3>{isEn ? "Sounds" : "Звуки"} <div className="audio__images"><img src={isPause ? start : pause} alt="pause" onClick={() => {
+                <div className="audio__header"><h3>{isEn ? "Sounds" : "Звуки"} <div className="audio__images"><img draggable={false} src={isPause ? start : pause} alt="pause" onClick={() => {
                     setIsPause(!isPause)
 
-                }}/> <img src={reset} alt="reset audio" onClick={() => setArray([])}/></div></h3></div>
+                }}/> <img src={reset} alt="reset audio" onClick={() => setArray([])} draggable={false}/></div></h3></div>
                 <div className="audio__list">
                     {items.map((el, index) => {
                         return <ModalItem key={index} id={index} name={el[0]} alt={el[0]} img={el[1]} />

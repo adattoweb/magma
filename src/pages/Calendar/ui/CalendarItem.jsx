@@ -1,62 +1,94 @@
 import deleteImg from "../../../assets/delete.png";
-import { useState } from 'react'
+import start from "../../../assets/start.png"
+import pause from "../../../assets/pause2.png"
+
+import { useState, useEffect, useRef } from 'react'
+import CalendarCircle from "./CalendarCircle";
+import formatTime from "../../../helpers/formatTime"
 
 
-export default function CalendarItem({ index, name, desc, isActive, elKey }) {
+export default function CalendarItem({ elKey }) {
+
     const isEn = localStorage.getItem("settings-lang") === "en";
-    
+
     const [isDisplay, setIsDisplay] = useState(true);
-    const [newIsActive, setNewIsActive] = useState(isActive);
-    const [newName, setNewName] = useState(name);
-    const [newDesc, setNewDesc] = useState(desc);
+
+    let array = ["Name", "Desc", "1991", "08", "24", "false", "0"]
+    const index = elKey.split("@")[0].split("-")[2];
+    if(isDisplay){
+        array = localStorage.getItem(elKey).split("^")
+    }
+
+    const [newName, setNewName] = useState(array[0]);
+    const [newDesc, setNewDesc] = useState(array[1]);
+    const [isActive, setIsActive] = useState(array[5] === "true");
+
+    const [isStart, setIsStart] = useState(false)
+    const time = useRef(+array[6])
+    if(Number.isNaN(time.current)) time.current = 0;
+    console.log(time.current)
+    const [timeStr, setTimeStr] = useState(formatTime(time.current))
+    const timeRef = useRef(null)
+
+    useEffect(() => {
+        let timer;
+        if (isStart) {
+            timer = setInterval(() => {
+                time.current += 1;
+                setTimeStr(formatTime(time.current))
+                editItem(newName, newDesc, isActive)
+            }, 1000);
+        } else {
+            clearInterval(timer);
+        }
+        return () => clearInterval(timer);
+    }, [isStart, time]);
 
     function editItem(actualName, actualDesc, actualIsActive) {
-        let oldArr = elKey.split("@")[1].split("^");
-        localStorage.removeItem(`calendar-item-${index}@${newName}^${newDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}`);
-        localStorage.setItem(`calendar-item-${index}@${actualName}^${actualDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}`, actualIsActive);
+        let oldArr = localStorage.getItem(elKey).split("^")
+        localStorage.setItem(`calendar-item-${index}`, `${actualName}^${actualDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}^${actualIsActive}^${time.current}`);
     }
     function deleteItem() {
-        let oldArr = elKey.split("@")[1].split("^");
-        localStorage.removeItem(`calendar-item-${index}@${newName}^${newDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}`);
+        localStorage.removeItem(`calendar-item-${index}`);
         setIsDisplay(false);
     }
     if (!isDisplay) return null;
     return (
         <div className="calendaritem">
-            <div className={newIsActive ? "calendaritem__circle active" : "calendaritem__circle"} onClick={() => {
-                setNewIsActive(!newIsActive);
-                editItem(newName, newDesc, !newIsActive);
-            }}>
-                {newIsActive && (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-  <g transform="scale(2) translate(-6, -6)">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M16.5056 9.00958C16.2128 8.71668 15.7379 8.71668 15.445 9.00958L10.6715 13.7831L8.72649 11.8381C8.43359 11.5452 7.95872 11.5452 7.66583 11.8381C7.37294 12.1309 7.37293 12.6058 7.66583 12.8987L10.1407 15.3736C10.297 15.5299 10.5051 15.6028 10.7097 15.5923C10.8889 15.5833 11.0655 15.5104 11.2023 15.3735L16.5056 10.0702C16.7985 9.77735 16.7985 9.30247 16.5056 9.00958Z"
-      fill="currentColor"
-    />
-  </g>
-    </svg>
-  )}
-            </div>
+            <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={newName} newDesc={newDesc} setIsStart={setIsStart}/>
             <div className="calendaritem__text">
                 <input type="text" value={newName} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
                     setNewName(e.target.value);
-                    editItem(e.target.value, newDesc, newIsActive);
+                    editItem(e.target.value, newDesc, isActive);
                 }} />
-                <input type="text" placeholder={isEn ? "Task Description" : "Опис задачі"} value={newDesc} onChange={(e) => {
+                <input className="calendartext__desc" type="text" placeholder={isEn ? "Task Description" : "Опис задачі"} value={newDesc} onChange={(e) => {
                     setNewDesc(e.target.value);
-                    editItem(newName, e.target.value, newIsActive);
+                    editItem(newName, e.target.value, isActive);
                 }} />
             </div>
-            <img src={deleteImg} className="calendaritem__delete" onClick={deleteItem} />
+            <div className="calendartime">
+                <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => {
+                    let value = e.target.value
+                    if(value.length > 8) return
+                    let arr = value.split(":")
+
+                    for(let i = 0; i < 3; i++){
+                        if(!arr[i]) arr[i] = 0;
+                    }
+
+                    for(let i = 0; i < arr.length; i++){
+                        if(Number.isNaN(arr[i])) arr[i] = 0
+                    }
+
+                    time.current = +arr[0] * 60 * 60 + +arr[1] * 60 + +arr[2]
+                    setTimeStr(value)
+                    editItem(newName, newDesc, isActive)
+                }} />
+                <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {
+                    if(!isActive) setIsStart(!isStart)
+                }}/>
+            </div>
+            <img src={deleteImg} className="calendaritem__delete" onClick={deleteItem} draggable={false} />
         </div>
     );
 }

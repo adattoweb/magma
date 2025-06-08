@@ -1,5 +1,4 @@
 import black from "../../../assets/black.png"
-import update from "../../../assets/update.png"
 import white from "../../../assets/white.png"
 import SettingsBlock from "./SettingsBlock"
 import SettingsItem from "./SettingsItem"
@@ -30,11 +29,11 @@ export default function Main({ onChange }) {
             </SettingsItem>
             <SettingsItem header={isEn ? "Theme:" : "Тема:"}>
                 <div className="settings__select">
-                    <img src={white} onClick={() => {
+                    <img draggable={false} src={white} onClick={() => {
                         localStorage.setItem("settings-theme", "light");
                         onChange();
                     }} />
-                    <img src={black} onClick={() => {
+                    <img draggable={false} src={black} onClick={() => {
                         localStorage.setItem("settings-theme", "dark");
                         onChange();
                     }} />

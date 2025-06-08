@@ -13,7 +13,7 @@ export default function Dropdown({changeProject, startValue, editProject}) {
     const [select, setSelect] = useState(startValue);
     return (
         <div className='dropdown' onClick={() => setIsOpen(!isOpen)}>
-            <button className='dropdown-btn'><p>{isEn && select === "Без проєкту" ? "Without project" : select}</p><img className={isOpen ? 'rotate' : ""} src={triangle} /></button>
+            <button className='dropdown-btn'><p>{isEn && select === "Без проєкту" ? "Without project" : select}</p><img draggable={false} className={isOpen ? 'rotate' : ""} src={triangle} /></button>
             {isOpen && <div className='dropdown-content'>
                 {array.map((el, index) => <p onClick={() => {
                     setSelect(el);

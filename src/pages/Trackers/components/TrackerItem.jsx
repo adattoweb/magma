@@ -60,7 +60,7 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
                 </div>
                 <div className="titem__delete">
                     <p>{formatTime(newAll)}</p>
-                    <img src={deleteImg} onClick={() => {
+                    <img draggable={false} src={deleteImg} onClick={() => {
                         localStorage.removeItem(localKey);
                         setIsRender(!isRender);
                     }} />

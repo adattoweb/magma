@@ -13,7 +13,7 @@ export default function Calendar(){
     let calendar = {};
     for(let i = 0; i < localKeys.length; i++){ // Створюємо об'єкт в якому будуть наші ключики і значення
         if(localKeys[i].includes("calendar-item")){
-            let localArr = localKeys[i].split("@")[1].split("^");
+            let localArr = localStorage.getItem(localKeys[i]).split("^")
             console.log(localArr);
             let date = localArr[2]+"." + localArr[3]+"." + localArr[4];
 

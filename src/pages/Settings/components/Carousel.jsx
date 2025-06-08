@@ -46,7 +46,7 @@ export default function Carousel({ choosed, setChoosed}) {
             <div className={choosed !== id ? "newblock customize" : "newblock customize choosed"} onClick={() => {
                 addTheme(id)
             }}>
-                <img src={isValidUrl(link) ? link : ""} alt="" />
+                <img draggable={false} src={isValidUrl(link) ? link : ""} alt="" />
                 <div className="customize__field">
                     <h4>{isEn ? "Enter a link on your background page, in more detail on information page." : "Введіть посилання на ваше фонове зображення, детальніше в інформації."}</h4>
                     <input className="newblock" type="text" value={link} onChange={(e) => {
@@ -63,7 +63,7 @@ export default function Carousel({ choosed, setChoosed}) {
             <div className={choosed === id ? "backitem newblock choosed" : "backitem newblock"} onClick={() => {
                 addTheme(id)
             }}>
-                <img src={image} />
+                <img draggable={false} src={image} />
                 <div className="backitem__footer">
                     <p>{name}</p>
                 </div>

@@ -13,7 +13,7 @@ export default function Header() {
     const isEn = localStorage.getItem("settings-lang") === "en";
     return (
         <div className="header">
-            <div className='header__logo'><Link to="/">Magma</Link></div>
+            <div className='header__logo'><Link to="/" draggable={false}>Magma</Link></div>
             {isQuotesEnabled && <div className="header__quote">«{isEn ? quotes[rand].en : quotes[rand].ua}»</div>}
         </div>
     );

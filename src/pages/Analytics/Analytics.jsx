@@ -91,11 +91,11 @@ export default function Analytics() {
                     <Dropdown changeProject={(el) => setProject(el)} startValue={"Всі"} />
                     <div className='analytics__action'>
                         <p>{(page.current - 1) * -1}</p>
-                        <img src={triangle} onClick={() => {
+                        <img draggable={false} src={triangle} onClick={() => {
                             setDays(days + 7);
                             page.current += 1;
                         }} />
-                        <img src={triangle} onClick={() => {
+                        <img draggable={false} src={triangle} onClick={() => {
                             if (page.current > 1) {
                                 setDays(days - 7);
                                 page.current -= 1;
