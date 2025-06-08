@@ -105,7 +105,7 @@
 ### 0.6.12
 - 🔊 **Added a new background sounds** — many different ambient tracks are now available.
 ### 0.7.0
-- ⏱️ Added the ability to track time for tasks in the calendar.
-- 🚫 Disabled image dragging when clicking and holding on them.
-- 🧱 Improved the calendar's structure from a development perspective.
+- ⏱️ **Added the ability to track time** for tasks in the calendar.
+- 🚫 **Disabled image dragging when** clicking and holding on them.
+- 🧱 **Improved the calendar's structure** from a development perspective.
 🚀 **Keep tracking & stay awesome!** 🚀
