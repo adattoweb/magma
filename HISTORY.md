@@ -100,4 +100,6 @@
 - 🛠️ **Fixed bugs** and improved instructions.
 ### 0.7.0
 - 🛠️ **Improved analytics**.
+### 0.7.1
+- 🎨 **A checkmark has been added** in the calendar to indicate a completed task.
 🚀 **Keep tracking & stay awesome!** 🚀
