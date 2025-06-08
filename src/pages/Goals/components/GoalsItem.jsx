@@ -44,7 +44,7 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
                     {index > 1 && <img src={arrow} onClick={() => editPosition(index - 1, index, localList, setIsRender, isRender)} alt={isEn ? "Move up" : "Перемістити вгору"} />}
                 </div>
                 <div className="titem__delete">
-                    <img src={deleteImg} onClick={() => deleteItem(index, localList, isRender, setIsRender)} alt={isEn ? "Delete" : "Видалити"} />
+                    <img draggable={false} src={deleteImg} onClick={() => deleteItem(index, localList, isRender, setIsRender)} alt={isEn ? "Delete" : "Видалити"} />
                 </div>
             </div>
         </div>
