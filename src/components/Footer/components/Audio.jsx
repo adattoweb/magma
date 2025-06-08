@@ -3,12 +3,17 @@ import thunder from '../../../assets/thunder.png'
 import wave from '../../../assets/wave.png'
 import campfire from '../../../assets/campfire.png'
 import wind from '../../../assets/wind.png'
-import march from '../../../assets/march.png'
 import keyboard from '../../../assets/keyboard.png'
 import train from '../../../assets/train.png'
 import forest from '../../../assets/forest.png'
 import river from '../../../assets/river.png'
-import scary from '../../../assets/scary.png'
+import happySanta from '../../../assets/happy-santa.png';
+import piano from '../../../assets/piano.png';
+import urbanAmbience from '../../../assets/urban-ambience.png';
+import snowAmbience from '../../../assets/snow-ambience.png';
+import studyAmbience from '../../../assets/study-ambience.png';
+import relaxing from '../../../assets/relaxing.png';
+import nightingale from '../../../assets/nightingale.png';
 
 import pause from '../../../assets/pause2.png'
 import reset from '../../../assets/reset.png'
@@ -50,17 +55,25 @@ export default function Audio({ children, array, setArray, isPause, setIsPause }
     const [isActive, setIsActive] = useState(false)
     const items = [
         ["Rain", rain],
+        ["Rain 2", rain],
         ["Thunder", thunder],
         ["Wave", wave],
         ["Campfire", campfire],
         ["Wind", wind],
-        ["March", march],
         ["Keyboard", keyboard],
         ["Train", train],
         ["Forest", forest],
         ["Forest 2", forest],
         ["River", river],
-        ["Scary", scary]
+        ["Relaxing", relaxing],
+        ["Relaxing 2", relaxing],
+        ["Urban", urbanAmbience],
+        ["Nightingale", nightingale],
+        ["Study", studyAmbience],
+        ["Santa", happySanta],
+        ["Winter", snowAmbience],
+        ["Piano", piano],
+        ["Piano 2", piano]
     ];
 
     return (

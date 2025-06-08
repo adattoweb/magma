@@ -102,4 +102,6 @@
 - 🛠️ **Improved analytics**.
 ### 0.7.1
 - 🎨 **A checkmark has been added** in the calendar to indicate a completed task.
+### 0.7.2
+- 🔊 **Added a new background sounds** — many different ambient tracks are now available.
 🚀 **Keep tracking & stay awesome!** 🚀

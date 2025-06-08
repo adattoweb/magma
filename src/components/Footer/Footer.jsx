@@ -14,13 +14,22 @@ import thunderSound from '../../assets/audio/thunder.mp3';
 import waveSound from '../../assets/audio/wave.mp3';
 import campfireSound from '../../assets/audio/campfire.mp3';
 import windSound from '../../assets/audio/wind.mp3';
-import marchSound from '../../assets/audio/march.mp3';
 import keyboardSound from '../../assets/audio/keyboard.mp3';
 import trainSound from '../../assets/audio/train.mp3';
 import forestSound from '../../assets/audio/forest.mp3';
 import forest2Sound from '../../assets/audio/forest2.mp3';
+import relaxingSound from '../../assets/audio/relaxing.mp3';
+import relaxing2Sound from '../../assets/audio/relaxing2.mp3';
 import riverSound from '../../assets/audio/river.mp3';
-import scarySound from '../../assets/audio/scary.mp3';
+import urbanAmbienceSound from '../../assets/audio/urban-ambience.mp3';
+import rain2Sound from '../../assets/audio/rain2.mp3';
+import nightingaleSound from '../../assets/audio/nightingale.mp3';
+import studyAmbienceSound from '../../assets/audio/study-ambience.mp3';
+import happySantaSound from '../../assets/audio/happy-santa.mp3';
+import snowAmbienceSound from '../../assets/audio/snow-ambience.mp3';
+import pianoSound from '../../assets/audio/piano.mp3';
+import piano2Sound from '../../assets/audio/piano2.mp3';
+
 
 import Audio from './components/Audio';
 import { Link, useLocation } from "react-router-dom";
@@ -51,7 +60,8 @@ export default function Footer() {
         });
     }, [array, isPause]);
 
-    const sounds = [rainSound, thunderSound, waveSound, campfireSound, windSound, marchSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, scarySound]
+    const sounds = [rainSound, rain2Sound, thunderSound, waveSound, campfireSound, windSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, relaxingSound, relaxing2Sound, urbanAmbienceSound, nightingaleSound, studyAmbienceSound, happySantaSound, snowAmbienceSound, pianoSound, piano2Sound]
+
     function MyLink({to, children}){
         console.log(currentPath, to)
         return (
