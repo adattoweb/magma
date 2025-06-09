@@ -157,8 +157,8 @@
     width: 100%;
     border-radius: 10px;
     margin-top: 20px;
-    padding: 10px 0px;
-    border: 2px solid #d3d3d3;
+    padding: 15px 0px 10px 0px;
+    border: 2px solid #bcbcbc;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,9 +174,10 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 90%;
 }
 .calendarform__inputs input{
-    width: 190px;
+    width: 100%;
     height: 25px;
     background-color: rgba(0,0,0,0)
 }
@@ -196,9 +197,9 @@
 }
 .calendarform__inputs textarea{
     background-color: rgba(0,0,0,0);
-    width: 190px;
-    min-width: 190px;
-    max-width: 190px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     height: 50px;
     min-height: 25px;
     max-height: 75px;
@@ -210,29 +211,45 @@
 .wrapper.dark .calendarform__inputs textarea::placeholder{
     color: #d7d7d7;
 }
-.calendarform__button{
+/* .calendarform__button{
     background-color: #000;
     border-radius: 5px;
-    font-family: "Montserrat Alternates", serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
-    transition: 0.3s ease all;
-    width: 100px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     cursor: pointer;
+    color: #fff;
+} */
+.calendar__footer {
+    width: 90%;
+    display: flex;
+    justify-content: end;
 }
+.calendarform__button{
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+/* .calendarform__button p{
+    font-family: "Montserrat Alternates", serif;
+    font-weight: 500;
+    color: inherit;
+    width: 5px;
+    height: 5px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 .wrapper.dark .calendarform__button{
-    background-color: #fff;
-    color: #000;
-
-}
-.calendarform__button:hover{
-    transform: scale(1.05)
+    /* background-color: #fff;
+    color: #000; */
+    filter: invert(1)
 }
 @media screen and (max-width: 2000px){
     .calendar__content{
@@ -268,14 +285,6 @@
     .calendaritem__circle{
         width: 15px;
         height: 15px;
-    }
-    .calendarform__inputs input{
-        width: 170px;
-    }
-    .calendarform__inputs textarea{
-        width: 170px;
-        min-width: 170px;
-        max-width: 170px;
     }
 }
 @media screen and (max-width: 900px){
