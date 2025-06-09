@@ -435,3 +435,27 @@
         width: 240px;
     }
 }
+
+/* DATA */
+.data {
+    display: flex;
+    flex-direction: column;
+}
+.data h4{
+    font-weight: 600;
+    font-size: 16px;
+}
+.data__button{
+    background-color: #b41c1c;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    font-family: "Montserrat Alternates", serif;
+    cursor: pointer;
+    margin: 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: fit-content;
+}

@@ -2,12 +2,15 @@ import "./Settings.css"
 import general from "../../assets/home.png"
 import themeIcon from "../../assets/themeIcon.png"
 import info from "../../assets/info.png"
+import data from "../../assets/data.png"
 
-import Burger from "../../components/Burger/Burger"
-import Info from "./components/Info"
-import Carousel from "./components/Carousel"
 import SettingsBlock from "./components/SettingsBlock"
+import Burger from "../../components/Burger/Burger"
 import Main from "./components/Main"
+import Carousel from "./components/Carousel"
+import InfoProvider from "./components/InfoProvider"
+import Info from "./components/Info"
+import Data from "./components/Data"
 
 import { useState } from 'react'
 
@@ -35,6 +38,7 @@ export default function Settings({ onChange }) {
                         <TabItem isActive={0 === tabSelect} setActive={() => { setTabSelect(0) }}><img src={general} alt="general settings icon" /> {isEn ? "General" : "Загальне"}</TabItem>
                         <TabItem isActive={1 === tabSelect} setActive={() => { setTabSelect(1) }}><img src={themeIcon} alt="customize settings icon" /> {isEn ? "Customize" : "Кастомізація"}</TabItem>
                         <TabItem isActive={2 === tabSelect} setActive={() => { setTabSelect(2) }}><img src={info} alt="info settings icon" /> {isEn ? "Info" : "Інформація"}</TabItem>
+                        <TabItem isActive={3 === tabSelect} setActive={() => { setTabSelect(3) }}><img src={data} alt="data settings icon" /> {isEn ? "Data" : "Дані"}</TabItem>
                     </div>
                 </div>
             </>
@@ -51,15 +55,13 @@ export default function Settings({ onChange }) {
                         <Carousel choosed={choosed} setChoosed={setChoosed} />
                     </SettingsBlock>}
                     {tabSelect === 2 && <>
-                        <SettingsBlock>
-                            <Info />
-                        </SettingsBlock>
-                        <SettingsBlock header={isEn ? "Version" : "Версія"}>
-                            <p className="settings__name">{isEn ? "Current version: Magma Local 0.7.0" : "Поточна версія: Magma Local 0.7.0"}</p>
-                            <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
-                        </SettingsBlock>
-                        <SettingsBlock header={isEn ? "Developer Contacts" : "Контакти розробника"}>
-                            <p className="settings__name">{isEn ? "Discord: @adattoweb" : "Діскорд: @adattoweb"}</p>
+                        <InfoProvider>
+                            <Info/>
+                        </InfoProvider>
+                    </>}
+                    {tabSelect === 3 && <>
+                        <SettingsBlock header={isEn ? "Data management" : "Керування даними"}>
+                            <Data onChange={onChange}/>
                         </SettingsBlock>
                     </>}
                 </div>

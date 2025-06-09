@@ -112,6 +112,10 @@
 - 🎨 **Improved desing calendar**.
 - 🛠️ **Fixed bugs**.
 ### 0.7.2
-- ⏳ **Added overdue tasks:** if you didn’t complete a task on time, it will appear in a separate "Overdue" column for better visibility and organization.
+- ⏳ **Added overdue tasks**. If you didn’t complete a task on time, it will appear in a separate "Overdue" column for better visibility and organization.
+### 0.7.3
+- 🎨 **Improved calendar**.
+- 🧱 **Improved the setting's structure** from a development perspective.
+- 🗂️ **Added a data section in the settings** — now you can delete all data or remove incorrect entries to reduce potential issues.
 
 🚀 **Keep tracking & stay awesome!** 🚀

@@ -32,13 +32,9 @@ export default function CalendarDay({ date, keyArr, onChange }) {
                     <input type="text" className="calendarform__name calendarforminput" placeholder={isEn ? "Task Name" : "Назва задачі"} value={name} onChange={(e) => setName(e.target.value)} />
                     <textarea name="description" id="description" className="calendarform__description calendarforminput" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
                 </div>
-                {/* <div className="calendarform__button" onClick={() => {
-                    addItem(name, desc, date);
-                    onChange();
-                }}><p>+</p></div> */}
                 <div className="calendar__footer">
                     <img src={next} alt="add" className="calendarform__button" onClick={() => {
-                        addItem(name, desc, date);
+                        addItem(name, desc, date, setName, setDesc);
                         onChange();
                     }}/>
                 </div>
