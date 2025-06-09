@@ -142,6 +142,7 @@
     transform: scale(1.05);
 }
 .calendaradd{
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding-top: 30px;
@@ -153,14 +154,19 @@
     cursor: pointer;
 }
 .calendarform{
+    width: 100%;
     border-radius: 10px;
     margin-top: 20px;
-    padding: 10px;
-    border: 2px solid #424242;
+    padding: 10px 0px;
+    border: 2px solid #d3d3d3;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    transition: 0.2s ease all;
+}
+.calendarform:has(input:focus), .calendarform:has(textarea:focus) {
+    border: 2px solid #979797;
 }
 .calendarform__inputs{
     display: flex;
@@ -170,69 +176,39 @@
     gap: 10px;
 }
 .calendarform__inputs input{
-    color: #000;
-    border: none;
-    outline: 2px solid #424242;
-    border-radius: 5px;
-    width: 160px;
+    width: 190px;
     height: 25px;
+    background-color: rgba(0,0,0,0)
+}
+.calendarforminput{
+    outline: 2px solid #c4c4c4;
     font-family: "Montserrat Alternates", serif;
+    border-radius: 5px;
     font-size: 14px;
     font-weight: 500;
-    padding-left: 2px;
-    transition: 0.2s ease all;
+    border: none;
+    padding-left: 3px;
+}
+.wrapper.dark .calendarforminput {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0);
+    outline: 2px solid rgba(0,0,0,0)
+}
+.calendarform__inputs textarea{
+    background-color: rgba(0,0,0,0);
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
+    height: 50px;
+    min-height: 25px;
+    max-height: 75px;
+    padding-top: 3px;
 }
 .wrapper.dark .calendarform__inputs input::placeholder{
     color: #d7d7d7;
 }
-.wrapper.dark .calendarform__inputs input{
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0);
-    outline: 2px solid rgba(0, 0, 0, 0)
-}
-.wrapper.dark .calendarform__inputs input:hover{
-    outline: 2px solid #fff;
-}
-.calendarform__inputs input:focus{
-    outline: 2px solid #000;
-}
-.wrapper.dark .calendarform__inputs input:focus{
-    outline: 2px solid #fff;
-}
-.calendarform__inputs textarea{
-    width: 160px;
-    min-width: 160px;
-    max-width: 160px;
-    height: 50px;
-    min-height: 25px;
-    max-height: 75px;
-    outline: 2px solid #424242;
-    border: none;
-    border-radius: 5px;
-    font-family: "Montserrat Alternates", serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding-left: 2px;
-}
-.wrapper.dark .calendarform__inputs textarea{
-    transition: 0.2s ease all;
-}
-.calendarform__inputs textarea:focus{
-    outline: 2px solid #000;
-}
 .wrapper.dark .calendarform__inputs textarea::placeholder{
     color: #d7d7d7;
-}
-.wrapper.dark .calendarform__inputs textarea{
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0);
-    outline: 2px solid rgba(0, 0, 0, 0)
-}
-.wrapper.dark .calendarform__inputs textarea:hover{
-    outline: 2px solid #fff;
-}
-.wrapper.dark .calendarform__inputs textarea:focus{
-    outline: 2px solid #fff;
 }
 .calendarform__button{
     background-color: #000;
@@ -292,6 +268,14 @@
     .calendaritem__circle{
         width: 15px;
         height: 15px;
+    }
+    .calendarform__inputs input{
+        width: 170px;
+    }
+    .calendarform__inputs textarea{
+        width: 170px;
+        min-width: 170px;
+        max-width: 170px;
     }
 }
 @media screen and (max-width: 900px){
@@ -360,6 +344,9 @@
     padding: 0px 2px;
     transition: 0.3s ease all;
 }
+.wrapper.dark .calendartime input{
+    color: #fff;
+}
 .calendartime input:hover{
     border: 2px solid #ccc;
 }
@@ -370,4 +357,7 @@
     width: 22px;
     height: 22px;
     cursor: pointer;
+}
+.wrapper.dark .calendartime img{
+    filter: invert(1)
 }

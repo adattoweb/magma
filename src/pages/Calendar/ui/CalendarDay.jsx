@@ -35,8 +35,8 @@ export default function CalendarDay({ date, keyArr, onChange }) {
             <p onClick={() => setIsOpenAdd(!isOpenAdd)}>+ {isEn ? "Add Task" : "Додати задачу"}</p>
             {isOpenAdd && <div className="calendarform">
                 <div className="calendarform__inputs">
-                    <input type="text" className="calendarform__name" placeholder={isEn ? "Task Name" : "Назва задачі"} value={name} onChange={(e) => setName(e.target.value)} />
-                    <textarea name="description" id="description" className="calendarform__description" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
+                    <input type="text" className="calendarform__name calendarforminput" placeholder={isEn ? "Task Name" : "Назва задачі"} value={name} onChange={(e) => setName(e.target.value)} />
+                    <textarea name="description" id="description" className="calendarform__description calendarforminput" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
                 </div>
                 <div className="calendarform__button" onClick={() => {
                     addItem(name, desc, date);

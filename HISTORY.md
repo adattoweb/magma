@@ -108,4 +108,8 @@
 - ⏱️ **Added the ability to track time** for tasks in the calendar.
 - 🚫 **Disabled image dragging when** clicking and holding on them.
 - 🧱 **Improved the calendar's structure** from a development perspective.
+### 0.7.1
+- 🎨 **Improved desing calendar**.
+- 🛠️ **Fixed bugs**.
+
 🚀 **Keep tracking & stay awesome!** 🚀

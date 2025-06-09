@@ -64,6 +64,7 @@
 .trackers__start p{
     font-size: 24px;
     font-weight: 700;
+    width: 100px;
 }
 .trackers__start img{
     width: 40px;
