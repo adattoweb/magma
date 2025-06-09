@@ -1,31 +1,35 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 export default function Data({ onChange }){
     const isEn = localStorage.getItem("settings-lang") === "en";
-    function Button({ children, func, after }){
+    function Button({ children, func, after, isDangerous}){
         const [isApproved, setIsApproved] = useState(false)
-        const [isAfter, setIsAfter] = useState(false)
+        const isAfter = useRef(false)
         return (
             <div className="data__button" onClick={() => {
                 setIsApproved(!isApproved)
-                if(isApproved) {
+                if(isApproved && !isAfter.current && isDangerous) {
+                    isAfter.current = true
                     func()
-                    setIsAfter(true)
                 }
-            }}>{!isAfter ? !isApproved ? children : (isEn ? "Are you sure?" : "Ви впевнені?") : after}</div>
+                if(!isDangerous && !isAfter.current) {
+                    func()
+                }
+                if(!isDangerous) {
+                    isAfter.current = !isAfter.current
+                }
+            }}>{isDangerous ? isAfter.current ? after : !isApproved ? children : (isEn ? "Are you sure?" : "Ви впевнені?") : isApproved ? after : children}</div>
         )
     }
     function clearLocalStorage(){
         Object.keys(localStorage).map(key => {
             if(localStorage.getItem(key).includes("undefined") || key.includes("undefined")) localStorage.removeItem(key)
         })
-        onChange()
     }
     function deleteLocalStorage(){
         const lang = localStorage.getItem("settings-lang")
         localStorage.clear()
         localStorage.setItem("settings-lang", lang)
-        onChange()
     }
     return (
         <div className="data">
@@ -34,7 +38,7 @@ export default function Data({ onChange }){
                 ? "The entire calendar, all trackers, all settings, and history will be deleted." 
                 : "Весь календар, усі трекери, всі налаштування, вся історія буде видалена"}
             </p>
-            <Button func={deleteLocalStorage} after={isEn ? "Deleted" : "Видалено"}>
+            <Button func={deleteLocalStorage} after={isEn ? "Deleted" : "Видалено"} isDangerous={true}>
                 {isEn ? "Delete" : "Видалити"}
             </Button>
             <h4>{isEn ? "Clear potentially faulty data" : "Очистити дані з можливими помилками"}</h4>
@@ -46,8 +50,11 @@ export default function Data({ onChange }){
                 ? "This helps reduce the number of errors but may remove some data, such as tasks in the calendar, etc." 
                 : "Це сприяє зменшенню кількості помилок, але може видалити певні дані, будь то задачі в календарі, тощо."}
             </p>
-            <Button func={clearLocalStorage} after={isEn ? "Cleared" : "Очищено"}>
+            <Button func={clearLocalStorage} after={isEn ? "Cleared" : "Очищено"} isDangerous={true}>
                 {isEn ? "Clear" : "Очистити"}
+            </Button>
+            <Button func={onChange} after={isEn ? "Refreshed" : "Оновлено"} isDangerous={false}>
+                {isEn ? "Refresh the page" : "Оновити сторінку"}
             </Button>
         </div>
     )
