@@ -17,7 +17,7 @@ export default function Data({ onChange }){
     }
     function clearLocalStorage(){
         Object.keys(localStorage).map(key => {
-            if(localStorage.getItem(key).includes("undefined")) localStorage.removeItem(key)
+            if(localStorage.getItem(key).includes("undefined") || key.includes("undefined")) localStorage.removeItem(key)
         })
         onChange()
     }
