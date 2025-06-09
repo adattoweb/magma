@@ -24,8 +24,13 @@ export default function Calendar(){
             let newDate = newDateFormat.map(el => el.padStart(2, "0")).join(".");
             let dayDiff = getDayDiff(newDate);
             console.log(dayDiff);
-            if(dayDiff >= 3) continue;
-            if(calendar[date] === undefined){
+            if(dayDiff >= 1) {
+                if(!calendar.expired){
+                    calendar.expired = [localKeys[i]]
+                } else {
+                    calendar.expired.push(localKeys[i])
+                }
+            } else if(!calendar[date]){
                 calendar[date] = [localKeys[i]];
             } else{
                 calendar[date].push(localKeys[i]);
@@ -48,6 +53,8 @@ export default function Calendar(){
     console.log(Object.keys(calendar));
     let calendarKeys = Object.keys(calendar);
     calendarKeys.sort((a, b) => {
+        if(a === "expired") return -1;
+        else if(b === "expired") return 1
         let dateA = new Date(...a.split(".").map(Number));
         let dateB = new Date(...b.split(".").map(Number));
         return dateA - dateB;

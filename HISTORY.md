@@ -111,5 +111,7 @@
 ### 0.7.1
 - 🎨 **Improved desing calendar**.
 - 🛠️ **Fixed bugs**.
+### 0.7.2
+- ⏳ **Added overdue tasks:** if you didn’t complete a task on time, it will appear in a separate "Overdue" column for better visibility and organization.
 
 🚀 **Keep tracking & stay awesome!** 🚀
