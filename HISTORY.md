@@ -117,5 +117,10 @@
 - 🎨 **Improved calendar**.
 - 🧱 **Improved the setting's structure** from a development perspective.
 - 🗂️ **Added a data section in the settings** — now you can delete all data or remove incorrect entries to reduce potential issues.
+### 0.7.4
+
+- 🔒 **Only one task addition window can be active at a time**.
+- 🔄 **Added task drag-and-drop functionality** (Technologies used: createPortal, useCallback).
+
 
 🚀 **Keep tracking & stay awesome!** 🚀

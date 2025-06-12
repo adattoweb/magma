@@ -38,6 +38,7 @@
     gap: 20px;
 }
 .calendaritem{
+    position: relative;
     border-radius: 8px;
     border: 2px solid #424242;
     display: inline-flex;
@@ -46,6 +47,16 @@
     align-items: center;
     width: 210px;
     padding: 5px 5px 5px 10px;
+    z-index: 10000;
+}
+.calendaritem.dragging{
+    position: fixed !important;
+    transform: rotate(2deg);
+    backdrop-filter: blur(3px);
+    pointer-events: none;
+}
+.calendaritem.dragging input{
+    cursor: grabbing;
 }
 .wrapper.dark .calendaritem{
     border: 2px solid #b0b0b0;
@@ -129,16 +140,21 @@
     font-weight: 500;
     font-family: "Montserrat", serif;
 }
-.calendaritem__delete{
-    width: 24px;
-    height: 24px;
+.calendar__images{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.calendaritem__img{
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: 0.3s ease all;
 }
-.wrapper.dark .calendaritem__delete{
+.wrapper.dark .calendaritem__img{
     filter: invert(1)
 }
-.calendaritem__delete:hover{
+.calendaritem__img:hover{
     transform: scale(1.05);
 }
 .calendaradd{
@@ -152,6 +168,7 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
+    user-select: none;
 }
 .calendarform{
     width: 100%;

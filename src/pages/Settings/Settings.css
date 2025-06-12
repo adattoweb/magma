@@ -458,4 +458,5 @@
     align-items: center;
     flex: 0 0 auto;
     width: fit-content;
+    user-select: none;
 }
