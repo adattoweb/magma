@@ -58,7 +58,7 @@ export default function Calendar(){
         }
     }
     for(let key in calendar){ // сортуємо задачі (спочатку найновіші потім внизу найстаріші)
-        calendar[key].sort((a,b) => +a.split("-")[2] - +b.split("-")[2])
+        calendar[key].sort((a,b) => +localStorage.getItem(a).split("^")[7] - +localStorage.getItem(b).split("^")[7])
     }
     // console.log(Object.keys(calendar));
     let calendarKeys = Object.keys(calendar);

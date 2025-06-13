@@ -60,7 +60,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
 
     return (
-        <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: itemPos.x, top: itemPos.y}} ref={itemRef}>
+        <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef}>
             <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
             <div className="calendaritem__text">
                 <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {

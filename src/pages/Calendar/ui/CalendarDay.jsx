@@ -44,7 +44,7 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
                 </div>
                 <div className="calendar__footer">
                     <img src={next} alt="add" className="calendarform__button" onClick={() => {
-                        addItem(name, desc, date, setName, setDesc);
+                        addItem(name, desc, date, setName, setDesc, keyArr.length);
                         onChange();
                     }}/>
                 </div>
