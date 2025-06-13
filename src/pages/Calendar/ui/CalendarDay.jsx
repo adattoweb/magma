@@ -5,7 +5,7 @@ import displayHeader from "../helpers/displayHeader";
 import RenderCalendarItem from "./RenderCalendarItem";
 import { useState } from "react";
 
-export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDay, setSelectedDay }) {
+export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDate, setSelectedDate }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     const [name, setName] = useState("");
@@ -21,7 +21,8 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
 
     function setDay(){
         if(draggedKey) {
-            setSelectedDay(date.split("."))
+            if(date !== "expired") setSelectedDate(date.split("."))
+            else return false
         }
     }
 
@@ -29,7 +30,7 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
     <div className="calendarday" onMouseEnter={setDay}>
         <h4 className="calendarday__header">{newDate}{newDate ? "," : ""} {header}</h4>
         <div className="calendarlist">
-            {keyArr.map(el => <RenderCalendarItem key={el} elKey={el} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDay={selectedDay} onChange={onChange}/>)}
+            {keyArr.map(el => <RenderCalendarItem key={el} elKey={el} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} onChange={onChange}/>)}
         </div>
         <div className="calendaradd">
             <p onClick={() => {

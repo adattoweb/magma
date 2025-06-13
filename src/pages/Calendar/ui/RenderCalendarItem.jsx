@@ -3,7 +3,7 @@ import CalendarItem from "./CalendarItem";
 import { createPortal } from "react-dom";
 import { useState, useEffect, useCallback } from "react"
 
-export default function RenderCalendarItem({ elKey, setDraggedKey, pos, setPos, selectedDay, onChange }) {
+export default function RenderCalendarItem({ elKey, setDraggedKey, pos, setPos, selectedDate, onChange }) {
     const [isDisplay, setIsDisplay] = useState(true);
     const [isDragging, setIsDragging] = useState(false)
     const [itemPos, setItemPos] = useState({ x: 0, y: 0 }) // це позиція елементу
@@ -16,18 +16,18 @@ export default function RenderCalendarItem({ elKey, setDraggedKey, pos, setPos, 
         })
     }
     const dragEnd = useCallback(() => {
-        console.log(selectedDay, isDragging)
-        if (selectedDay && isDragging){
+        console.log(selectedDate, isDragging)
+        if (selectedDate && isDragging){
             const array = localStorage.getItem(elKey).split("^")
-            array[2] = selectedDay[0]
-            array[3] = selectedDay[1]
-            array[4] = selectedDay[2]
+            array[2] = selectedDate[0]
+            array[3] = selectedDate[1]
+            array[4] = selectedDate[2]
             localStorage.setItem(elKey, array.join("^"))
             onChange()
         }
         setItemPos({ x: 0, y: 0 })
         setIsDragging(false)
-    }, [selectedDay, isDragging])
+    }, [selectedDate, isDragging])
 
     function dragStart() {
         setDraggedKey(elKey)

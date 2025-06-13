@@ -14,7 +14,7 @@ export default function Calendar(){
     const [activeId, setActiveId] = useState(null)
 
     const [draggedKey, setDraggedKey] = useState(null)
-    const [selectedDay, setSelectedDay] = useState(null)
+    const [selectedDate, setSelectedDate] = useState(null)
     const [pos, setPos] = useState({ x: 0, y: 0 }) // може у localStorage?? щоб можна було звертатись коли захочеш і без зайвих рендерів
     // console.log(draggedKey)
     
@@ -72,7 +72,7 @@ export default function Calendar(){
 
     const handleMouseMove = useCallback(throttle((e) => {
         setPos({ x: e.clientX, y: e.clientY });
-      }, 8), []); // 125 FPS
+      }, 8), []); // 125 FPS (1000 / 8) БАГ ПРИ EXPIRED
     useEffect(() => {
         window.addEventListener("mousemove", handleMouseMove);
         return () => {
@@ -84,7 +84,7 @@ export default function Calendar(){
         <div className="calendar content">
             <div className="calendar__content newblock">
                 {calendarKeys.map((el, index) => {
-                    return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} activeId={activeId} setActiveId={setActiveId} index={index} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>;
+                    return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} activeId={activeId} setActiveId={setActiveId} index={index} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>;
                 })}
             </div>
         </div>
