@@ -63,7 +63,6 @@ export default function Footer() {
     const sounds = [rainSound, rain2Sound, thunderSound, waveSound, campfireSound, windSound, keyboardSound, trainSound, forestSound, forest2Sound, riverSound, relaxingSound, relaxing2Sound, nightingaleSound, studyAmbienceSound, happySantaSound, snowAmbienceSound, pianoSound, piano2Sound, piano3Sound]
 
     function MyLink({to, children}){
-        console.log(currentPath, to)
         return (
             <div className={(currentPath.includes(to) && (currentPath !== "/" && to !== "/")) || (currentPath === "/" && to === "/") ? "mylink active" : "mylink"}>
                 <Link to={to} draggable={false}>{children}</Link>
