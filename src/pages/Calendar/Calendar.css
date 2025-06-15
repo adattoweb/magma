@@ -35,7 +35,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+}
+.calendarlist .calendaritem__provider:last-child{
+    padding: 10px 0px 0px 0px;
+}
+.calendarlist .calendaritem__provider:first-child{
+    padding: 5px 0px 10px 0px;
+}
+.calendaritem__provider{
+    padding: 10px 0px;
 }
 .calendaritem{
     position: relative;
@@ -161,7 +169,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 20px;
     align-items: center;
 }
 .calendaradd p {
@@ -253,7 +261,7 @@
         width: 215px;
         min-width: 215px;
     }
-    .calendaritem{
+    .calendaritem, .dragitem{
         width: 200px;
     }
     .calendaradd p{
@@ -268,7 +276,7 @@
         width: 200px;
         min-width: 200px;
     }
-    .calendaritem{
+    .calendaritem, .dragitem{
         width: 185px;
     }
     .calendaritem__text{
@@ -296,7 +304,7 @@
         width: 200px;
         min-width: 200px;
     }
-    .calendaritem{
+    .calendaritem, .dragitem{
         width: 180px;
         gap: 10px;
     }
@@ -361,4 +369,24 @@
 }
 .wrapper.dark .calendartime img{
     filter: invert(1)
+}
+
+/* DRAG ITEM*/
+
+.dragitem{
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 210px;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+    height: 90px;
+    box-sizing: border-box;
+}
+.calendarlist .dragitem:last-child{
+    padding: 10px 0px 0px 0px;
+}
+.calendarlist .dragitem:first-child{
+    padding: 5px 0px 10px 0px;
+}
+.dragitem{
+    padding: 10px 0px;
 }

@@ -8,7 +8,7 @@ import CalendarCircle from "./CalendarCircle";
 import formatTime from "../../../helpers/formatTime"
 
 
-export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart}) {
+export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop }){
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     let array = ["Name", "Desc", "1991", "08", "24", "false", "0"]
@@ -24,6 +24,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     const [isStart, setIsStart] = useState(false)
     const time = useRef(+array[6])
+    const indexPos = +array[7]
     if(Number.isNaN(time.current)) time.current = 0;
     // console.log(time.current)
     const [timeStr, setTimeStr] = useState(formatTime(time.current))
@@ -59,44 +60,62 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     }, [])
 
 
+    useEffect(() => {
+        const localRef = itemRef.current.getBoundingClientRect()
+        if(indexRef.current === indexPos){ // якщо наведено на цей елемент
+            console.log(localRef.y + localRef.height / 2, pos.y, localRef.y, indexRef.current)
+            setIsTop(pos.y < localRef.y + localRef.height / 2)
+            console.log(pos.y < localRef.y + localRef.height / 2)
+        }
+    }, [pos])
+
+    function changePos(){
+        if(!isDragging) {
+            indexRef.current = indexPos
+        }
+    }
+
+
     return (
-        <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef}>
-            <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
-            <div className="calendaritem__text">
-                <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
-                    setName(e.target.value);
-                    editItem(e.target.value, desc, isActive);
-                }} />
-                <input className="calendartext__desc" type="text" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => {
-                    setDesc(e.target.value);
-                    editItem(name, e.target.value, isActive);
-                }} />
-            </div>
-            <div className="calendartime">
-                <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => {
-                    let value = e.target.value
-                    if (value.length > 8) return
-                    let arr = value.split(":")
+        <div className="calendaritem__provider">
+            <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={changePos}>
+                <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
+                <div className="calendaritem__text">
+                    <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
+                        setName(e.target.value);
+                        editItem(e.target.value, desc, isActive);
+                    }} />
+                    <input className="calendartext__desc" type="text" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => {
+                        setDesc(e.target.value);
+                        editItem(name, e.target.value, isActive);
+                    }} />
+                </div>
+                <div className="calendartime">
+                    <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => {
+                        let value = e.target.value
+                        if (value.length > 8) return
+                        let arr = value.split(":")
 
-                    for (let i = 0; i < 3; i++) {
-                        if (!arr[i]) arr[i] = 0;
-                    }
+                        for (let i = 0; i < 3; i++) {
+                            if (!arr[i]) arr[i] = 0;
+                        }
 
-                    for (let i = 0; i < arr.length; i++) {
-                        if (Number.isNaN(arr[i])) arr[i] = 0
-                    }
+                        for (let i = 0; i < arr.length; i++) {
+                            if (Number.isNaN(arr[i])) arr[i] = 0
+                        }
 
-                    time.current = +arr[0] * 60 * 60 + +arr[1] * 60 + +arr[2]
-                    setTimeStr(value)
-                    editItem(name, desc, isActive)
-                }} />
-                <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {
-                    if (!isActive) setIsStart(!isStart)
-                }} />
-            </div>
-            <div className="calendar__images">
-                <img src={deleteImg} className="calendaritem__img" onClick={deleteItem} draggable={false} />
-                <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
+                        time.current = +arr[0] * 60 * 60 + +arr[1] * 60 + +arr[2]
+                        setTimeStr(value)
+                        editItem(name, desc, isActive)
+                    }} />
+                    <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {
+                        if (!isActive) setIsStart(!isStart)
+                    }} />
+                </div>
+                <div className="calendar__images">
+                    <img src={deleteImg} className="calendaritem__img" onClick={deleteItem} draggable={false} />
+                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
+                </div>
             </div>
         </div>
     );

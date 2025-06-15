@@ -1,7 +1,7 @@
 import CalendarDay from "./ui/CalendarDay";
 import getDayDiff from "../../helpers/getDayDiff";
 import throttle from "../../helpers/throttle";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Calendar.css";
 
 export default function Calendar(){
@@ -15,8 +15,13 @@ export default function Calendar(){
 
     const [draggedKey, setDraggedKey] = useState(null)
     const [selectedDate, setSelectedDate] = useState(null)
-    const [pos, setPos] = useState({ x: 0, y: 0 }) // може у localStorage?? щоб можна було звертатись коли захочеш і без зайвих рендерів
-    // console.log(draggedKey)
+    const [selectedKeys, setSelectedKeys] = useState([])
+    const indexRef = useRef(null)
+    const [pos, setPos] = useState({ x: 0, y: 0 })
+    const [draggingCount, setDraggingCount] = useState(0)
+    const rendersCount = useRef(0)
+    const [isTop, setIsTop] = useState(false)
+    console.log(++rendersCount.current)
     
     let calendar = {};
     for(let i = 0; i < localKeys.length; i++){ // Створюємо об'єкт в якому будуть наші ключики і значення
@@ -70,21 +75,40 @@ export default function Calendar(){
         return dateA - dateB;
     });
 
-    const handleMouseMove = useCallback(throttle((e) => {
-        setPos({ x: e.clientX, y: e.clientY });
-      }, 8), []); // 125 FPS (1000 / 8) БАГ ПРИ EXPIRED
+    const [time, setTime] = useState(10);
+
     useEffect(() => {
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
+        if(draggingCount !== 0) setTime(10)
+        else setTime(500)
+    }, [draggingCount])
+
+
+    const handleMouseMove = useRef(null);
+    useEffect(() => {
+        handleMouseMove.current = throttle((e) => {
+            setPos({ x: e.clientX, y: e.clientY });
+        }, time);
+    }, [time]);
+
+    useEffect(() => {
+        const onMouseMove = (e) => {
+            if (handleMouseMove.current) handleMouseMove.current(e);
         };
-    }, [])
+        window.addEventListener('mousemove', onMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', onMouseMove);
+        };
+    }, []);
+    console.log(calendar)
 
     return (
         <div className="calendar content">
             <div className="calendar__content newblock">
                 {calendarKeys.map((el, index) => {
-                    return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} activeId={activeId} setActiveId={setActiveId} index={index} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>;
+                    return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} activeId={activeId} setActiveId={setActiveId} index={index} 
+                    draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} draggingCount={draggingCount} setDraggingCount={setDraggingCount}
+                    indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} isTop={isTop} setIsTop={setIsTop}/>;
                 })}
             </div>
         </div>
