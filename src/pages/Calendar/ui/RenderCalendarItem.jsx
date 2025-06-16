@@ -1,7 +1,11 @@
 import CalendarItem from "./CalendarItem";
 
+import useUpdateCursor from "../hooks/RenderCalendarItem/useUpdateCursor";
+import useUpdateItemPos from "../hooks/RenderCalendarItem/useUpdateItemPos";
+import useCleanEvent from "../hooks/RenderCalendarItem/useCleanEvent";
+
 import { createPortal } from "react-dom";
-import { useState, useEffect, useCallback } from "react"
+import { useState, useCallback } from "react"
 
 export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, pos, setPos, selectedDate, onChange, draggingCount, setDraggingCount, keyArr, date, indexRef, selectedKeys, setSelectedKeys, clearNewKeyArr, setIsTop }) {
     const [isDisplay, setIsDisplay] = useState(true);
@@ -9,25 +13,12 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
     const [itemPos, setItemPos] = useState({ x: 0, y: 0 }) // це позиція елементу
     const [size, setSize] = useState({ w: 0, y: 0 })
 
-    function updatePos() {
-        setItemPos({
-            x: pos.x - size.w / 2,
-            y: pos.y - size.h / 2,
-        })
-    }
-
     const dragEnd = useCallback(() => {
-        // if((pos.x >= aboutItem.x && pos.x <= aboutItem.width + aboutItem.x) && (pos.y >= aboutItem.y && pos.y <= aboutItem.height + aboutItem.y)){
-        //     indexRef.current = posIndex
-        //     console.log("=++++++++++++++++++++")
-        // }
-        console.log(selectedDate, isDragging)
         if(selectedDate && isDragging){
             const array = localStorage.getItem(elKey).split("^")
             array[2] = selectedDate[0]
             array[3] = selectedDate[1]
             array[4] = selectedDate[2]
-            console.log(keyArr)
             localStorage.setItem(elKey, array.join("^"))
             function updateIndex(arrayKeys){
                 for(let i = 0; i < arrayKeys.length; i++){ // МОЖЛИВО БАГ ТУТ???
@@ -40,7 +31,6 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
                 keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7]) // УВАГА
                 keyArr.splice(indexRef.current, 0, draggedKey)
                 updateIndex(keyArr)
-                console.log(keyArr, indexRef.current)
             } else { // ЯКЩО ПЕРЕНОСЕННЯ МІЖ ДНЯМИ
                 keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7]) // УВАГА
                 updateIndex(keyArr)
@@ -65,24 +55,11 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
         setItemPos({ x: pos.x - size.w / 2, y: pos.y - size.h / 2 })
     }
 
-    useEffect(() => {
-        window.addEventListener("mouseup", dragEnd);
-        return () => window.removeEventListener("mouseup", dragEnd);
-    }, [dragEnd]);
+    useCleanEvent(dragEnd)
 
-    useEffect(() => {
-        if (isDragging) updatePos()
-    }, [pos])
+    useUpdateItemPos(isDragging, setItemPos, pos, size)
 
-    useEffect(() => {
-        if (isDragging) {
-            document.body.style.cursor = "grabbing"
-            setDraggingCount((prev) => prev + 1)
-        } else {
-            document.body.style.cursor = ""
-            if(draggingCount > 0) setDraggingCount((prev) => prev - 1)
-        }
-    }, [isDragging]);
+    useUpdateCursor(isDragging, draggingCount, setDraggingCount)
 
     if (!isDisplay) return null;
     if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop}/>, document.getElementById("root"))

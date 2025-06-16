@@ -3,6 +3,13 @@ import start from "../../../assets/start.png"
 import pause from "../../../assets/pause2.png"
 import drag from "../../../assets/drag.png"
 
+import useChangePos from "../hooks/CalendarItem/useChangePos";
+import useTime from "../hooks/CalendarItem/useTime";
+import useBack from "../hooks/CalendarItem/useBack";
+import useTimeRunning from "../hooks/CalendarItem/useTimeRunning";
+import useArray from "../hooks/CalendarItem/useArray";
+import useDelete from "../hooks/CalendarItem/useDelete";
+
 import { useState, useEffect, useRef } from 'react'
 import CalendarCircle from "./CalendarCircle";
 import formatTime from "../../../helpers/formatTime"
@@ -10,48 +17,28 @@ import formatTime from "../../../helpers/formatTime"
 
 export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop }){
     const isEn = localStorage.getItem("settings-lang") === "en";
-
-    let array = ["Name", "Desc", "1991", "08", "24", "false", "0"]
     const index = elKey.split("@")[0].split("-")[2];
 
-    if(isDisplay){
-        array = localStorage.getItem(elKey).split("^")
-    }
+    const array = useArray(isDisplay, elKey)
+
 
     const [name, setName] = useState(array[0]);
     const [desc, setDesc] = useState(array[1]);
     const [isActive, setIsActive] = useState(array[5] === "true");
-
-    const [isStart, setIsStart] = useState(false)
     const time = useRef(+array[6])
     const indexPos = +array[7]
+
+    const [isStart, setIsStart] = useState(false)
     if(Number.isNaN(time.current)) time.current = 0;
-    // console.log(time.current)
     const [timeStr, setTimeStr] = useState(formatTime(time.current))
     const timeRef = useRef(null)
 
-    useEffect(() => {
-        let timer;
-        if (isStart) {
-            timer = setInterval(() => {
-                time.current += 1;
-                setTimeStr(formatTime(time.current))
-                editItem(name, desc, isActive)
-            }, 1000);
-        } else {
-            clearInterval(timer);
-        }
-        return () => clearInterval(timer);
-    }, [isStart]);
-
     function editItem(actualName, actualDesc, actualIsActive) {
         let oldArr = localStorage.getItem(elKey).split("^")
-        localStorage.setItem(`calendar-item-${index}`, `${actualName}^${actualDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}^${actualIsActive}^${time.current}`);
+        localStorage.setItem(`calendar-item-${index}`, `${actualName}^${actualDesc}^${oldArr[2]}^${oldArr[3]}^${oldArr[4]}^${actualIsActive}^${time.current}^${indexPos}`);
     }
-    function deleteItem() {
-        localStorage.removeItem(`calendar-item-${index}`);
-        setIsDisplay(false);
-    }
+
+    useTimeRunning(isStart, time, setTimeStr, editItem, name, desc, isActive)
 
     const itemRef = useRef(null)
 
@@ -59,26 +46,12 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
         setSize({w: itemRef.current.offsetWidth, h: itemRef.current.offsetHeight})
     }, [])
 
-
-    useEffect(() => {
-        const localRef = itemRef.current.getBoundingClientRect()
-        if(indexRef.current === indexPos){ // якщо наведено на цей елемент
-            console.log(localRef.y + localRef.height / 2, pos.y, localRef.y, indexRef.current)
-            setIsTop(pos.y < localRef.y + localRef.height / 2)
-            console.log(pos.y < localRef.y + localRef.height / 2)
-        }
-    }, [pos])
-
-    function changePos(){
-        if(!isDragging) {
-            indexRef.current = indexPos
-        }
-    }
-
+    const rectItem = useRef(null)
+    useBack(itemRef, rectItem, indexRef, indexPos, setIsTop, pos)
 
     return (
         <div className="calendaritem__provider">
-            <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={changePos}>
+            <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
                     <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
@@ -91,29 +64,11 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                     }} />
                 </div>
                 <div className="calendartime">
-                    <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => {
-                        let value = e.target.value
-                        if (value.length > 8) return
-                        let arr = value.split(":")
-
-                        for (let i = 0; i < 3; i++) {
-                            if (!arr[i]) arr[i] = 0;
-                        }
-
-                        for (let i = 0; i < arr.length; i++) {
-                            if (Number.isNaN(arr[i])) arr[i] = 0
-                        }
-
-                        time.current = +arr[0] * 60 * 60 + +arr[1] * 60 + +arr[2]
-                        setTimeStr(value)
-                        editItem(name, desc, isActive)
-                    }} />
-                    <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {
-                        if (!isActive) setIsStart(!isStart)
-                    }} />
+                    <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => useTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
+                    <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {if (!isActive) setIsStart(!isStart)}} />
                 </div>
                 <div className="calendar__images">
-                    <img src={deleteImg} className="calendaritem__img" onClick={deleteItem} draggable={false} />
+                    <img src={deleteImg} className="calendaritem__img" onClick={() => useDelete(setIsDisplay, index)} draggable={false} />
                     <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
                 </div>
             </div>
