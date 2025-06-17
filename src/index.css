@@ -154,20 +154,35 @@ ANIMATION
 BLOCK
 */
 
-.newblock{
+/* .newblock{
   background-color: rgba(255,255,255,0.9);
   color: #000;
   border: 1px solid #cecece;
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.25);
   backdrop-filter: blur(2px)
-}
-.wrapper.dark .newblock{
+} */
+ .newblock{
+  color: #000;
+  backdrop-filter: blur(15px);
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.3)
+ }
+/* .wrapper.dark .newblock{ */
   /* background-color: #222222; */
-  background-color: rgba(0, 0, 0, 0.9);
+  /* background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
   border: none;
   box-shadow: none;
   backdrop-filter: blur(5px)
+} */
+
+.wrapper.dark .newblock{
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.25);
+  backdrop-filter: blur(15px)
 }
 
 /* RANGE */

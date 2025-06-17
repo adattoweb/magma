@@ -202,11 +202,11 @@
     margin-right: auto;
 }
 .wrapper.dark .customize input, .wrapper.dark .editnick{
-    border: 2px solid #1f1f1f;
-    background-color: #171717;
+    border: 2px solid #343434;
+    background-color: #1d1d1d;
 }
 .wrapper.dark .customize input:focus, .wrapper.dark .editnick:focus{
-    border: 2px solid #343434;
+    border: 2px solid #4d4d4d;
 }
 .customize h4{
     text-align: start;

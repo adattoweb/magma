@@ -122,5 +122,7 @@
 - 🔄 **Added task drag-and-drop functionality** (Technologies used: createPortal, useCallback).
 ### 0.7.5
 - ✅ **Tasks can now be moved** between days and reordered.
+### 0.7.6
+- 🎨 **Redesign website**.
 
 🚀 **Keep tracking & stay awesome!** 🚀
