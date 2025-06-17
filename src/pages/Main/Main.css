@@ -52,6 +52,7 @@
     height: max-content;
     padding: 10px;
 }
+
 @media screen and (max-width: 1000px){
     .hello .trackers__add{
         width: 500px !important;
@@ -64,6 +65,14 @@
     .hello .trackers__info{
         justify-content: start !important;
         gap: 20px !important;
+    }
+}
+@media screen and (max-width: 1050px) {
+    .hello .trackers__add{
+        width: 500px !important;
+        flex-direction: column !important;
+        height: max-content !important;
+        padding: 10px !important;
     }
 }
 @media screen and (max-width: 600px){

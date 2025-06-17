@@ -9,6 +9,23 @@
     overflow-y: hidden;
     backdrop-filter: blur(5px);
 }
+.calendar__content::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.calendar__content::-webkit-scrollbar-track, .calendarday::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.calendar__content::-webkit-scrollbar-thumb, .calendarday::-webkit-scrollbar-thumb {
+    background: #5c5c5c;
+    border-radius: 4px;
+}
+
+.calendar__content::-webkit-scrollbar-thumb:hover, .calendarday::-webkit-scrollbar-thumb:hover {
+    background: #868686;
+}
 .calendarday{
     border-radius: 10px;
     display: flex;
@@ -20,6 +37,10 @@
     overflow-x: hidden;
     width: 230px;
     min-width: 230px;
+}
+.calendarday::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
 }
 .wrapper.dark .calendarday{
     color: #fff;
@@ -389,4 +410,7 @@
 }
 .dragitem{
     padding: 10px 0px;
+}
+.wrapper.dark .dragitem{
+    background-color: rgba(255, 255, 255, 0.1);
 }
