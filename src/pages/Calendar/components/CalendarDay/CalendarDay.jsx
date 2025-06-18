@@ -1,12 +1,12 @@
-import next from "../../../assets/next.png"
+import next from "../../../../assets/next.png"
 
-import addItem from "../helpers/addItem"
+import addItem from "../../helpers/addItem"
 
-import useDay from "../hooks/CalendarDay/useDay";
-import useUpdate from "../hooks/CalendarDay/useUpdate";
-import useDate from "../hooks/CalendarDay/useDate";
+import useDay from "./hooks/useDay";
+import useUpdate from "./hooks/useUpdate";
+import useDate from "./hooks/useDate";
 
-import RenderCalendarItem from "./RenderCalendarItem";
+import RenderCalendarItem from "../RenderCalendarItem/RenderCalendarItem";
 import { useState, useRef } from "react";
 
 export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDate, setSelectedDate, draggingCount, setDraggingCount, indexRef, selectedKeys, setSelectedKeys, isTop, setIsTop }) {

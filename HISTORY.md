@@ -124,5 +124,8 @@
 - ✅ **Tasks can now be moved** between days and reordered.
 ### 0.7.6
 - 🎨 **Redesign website**.
+### 0.7.7
+- 🛠️ **Fixed bugs** with start time in trackers.
+- 🧱 **Improved the calendar's structure** from a development perspective.
 
 🚀 **Keep tracking & stay awesome!** 🚀

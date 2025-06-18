@@ -1,8 +1,8 @@
-import CalendarDay from "./ui/CalendarDay";
+import CalendarDay from "./components/CalendarDay/CalendarDay";
 
-import useMove from "./hooks/Calendar/useMove"
-import useTimeManage from "./hooks/Calendar/useTimeManage"
-import useCalendarKeys from "./hooks/Calendar/useCalandarKeys";
+import useMove from "./hooks/useMove"
+import useTimeManage from "./hooks/useTimeManage"
+import useCalendarKeys from "./hooks/useCalandarKeys";
 
 import { useState, useRef } from "react";
 import "./Calendar.css";

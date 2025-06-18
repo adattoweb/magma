@@ -1,18 +1,18 @@
-import deleteImg from "../../../assets/delete.png";
-import start from "../../../assets/start.png"
-import pause from "../../../assets/pause2.png"
-import drag from "../../../assets/drag.png"
+import deleteImg from "../../../../assets/delete.png";
+import start from "../../../../assets/start.png"
+import pause from "../../../../assets/pause2.png"
+import drag from "../../../../assets/drag.png"
 
-import useChangePos from "../hooks/CalendarItem/useChangePos";
-import useTime from "../hooks/CalendarItem/useTime";
-import useBack from "../hooks/CalendarItem/useBack";
-import useTimeRunning from "../hooks/CalendarItem/useTimeRunning";
-import useArray from "../hooks/CalendarItem/useArray";
-import useDelete from "../hooks/CalendarItem/useDelete";
+import useChangePos from "./hooks/useChangePos";
+import useTime from "./hooks/useTime";
+import useBack from "./hooks/useBack";
+import useTimeRunning from "./hooks/useTimeRunning";
+import useArray from "./hooks/useArray";
+import useDelete from "./hooks/useDelete";
 
 import { useState, useEffect, useRef } from 'react'
-import CalendarCircle from "./CalendarCircle";
-import formatTime from "../../../helpers/formatTime"
+import CalendarCircle from "../CalendarCircle/CalendarCircle";
+import formatTime from "../../../../helpers/formatTime"
 
 
 export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop }){
@@ -31,7 +31,6 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     const [isStart, setIsStart] = useState(false)
     if(Number.isNaN(time.current)) time.current = 0;
     const [timeStr, setTimeStr] = useState(formatTime(time.current))
-    const timeRef = useRef(null)
 
     function editItem(actualName, actualDesc, actualIsActive) {
         let oldArr = localStorage.getItem(elKey).split("^")
@@ -64,7 +63,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                     }} />
                 </div>
                 <div className="calendartime">
-                    <input onFocus={() => setIsStart(false)} ref={timeRef} type="text" value={timeStr} onChange={(e) => useTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
+                    <input onFocus={() => setIsStart(false)} type="text" value={timeStr} onChange={(e) => useTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
                     <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {if (!isActive) setIsStart(!isStart)}} />
                 </div>
                 <div className="calendar__images">

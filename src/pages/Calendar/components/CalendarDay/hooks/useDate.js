@@ -1,4 +1,4 @@
-import displayHeader from "../../helpers/displayHeader";
+import displayHeader from "../../../helpers/displayHeader";
 
 export default function useDate(isEn, date) {
     let [header, newDate] = [`${isEn ? "Expired" : "Просрочено"}`, ""]

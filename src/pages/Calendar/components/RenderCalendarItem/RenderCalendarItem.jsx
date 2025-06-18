@@ -1,8 +1,8 @@
-import CalendarItem from "./CalendarItem";
+import CalendarItem from "../CalendarItem/CalendarItem";
 
-import useUpdateCursor from "../hooks/RenderCalendarItem/useUpdateCursor";
-import useUpdateItemPos from "../hooks/RenderCalendarItem/useUpdateItemPos";
-import useCleanEvent from "../hooks/RenderCalendarItem/useCleanEvent";
+import useUpdateCursor from "./hooks/useUpdateCursor";
+import useUpdateItemPos from "./hooks/useUpdateItemPos";
+import useCleanEvent from "./hooks/useCleanEvent";
 
 import { createPortal } from "react-dom";
 import { useState, useCallback } from "react"
