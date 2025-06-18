@@ -82,7 +82,7 @@ export default function Main({ onChange }) {
                 </div>
             </SettingsItem>
         </SettingsBlock>
-            <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нік"}>
+            <SettingsBlock header={isEn ? "Edit nickname" : "Змінити нікнейм"}>
                 <EditNick />
             </SettingsBlock></div>
     )

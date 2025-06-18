@@ -336,7 +336,7 @@
     font-family: "Montserrat Alternates", serif;
     font-weight: 500;
     background-color: #fff;
-    border: 2px solid #000;
+    border: 2px solid #000000;
     border-radius: 200px;
     display: flex;
     justify-content: center;
@@ -352,13 +352,13 @@
     color: #fff;
 }
 .clock__item.active{
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
 }
 .settings__btn{
     font-family: "Montserrat Alternates", serif;
     font-weight: 500;
-    background-color: #000;
+    background-color: #000000;
     cursor: pointer;
     transition: 0.2s ease all;
     border-radius: 5px;
