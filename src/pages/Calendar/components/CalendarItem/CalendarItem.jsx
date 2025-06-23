@@ -49,7 +49,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     useBack(itemRef, rectItem, indexRef, indexPos, setIsTop, pos)
 
     function changeModal(){
-        setActiveMenu(activeMenu === indexPos ? null : indexPos)
+        setActiveMenu(activeMenu === index ? null : index)
     }
 
     const menuBtn = useRef(null)
@@ -61,7 +61,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     return (
         <div className="calendaritem__provider">
-            {(activeMenu === indexPos) && createPortal(<ModalMenu setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current}/>, document.getElementById("root"))}
+            {(activeMenu === index) && createPortal(<ModalMenu setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current}/>, document.getElementById("root"))}
             <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">

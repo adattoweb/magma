@@ -3,7 +3,6 @@
     max-width: 80vw;
     height: 500px;
     display: flex;
-    gap: 20px;
     padding: 15px 20px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -26,17 +25,22 @@
 .calendar__content::-webkit-scrollbar-thumb:hover, .calendarday::-webkit-scrollbar-thumb:hover {
     background: #868686;
 }
+.wrapper.dark .calendar__content{
+    background-color: rgba(0,0,0,0.85)
+}
 .calendarday{
-    border-radius: 10px;
     display: flex;
+    border-right: 1px solid rgba(0,0,0,0.3);
     flex-direction: column;
     align-items: center;
-    border: 2px solid #636363;
     padding: 10px 15px;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 230px;
-    min-width: 230px;
+    width: 240px;
+    min-width: 240px;
+}
+.calendar__content .calendarday:last-child{
+    border: none
 }
 .calendarday::-webkit-scrollbar{
     width: 5px;
@@ -44,8 +48,7 @@
 }
 .wrapper.dark .calendarday{
     color: #fff;
-    border: 2px solid #403f3f;
-    background-color: rgba(22, 22, 22, 0.6);
+    border-right: 1px solid #424242;
 }
 .calendar__header{
     font-size: 14px;
@@ -68,8 +71,8 @@
 }
 .calendaritem{
     position: relative;
-    border-radius: 8px;
-    border: 2px solid #424242;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.3);
     display: inline-flex;
     gap: 15px;
     justify-content: start;
@@ -77,6 +80,9 @@
     width: 210px;
     padding: 5px 5px 5px 10px;
     z-index: 10000;
+}
+.wrapper.dark .calendaritem{
+    border: 1px solid #666666;
 }
 .calendaritem.dragging{
     position: fixed !important;
@@ -87,13 +93,10 @@
 .calendaritem.dragging input{
     cursor: grabbing;
 }
-.wrapper.dark .calendaritem{
-    border: 2px solid #b0b0b0;
-}
 .calendaritem__circle{
     width: 18px;
     height: 18px;
-    border: 3px solid #000;
+    border: 2px solid #000;
     border-radius: 50%;
     transition: 0.3s ease all;
     cursor: pointer;
@@ -106,7 +109,7 @@
     background-color: #000;
 }
 .wrapper.dark .calendaritem__circle{
-    border: 3px solid #fff;
+    border: 2px solid #fff;
 }
 .wrapper.dark .calendaritem__circle.active{
     background-color: #fff;
@@ -441,8 +444,14 @@
     background-color: rgba(0,0,0,0.1);
     border-radius: 5px;
 }
+.wrapper.dark .calendarmenu__item:hover{
+    background-color: rgba(255,255,255,0.1);
+}
 .calendarmenu__item img{
     width: 25px;
     height: 25px;
     filter: invert(0.1)
+}
+.wrapper.dark .calendarmenu__item img{
+    filter: invert(1)
 }
