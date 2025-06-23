@@ -131,5 +131,7 @@
 - 🎨 **Improved website design**.
 ### 0.7.9
 - 🗂️ **Added a modal window in the calendar with functionality**.
+### 0.7.10
+- 🏷️ **Added the ability to set priorities for your tasks**.
 
 🚀 **Keep tracking & stay awesome!** 🚀

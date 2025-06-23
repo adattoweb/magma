@@ -1,7 +1,9 @@
 import React from "react";
 import deleteImg from "../../../../assets/delete.png"
+import ModalPriorities from "./ModalPriorities";
 
-const ModalMenu = React.memo(function ModalMenu({ setIsDisplay, index, rect })  {
+const ModalMenu = React.memo(function ModalMenu({ elKey, setIsDisplay, index, rect, onChange })  {
+    const isEn = localStorage.getItem("settings-lang") === "en";
     console.log("ModalMenu render")
     console.log(rect)
 
@@ -9,7 +11,6 @@ const ModalMenu = React.memo(function ModalMenu({ setIsDisplay, index, rect })  
         localStorage.removeItem(`calendar-item-${index}`);
         setIsDisplay(false);
     }
-    const isEn = localStorage.getItem("settings-lang") === "en";
     function MenuItem({ children, onClick, image }){
         return (
             <div onClick={onClick} className="calendarmenu__item"><img src={image}/><p>{children}</p></div>
@@ -18,6 +19,7 @@ const ModalMenu = React.memo(function ModalMenu({ setIsDisplay, index, rect })  
     return (
         <div className="calendarmenu newblock" style={{left: rect.x - 20, top: rect.y + 20}}>
             <MenuItem onClick={deleteFunc} image={deleteImg}>{isEn ? "Delete" : "Видалити"}</MenuItem>
+            <ModalPriorities elKey={elKey} onChange={onChange}/>
         </div>
     )
 })

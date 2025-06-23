@@ -10,7 +10,7 @@ import { useState, useCallback } from "react"
 export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, pos, setPos, selectedDate, onChange, draggingCount, setDraggingCount, keyArr, date, indexRef, selectedKeys, setSelectedKeys, clearNewKeyArr, setIsTop, activeMenu, setActiveMenu }) {
     const [isDisplay, setIsDisplay] = useState(true);
     const [isDragging, setIsDragging] = useState(false)
-    const [itemPos, setItemPos] = useState({ x: 0, y: 0 }) // це позиція елементу
+    const [itemPos, setItemPos] = useState({ x: 0, y: 0 }) // це позиція самого елементу
     const [size, setSize] = useState({ w: 0, y: 0 })
 
     const dragEnd = useCallback(() => {
@@ -21,18 +21,18 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
             array[4] = selectedDate[2]
             localStorage.setItem(elKey, array.join("^"))
             function updateIndex(arrayKeys){
-                for(let i = 0; i < arrayKeys.length; i++){ // МОЖЛИВО БАГ ТУТ???
+                for(let i = 0; i < arrayKeys.length; i++){
                     const newArray = localStorage.getItem(arrayKeys[i]).split("^")
                     newArray[7] = i
                     localStorage.setItem(arrayKeys[i], newArray.join("^"))
                 }
             }
             if(date === selectedDate.join(".")){ // ЯКЩО ВНУТРІШНІ ПЕРЕНОСЕННЯ
-                keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7]) // УВАГА
+                keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7])
                 keyArr.splice(indexRef.current, 0, draggedKey)
                 updateIndex(keyArr)
             } else { // ЯКЩО ПЕРЕНОСЕННЯ МІЖ ДНЯМИ
-                keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7]) // УВАГА
+                keyArr = keyArr.filter(el => +localStorage.getItem(el).split("^")[7] !== +localStorage.getItem(draggedKey).split("^")[7])
                 updateIndex(keyArr)
 
                 const newSelectedKeys = [...selectedKeys];
@@ -62,6 +62,6 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
     useUpdateCursor(isDragging, draggingCount, setDraggingCount)
 
     if (!isDisplay) return null;
-    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>, document.getElementById("root"))
-    else return <CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
+    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu} onChange={onChange}/>, document.getElementById("root"))
+    else return <CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu} onChange={onChange}/>
 }
