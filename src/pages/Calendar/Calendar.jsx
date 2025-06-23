@@ -21,6 +21,7 @@ export default function Calendar(){
     const indexRef = useRef(null)
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const [draggingCount, setDraggingCount] = useState(0)
+    const [activeMenu, setActiveMenu] = useState(null)
     const rendersCount = useRef(0)
     const [isTop, setIsTop] = useState(false)
     console.log(++rendersCount.current)
@@ -40,7 +41,7 @@ export default function Calendar(){
                 {calendarKeys.map((el, index) => {
                     return <CalendarDay key={el} date={el} keyArr={calendar[el]} onChange={() => setIsRender(!isRender)} activeId={activeId} setActiveId={setActiveId} index={index} 
                     draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} setSelectedDate={setSelectedDate} draggingCount={draggingCount} setDraggingCount={setDraggingCount}
-                    indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} isTop={isTop} setIsTop={setIsTop}/>;
+                    indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} isTop={isTop} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>;
                 })}
             </div>
         </div>

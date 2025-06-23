@@ -108,7 +108,7 @@ export default function Analytics() {
                         let allTime = findAllTime(el);
                         if(allTime > max) max = allTime
                         console.log(allTime, max)
-                        if (!arrayKeys.includes(el) || allTime === 0){
+                        if (!arrayKeys.includes(el) || allTime < 60){
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
                         }
                         let objectTasks = {}

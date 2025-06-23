@@ -9,7 +9,7 @@ import useDate from "./hooks/useDate";
 import RenderCalendarItem from "../RenderCalendarItem/RenderCalendarItem";
 import { useState, useRef } from "react";
 
-export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDate, setSelectedDate, draggingCount, setDraggingCount, indexRef, selectedKeys, setSelectedKeys, isTop, setIsTop }) {
+export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDate, setSelectedDate, draggingCount, setDraggingCount, indexRef, selectedKeys, setSelectedKeys, isTop, setIsTop, activeMenu, setActiveMenu }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     const [name, setName] = useState("");
@@ -30,7 +30,7 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
         <div className="calendarlist">
             {newKeyArr.map(el => el === "DRAGITEM" ? <div key={el} className="dragitem"></div> : <RenderCalendarItem key={el} elKey={el} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} onChange={onChange} 
                 draggingCount={draggingCount} setDraggingCount={setDraggingCount} keyArr={keyArr} date={date} 
-                indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} clearNewKeyArr={() => setNewKeyArr(newKeyArr.filter(el => el !== "DRAGITEM"))} setIsTop={setIsTop}/>)}
+                indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} clearNewKeyArr={() => setNewKeyArr(newKeyArr.filter(el => el !== "DRAGITEM"))} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>)}
             {/* {(draggingCount > 0 && selectedDate?.join(".") === date && !newKeyArr.includes("DRAGITEM")) && <DragItem top={indexRef.current * 113}/>} */}
         </div>
         <div className="calendaradd">

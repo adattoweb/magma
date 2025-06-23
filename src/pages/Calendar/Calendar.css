@@ -348,7 +348,7 @@
 /* CALENDAR TIME */
 .calendaritem{
     position: relative;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
 }
 .calendartime{
     position: absolute;
@@ -359,7 +359,6 @@
     justify-content: space-between;
     padding: 4px;
     gap: 5px;
-    border-top: 2px #ccc solid;
     width: 100%;
     box-sizing: border-box;
 }
@@ -384,15 +383,16 @@
     border: 2px solid #a8a8a8;
 }
 .calendartime img{
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
     cursor: pointer;
 }
 .wrapper.dark .calendartime img{
     filter: invert(1)
 }
 
-/* DRAG ITEM*/
+/* DRAG ITEM */
 
 .dragitem{
     background-color: rgba(0, 0, 0, 0.2);
@@ -413,4 +413,36 @@
 }
 .wrapper.dark .dragitem{
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* MENU */
+
+.calendarmenu{
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    gap: 5px;
+    border-radius: 10px;
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    z-index: 10001;
+}
+.calendarmenu__item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+    padding: 5px;
+}
+.calendarmenu__item:hover{
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.calendarmenu__item img{
+    width: 25px;
+    height: 25px;
+    filter: invert(0.1)
 }

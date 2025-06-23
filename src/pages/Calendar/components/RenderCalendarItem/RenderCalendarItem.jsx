@@ -7,7 +7,7 @@ import useCleanEvent from "./hooks/useCleanEvent";
 import { createPortal } from "react-dom";
 import { useState, useCallback } from "react"
 
-export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, pos, setPos, selectedDate, onChange, draggingCount, setDraggingCount, keyArr, date, indexRef, selectedKeys, setSelectedKeys, clearNewKeyArr, setIsTop }) {
+export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, pos, setPos, selectedDate, onChange, draggingCount, setDraggingCount, keyArr, date, indexRef, selectedKeys, setSelectedKeys, clearNewKeyArr, setIsTop, activeMenu, setActiveMenu }) {
     const [isDisplay, setIsDisplay] = useState(true);
     const [isDragging, setIsDragging] = useState(false)
     const [itemPos, setItemPos] = useState({ x: 0, y: 0 }) // це позиція елементу
@@ -62,6 +62,6 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
     useUpdateCursor(isDragging, draggingCount, setDraggingCount)
 
     if (!isDisplay) return null;
-    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop}/>, document.getElementById("root"))
-    else return <CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop}/>
+    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>, document.getElementById("root"))
+    else return <CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
 }

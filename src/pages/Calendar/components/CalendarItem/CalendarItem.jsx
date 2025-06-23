@@ -1,4 +1,4 @@
-import deleteImg from "../../../../assets/delete.png";
+import more from "../../../../assets/more.png"
 import start from "../../../../assets/start.png"
 import pause from "../../../../assets/pause2.png"
 import drag from "../../../../assets/drag.png"
@@ -8,14 +8,14 @@ import useTime from "./hooks/useTime";
 import useBack from "./hooks/useBack";
 import useTimeRunning from "./hooks/useTimeRunning";
 import useArray from "./hooks/useArray";
-import useDelete from "./hooks/useDelete";
 
-import { useState, useEffect, useRef } from 'react'
+import { createPortal } from "react-dom";
+import React, { useState, useEffect, useRef } from 'react'
 import CalendarCircle from "../CalendarCircle/CalendarCircle";
+import ModalMenu from "./ModalMenu";
 import formatTime from "../../../../helpers/formatTime"
 
-
-export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop }){
+export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu }){
     const isEn = localStorage.getItem("settings-lang") === "en";
     const index = elKey.split("@")[0].split("-")[2];
 
@@ -48,8 +48,20 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     const rectItem = useRef(null)
     useBack(itemRef, rectItem, indexRef, indexPos, setIsTop, pos)
 
+    function changeModal(){
+        setActiveMenu(activeMenu === indexPos ? null : indexPos)
+    }
+
+    const menuBtn = useRef(null)
+    const menuBtnRect = useRef()
+
+    useEffect(() => {
+        menuBtnRect.current = menuBtn.current.getBoundingClientRect()
+    }, [])
+
     return (
         <div className="calendaritem__provider">
+            {(activeMenu === indexPos) && createPortal(<ModalMenu setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current}/>, document.getElementById("root"))}
             <div className={!isDragging ? "calendaritem" : "calendaritem dragging"} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
@@ -67,7 +79,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                     <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {if (!isActive) setIsStart(!isStart)}} />
                 </div>
                 <div className="calendar__images">
-                    <img src={deleteImg} className="calendaritem__img" onClick={() => useDelete(setIsDisplay, index)} draggable={false} />
+                    <img src={more} className="calendaritem__img" onClick={changeModal} draggable={false} ref={menuBtn}/>
                     <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
                 </div>
             </div>
