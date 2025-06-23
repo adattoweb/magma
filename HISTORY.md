@@ -133,5 +133,6 @@
 - 🗂️ **Added a modal window in the calendar with functionality**.
 ### 0.7.10
 - 🏷️ **Added the ability to set priorities for your tasks**.
+- 🎨 **Improved calendar page design**.
 
 🚀 **Keep tracking & stay awesome!** 🚀
