@@ -134,5 +134,7 @@
 ### 0.20.0
 - 🏷️ **Added  ability to set priorities for your tasks**.
 - 🎨 **Improved calendar page design**.
+### 0.20.1
+- 🗑️ **Removed some pages:** project and about.
 
 🚀 **Keep tracking & stay awesome!** 🚀

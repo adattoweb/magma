@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Menu from "./components/Menu/Menu";
-import About from "./pages/About/About";
 import Main from "./pages/Main/Main";
 import Settings from "./pages/Settings/Settings";
 import LoadScreen from "./components/LoadScreen/LoadScreen";
@@ -65,7 +64,6 @@ export default function App() {
         <Header onClick={() => setIsMenu(true)} />
         <Routes>
         <Route path="/" element={<Main />} />
-          <Route path="/about" element={<About />} />
           <Route path="/trackers" element={<Trackers />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/settings" element={<Settings onChange={() => setIsRender(!isRender)}/>} />
