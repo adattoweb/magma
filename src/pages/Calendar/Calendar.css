@@ -39,9 +39,6 @@
     width: 240px;
     min-width: 240px;
 }
-.calendar__content .calendarday:last-child{
-    border: none
-}
 .calendarday::-webkit-scrollbar{
     width: 5px;
     height: 5px;
@@ -49,6 +46,9 @@
 .wrapper.dark .calendarday{
     color: #fff;
     border-right: 1px solid #424242;
+}
+.calendar__content .calendarday:last-child{
+    border: none
 }
 .calendar__header{
     font-size: 14px;

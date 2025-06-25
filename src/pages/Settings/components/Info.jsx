@@ -1,4 +1,4 @@
-import HelpBlock from '../../Help/components/HelpBlock'
+import HelpBlock from './HelpBlock'
 
 export default function Info() {
     const isEn = localStorage.getItem("settings-lang") === "en";

@@ -9,7 +9,6 @@ import LoadScreen from "./components/LoadScreen/LoadScreen";
 import Trackers from "./pages/Trackers/Trackers";
 import Analytics from "./pages/Analytics/Analytics";
 import Page404 from "./pages/Page404/Page404";
-import Tier from "./pages/Tier/Tier";
 import Goals from "./pages/Goals/Goals";
 import Calendar from "./pages/Calendar/Calendar";
 import Note from "./pages/Notebook/Note"
@@ -67,7 +66,6 @@ export default function App() {
           <Route path="/trackers" element={<Trackers />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/settings" element={<Settings onChange={() => setIsRender(!isRender)}/>} />
-          <Route path="/tierlist" element={<Tier />} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/notebook" element={<Note />} />
