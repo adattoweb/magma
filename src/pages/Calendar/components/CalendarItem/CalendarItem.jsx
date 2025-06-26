@@ -15,7 +15,7 @@ import CalendarCircle from "../CalendarCircle/CalendarCircle";
 import ModalMenu from "./ModalMenu";
 import formatTime from "../../../../helpers/formatTime"
 
-export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange }){
+export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange, keyArr }){
     const isEn = localStorage.getItem("settings-lang") === "en";
     const index = elKey.split("@")[0].split("-")[2];
 
@@ -64,7 +64,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     return (
         <div className="calendaritem__provider">
-            {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange}/>, document.getElementById("root"))}
+            {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange} keyArr={keyArr}/>, document.getElementById("root"))}
             <div className= {`calendaritem ${isDragging && "dragging"} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y}} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">

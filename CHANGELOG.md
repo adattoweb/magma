@@ -132,10 +132,12 @@
 ### 0.19.0
 - 🗂️ **Added a modal window in the calendar with functionality**.
 ### 0.20.0
-- 🏷️ **Added  ability to set priorities for your tasks**.
+- 🏷️ **Added ability to set priorities for your tasks**.
 - 🎨 **Improved calendar page design**.
 ### 0.20.1
 - 🗑️ **Removed some pages:** project, about and tierlist.
 - 🛠️ **Fixed bugs**
+### 0.21.0
+- 🛠️ **Added ability to duplicate your tasks**.
 
 🚀 **Keep tracking & stay awesome!** 🚀
