@@ -1,87 +1,59 @@
 import "./Analytics.css"
 
 import triangle from "@/assets/triangle.png";
+
 import sortTrackers from "./helpers/sortTrackers"
 import diffDays from "./helpers/diffDays"
-import uniqueArray from "./helpers/uniqueArray";
+import switchDay from "./helpers/switchDay";
+import getColors from "./helpers/getColors";
+import getAllTime from "./helpers/getAllTime";
+import getDays from "./helpers/getDays";
+import getObjectDates from "./helpers/getObjectDates";
+import getMax from "./helpers/getMax";
 
 import AnalyticsBlock from "./components/AnalyticsBlock";
 import FooterItem from "./components/FooterItem"
 import Dropdown from "./components/Dropdown";
 
 import { useState, useRef } from "react";
+import getObjectTasks from "./helpers/getObjectTasks";
 
 export default function Analytics() {
     console.log("Analytics render")
 
-    let timeAll = 0;
-
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     const [days, setDays] = useState(7);
-    // const [maxHeight, setMaxHeight] = useState(100); // у майбутньому
     const maxHeight = 100
     const [project, setProject] = useState("Всі");
 
-    let array = []; // масив для групування за датами
-    let arrayKeys = [];
-
     const page = useRef(1);
-    // console.log(timeAll);
 
-    [timeAll, array, arrayKeys] = diffDays(timeAll, days, array, arrayKeys)
+    let timeAll = 0;
+    let array = []; // масив для групування за датами
+    let arrayDates = [];
+
+    [timeAll, array, arrayDates] = diffDays(timeAll, days, array, arrayDates)
 
     // console.log(array);
     // console.log(arrayKeys);
 
-    let { sortedKeys, sortedArray } = sortTrackers(arrayKeys, array);
-    arrayKeys = sortedKeys;
+    let { sortedKeys, sortedArray } = sortTrackers(arrayDates, array);
+    arrayDates = sortedKeys;
     array = sortedArray;
 
-    const now = new Date(new Date().getTime() - 86400000 * (days - 7));
-    console.log(now.getDate())
-    let arrayAllKeys = []
-    for(let i = 0; i < 7; i++){
-        const date = new Date(now.getTime() - 86400000 * i)
-        arrayAllKeys.push(`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`)
-    }
+    const daysArray = getDays(days) // видає масив з днями
 
-    arrayAllKeys = arrayAllKeys.reverse()
+    let objectDates = getObjectDates(arrayDates, daysArray, array)
 
-    let objectKeys = {}
-    for(let i = 0; i < 7; i++){
-        if(!arrayKeys.includes(arrayAllKeys[i])) objectKeys[arrayAllKeys[i]] = [];
-        else {
-            objectKeys[arrayAllKeys[i]] = array[arrayKeys.indexOf(arrayAllKeys[i])]
-        }
-    }
-    console.log(array)
-    console.log(arrayKeys)
-    console.log(arrayAllKeys)
-    console.log(objectKeys)
+    let uniqueColors = getColors(array)
 
-    let uniqueArr = uniqueArray(array)
-
-    // console.log(uniqueArr);
-    // console.log(timeAll);
     const timeHour = (Math.floor(timeAll / 3600) + "").padStart(2, "0"); // Вираховуємо години
     const timeMin = (Math.floor((timeAll % 3600) / 60) + "").padStart(2, "0"); // Вираховуємо хвилини
 
-    let max = 0;
+    let max = getMax(objectDates, project)
 
-    function findAllTime(el){
-        let allTime = 0;
-        for (let i = 0; i < objectKeys[el].length; i++) {
-            let arrLocal = localStorage.getItem(objectKeys[el][i]).split("^");
-            if (arrLocal[1] === project || project === "Всі") allTime += +arrLocal[4];
-        }
-        return allTime
-    }
-
-    Object.keys(objectKeys).map(el => {
-        let allTime = findAllTime(el)
-        if(allTime > max) max = allTime
-    })
+    console.log(array)
 
     return (
         <div className={+days === 14 ? `analytics content bigAnal` : `analytics content`}>
@@ -91,44 +63,26 @@ export default function Analytics() {
                     <Dropdown changeProject={(el) => setProject(el)} startValue={"Всі"} />
                     <div className='analytics__action'>
                         <p>{(page.current - 1) * -1}</p>
-                        <img draggable={false} src={triangle} onClick={() => {
-                            setDays(days + 7);
-                            page.current += 1;
-                        }} />
-                        <img draggable={false} src={triangle} onClick={() => {
-                            if (page.current > 1) {
-                                setDays(days - 7);
-                                page.current -= 1;
-                            }
-                        }} />
+                        <img draggable={false} src={triangle} onClick={() => switchDay(setDays, page, true)} />
+                        <img draggable={false} src={triangle} onClick={() => switchDay(setDays, page, false)} />
                     </div>
                 </div>
                 <div className='analytics__content'>
-                     {Object.keys(objectKeys).map((el, index) => {
-                        let allTime = findAllTime(el);
+                     {Object.keys(objectDates).map((el, index) => {
+                        let allTime = getAllTime(el, objectDates, project);
                         if(allTime > max) max = allTime
                         console.log(allTime, max)
-                        if (!arrayKeys.includes(el) || allTime < 60){
+                        if (!arrayDates.includes(el) || allTime < 60){
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true}/>
                         }
-                        let objectTasks = {}
-                        for(let i = 0; i < objectKeys[el].length; i++){
-                            let nameTask = localStorage.getItem(objectKeys[el][i]).split("^")[0]
-                            if(!objectTasks[nameTask]) objectTasks[nameTask] = [objectKeys[el][i]]
-                            else objectTasks[nameTask].push(objectKeys[el][i]) 
-                        }
-
-                        console.log(objectKeys[el])
-                        console.log(Object.values(objectKeys))
-
-                        console.log(objectTasks)
-                        return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project} uniqueArr={uniqueArr}/>
+                        let objectTasks = getObjectTasks(objectDates, el)
+                        return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project} uniqueColors={uniqueColors}/>
                     })}
                 </div>
                 <div className='analytics__footer'>
-                    {uniqueArr.map((el, index) => {
-                        console.log(el)
-                        return <FooterItem key={el + index} str={el} />;
+                    {uniqueColors.map((el, index) => {
+                        let array = el.split("^")
+                        return <FooterItem key={el + index} name={array[0]} color={array[1]}  />;
                     })}
                 </div>
             </div>

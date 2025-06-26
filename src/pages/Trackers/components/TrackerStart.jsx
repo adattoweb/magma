@@ -16,6 +16,7 @@ export default function TrackerStart({changeAdd}) {
     let endTime = "00:00";
     function addItem(){
         let smallName = name
+        if(name.includes("^")) return
         if(name.length > 30) smallName = name.substring(0, 29) + "..."
         let newName = smallName?? smallName.replace(/(@|\^)+/g, ".");
         startTime = localStorage.getItem("tracker-start") ?? "00:00"

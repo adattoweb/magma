@@ -1,4 +1,4 @@
-export default function AnalyticsItem({ local, allTime, maxHeight, uniqueArr }) {
+export default function AnalyticsItem({ local, allTime, maxHeight, uniqueColors }) {
     console.log("AnalyticsItem render")
     let arr = local.split("^");
     let name = arr[0];
@@ -9,8 +9,8 @@ export default function AnalyticsItem({ local, allTime, maxHeight, uniqueArr }) 
     if(height < 1) return
 
     let color = "#000";
-    for (let i = 0; i < uniqueArr.length; i++) {
-        let arr = uniqueArr[i].split("@");
+    for (let i = 0; i < uniqueColors.length; i++) {
+        let arr = uniqueColors[i].split("^");
         if (arr[0] === name) {
             color = arr[1];
         }

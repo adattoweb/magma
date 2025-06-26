@@ -3,7 +3,7 @@ import formatDate from "../helpers/formatDate"
 
 import AnalyticsItem from "./AnalyticsItem"
 
-export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueArr }) {
+export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueColors }) {
     const dateArr = date.split('.')
     function BlockLayout({ children }) {
         return (
@@ -27,14 +27,14 @@ export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, 
     const blockHeight = maxHeight / (max / allTime)
     console.log(blockHeight, maxHeight, max, allTime)
     return (
-        <BlockLayout>{Object.keys(objectTasks).map(NU =>
-            objectTasks[NU].map(key => {
+        <BlockLayout>{Object.keys(objectTasks).map(el =>
+            objectTasks[el].map(key => {
                 let arrLocal = localStorage.getItem(key).split("^");
                 let time = +arrLocal[4];
                 if (time === 0) return;
                 let elProject = arrLocal[1];
                 if (elProject !== project && project !== "Всі") return;
-                return <AnalyticsItem key={key} local={localStorage.getItem(key)} allTime={allTime} maxHeight={blockHeight} uniqueArr={uniqueArr} />;
+                return <AnalyticsItem key={key} local={localStorage.getItem(key)} allTime={allTime} maxHeight={blockHeight} uniqueColors={uniqueColors} />;
             })
         )}
         </BlockLayout>
