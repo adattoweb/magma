@@ -142,5 +142,6 @@
 ### 0.21.1
 - 🛠️ **Added an alias** to improve code readability."
 - 🗑️ **Deleted unused menu component**.
+- 🛠️ **Refactored page components** from a development perspective.
 
 🚀 **Keep tracking & stay awesome!** 🚀

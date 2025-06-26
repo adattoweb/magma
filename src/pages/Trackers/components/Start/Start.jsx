@@ -2,24 +2,18 @@ import stoppause from "@/assets/pause.png";
 import pause from "@/assets/pause2.png";
 import start from "@/assets/start.png";
 
-import formatTime from "../../../helpers/formatTime";
-import { useState, useEffect } from "react";
 
-export default function Start({ time, setTime, addItem, devAdd }) {
+import formatTime from "@/helpers/formatTime";
+import useTimeInterval from "./hooks/useTimeInterval";
+
+import addItem from "../TrackerStart/helpers/addItem";
+import { useState } from "react";
+
+export default function Start({ time, setTime, devAdd, name, changeAdd, project }) {
     const [isTimeRunning, setIsTimeRunning] = useState(false);
+    const isEn = localStorage.getItem("settings-lang") === "en";
 
-    useEffect(() => {
-        let timer;
-        if (isTimeRunning) {
-            timer = setInterval(() => {
-                setTime((prev) => prev + 1);
-                localStorage.setItem("tracker-time", time+1)
-            }, 1000);
-        } else {
-            clearInterval(timer);
-        }
-        return () => clearInterval(timer);
-    }, [isTimeRunning, time]);
+    useTimeInterval(isTimeRunning, setTime, time)
 
     function changeTimeRunning() {
         if(time === 0){ // якщо ми починаємо відслідковувати час, то запам'ятаємо початок, щоб потім коректно відобразити
@@ -29,9 +23,9 @@ export default function Start({ time, setTime, addItem, devAdd }) {
         }
         setIsTimeRunning(!isTimeRunning)
     }
-
+    
     function stopTracker(){
-        addItem();
+        addItem(name, isEn, setTime, changeAdd, project, time);
         setTime(0);
         setIsTimeRunning(false);
     }

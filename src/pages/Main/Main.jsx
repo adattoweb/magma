@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TrackerStart from '../Trackers/components/TrackerStart'
+import TrackerStart from '../Trackers/components/TrackerStart/TrackerStart'
 
 import useTimeInterval from './hooks/useTimeInterval';
 

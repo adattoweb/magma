@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function NoteStart({update}) {
+export default function NoteStart({ update }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
     const [name, setName] = useState("");
     const [text, setText] = useState("");
