@@ -1,5 +1,5 @@
-import black from "../../../assets/black.png"
-import white from "../../../assets/white.png"
+import black from "@/assets/black.png"
+import white from "@/assets/white.png"
 import SettingsBlock from "./SettingsBlock"
 import SettingsItem from "./SettingsItem"
 import EditNick from "./EditNick"

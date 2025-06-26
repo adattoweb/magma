@@ -1,4 +1,4 @@
-import next from "../../../../assets/next.png"
+import next from "@/assets/next.png"
 
 import addItem from "../../helpers/addItem"
 

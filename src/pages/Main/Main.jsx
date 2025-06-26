@@ -1,6 +1,7 @@
-import "./Main.css"
 import { useState, useEffect } from 'react'
 import TrackerStart from '../Trackers/components/TrackerStart'
+
+import "./Main.css"
 
 export default function Main(){
     const [isAdding, setIsAdding] = useState(false); // чисто щоб рендерити наново компонент
@@ -27,7 +28,3 @@ export default function Main(){
         </div>
     )
 }
-{/* <input type="text" value={name} onChange={(e) => {
-    setName(e.target.value)
-    localStorage.setItem("magma-name", e.target.value)
-}} /> */}

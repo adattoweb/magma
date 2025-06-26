@@ -1,7 +1,7 @@
 import { useState } from "react";
-import formatTime from "../../../helpers/formatTime";
-import Dropdown from "../../../components/Dropdown/Dropdown";
-import deleteImg from "../../../assets/delete.png";
+import formatTime from "@/helpers/formatTime";
+import Dropdown from "@/components/Dropdown/Dropdown";
+import deleteImg from "@/assets/delete.png";
 
 export default function TrackerItem({ localKey, isRender, setIsRender}) {
     const [name, project, start, end, all] = localStorage.getItem(localKey).split("^")

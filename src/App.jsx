@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import Menu from "./components/Menu/Menu";
-import Main from "./pages/Main/Main";
-import Settings from "./pages/Settings/Settings";
-import LoadScreen from "./components/LoadScreen/LoadScreen";
-import Trackers from "./pages/Trackers/Trackers";
-import Analytics from "./pages/Analytics/Analytics";
-import Page404 from "./pages/Page404/Page404";
-import Goals from "./pages/Goals/Goals";
-import Calendar from "./pages/Calendar/Calendar";
-import Note from "./pages/Notebook/Note"
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Main from "@/pages/Main/Main";
+import Settings from "@/pages/Settings/Settings";
+import LoadScreen from "@/components/LoadScreen/LoadScreen";
+import Trackers from "@/pages/Trackers/Trackers";
+import Analytics from "@/pages/Analytics/Analytics";
+import Page404 from "@/pages/Page404/Page404";
+import Goals from "@/pages/Goals/Goals";
+import Calendar from "@/pages/Calendar/Calendar";
+import Note from "@/pages/Notebook/Note"
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -46,7 +45,6 @@ export default function App() {
   activeTheme === "dark" || (activeTheme === "auto" && (now.getHours() >= 20 || now.getHours() <= 6)) ? wrapper.classList.add("dark") : wrapper.classList.remove("dark");
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isMenu, setIsMenu] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => { setIsLoading(false); }, 2000);
@@ -55,12 +53,10 @@ export default function App() {
 
   if (isLoading) return <LoadScreen></LoadScreen>;
 
-  if (isMenu) return <Menu isMenu={isMenu} onClick={() => setIsMenu(false)} />;
   else {
     return (
       <>
-        <Menu isMenu={isMenu} onClick={() => setIsMenu(false)} />
-        <Header onClick={() => setIsMenu(true)} />
+        <Header/>
         <Routes>
         <Route path="/" element={<Main />} />
           <Route path="/trackers" element={<Trackers />} />

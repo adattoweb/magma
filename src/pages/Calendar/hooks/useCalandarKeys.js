@@ -1,4 +1,4 @@
-import getDayDiff from "../../../helpers/getDayDiff";
+import getDayDiff from "@/helpers/getDayDiff";
 
 export default function useCalendarKeys() {
     let localKeys = Object.keys(localStorage);

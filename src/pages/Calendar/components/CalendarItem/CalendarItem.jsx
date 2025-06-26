@@ -1,7 +1,7 @@
-import more from "../../../../assets/more.png"
-import start from "../../../../assets/start.png"
-import pause from "../../../../assets/pause2.png"
-import drag from "../../../../assets/drag.png"
+import more from "@/assets/more.png"
+import start from "@/assets/start.png"
+import pause from "@/assets/pause2.png"
+import drag from "@/assets/drag.png"
 
 import useChangePos from "./hooks/useChangePos";
 import useTime from "./hooks/useTime";
@@ -13,7 +13,7 @@ import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef } from 'react'
 import CalendarCircle from "../CalendarCircle/CalendarCircle";
 import ModalMenu from "./ModalMenu";
-import formatTime from "../../../../helpers/formatTime"
+import formatTime from "@/helpers/formatTime"
 
 export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange, keyArr }){
     const isEn = localStorage.getItem("settings-lang") === "en";

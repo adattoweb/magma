@@ -1,7 +1,7 @@
 import { useState } from "react";
-import triangle from "../../../assets/triangle.png";
-import deletePng from "../../../assets/delete.png";
-import edit from "../../../assets/edit.png"
+import triangle from "@/assets/triangle.png";
+import deletePng from "@/assets/delete.png";
+import edit from "@/assets/edit.png"
 
 export default function Dropdown({ project, setProject, setPage, setGlobalRender }) {
     const isEn = localStorage.getItem("settings-lang") === "en";

@@ -1,5 +1,5 @@
-import getDayDiff from "../../../helpers/getDayDiff";
-import formatTime from "../../../helpers/formatTime";
+import getDayDiff from "@/helpers/getDayDiff";
+import formatTime from "@/helpers/formatTime";
 
 export default function TrackerBlock({ header, children, all}) {
     const isEn = localStorage.getItem("settings-lang") === "en";

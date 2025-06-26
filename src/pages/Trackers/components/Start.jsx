@@ -1,6 +1,6 @@
-import stoppause from "../../../assets/pause.png";
-import pause from "../../../assets/pause2.png";
-import start from "../../../assets/start.png";
+import stoppause from "@/assets/pause.png";
+import pause from "@/assets/pause2.png";
+import start from "@/assets/start.png";
 
 import formatTime from "../../../helpers/formatTime";
 import { useState, useEffect } from "react";

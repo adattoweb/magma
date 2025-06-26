@@ -1,7 +1,7 @@
 import { useState } from "react";
-import triangleBlack from "../../../assets/triangleBlack.png";
-import deleteImg from "../../../assets/delete.png";
-import editImg from "../../../assets/edit.png";
+import triangleBlack from "@/assets/triangleBlack.png";
+import deleteImg from "@/assets/delete.png";
+import editImg from "@/assets/edit.png";
 
 export default function NoteBlock({ localKey, isRender, setIsRender }) {
     const valueArr = localStorage.getItem(localKey).split("@")

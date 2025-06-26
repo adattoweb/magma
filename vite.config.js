@@ -5,4 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/magma/', // Якщо для гітхабу, то тут повинна бути назва репозиторію!
   plugins: [react()],
+  resolve: {
+    alias: {
+      "@": "/src"
+    }
+  }
 })

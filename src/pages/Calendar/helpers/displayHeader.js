@@ -1,4 +1,4 @@
-import getDayDiff from "../../../helpers/getDayDiff";
+import getDayDiff from "@/helpers/getDayDiff";
 import displayDay from "./displayDay";
 
 export default function displayHeader(date){

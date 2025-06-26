@@ -1,6 +1,6 @@
 import "./Analytics.css"
 
-import triangle from "../../assets/triangle.png";
+import triangle from "@/assets/triangle.png";
 import sortTrackers from "./helpers/sortTrackers"
 import diffDays from "./helpers/diffDays"
 import uniqueArray from "./helpers/uniqueArray";

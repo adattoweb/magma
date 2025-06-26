@@ -136,8 +136,11 @@
 - 🎨 **Improved calendar page design**.
 ### 0.20.1
 - 🗑️ **Removed some pages:** project, about and tierlist.
-- 🛠️ **Fixed bugs**
+- 🛠️ **Fixed bugs**.
 ### 0.21.0
 - 🛠️ **Added ability to duplicate your tasks**.
+### 0.21.1
+- 🛠️ **Added an alias** to improve code readability."
+- 🗑️ **Deleted unused menu component**.
 
 🚀 **Keep tracking & stay awesome!** 🚀

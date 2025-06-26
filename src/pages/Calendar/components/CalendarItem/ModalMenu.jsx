@@ -1,6 +1,6 @@
 import React from "react";
-import deleteImg from "../../../../assets/delete.png"
-import copy from "../../../../assets/copy.png"
+import deleteImg from "@/assets/delete.png"
+import copy from "@/assets/copy.png"
 import ModalPriorities from "./ModalPriorities";
 
 const ModalMenu = React.memo(function ModalMenu({ elKey, setIsDisplay, index, rect, onChange, keyArr })  {

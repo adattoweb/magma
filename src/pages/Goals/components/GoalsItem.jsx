@@ -2,8 +2,8 @@ import { useState} from "react";
 import editPosition from "../helpers/editPosition";
 import deleteItem from "../helpers/deleteItem";
 import editProperty from "../helpers/editProperty"
-import deleteImg from "../../../assets/delete.png";
-import arrow from "../../../assets/arrow.png";
+import deleteImg from "@/assets/delete.png";
+import arrow from "@/assets/arrow.png";
 
 
 export default function GoalsItem({ startName, index, localIndex, startMin, startMax, isRender, setIsRender, length}) {

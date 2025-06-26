@@ -4,10 +4,10 @@ import TrackerList from "./components/TrackerList";
 import "./Trackers.css";
 
 export default function Trackers() {
-    if (localStorage.getItem("tracker-index") === null) {
+    if (!localStorage.getItem("tracker-index")) {
         localStorage.setItem("tracker-index", "0");
     }
-    if (localStorage.getItem("tracker-projects") === null) {
+    if (!localStorage.getItem("tracker-projects")) {
         localStorage.setItem("tracker-projects", "Без проєкту");
     }
     const [isAdding, setIsAdding] = useState(false); // чисто щоб рендерити наново компонент

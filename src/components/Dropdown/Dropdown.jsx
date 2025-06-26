@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './Dropdown.css'
-import triangle from "../../assets/triangle.png";
+import triangle from "@/assets/triangle.png";
 
 
 export default function Dropdown({changeProject, startValue, editProject}) {
