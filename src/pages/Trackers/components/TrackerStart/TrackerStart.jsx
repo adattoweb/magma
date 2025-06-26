@@ -20,7 +20,7 @@ export default function TrackerStart({ changeAdd }) {
     return (
         <div className="trackers__add newblock">
             <div className="trackers__info">
-                <input type="text" placeholder={isEn ? "What are you doing right now?" : "Чим Ви зараз займаєтесь?"} onChange={(e) => changeName(e)} value={name} />
+                <input type="text" className="tstart__input" placeholder={isEn ? "What are you doing right now?" : "Чим Ви зараз займаєтесь?"} onChange={(e) => changeName(e)} value={name} />
                 <Dropdown changeProject={changeProject}/>
             </div>
             <Start time={time} setTime={setTime} name={name} changeAdd={changeAdd} project={project}/>

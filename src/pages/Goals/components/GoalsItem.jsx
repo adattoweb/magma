@@ -21,7 +21,7 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
     return (
         <div className="titem tierlist gitem">
             <div className="titem__edit">
-                <div className="titem__circle">{+index}</div>
+                <div className="titem__circle"><p>{+index}</p></div>
                 <input type="text" value={name} onChange={(e) => {
                     setName(e.target.value);
                     editProperty(e.target.value, 0, localList, index, name);
@@ -31,7 +31,7 @@ export default function GoalsItem({ startName, index, localIndex, startMin, star
                         setMin(e.target.value);
                         editProperty(e.target.value, 2, localList, index, name);
                     }} />
-                    <p>/</p>
+                    <hr className="gdevider"/>
                     <input type="number" value={max} onChange={(e) => {
                         setMax(e.target.value);
                         editProperty(e.target.value, 3, localList, index, name);

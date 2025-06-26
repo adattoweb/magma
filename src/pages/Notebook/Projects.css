@@ -20,9 +20,6 @@
     background: none;
     color: #fff;
 }
-.titem__edit input:hover, .tblock__miniheader input:hover{
-    outline: 2px solid #000;
-}
 .pblock__menu{
     display: flex;
     gap: 10px;

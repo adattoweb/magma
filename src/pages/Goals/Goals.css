@@ -1,25 +1,47 @@
 .goals__limit{
     display: flex;
-    gap: 5px;
+    gap: 15px;
     align-items: center;
 }
-.goals__add .trackers__info input{
-    width: 100px;
+.gdevider{
+    height: 25px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    transform: rotate(30deg)
 }
-.goals__add .goals__limit input{
-    width: 50px;
-    padding: 5px 0px 5px 5px;
+.wrapper.dark .gdevider{
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.goals__add .tstart__input{
+    width: 300px;
+}
+.gstart__input, .goals__input input{
+    width: 35px;
+    height: 35px;
+    padding: 5px 0px 5px 0px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border: 1px solid rgba(0,0,0,0.4);
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: none;
+}
+.wrapper.dark .gstart__input,.wrapper.dark .goals__input input{
+    border: 1px solid rgba(255,255,255,0.8);
+}
+.gstart__input:focus, .goals__input input:focus, .goals__input input:hover{
+    border: 1px solid #000;
+    outline: none;
+}
+.wrapper.dark .gstart__input:focus,.wrapper.dark .goals__input input:focus,.wrapper.dark .goals__input input:hover{
+    border: 1px solid #fff;
+    outline: none;
 }
 .goals__input{
     display: flex;
-    gap: 5px;
+    gap: 15px;
     align-items: center;
-}
-.goals__input input{
-    width: 50px;
-}
-.gitem .titem__info{
-    gap: 40px;
 }
 .gitem{
     padding: 12px 20px;
@@ -27,6 +49,41 @@
 .glist .tlist__header{
     height: 40px;
     top: -40px;
+}
+.glist .titem:first-child{
+    border: none;
+}
+.glist .titem__circle{
+    border-radius: 100px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper.dark .glist .titem__circle{
+    border: 2px solid #fff;
+}
+.glist .titem__circle p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.gitem .titem__info{
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+.titem__time img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.wrapper.dark .titem__time img{
+    filter: invert(1)
+}
+.movedown{
+    transform: rotate(180deg)
 }
 @media screen and (max-width: 840px) {
     .goals__add .trackers__info{

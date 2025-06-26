@@ -19,16 +19,15 @@ export default function TrackerStart({ update }) {
     return (
         <div className="goals__add trackers__add project__add newblock">
             <div className="trackers__info">
-                <input type="text" placeholder={isEn ? "Goal Name" : "Назва цілі"} value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text" className="tstart__input" placeholder={isEn ? "Goal Name" : "Назва цілі"} value={name} onChange={(e) => setName(e.target.value)} />
                 <div className="goals__limit">
-                    <input type="number" value={min} onChange={(e) => setMin(e.target.value)}/>
-                    <p>/</p>
-                    <input type="number" value={max} onChange={(e) => setMax(e.target.value)}/>
+                    <input className="gstart__input" type="number" value={min} onChange={(e) => setMin(e.target.value)}/>
+                    <hr className="gdevider"/>
+                    <input className="gstart__input" type="number" value={max} onChange={(e) => setMax(e.target.value)}/>
                 </div>
             </div>
             <div className="trackers__start">
-                <img draggable={false} src={start} alt={isEn ? "Start" : "Почати"} onClick={onClick}
-                />
+                <img draggable={false} src={start} alt={isEn ? "Start" : "Почати"} onClick={onClick}/>
             </div>
         </div>
     );

@@ -17,14 +17,17 @@
     align-items: center;
     gap: 20px;
 }
-.trackers__info input{
+.tstart__input{
     width: 450px;
     padding: 8px 0px 8px 8px;
     font-size: 16px;
     font-weight: 500;
     border-radius: 10px;
-    border: 2px #656565 solid;
+    border: 1px solid rgba(0,0,0,0.4);
     background-color: rgba(255,255,255,0.7);
+}
+.tstart__input:focus{
+    border: 1px #000000 solid;
 }
 .trackers__info input::placeholder{
     color: #5b5b5b !important;
@@ -37,9 +40,6 @@
     min-width: 80px;
     max-width: 160px;
     font-size: 16px;
-}
-.trackers__info input:focus{
-    border: 2px #000000 solid;
 }
 .wrapper.dark .trackers__info input{
     background: none;
@@ -182,12 +182,18 @@
     border-radius: 5px;
     border: none;
     max-width: 250px;
-    outline: 2px solid #ffffff00;
+    outline: 1px solid transparent;
     transition: 0.3s ease all;
     background: rgba(255,255,255,0.0)
 }
-.titem__edit input:hover{
-    outline: 2px solid #000;
+.titem__edit input:hover, .tblock__miniheader input:hover{
+    outline: 1px solid rgba(0,0,0,0.3);
+}
+.titem__edit input:focus, .tblock__miniheader input:focus{
+    outline: 1px solid rgba(0,0,0,0.7);
+}
+.wrapper.dark .titem__edit input:focus, .wrapper.dark .tblock__miniheader input:focus{
+    outline: 1px solid #fff;
 }
 .wrapper.dark .titem__edit input, .wrapper.dark .tblock_miniheader input{
     background: none;
@@ -195,7 +201,7 @@
     color: #fff;
 }
 .wrapper.dark .titem__edit input:hover, .wrapper.dark .tblock__miniheader input:hover{
-    outline: 2px solid #fff;
+    outline: 1px solid #fff;
 }
 .titem__info{
     display: flex;
@@ -214,7 +220,7 @@
     padding: 3px;
     border-radius: 2px;
     border: none;
-    outline: 2px solid #ffffff00;
+    outline: 1px solid transparent;
     transition: 0.3s ease all;
     text-align: center;
     background: rgba(255,255,255,0);
@@ -224,10 +230,13 @@
     color: #fff;
 }
 .wrapper.dark .titem__time input:hover{
-    outline: 2px solid #fff;
+    outline: 1px solid #fff;
 }
 .titem__time input:hover{
-    outline: 2px solid #000;
+    outline: 1px solid rgba(0,0,0,0.3);
+}
+.titem__time input:focus{
+    outline: 1px solid rgba(0,0,0,0.7);
 }
 .titem__delete{
     display: flex;
