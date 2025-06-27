@@ -143,5 +143,7 @@
 - 🛠️ **Added an alias** to improve code readability."
 - 🗑️ **Deleted unused menu component**.
 - 🛠️ **Refactored page components** from a development perspective.
+### 0.22.0 
+- ⏳ **Added date display** for overdue tasks.
 
 🚀 **Keep tracking & stay awesome!** 🚀

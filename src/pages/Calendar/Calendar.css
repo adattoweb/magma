@@ -515,3 +515,14 @@
 .calendaritem.gray, .wrapper.dark .calendaritem.gray{
     border-left: 4px solid #979797 !important;
 }
+
+/* EXPIRED DATE */
+.expired__date{
+    background-color: #be3232;
+    color: #fff;
+    border-radius: 0 0 5px 5px;
+    width: 70px;
+    font-size: 12px;
+    margin-left: 0px;
+    text-align: center;
+}
