@@ -46,6 +46,52 @@
     border-radius: 10px;
 }
 @media screen and (max-width: 600px) {
+    .footer{
+        width: max-content;
+        padding: 7px 10px;
+        border-radius: 20px;
+        margin: 0px 0px 15px 0px;
+        background-color: #fff;
+        flex-direction: row-reverse;
+        justify-content: center;
+        gap: 0px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.25);
+        outline: 1px solid rgba(255,255,255,0.3)
+    }
+    .footer__img{
+        filter: invert(0.2)
+    }
+    .footer__left, .footer__right, .footer__union {
+        padding: 0;
+        gap: 0;
+    }
+    .footer, .footer__union, .footer__right{
+        gap: 15px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .footer{
+        border-radius: 15px;
+        padding: 5px 7px;
+    }
+    .footer__img{
+        width: 20px;
+        height: 20px;
+    }
+    .footer, .footer__union, .footer__right{
+        gap: 10px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .footer__img{
+        width: 18px;
+        height: 18px;
+    }
+    .footer, .footer__union, .footer__right{
+        gap: 7px;
+    }
+}
+/* @media screen and (max-width: 600px) {
     .footer__right, .footer__left{
         gap: 10px;
     }
@@ -56,8 +102,8 @@
         width: 20px;
         height: 20px;
     }
-}
-@media screen and (max-width: 500px) {
+} */
+/* @media screen and (max-width: 500px) {
     .footer__right, .footer__left{
         gap: 8px;
     }
@@ -77,7 +123,7 @@
         flex-wrap: wrap;
         justify-content: center;
     }
-}
+} */
 
 /* AUDIO */
 
@@ -176,17 +222,24 @@
 }
 @media screen and (max-width: 600px) {
     .audio__modal{
-        width: auto;
+        width: 280px;
         left: 20px;
         right: 20px;
     }
     .audio__list{
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         max-height: 250px;
     }
 }
 @media screen and (max-width: 450px) {
-    .audio__list{
-        grid-template-columns: 1fr 1fr;
+    .audio__modal{
+        width: 250px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .audio__modal{
+        width: 245px;
+        left: 0;
+        right: 0;
     }
 }

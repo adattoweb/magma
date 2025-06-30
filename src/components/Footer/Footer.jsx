@@ -3,7 +3,6 @@ import './Footer.css';
 import time from '@/assets/time.png'
 import anal1 from '@/assets/anal1.png'
 import home from '@/assets/home.png'
-import notebook from '@/assets/notebook.png'
 import goal from '@/assets/goal.png'
 import settings from '@/assets/settings.png'
 import calendar from '@/assets/calendar.png'
@@ -83,7 +82,7 @@ export default function Footer() {
                     <MyLink to="/analytics"><img className="footer__img" src={anal1} alt="analytics" draggable={false}/></MyLink>
                 </div>
                 <MyLink to="/goals"><img className="footer__img" src={goal} alt="goals" draggable={false}/></MyLink>
-                <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" draggable={false}/></MyLink>
+                {/* <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" draggable={false}/></MyLink> */}
                 <MyLink to="/settings"><img className="footer__img" src={settings} alt="settings" draggable={false}/></MyLink>
             </div>
         </div>
