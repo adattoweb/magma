@@ -62,7 +62,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     const taskDate = `${array[2]}.${array[3]}.${array[4]}`
 
-    const isExpired = dayDate?.includes("expired")
+    const isOverdue = dayDate?.includes("overdue")
 
     function toCenterItem(){
         const rect = itemRef.current.getBoundingClientRect()
@@ -73,7 +73,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     return (
         <div className="calendaritem__provider">
             {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange} keyArr={keyArr}/>, document.getElementById("root"))}
-            <div className= {`calendaritem ${isDragging && "dragging"} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y, borderRadius: isExpired ? "10px 10px 10px 0px" : "10px" }} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
+            <div className= {`calendaritem ${isDragging && "dragging"} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y, borderRadius: isOverdue ? "10px 10px 10px 0px" : "10px" }} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
                     <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
@@ -94,7 +94,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                     <img src={drag} className="calendaritem__img" alt="drag image" onClick={toCenterItem} onMouseDown={dragStart} draggable={false}/>
                 </div>
             </div>
-            {isExpired && <div className="expired__date"><p>{taskDate}</p></div>}
+            {isOverdue && <div className="expired__date"><p>{taskDate}</p></div>}
         </div>
     );
 }

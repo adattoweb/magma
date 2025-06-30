@@ -18,13 +18,38 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
     const [newKeyArr, setNewKeyArr] = useState(keyArr)
 
     let [header, newDate] = useDate(isEn, date)
-    let isActive = activeId === index
 
     const dayRef = useRef(null)
     const rendersCount = useRef(0)
     console.log(`CalendarDay renders: ${++rendersCount.current}`)
 
     useUpdate(draggingCount, selectedDate, date, indexRef, isTop, keyArr, setNewKeyArr)
+
+    console.log(header)
+
+    function CalendarAdd() {
+        let isActive = activeId === index
+        return (
+            <div className="calendaradd">
+                <p onClick={() => {
+                    if (!isActive) setActiveId(index)
+                    else setActiveId(null)
+                }}>+ {isEn ? "Add Task" : "Додати задачу"}</p>
+                {isActive && <div className="calendarform">
+                    <div className="calendarform__inputs">
+                        <input type="text" className="calendarform__name calendarforminput" placeholder={isEn ? "Task Name" : "Назва задачі"} value={name} onChange={(e) => setName(e.target.value)} />
+                        <textarea name="description" id="description" className="calendarform__description calendarforminput" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
+                    </div>
+                    <div className="calendar__footer">
+                        <img src={next} alt="add" className="calendarform__button" draggable={false} onClick={() => {
+                            addItem(name, desc, date, setName, setDesc, keyArr.length);
+                            onChange();
+                        }} />
+                    </div>
+                </div>}
+            </div>
+        )
+    }
 
     return (
     <div className="calendarday" onMouseEnter={() => useDay(draggedKey, date, setSelectedDate, setSelectedKeys, keyArr, indexRef)} ref={dayRef}>
@@ -35,24 +60,7 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
                 indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} clearNewKeyArr={() => setNewKeyArr(newKeyArr.filter(el => el !== "DRAGITEM"))} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>)}
             {/* {(draggingCount > 0 && selectedDate?.join(".") === date && !newKeyArr.includes("DRAGITEM")) && <DragItem top={indexRef.current * 113}/>} */}
         </div>
-        <div className="calendaradd">
-            <p onClick={() => {
-                if(!isActive) setActiveId(index)
-                else setActiveId(null)
-            }}>+ {isEn ? "Add Task" : "Додати задачу"}</p>
-            {isActive && <div className="calendarform">
-                <div className="calendarform__inputs">
-                    <input type="text" className="calendarform__name calendarforminput" placeholder={isEn ? "Task Name" : "Назва задачі"} value={name} onChange={(e) => setName(e.target.value)} />
-                    <textarea name="description" id="description" className="calendarform__description calendarforminput" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
-                </div>
-                <div className="calendar__footer">
-                    <img src={next} alt="add" className="calendarform__button" draggable={false} onClick={() => {
-                        addItem(name, desc, date, setName, setDesc, keyArr.length);
-                        onChange();
-                    }}/>
-                </div>
-            </div>}
-        </div>
+        {header?.toLowerCase() !== "overdue" && <CalendarAdd/>}
     </div>
 );
 }
