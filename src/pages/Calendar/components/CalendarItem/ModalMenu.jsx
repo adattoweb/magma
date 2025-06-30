@@ -3,10 +3,12 @@ import deleteImg from "@/assets/delete.png"
 import copy from "@/assets/copy.png"
 import ModalPriorities from "./ModalPriorities";
 
+import { useRef } from "react";
+
 const ModalMenu = React.memo(function ModalMenu({ elKey, setIsDisplay, index, rect, onChange, keyArr })  {
     const isEn = localStorage.getItem("settings-lang") === "en";
-    console.log("ModalMenu render")
-    console.log(rect)
+    const rendersCount = useRef(0)
+    console.log(`ModalMenu renders: ${++rendersCount.current}`)
 
     function remove(){
         localStorage.removeItem(`calendar-item-${index}`);

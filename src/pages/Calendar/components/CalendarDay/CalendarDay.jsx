@@ -21,6 +21,8 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
     let isActive = activeId === index
 
     const dayRef = useRef(null)
+    const rendersCount = useRef(0)
+    console.log(`CalendarDay renders: ${++rendersCount.current}`)
 
     useUpdate(draggingCount, selectedDate, date, indexRef, isTop, keyArr, setNewKeyArr)
 
@@ -54,3 +56,5 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
     </div>
 );
 }
+// змінні які ми юзаємо щоб передати дочірнім елементам:
+// setPos, setIsTop, activeMenu, setActiveMenu тобто це все передається просто в CalendarItem, в самому RenderCalendarItem ніде не використовується

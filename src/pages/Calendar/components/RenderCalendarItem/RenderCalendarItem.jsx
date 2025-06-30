@@ -62,6 +62,8 @@ export default function RenderCalendarItem({ elKey, draggedKey, setDraggedKey, p
     useUpdateCursor(isDragging, draggingCount, setDraggingCount)
 
     if (!isDisplay) return null;
-    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu} onChange={onChange} keyArr={keyArr} dayDate={date}/>, document.getElementById("root"))
+    if (isDragging) return createPortal(<CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu} onChange={onChange} keyArr={keyArr} dayDate={date}/>, document.getElementById("root"))
     else return <CalendarItem elKey={elKey} isDisplay={isDisplay} setIsDisplay={setIsDisplay} isDragging={isDragging} itemPos={itemPos} setPos={setPos} setSize={setSize} dragStart={dragStart} indexRef={indexRef} pos={pos} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu} onChange={onChange} keyArr={keyArr} dayDate={date}/>
 }
+// змінні які ми юзаємо щоб передати дочірнім елементам:
+// setIsDisplay, onChange, keyArr тобто це все передається просто в дочірні елементи CalendarItem, в самому CalendarItem ніде не використовується

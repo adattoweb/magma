@@ -24,7 +24,7 @@ export default function Calendar(){
     const [activeMenu, setActiveMenu] = useState(null)
     const rendersCount = useRef(0)
     const [isTop, setIsTop] = useState(false)
-    console.log(++rendersCount.current)
+    console.log(`Calendar renders: ${++rendersCount.current}`)
 
     const [calendar, calendarKeys] = useCalendarKeys()
 
@@ -47,3 +47,6 @@ export default function Calendar(){
         </div>
     );    
 }
+
+// змінні які ми юзаємо щоб передати дочірнім елементам:
+// setDraggedKey, pos, setPos, setDraggingCount, selectedKeys, setIsTop, activeMenu, setActiveMenu тобто це все передається просто в RenderCalendarItem, в самому CalendarDay ніде не використовується
