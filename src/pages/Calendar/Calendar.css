@@ -39,6 +39,13 @@
     width: 240px;
     min-width: 240px;
 }
+.calendarday__header{
+    color: #535353;
+}
+.calendarday__header.active{
+    color: #000
+}
+
 .calendarday::-webkit-scrollbar{
     width: 5px;
     height: 5px;
@@ -176,6 +183,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    margin-left: auto;
 }
 .calendaritem__img{
     width: 22px;
@@ -495,42 +503,45 @@
         height: 15px;
     }
 }
-@media screen and (max-width: 800px){
+@media screen and (max-width: 500px){
     .calendar__content{
         flex-direction: column;
-        width: 290px;
+        min-width: 100vw;
         gap: 20px;
         align-items: center;
         height: auto;
         padding: 10px 15px;
     }
     .calendarday{
-        width: 220px;
+        width: 100%;
         border-right: none;
         max-height: 500px;
+        align-items: start;
     }
     .calendar__content .calendarday:last-child{
         border: none;
     }
     .calendarday__header{
-        color: #535353;
         font-size: 14px;
         font-weight: 600;
-        border-bottom: 1px solid rgba(0,0,0,0.3);
+        border-bottom: 1px solid rgba(0,0,0,0.15);
         width: 100%;
-        padding-bottom: 5px;
-        text-align: center;
+        padding: 0px 0px 5px 15px;
     }
     .calendarlist{
-        padding-bottom: 15px;
+        width: 100%;
+        padding: 15px 0px 15px 15px;
+        align-items: start;
     }
     .calendaradd{
-        padding: 0px;
+        padding: 0px 0px 0px 15px;
+        align-items: start;
     }
-}
-@media screen and (max-width: 360px){
-    .calendar__content{
-        min-width: 100vw;
-        padding: 10px;
+    .calendaritem{
+        width: 230px;
+    }
+    .calendarform{
+        width: 200px;
+        height: 130px;
     }
 }

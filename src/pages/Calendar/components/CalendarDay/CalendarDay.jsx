@@ -53,7 +53,7 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
 
     return (
     <div className="calendarday" onMouseEnter={() => useDay(draggedKey, date, setSelectedDate, setSelectedKeys, keyArr, indexRef)} ref={dayRef}>
-        <h4 className="calendarday__header">{newDate}{newDate ? "," : ""} {header}</h4>
+        <h4 className={`calendarday__header${keyArr.length > 0 ? " active" : ""}`}>{newDate}{newDate ? "," : ""} {header}</h4>
         <div className="calendarlist">
             {newKeyArr.map(el => el === "DRAGITEM" ? <div key={el} className="dragitem"></div> : <RenderCalendarItem key={el} elKey={el} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} onChange={onChange} 
                 draggingCount={draggingCount} setDraggingCount={setDraggingCount} keyArr={keyArr} date={date} 
