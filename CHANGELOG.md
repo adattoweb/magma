@@ -147,5 +147,6 @@
 - ⏳ **Added date display** for overdue tasks.
 ### 0.22.1
 - 🛠️ **Optimize mouse tracker** on calendar page.
+- 🎨 **Improved adaptive calendar page design** for mobile phones.
 
 🚀 **Keep tracking & stay awesome!** 🚀

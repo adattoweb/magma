@@ -16,10 +16,10 @@ export default function useCalendarKeys() {
             let newDate = newDateFormat.map(el => el.padStart(2, "0")).join(".");
             let dayDiff = getDayDiff(newDate);
             if (dayDiff >= 1) {
-                if (!calendar.expired) {
-                    calendar.expired = [localKeys[i]]
+                if (!calendar.overdue) {
+                    calendar.overdue = [localKeys[i]]
                 } else {
-                    calendar.expired.push(localKeys[i])
+                    calendar.overdue.push(localKeys[i])
                 }
             } else if (!calendar[date]) {
                 calendar[date] = [localKeys[i]];
@@ -46,8 +46,8 @@ export default function useCalendarKeys() {
     // console.log(Object.keys(calendar));
     let calendarKeys = Object.keys(calendar);
     calendarKeys.sort((a, b) => {
-        if (a === "expired") return -1;
-        else if (b === "expired") return 1
+        if (a === "overdue") return -1;
+        else if (b === "overdue") return 1
         let dateA = new Date(...a.split(".").map(Number));
         let dateB = new Date(...b.split(".").map(Number));
         return dateA - dateB;

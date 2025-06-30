@@ -1,6 +1,6 @@
 export default function useDay(draggedKey, date, setSelectedDate, setSelectedKeys, keyArr, indexRef){
     if(draggedKey) {
-        if(date !== "expired") {
+        if(date !== "overdue") {
             setSelectedDate(date.split("."))
             setSelectedKeys(keyArr)
             if(keyArr.length === 0) indexRef.current = 0;
