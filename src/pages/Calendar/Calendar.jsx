@@ -1,7 +1,6 @@
 import CalendarDay from "./components/CalendarDay/CalendarDay";
 
 import useMove from "./hooks/useMove"
-import useTimeManage from "./hooks/useTimeManage"
 import useCalendarKeys from "./hooks/useCalandarKeys";
 
 import { useState, useRef } from "react";
@@ -28,12 +27,7 @@ export default function Calendar(){
 
     const [calendar, calendarKeys] = useCalendarKeys()
 
-    const [time, setTime] = useState(10);
-
-    useTimeManage(draggingCount, setTime)
-
-    const handleMouseMove = useRef(null);
-    useMove(handleMouseMove, time, setPos)
+    useMove(setPos, draggingCount)
 
     return (
         <div className="calendar content">

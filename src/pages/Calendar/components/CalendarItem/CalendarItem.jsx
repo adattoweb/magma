@@ -15,7 +15,7 @@ import CalendarCircle from "../CalendarCircle/CalendarCircle";
 import ModalMenu from "./ModalMenu";
 import formatTime from "@/helpers/formatTime"
 
-export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange, keyArr, dayDate }){
+export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange, keyArr, dayDate, itemRef }){
     const isEn = localStorage.getItem("settings-lang") === "en";
     const index = elKey.split("@")[0].split("-")[2];
 
@@ -39,8 +39,6 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     }
 
     useTimeRunning(isStart, time, setTimeStr, editItem, name, desc, isActive)
-
-    const itemRef = useRef(null)
 
     useEffect(() => {
         setSize({w: itemRef.current.offsetWidth, h: itemRef.current.offsetHeight})
@@ -66,6 +64,12 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     const isExpired = dayDate?.includes("expired")
 
+    function toCenterItem(){
+        const rect = itemRef.current.getBoundingClientRect()
+        console.log(rect.x, rect.y)
+        console.log("------------")
+    }
+
     return (
         <div className="calendaritem__provider">
             {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange} keyArr={keyArr}/>, document.getElementById("root"))}
@@ -87,7 +91,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                 </div>
                 <div className="calendar__images">
                     <img src={more} className="calendaritem__img" onClick={changeModal} draggable={false} ref={menuBtn}/>
-                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
+                    <img src={drag} className="calendaritem__img" alt="drag image" onClick={toCenterItem} onMouseDown={dragStart} draggable={false}/>
                 </div>
             </div>
             {isExpired && <div className="expired__date"><p>{taskDate}</p></div>}

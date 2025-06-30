@@ -145,5 +145,7 @@
 - 🛠️ **Refactored page components** from a development perspective.
 ### 0.22.0 
 - ⏳ **Added date display** for overdue tasks.
+### 0.22.1
+- 🛠️ **Optimize mouse tracker** on calendar page.
 
 🚀 **Keep tracking & stay awesome!** 🚀
