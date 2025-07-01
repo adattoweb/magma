@@ -14,6 +14,7 @@ export default function useMove(setPos, draggingCount){
           console.log(`pos renders: ${++rendersCount.current}`);
         }, 10);
         onTouchMove.current = throttle((e) => {
+            e.preventDefault();
             const touch = e.touches[0]
             setPos({x: touch.clientX, y: touch.clientY})
         }, 10)
