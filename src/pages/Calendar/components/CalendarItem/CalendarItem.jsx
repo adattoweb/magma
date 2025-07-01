@@ -1,13 +1,9 @@
 import more from "@/assets/more.png"
 import start from "@/assets/start.png"
 import pause from "@/assets/pause2.png"
-import drag from "@/assets/drag.png"
 
-import useChangePos from "./hooks/useChangePos";
 import useTime from "./hooks/useTime";
-import useBack from "./hooks/useBack";
 import useTimeRunning from "./hooks/useTimeRunning";
-import useArray from "./hooks/useArray";
 
 import { createPortal } from "react-dom";
 import React, { useState, useEffect, useRef } from 'react'
@@ -15,12 +11,14 @@ import CalendarCircle from "../CalendarCircle/CalendarCircle";
 import ModalMenu from "./ModalMenu";
 import formatTime from "@/helpers/formatTime"
 
-export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDragging, itemPos, setSize, dragStart, indexRef, pos, setIsTop, activeMenu, setActiveMenu, onChange, keyArr, dayDate, itemRef }){
+import { useDrag, useDrop } from "react-dnd";
+
+export default function CalendarItem({ elKey, onChange, dayDate, activeMenu, setActiveMenu, keyArr, setKeyArr, moveTask, setHoverId }){
+    const [isDisplay, setIsDisplay] = useState(false)
     const isEn = localStorage.getItem("settings-lang") === "en";
     const index = elKey.split("@")[0].split("-")[2];
 
-    const array = useArray(isDisplay, elKey)
-
+    const array = localStorage.getItem(elKey).split("^")
 
     const [name, setName] = useState(array[0]);
     const [desc, setDesc] = useState(array[1]);
@@ -40,34 +38,32 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
 
     useTimeRunning(isStart, time, setTimeStr, editItem, name, desc, isActive)
 
-    useEffect(() => {
-        setSize({w: itemRef.current.offsetWidth, h: itemRef.current.offsetHeight})
-    }, [])
-
-    const rectItem = useRef(null)
-    useBack(itemRef, rectItem, indexRef, indexPos, setIsTop, pos)
-
-    function changeModal(){
-        setActiveMenu(activeMenu === index ? null : index)
-    }
 
     const menuBtn = useRef(null)
     const menuBtnRect = useRef()
 
     useEffect(() => {
         menuBtnRect.current = menuBtn.current.getBoundingClientRect()
-    }, [itemPos])
+    }, [])
 
     const priorities = ["gray", "blue", "yellow", "red"] // назва класів з кольорами в порядку в якому вони будуть в модалці (розвернутими правда)
 
     const taskDate = `${array[2]}.${array[3]}.${array[4]}`
 
-    const isOverdue = dayDate?.includes("overdue")
+    const isOverdue = dayDate?.toLowerCase()?.includes("overdue")
 
+    const [{ isDragging }, dragRef] = useDrag({
+        type: "task",
+        item: { key: elKey, deleteOldElement: () => setKeyArr(keyArr.filter(el => el !== elKey))},
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        })
+    })
+    const borderRadius = 10;
     return (
-        <div className="calendaritem__provider">
+        <div className="calendaritem__provider" onMouseOver={() => console.log("+")}>
             {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange} keyArr={keyArr}/>, document.getElementById("root"))}
-            <div className= {`calendaritem${isDragging ? " dragging" : ""} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y, borderRadius: isOverdue ? "10px 10px 10px 0px" : "10px" }} ref={itemRef} onTouchStart={() => useChangePos(isDragging, indexRef, indexPos)} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
+            <div className= {`calendaritem ${priorities[priority]}`} ref={dragRef} style={{borderRadius: isOverdue ? `${borderRadius}px ${borderRadius}px ${borderRadius}px 0px` : `${borderRadius}px`}}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
                     <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
@@ -81,14 +77,10 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                 </div>
                 <div className="calendartime">
                     <input onFocus={() => setIsStart(false)} type="text" value={timeStr} onChange={(e) => useTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
-                    <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {if (!isActive) setIsStart(!isStart)}} />
+                    <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {setIsStart(!isStart)}} />
                 </div>
                 <div className="calendar__images">
-                    <img src={more} className="calendaritem__img" onClick={changeModal} draggable={false} ref={menuBtn}/>
-                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} onTouchStart={(e) => {
-                        dragStart()
-                        e.preventDefault()
-                    }} draggable={false}/>
+                    <img src={more} className="calendaritem__img" draggable={false} ref={menuBtn}/>
                 </div>
             </div>
             {isOverdue && <div className="expired__date"><p>{taskDate}</p></div>}

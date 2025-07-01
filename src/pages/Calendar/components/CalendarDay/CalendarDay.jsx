@@ -2,30 +2,23 @@ import next from "@/assets/next.png"
 
 import addItem from "../../helpers/addItem"
 
-import useDay from "./hooks/useDay";
-import useUpdate from "./hooks/useUpdate";
 import useDate from "./hooks/useDate";
 
-import RenderCalendarItem from "../RenderCalendarItem/RenderCalendarItem";
-import { useState, useRef } from "react";
+import { useState } from "react";
+import CalendarItem from "../CalendarItem/CalendarItem";
 
-export default function CalendarDay({ date, keyArr, onChange, activeId, setActiveId, index, draggedKey, setDraggedKey, pos, setPos, selectedDate, setSelectedDate, draggingCount, setDraggingCount, indexRef, selectedKeys, setSelectedKeys, isTop, setIsTop, activeMenu, setActiveMenu }) {
+import { useDrop } from "react-dnd";
+
+export default function CalendarDay({ date, arrayKeys, onChange, activeId, setActiveId, index, activeMenu, setIsActiveMenu}) {
     const isEn = localStorage.getItem("settings-lang") === "en";
+
+    const [keyArr, setKeyArr] = useState(arrayKeys)
 
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
 
-    const [newKeyArr, setNewKeyArr] = useState(keyArr)
 
     let [header, newDate] = useDate(isEn, date)
-
-    const dayRef = useRef(null)
-    const rendersCount = useRef(0)
-    console.log(`CalendarDay renders: ${++rendersCount.current}`)
-
-    useUpdate(draggingCount, selectedDate, date, indexRef, isTop, keyArr, setNewKeyArr)
-
-    console.log(header)
 
     function CalendarAdd() {
         let isActive = activeId === index
@@ -51,14 +44,40 @@ export default function CalendarDay({ date, keyArr, onChange, activeId, setActiv
         )
     }
 
+    const [hoverId, setHoverId] = useState(null)
+
+    function moveTask(key){
+        if(!hoverId) throw new Error("hoverid")
+        const updated = keyArr.filter(el => el !== key)
+        updated.splice(hoverId, 0, key)
+        setKeyArr(updated)
+    }
+
+    function onDrop(item){
+        const itemArray = localStorage.getItem(item.key).split("^");
+        const itemDate = `${itemArray[2]}.${itemArray[3]}.${itemArray[4]}`
+        const dateArray = date.split(".")
+        localStorage.setItem(item.key, `${itemArray[0]}^${itemArray[1]}^${dateArray[0]}^${dateArray[1]}^${dateArray[2]}^${itemArray[5]}^${itemArray[6]}^${hoverId}^${itemArray[8]}`)
+        console.log(itemDate, date)
+        if(itemDate !== date){
+            setKeyArr([...keyArr, item.key]);
+            item.deleteOldElement()
+        }
+        moveTask(item.key)
+    }
+
+    const [, dropRef] = useDrop({
+        accept: "task",
+        drop: (item) => onDrop(item),
+    });
+
+    console.log(keyArr)
+
     return (
-    <div className="calendarday" onTouchStart = {() => useDay(draggedKey, date, setSelectedDate, setSelectedKeys, keyArr, indexRef)} onMouseEnter={() => useDay(draggedKey, date, setSelectedDate, setSelectedKeys, keyArr, indexRef)} ref={dayRef}>
+    <div className="calendarday" ref={dropRef}>
         <h4 className={`calendarday__header${keyArr.length > 0 ? " active" : ""}`}>{newDate}{newDate ? "," : ""} {header}</h4>
         <div className="calendarlist">
-            {newKeyArr.map(el => el === "DRAGITEM" ? <div key={el} className="dragitem"></div> : <RenderCalendarItem key={el} elKey={el} draggedKey={draggedKey} setDraggedKey={setDraggedKey} pos={pos} setPos={setPos} selectedDate={selectedDate} onChange={onChange} 
-                draggingCount={draggingCount} setDraggingCount={setDraggingCount} keyArr={keyArr} date={date} 
-                indexRef={indexRef} selectedKeys={selectedKeys} setSelectedKeys={setSelectedKeys} clearNewKeyArr={() => setNewKeyArr(newKeyArr.filter(el => el !== "DRAGITEM"))} setIsTop={setIsTop} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>)}
-            {/* {(draggingCount > 0 && selectedDate?.join(".") === date && !newKeyArr.includes("DRAGITEM")) && <DragItem top={indexRef.current * 113}/>} */}
+            {keyArr.map(el => el === "DRAGITEM" ? <div key={el} className="dragitem"></div> : <CalendarItem key={el} elKey={el} onChange={onChange} keyArr={keyArr} dayDate={header} activeMenu={activeMenu} setIsActiveMenu={setIsActiveMenu} setKeyArr={setKeyArr} moveTask={moveTask} setHoverId={setHoverId}/>)}
         </div>
         {header?.toLowerCase() !== "overdue" && <CalendarAdd/>}
     </div>

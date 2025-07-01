@@ -10,7 +10,6 @@ import Analytics from "@/pages/Analytics/Analytics";
 import Page404 from "@/pages/Page404/Page404";
 import Goals from "@/pages/Goals/Goals";
 import Calendar from "@/pages/Calendar/Calendar";
-import Note from "@/pages/Notebook/Note"
 
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -64,7 +63,6 @@ export default function App() {
           <Route path="/settings" element={<Settings onChange={() => setIsRender(!isRender)}/>} />
           <Route path="/goals" element={<Goals />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/notebook" element={<Note />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />
