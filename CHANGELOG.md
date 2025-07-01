@@ -148,5 +148,7 @@
 ### 0.22.1
 - 🛠️ **Optimize mouse tracker** on calendar page.
 - 🎨 **Improved adaptive calendar page design** for mobile phones.
+### 0.22.2
+- 📱 **Added support for task drag-and-droз** on mobile devices.
 
 🚀 **Keep tracking & stay awesome!** 🚀
