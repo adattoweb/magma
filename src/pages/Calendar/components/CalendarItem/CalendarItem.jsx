@@ -85,7 +85,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                 </div>
                 <div className="calendar__images">
                     <img src={more} className="calendaritem__img" onClick={changeModal} draggable={false} ref={menuBtn}/>
-                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} draggable={false}/>
+                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} onTouchStart={dragStart} draggable={false}/>
                 </div>
             </div>
             {isOverdue && <div className="expired__date"><p>{taskDate}</p></div>}
