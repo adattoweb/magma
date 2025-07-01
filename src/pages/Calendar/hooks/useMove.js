@@ -3,8 +3,6 @@ import throttle from "@/helpers//throttle";
 
 export default function useMove(setPos, draggingCount){
 
-    const isMobile = window.innerWidth <= 768;
-
     const rendersCount = useRef(0)
     
     const onMouseMove = useRef()
@@ -22,20 +20,14 @@ export default function useMove(setPos, draggingCount){
     }, []);
 
     useEffect(() => {
+        const isMobile = window.innerWidth <= 768;
         if(draggingCount > 0){
-            if(!isMobile){
-                window.addEventListener("mousemove", onMouseMove.current);
-    
-                return () => {
-                    window.removeEventListener("mousemove", onMouseMove.current);
-                };
-            } else {
-                window.addEventListener("touchmove", onTouchMove.current);
-    
-                return () => {
-                    window.removeEventListener("touchmove", onTouchMove.current);
-                };
-            }
+            const handler = isMobile ? onTouchMove.current : onMouseMove.current;
+            const eventType = isMobile ? "touchmove" : "mousemove";
+            window.addEventListener(eventType, handler, { passive: false });
+            return () => {
+                window.removeEventListener(eventType, handler);
+            };
         }
     }, [draggingCount])
 }
