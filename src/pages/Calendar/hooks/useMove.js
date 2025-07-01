@@ -17,6 +17,7 @@ export default function useMove(setPos, draggingCount){
             e.preventDefault();
             const touch = e.touches[0]
             setPos({x: touch.clientX, y: touch.clientY})
+            console.log("+")
         }, 10)
     }, []);
 

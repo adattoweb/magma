@@ -67,7 +67,7 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
     return (
         <div className="calendaritem__provider">
             {(activeMenu === index) && createPortal(<ModalMenu elKey={elKey} setIsDisplay={setIsDisplay} index={index} rect={menuBtnRect.current} priorities={priorities.current} onChange={onChange} keyArr={keyArr}/>, document.getElementById("root"))}
-            <div className= {`calendaritem${isDragging ? " dragging" : ""} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y, borderRadius: isOverdue ? "10px 10px 10px 0px" : "10px" }} ref={itemRef} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
+            <div className= {`calendaritem${isDragging ? " dragging" : ""} ${priorities[priority]}`} style={{left: Number.isNaN(itemPos.x) ? 0 : itemPos.x, top: Number.isNaN(itemPos.y) ? 0 : itemPos.y, borderRadius: isOverdue ? "10px 10px 10px 0px" : "10px" }} ref={itemRef} onTouchStart={() => useChangePos(isDragging, indexRef, indexPos)} onMouseEnter={() => useChangePos(isDragging, indexRef, indexPos)}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
                     <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
@@ -85,7 +85,10 @@ export default function CalendarItem({ elKey, isDisplay, setIsDisplay, isDraggin
                 </div>
                 <div className="calendar__images">
                     <img src={more} className="calendaritem__img" onClick={changeModal} draggable={false} ref={menuBtn}/>
-                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} onTouchStart={dragStart} draggable={false}/>
+                    <img src={drag} className="calendaritem__img" alt="drag image" onMouseDown={dragStart} onTouchStart={(e) => {
+                        dragStart()
+                        e.preventDefault()
+                    }} draggable={false}/>
                 </div>
             </div>
             {isOverdue && <div className="expired__date"><p>{taskDate}</p></div>}
