@@ -1,10 +1,17 @@
-export default function addItem(name, desc, date, setName, setDesc, posIndex) {
-    let dateArr = date.split(".");
+export default function addItem(name, desc, date, setName, setDesc, posIndex, calendar, setCalendar) {
+    const dateArr = date.split(".");
     if (name.length === 0) return;
-    let newName = name.replace(/(@|\^)+/g, ".");
-    let index = +localStorage.getItem("calendar-index");
+    const newName = name.replace(/(@|\^)+/g, ".");
+    const index = +localStorage.getItem("calendar-index");
     localStorage.setItem("calendar-index", index+1);
-    localStorage.setItem(`calendar-item-${index}`, `${newName}^${desc}^${dateArr[0]}^${dateArr[1]}^${dateArr[2]}^false^0^${posIndex}^0`);
+    const key = `calendar-item-${index}`
+    localStorage.setItem(key, `${newName}^${desc}^${dateArr[0]}^${dateArr[1]}^${dateArr[2]}^false^0^${posIndex}^0`);
     setName("")
     setDesc("")
+
+    const newCalendar = {...calendar}
+    newCalendar[date].push(key)
+    console.log(newCalendar)
+    setCalendar(newCalendar)
+
 }

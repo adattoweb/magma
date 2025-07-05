@@ -1,6 +1,6 @@
 import getDayDiff from "@/helpers/getDayDiff";
 
-export default function useCalendarKeys() {
+export default function getCalendar() {
     let localKeys = Object.keys(localStorage);
 
     let calendar = {};
@@ -44,13 +44,5 @@ export default function useCalendarKeys() {
         calendar[key].sort((a, b) => +localStorage.getItem(a).split("^")[7] - +localStorage.getItem(b).split("^")[7])
     }
     // console.log(Object.keys(calendar));
-    let calendarKeys = Object.keys(calendar);
-    calendarKeys.sort((a, b) => {
-        if (a === "overdue") return -1;
-        else if (b === "overdue") return 1
-        let dateA = new Date(...a.split(".").map(Number));
-        let dateB = new Date(...b.split(".").map(Number));
-        return dateA - dateB;
-    });
-    return [calendar, calendarKeys]
+    return calendar
 }
