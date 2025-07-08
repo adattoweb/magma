@@ -26,6 +26,7 @@
     border-radius: 8px;
     font-weight: 500;
     transition: none;
+    background: none;
 }
 .wrapper.dark .gstart__input,.wrapper.dark .goals__input input{
     border: 1px solid rgba(255,255,255,0.8);
@@ -44,16 +45,34 @@
     align-items: center;
 }
 .gitem{
-    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-radius: 15px;
+    z-index: 1000 !important;
+    backdrop-filter: blur(4px);
+    border: none;
+}
+.gitem-dragging{
+    background-color: #d3d3d3;
+    pointer-events: none;
+    transform-origin: top left;
+    margin: 0;
+}
+.gitem-dragging *{
+    visibility: hidden !important;
+    transition: none !important;
 }
 .glist .tlist__header{
     height: 40px;
     top: -40px;
 }
-.glist .titem:first-child{
-    border: none;
+.gitem__edit{
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
-.glist .titem__circle{
+.gitem__circle{
     border-radius: 100px;
     width: 25px;
     height: 25px;
@@ -61,6 +80,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.gitem__name{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    max-width: 250px;
+    outline: 1px solid transparent;
+    transition: 0.3s ease all;
+    background: rgba(255,255,255,0.0)
+}
+.gitem__name:hover{
+    outline: 1px solid rgba(0,0,0,0.3);
+}
+.gitem__name:focus{
+    outline: 1px solid rgba(0,0,0,0.7);
+}
+.wrapper.dark .gitem__name:focus{
+    outline: 1px solid #fff;
+}
+.wrapper.dark .gitem__name{
+    background: none;
+    border-radius: 5px;
+    color: #fff;
+}
+.wrapper.dark .gitem__name:hover{
+    outline: 1px solid #fff;
 }
 .wrapper.dark .glist .titem__circle{
     border: 2px solid #fff;
@@ -85,20 +132,16 @@
 .movedown{
     transform: rotate(180deg)
 }
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 900px) {
+    .glist .titem__edit{
+        flex-direction: row !important;
+    }
     .goals__add .trackers__info{
         gap: 10px !important;
     }
     .goalslist{
-        flex-direction: column;
         align-items: start;
         gap: 20px;
-    }
-    .goals__add{
-        height: 80px !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
     }
     .goals__add .trackers__info{
         justify-content: flex-start !important;
@@ -107,21 +150,26 @@
         width: 26px !important;
         height: 26px !important;
     }
-    .goalslist .titem__edit input{
-        max-width: 30px !important;
+    .gitem__name{
+        max-width: 100px !important;
         font-size: 14px !important;
     }
     .goals__input input{
-        width: 20px;
-        font-size: 14px;
+        width: 28px;
+        height: 28px;
     }
     .glist .titem__info{
         gap: 20px;
     }
 }
+@media screen and (max-width: 840px) {
+    .goals__add{
+        height: 60px !important;
+        flex-direction: row !important;
+    }
+}
 @media screen and (max-width: 750px) {
     .glist .titem{
-        flex-direction: column;
         gap: 20px;
     }
     .glist .titem__info{
@@ -130,10 +178,37 @@
         margin-left: auto;
     }
 }
+
 @media screen and (max-width: 650px) {
     .goals__add{
         height: 100px !important;
     }
+}
+@media screen and (max-width: 500px) {
+    .glist .titem__edit{
+        gap: 15px !important;
+    }
+    .glist .titem__info{
+        gap: 6px !important;
+    }
+    .gitem__name{
+        max-width: 65px !important;
+    }
+    .glist .titem__time img, .glist .titem__delete img{
+        width: 24px !important;
+        height: 24px !important;
+    }
+    .gitem__name{
+        max-width: 60px !important;
+        font-size: 14px !important;
+    }
+    .goals__input{
+        gap: 12px;
+    }
+    .gitem__edit{
+        gap: 10px;
+    }
+
 }
 @media screen and (max-width: 1300px) {
     .goals__add .trackers__info input{
@@ -143,4 +218,3 @@
         width: 40px !important;
     }
 }
-

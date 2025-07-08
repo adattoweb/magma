@@ -6,7 +6,6 @@
     padding: 15px 20px;
     overflow-x: auto;
     overflow-y: hidden;
-    backdrop-filter: blur(5px);
 }
 .calendar__content::-webkit-scrollbar {
     width: 7px;
@@ -78,11 +77,19 @@
     padding: 5px 5px 5px 10px;
     z-index: 10000;
 }
-.dragging{
+.dragging-one{
     background-color: #d3d3d3;
     pointer-events: none;
     transform-origin: top left;
     margin: 0;
+}
+.dragging-one  *{
+    visibility: hidden !important;
+    transition: none !important;
+}
+.dragging-two{
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(4px);
 }
 .wrapper.dark .calendaritem{
     border: 1px solid #666666 !important;
@@ -475,6 +482,8 @@
         align-items: center;
         height: auto;
         padding: 10px 15px;
+        box-sizing: border-box;
+        border-radius: 0;
         overflow-x: hidden;
     }
     .calendarday{
@@ -482,6 +491,7 @@
         border-right: none;
         max-height: 500px;
         align-items: start;
+        box-sizing: border-box;
     }
     .calendar__content .calendarday:last-child{
         border: none;

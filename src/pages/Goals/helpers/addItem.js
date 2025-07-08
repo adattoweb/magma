@@ -1,4 +1,4 @@
-export default function addItem(name, min, max) {
+export default function addItem(name, min, max, setArray) {
     let smallName = name
     if(name.length > 60) smallName = name.substring(0, 44) + "..."
     if(min < 0 || max <= 0) return
@@ -12,10 +12,11 @@ export default function addItem(name, min, max) {
     if (counter > 1 || name.length === 0) return;
     let index = localStorage.getItem("goals-index");
     localStorage.setItem("goals-index", +index + 1);
+    const newValue = `${newName}@${index}@${min}@${max}`
     if (readProjects.length === 0) {
-        localStorage.setItem("goals-list", `${newName}@${index}@${min}@${max}`);
+        localStorage.setItem("goals-list", newValue);
     } else {
-        localStorage.setItem("goals-list", `${localStorage.getItem("goals-list") }^${newName}@${index}@${min}@${max}`);
+        localStorage.setItem("goals-list", `${localStorage.getItem("goals-list") }^${newValue}`);
     }
-    console.log(arr)
+    setArray(localStorage.getItem("goals-list").split("^").map(el => el.split("@")))
 }

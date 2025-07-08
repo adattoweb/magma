@@ -3,7 +3,7 @@ import start from "@/assets/start.png"
 import pause from "@/assets/pause2.png"
 import drag from "@/assets/drag.png"
 
-import useTime from "./hooks/useTime";
+import updateTime from "./helpers/updateTime";
 import useTimeRunning from "./hooks/useTimeRunning";
 
 import { createPortal } from "react-dom";
@@ -62,7 +62,6 @@ export default function CalendarItem({ elKey, dayDate, activeMenu, setActiveMenu
         borderRadius: isOverdue ? `${borderRadius}px ${borderRadius}px ${borderRadius}px 0px` : `${borderRadius}px`,
         transition,
         transform: CSS.Transform.toString(transform),
-
     }
 
     const isActiveMenu = activeMenu === index
@@ -71,15 +70,17 @@ export default function CalendarItem({ elKey, dayDate, activeMenu, setActiveMenu
         setActiveMenu(!isActiveMenu ? index : null)
     }
 
+    const draggingClasses = `${activeTaskId === elKey && !isDragging ? "dragging-one" : activeTaskId === elKey && isDragging ? "dragging-two" : ""}`
+
     return (
         <div className="calendaritem__provider">
             {isActiveMenu && createPortal(<ModalMenu onChange={() => setIsRender(!isRender)} elKey={elKey} rect={menuBtn.current} priorities={priorities.current} keyArr={keyArr} calendar={calendar} setCalendar={setCalendar} setActiveMenu={setActiveMenu} menuBtnRef={menuBtn}/>, document.getElementById("root"))}
-            <div className= {`calendaritem ${priorities[priority]} ${activeTaskId === elKey && !isDragging ? "dragging" : ""}`} style={style} ref={setNodeRef}>
+            <div className= {`calendaritem ${priorities[priority]} ${draggingClasses}`} style={style} ref={setNodeRef}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className="calendaritem__text">
                     <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
-                        setName(e.target.value);
-                        editItem(e.target.value, desc, isActive);
+                        setName(e.target.value.replaceAll("^", "."));
+                        editItem(e.target.value.replaceAll("^", "."), desc, isActive);
                     }} />
                     <input className="calendartext__desc" type="text" placeholder={isEn ? "Task Description" : "Опис задачі"} value={desc} onChange={(e) => {
                         setDesc(e.target.value);
@@ -87,7 +88,7 @@ export default function CalendarItem({ elKey, dayDate, activeMenu, setActiveMenu
                     }} />
                 </div>
                 <div className="calendartime">
-                    <input onFocus={() => setIsStart(false)} type="text" value={timeStr} onChange={(e) => useTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
+                    <input onFocus={() => setIsStart(false)} type="text" value={timeStr} onChange={(e) => updateTime(e, time, setTimeStr, editItem, name, desc, isActive)}/>
                     <img src={isStart ? pause : start} alt="start" draggable={false} onClick={() => {setIsStart(!isStart)}} />
                 </div>
                 <div className="calendar__images">

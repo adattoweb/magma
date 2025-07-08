@@ -1,4 +1,4 @@
-export default function useTime(e, time, setTimeStr, editItem, name, desc, isActive) {
+export default function updateTime(e, time, setTimeStr, editItem, name, desc, isActive) {
     let value = e.target.value
     if (value.length > 8) return
     let arr = value.split(":")

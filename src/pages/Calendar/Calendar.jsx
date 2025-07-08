@@ -147,7 +147,7 @@ export default function Calendar(){
                 </div>
             </div>
             <DragOverlay >
-                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} activeMenu={activeMenu} setActiveMenu={setActiveMenu} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={false}/>}
+                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} activeMenu={activeMenu} setActiveMenu={setActiveMenu} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
             </DragOverlay>
         </DndContext>
     );    

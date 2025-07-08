@@ -43,7 +43,7 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
     return (
         <div className="titem">
             <div className="titem__edit">
-                <input type="text" value={newName} onChange={(e) => {
+                <input type="text" className="titem__name" value={newName} onChange={(e) => {
                     setNewName(e.target.value);
                     editItem(e.target.value);
                 }} />

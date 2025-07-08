@@ -175,7 +175,7 @@
 .titem__edit .dropdown-content{
     border-radius: 5px;
 }
-.titem__edit input,.tblock__miniheader input{
+.titem__name{
     font-size: 16px;
     font-weight: 600;
     padding: 5px 10px;
@@ -186,21 +186,21 @@
     transition: 0.3s ease all;
     background: rgba(255,255,255,0.0)
 }
-.titem__edit input:hover, .tblock__miniheader input:hover{
+.titem__name:hover{
     outline: 1px solid rgba(0,0,0,0.3);
 }
-.titem__edit input:focus, .tblock__miniheader input:focus{
+.titem__name:focus{
     outline: 1px solid rgba(0,0,0,0.7);
 }
-.wrapper.dark .titem__edit input:focus, .wrapper.dark .tblock__miniheader input:focus{
+.wrapper.dark .titem__name:focus{
     outline: 1px solid #fff;
 }
-.wrapper.dark .titem__edit input, .wrapper.dark .tblock_miniheader input{
+.wrapper.dark .titem__name{
     background: none;
     border-radius: 5px;
     color: #fff;
 }
-.wrapper.dark .titem__edit input:hover, .wrapper.dark .tblock__miniheader input:hover{
+.wrapper.dark .titem__name:hover{
     outline: 1px solid #fff;
 }
 .titem__info{
@@ -427,7 +427,7 @@
     .titem__time input{
         font-size: 14px !important;
     }
-    .titem__edit input, .tblock__miniheader input{
+    .titem__name, .tblock__miniheader input{
         font-size: 16px !important;
         max-width: 80px !important;
         padding: 5px 5px !important;

@@ -3,7 +3,7 @@ import start from "@/assets/projectstart.png";
 
 import addItem from "../helpers/addItem";
 
-export default function TrackerStart({ update }) {
+export default function GoalsStart({ setArray }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
     const [name, setName] = useState("");
     const [min, setMin] = useState(0);
@@ -11,8 +11,7 @@ export default function TrackerStart({ update }) {
 
     function onClick(){
         if((min + "").length > 0 && (max + "").length > 0){
-            addItem(name, min, max)
-            update();
+            addItem(name, min, max, setArray)
         } 
     }
     

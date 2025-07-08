@@ -2,9 +2,8 @@ import { useState } from "react";
 
 import next from "@/assets/next.png"
 
-import addItem from "../../helpers/addItem"
-
-import useDate from "./hooks/useDate";
+import addItem from "./helpers/addItem"
+import getDate from "./helpers/getDate";
 
 import CalendarItem from "../CalendarItem/CalendarItem";
 
@@ -15,7 +14,7 @@ export default function CalendarDay({ date, keyArr, activeId, setActiveId, index
     if(keyArr.length === 0 && date.toLowerCase() === "overdue") return
     const isEn = localStorage.getItem("settings-lang") === "en";
 
-    let [header, newDate] = useDate(isEn, date)
+    let [header, newDate] = getDate(isEn, date)
 
     function CalendarAdd() {
         const [name, setName] = useState("");
@@ -42,17 +41,18 @@ export default function CalendarDay({ date, keyArr, activeId, setActiveId, index
             </div>
         )
     }
+    const isOverdue = date.toLowerCase() === "overdue"
 
     const {setNodeRef} = useDroppable({id: date, data: {isDay: true}});
     return (
-    <div className="calendarday" ref={setNodeRef}>
+    <div className="calendarday" ref={setNodeRef} id={`${isOverdue ? "overdue" : ""}`}>
         <h4 className={`calendarday__header${keyArr.length > 0 ? " active" : ""}`}>{newDate}{newDate ? "," : ""} {header}</h4>
         <div className="calendarlist">
             <SortableContext items={keyArr} strategy={verticalListSortingStrategy}>
                 {keyArr.map(el => <CalendarItem key={el} elKey={el} keyArr={keyArr} dayDate={header} activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>)}
             </SortableContext>
         </div>
-        {(date.toLowerCase() !== "overdue" ) && <CalendarAdd/> }
+        {!isOverdue && <CalendarAdd/> }
     </div>
 );
 }

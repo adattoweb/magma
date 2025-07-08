@@ -150,5 +150,10 @@
 - 🎨 **Improved adaptive calendar page design** for mobile phones.
 ### 0.22.2
 - 📱 **Added support for task drag-and-droз** on mobile devices.
+### 0.23.0
+- 📅 **Completely redesigned calendar** drag-and-drop, now using the dnd-kit library.
+- 🧹 **Refactored calendar code** for cleaner and more maintainable structure.
+- 🎨 **Improved goal** design for better visual clarity.
+- 🎯 **Completely redesigned goal** drag-and-drop, also powered by dnd-kit.
 
 🚀 **Keep tracking & stay awesome!** 🚀
