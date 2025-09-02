@@ -1,3 +1,6 @@
+.glist{
+    padding: 10px 0px 10px 0px;
+}
 .goals__limit{
     display: flex;
     gap: 15px;
@@ -50,14 +53,12 @@
     padding: 15px 20px;
     border-radius: 15px;
     z-index: 1000 !important;
-    backdrop-filter: blur(4px);
     border: none;
 }
 .gitem-dragging{
     background-color: #d3d3d3;
     pointer-events: none;
-    transform-origin: top left;
-    margin: 0;
+    margin: 0px 10px;
 }
 .gitem-dragging *{
     visibility: hidden !important;

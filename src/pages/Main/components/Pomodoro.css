@@ -1,0 +1,137 @@
+.pomodoro{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    align-items: center;
+    gap: 25px;
+}
+.percent{
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 30px #b4b4b4;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.number h2{
+    color: #000;
+    font-family: "Montserrat Alternates", serif;
+    font-weight: 600;
+    width: 150px;
+    text-align: center;
+}
+.number h2 .alltime{
+    color: #464646;
+    font-family: "Montserrat Alternates", serif;
+    font-size: 16px;
+}
+.percent__svg{
+    position: relative;
+    width: 170px;
+    height: 170px;
+    transform: rotate(-85deg);
+}
+.percent__svg circle{
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 10px;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+    transition: 0.1s ease all;
+}
+.percent__svg .percent__active{
+    stroke: #000000;
+}
+.pform{
+    display: flex;
+    border-radius: 20px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+}
+.dropdown__pform{
+    width: calc(200px - 45px);
+    height: 45px;
+    background-color: #fff;
+    border-radius: 40px 0px 0px 40px;
+    display: flex;
+    align-items: center;
+}
+.pform__input{
+    width: 80px;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    height: 25px;
+    line-height: 2px;
+    border-radius: 25px;
+    border: none;
+    outline: 1px solid #9d9d9d;
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+.pform__input:focus{
+    outline: 1px solid #424242;
+}
+.pform__input.pform__error{
+    outline: 1px solid #c52d2d;
+}
+.start__container{
+    display: flex;
+}
+.start-img{
+    width: 45px;
+    height: 45px;
+    background-color: #fff;
+    padding: 7px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 1px #fff);
+}
+.main__error{
+    background-color: #1f1f1fd0;
+    padding: 7px 10px;
+    border-radius: 15px;
+    width: 180px;
+    height: 70px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    font-family: "Montserrat Alternates", serif;
+    outline: 2px solid #434343;
+    white-space: pre-line;
+    position: absolute;
+    bottom: -80px;
+}
+@keyframes spin{
+    0%{
+        transform: rotate(0deg)
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}
+/* .start-img:hover{
+    padding: 6px;
+} */
