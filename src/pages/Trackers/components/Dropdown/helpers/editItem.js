@@ -22,5 +22,6 @@ export default function editItem(actualValue, name) {
             }
         }
     }
+    console.log(prArr)
     localStorage.setItem("tracker-projects", prArr.join("^"));
 }

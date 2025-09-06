@@ -169,11 +169,37 @@
 }
 
 @media screen and (max-width: 650px) {
+    .goals__add .trackers__info{
+        justify-content: center !important;
+    }
+    .gstart__button{
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+@media screen and (max-width: 350px) {
     .goals__add{
-        height: 100px !important;
+        width: min-content !important;
+        height: min-content !important;
+        padding: 10px;
+        flex-direction: column !important;
+    }
+    .goals__add .trackers__info{
+        align-items: center !important;
+    }
+    .goals .goals__add .trackers__info input{
+        width: 200px !important;
+    }
+}
+@media screen and (max-width: 250px) {
+    .goals .goals__add .trackers__info input{
+        width: 150px !important;
     }
 }
 @media screen and (max-width: 500px) {
+    .goals__add .trackers__info input{
+        width: 120px !important;
+    }
     .glist .titem__edit{
         gap: 15px !important;
     }
@@ -200,9 +226,6 @@
 
 }
 @media screen and (max-width: 1300px) {
-    .goals__add .trackers__info input{
-        width: 100px !important;
-    }
     .goals__add .trackers__info .goals__limit input{
         width: 40px !important;
     }

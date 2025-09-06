@@ -2,6 +2,9 @@
     position: relative;
     display: inline-block;
 }
+.dropdown.open{
+    z-index: 1000;
+}
 
 .dropdown-btn {
     font-family: "Montserrat Alternates", serif;
@@ -125,15 +128,16 @@
     align-items: center;
     gap: 10px;
     padding: 0px 5px 0px 0px;
+    height: 40px;
 }
 .dropdown__edit{
     display: flex;
-    gap: 10px;
 }
 .dropdown__item img{
     width: 20px;
     transition: 0.2s ease all;
-    filter: invert(0.3)
+    filter: invert(0.3);
+    padding: 5px;
 }
 .dropdown__item img:hover{
     filter: invert(0)
@@ -150,6 +154,9 @@
 }
 .dropdown__item p:hover{
     background-color: rgba(255,255,255,0) !important;
+}
+.dropdown__item input{
+    margin-left: 10px;
 }
 .dropdown__item input{
     padding: 4px;

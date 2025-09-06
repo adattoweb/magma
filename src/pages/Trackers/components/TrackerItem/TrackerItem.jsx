@@ -4,6 +4,7 @@ import Dropdown from "@/components/Dropdown/Dropdown";
 import deleteImg from "@/assets/delete.png";
 
 export default function TrackerItem({ localKey, isRender, setIsRender}) {
+    const isEn = localStorage.getItem("settings-lang") === "en";
     const [name, project, start, end, all] = localStorage.getItem(localKey).split("^")
     const [newName, setNewName] = useState(name);
     const [newProject, setNewProject] = useState(project);
@@ -39,6 +40,9 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
         if (start) editItem(newName, newProject, res, newEnd, myAll);
         else editItem(newName, newProject, newStart, res, myAll);
     }
+    const localProjects = localStorage.getItem("tracker-projects")
+    const array = localProjects === null ? [] : localProjects.split("^")
+    const [select, setSelect] = useState(newProject)
 
     return (
         <div className="titem">
@@ -47,10 +51,13 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
                     setNewName(e.target.value);
                     editItem(e.target.value);
                 }} />
-                <Dropdown startValue={newProject} editProject={(value) => {
-                    setNewProject(value);
-                    editItem(newName, value);
-                }} />
+                <Dropdown name={select}>
+                    {array.map((el, index) => <p onClick={() => {
+                        setSelect(el);
+                        setNewProject(el)
+                        editItem(newName, el)
+                    }} key={el + index}>{isEn && el === "Без проєкту" ? "Without project" : el}</p>)}
+                </Dropdown>
             </div>
             <div className="titem__info">
                 <div className="titem__time">
@@ -69,3 +76,7 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
         </div>
     );
 }
+{/* <Dropdown startValue={newProject} editProject={(value) => {
+    setNewProject(value);
+    editItem(newName, value);
+}} /> */}

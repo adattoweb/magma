@@ -22,10 +22,11 @@ export default function DropAdd({ makeRender }) {
             localStorage.setItem("tracker-projects", `${localStorage.getItem("tracker-projects")}^${newName}`);
         }
         makeRender()
+        setProjectValue("")
     }
 
     return (
-        <div className="dropdown__add">
+        <div className="dropdown__add" onClick={(e) => e.stopPropagation()}>
             <input type="text" placeholder={isEn ? "Enter a name of project" : "Введіть назву проєкту"} value={projectValue} onChange={(e) => setProjectValue(e.target.value)} />
             <div className="dropdown__create" onClick={addProject}>{isEn ? "Create" : "Створити"} +</div>
         </div>)

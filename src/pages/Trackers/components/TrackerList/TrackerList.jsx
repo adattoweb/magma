@@ -68,4 +68,5 @@ export default function TrackerList() {
         </div>
     );
 }
+// project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)}
 // page === 1 indexes: elementsOnPage - elementsOnPage --> elementsOnPage-1

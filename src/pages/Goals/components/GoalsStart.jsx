@@ -21,9 +21,7 @@ export default function GoalsStart({ setArray }) {
     return (
         <div className="goals__add trackers__add project__add newblock">
             <div className="trackers__info">
-                <input type="text" className="tstart__input" maxLength={30} placeholder={isEn ? "Goal Name" : "Назва цілі"} value={name} onChange={(e) => setName(e.target.value)} />
-                <div className="goals__limit">
-                </div>
+                <input type="text" className="tstart__input" maxLength={30} placeholder={isEn ? "Add a habit" : "Введіть звичку"} value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="trackers__start">
                 <StartButton/>

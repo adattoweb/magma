@@ -10,7 +10,7 @@ export default function Goals() {
     const localGoals = localStorage.getItem("goals-list")
     const [array, setArray] = useState(localGoals === null ? [] : localGoals.split("^"))
     return (
-        <div className="trackers content">
+        <div className="trackers content goals">
             <GoalsStart setArray={setArray}/>
             <GoalsList array={array} setArray={setArray}/>
         </div>

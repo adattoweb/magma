@@ -19,4 +19,24 @@
     border-radius: 12px;
     min-width: 350px;
   }
+  @media screen and (max-width: 500px) {
+    .modal{
+      transform: scale(0.9);
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .modal{
+      min-width: 300px;
+    }
+  }
+  @media screen and (max-width: 330px) {
+    .modal{
+      transform: scale(0.8)
+    }
+  }
+  @media screen and (max-width: 290px) {
+    .modal{
+      transform: scale(0.7)
+    }
+  }
   
