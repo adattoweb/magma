@@ -1,22 +1,15 @@
-export default function addItem(name, min, max, setArray) {
+export default function addItem(name, setArray) {
     let smallName = name
-    if(name.length > 60) smallName = name.substring(0, 44) + "..."
-    if(min < 0 || max <= 0) return
     let newName = smallName.replace(/(@|\^)+/g, ".");
-    let readProjects = localStorage.getItem("goals-list") ?? "";
-    let arr = readProjects.split("^").map(el => el.split("@"));
-    let counter = 1;
-    for (let i = 0; i < arr.length; i++) { // шукаємо повторення, якщо є то зупиняємо додавання.
-        if (arr[i][0] === smallName) counter++;
-    }
-    if (counter > 1 || name.length === 0) return;
-    let index = localStorage.getItem("goals-index");
-    localStorage.setItem("goals-index", +index + 1);
-    const newValue = `${newName}@${index}@${min}@${max}`
-    if (readProjects.length === 0) {
-        localStorage.setItem("goals-list", newValue);
-    } else {
-        localStorage.setItem("goals-list", `${localStorage.getItem("goals-list") }^${newValue}`);
-    }
-    setArray(localStorage.getItem("goals-list").split("^").map(el => el.split("@")))
+    const index = localStorage.getItem("goals-index")
+    localStorage.setItem("goals-index", +index+1)
+    const now = new Date().getTime()
+    const localGoals = localStorage.getItem("goals-list")
+    let arrayIndexes = localGoals === null ? [] : localGoals?.split("^")
+    localStorage.setItem(`goals-item-${index}`, `${newName}^0^${now}^0`)
+    // name, counter, time, mode
+    arrayIndexes.push(index)
+    arrayIndexes = arrayIndexes.filter(el => el !== "")
+    setArray(arrayIndexes)
+    localStorage.setItem("goals-list", arrayIndexes.join("^"))
 }

@@ -10,9 +10,13 @@
     width: 170px;
     height: 170px;
     border-radius: 50%;
-    box-shadow: inset 0 0 30px #b4b4b4;
-    background-color: #ffffff;
+    box-shadow: inset 0 0 30px #a7a7a7;
+    background-color: #fff;
     z-index: 1;
+}
+.wrapper.dark .percent{
+    background-color: #1f1f1f;
+    box-shadow: inset 0 0 30px #000000;
 }
 
 .number{
@@ -33,10 +37,16 @@
     width: 150px;
     text-align: center;
 }
+.wrapper.dark .number h2{
+    color: #fff;
+}
 .number h2 .alltime{
     color: #464646;
     font-family: "Montserrat Alternates", serif;
     font-size: 16px;
+}
+.wrapper.dark .number h2 .alltime{
+    color: #898989
 }
 .percent__svg{
     position: relative;
@@ -54,6 +64,12 @@
     transform: translate(5px, 5px);
     transition: 0.1s ease all;
 }
+.wrapper.dark .percent__svg circle{
+    stroke: #282828;
+}
+.wrapper.dark .percent__svg .percent__active{
+    stroke: #ffffff;
+}
 .percent__svg .percent__active{
     stroke: #000000;
 }
@@ -64,6 +80,12 @@
     justify-content: center;
     align-items: center;
 }
+#pform2{
+    background-color: #fff;
+}
+.wrapper.dark #pform2{
+    background-color: #1a1a1a;
+}
 .dropdown__pform{
     width: calc(200px - 45px);
     height: 45px;
@@ -71,6 +93,9 @@
     border-radius: 40px 0px 0px 40px;
     display: flex;
     align-items: center;
+}
+.wrapper.dark .dropdown__pform{
+    background-color: #1a1a1a;
 }
 .pform__input{
     width: 80px;
@@ -87,8 +112,16 @@
     font-weight: 500;
     color: #000;
 }
+.wrapper.dark .pform__input{
+    outline: 1px solid #2d2d2d;
+    color: #fff;
+    background-color: #2f2f2f;
+}
 .pform__input:focus{
-    outline: 1px solid #424242;
+    outline: 1px solid #4e4e4e;
+}
+.wrapper.dark .pform__input:focus{
+    outline: 1px solid #6d6d6d;
 }
 .pform__input.pform__error{
     outline: 1px solid #c52d2d;
@@ -105,6 +138,10 @@
     box-sizing: border-box;
     cursor: pointer;
     filter: drop-shadow(0px 0px 1px #fff);
+}
+.wrapper.dark .start-img{
+    background-color: rgb(229, 229, 229);
+    filter: invert(1)
 }
 .main__error{
     background-color: #1f1f1fd0;
@@ -135,3 +172,8 @@
 /* .start-img:hover{
     padding: 6px;
 } */
+@media screen and (max-width: 1600px){
+    .pomodoro{
+        margin-top: 20px;
+    }
+}

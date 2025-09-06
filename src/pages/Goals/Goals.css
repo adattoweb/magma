@@ -1,19 +1,18 @@
 .glist{
     padding: 10px 0px 10px 0px;
 }
+.glist__list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .goals__limit{
     display: flex;
     gap: 15px;
     align-items: center;
 }
-.gdevider{
-    height: 25px;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 5px;
-    transform: rotate(30deg)
-}
-.wrapper.dark .gdevider{
-    border: 1px solid rgba(255,255,255,0.2);
+.goals__add{
+    padding: 0px 15px;
 }
 .goals__add .tstart__input{
     width: 300px;
@@ -51,9 +50,21 @@
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
+    margin: 0px 10px;
     border-radius: 15px;
     z-index: 1000 !important;
     border: none;
+    background-color: rgba(0,0,0,0.05);
+    align-items: center;
+    cursor: pointer;
+}
+.gstart__button{
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    padding: 7px 12px;
+    cursor: pointer;
+    user-select: none;
 }
 .gitem-dragging{
     background-color: #d3d3d3;
@@ -83,32 +94,9 @@
     align-items: center;
 }
 .gitem__name{
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    max-width: 250px;
-    outline: 1px solid transparent;
-    transition: 0.3s ease all;
-    background: rgba(255,255,255,0.0)
-}
-.gitem__name:hover{
-    outline: 1px solid rgba(0,0,0,0.3);
-}
-.gitem__name:focus{
-    outline: 1px solid rgba(0,0,0,0.7);
-}
-.wrapper.dark .gitem__name:focus{
-    outline: 1px solid #fff;
-}
-.wrapper.dark .gitem__name{
-    background: none;
-    border-radius: 5px;
-    color: #fff;
-}
-.wrapper.dark .gitem__name:hover{
-    outline: 1px solid #fff;
 }
 .wrapper.dark .glist .titem__circle{
     border: 2px solid #fff;
@@ -218,4 +206,148 @@
     .goals__add .trackers__info .goals__limit input{
         width: 40px !important;
     }
+}
+
+/* ------------------ */
+.gitem__actions{
+    display: flex;
+    height: 25px;
+    background-color: #000;
+    border-radius: 100px;
+}
+.gitem__actions .gitem__action:nth-child(1){
+    border-radius: 10px 0px 0px 10px;
+    border-right: 1px solid #151515;
+}
+.gitem__actions .gitem__action:nth-child(2){
+    border-radius: 0px 10px 10px 0px;
+    border-left: 1px solid #151515;
+}
+.gitem__actions .gitem__action:nth-child(2)::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 2px;
+    background: rgb(255, 255, 255);
+  }
+.gitem__action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1px;
+    cursor: pointer;
+    user-select: none;
+}
+.gitem__info{
+    margin-left: auto;
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #292929;
+}
+
+/*   MODAL   */
+
+.gmodal{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.gmodal__inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.gmodal__inputs input{
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #bababa;
+    transition: 0.2s linear all;
+}
+.gmodal__input{
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+}
+.gmodal__inputs input:focus{
+    border: 1px solid #606060 !important;
+}
+.gmodal__name{
+    width: 180px;
+}
+.gmodal__times{
+    width: 50px;
+}
+.gmodal__buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.gmodal__delete{
+    background-color: #ab1a1a;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+.gmodal__save{
+    background-color: #000000;
+    border-radius: 5px;
+    padding: 5px 8px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+.gmodal__reset{
+    display: flex;
+    flex-direction: column;
+}
+.gmodal__reset p{
+    font-size: 16px;
+}
+.greset{
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+.greset__item{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e1e1e1;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.greset__item.active{
+    background-color: #000000;
+    color: #fff;
+}
+.gmodal__error{
+    background-color: #1f1f1fd0;
+    padding: 7px 10px;
+    border-radius: 15px;
+    width: 180px;
+    height: 60px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    outline: 2px solid #434343;
+    white-space: pre-line;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    z-index: 100000;
 }

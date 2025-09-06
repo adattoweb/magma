@@ -1,64 +1,96 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion"
+
 import { CSS } from "@dnd-kit/utilities";
 import { useSortable } from "@dnd-kit/sortable";
 
-import deleteItem from "../helpers/deleteItem";
-import editProperty from "../helpers/editProperty"
-
-import deleteImg from "@/assets/delete.png";
-import drag from "@/assets/drag.png"
+import editProperty from "../helpers/editProperty";
+import GoalsModal from "./GoalsModal";
 
 
-export default function GoalsItem({ index, array, setArray, active, isDraggable }) {
+export default function GoalsItem({ localKey, setArray, active, isDraggable }) {
+    if(localStorage.getItem(localKey) === null) return
+    const index = localKey.split("-")[2]
+    const array = localStorage.getItem(localKey).split("^")
     const isEn = localStorage.getItem("settings-lang") === "en";
     const [name, setName] = useState(array[0]);
-    const [min, setMin] = useState(array[2]);
-    const [max, setMax] = useState(array[3])
-    const localList = () => localStorage.getItem("goals-list") ?? "" 
+    const [counter, setCounter] = useState(+array[1])
+    const [mode, setMode] = useState(+array[3]) // 0 - щодня, 1 - щотиждня, 2 - щомісяця
 
-    const uniqueIndex = array[1]
-    console.log(uniqueIndex)
+    let date = +array[2]
+    const now = new Date().getTime()
+    // console.log(now - 60 * 60 * 24 * 1000, (now - date) / 1000 / 24 / 60 / 60)
+    if((mode === 0 && (now - date > 60 * 60 * 24 * 1000)) || (mode === 1 && now - date > (60 * 60 * 24 * 7 * 1000)) || (mode === 2 && now - date > (60 * 60 * 24 * 30 * 1000))){
+        editProperty(localKey, name, 0, new Date().getTime(), mode)
+        setCounter(0)
+        console.log("+")
+        console.log(date, now, mode)
+    } // ***
 
-    let localIndex = array[0]
 
-    if (index !== localIndex) {
-        localStorage.setItem("goals-list", localList().replace(`${name}@${localIndex}@${min}@${max}`, `${name}@${index}@${min}@${max}`));
+    const [isOpen, setIsOpen] = useState(false)
+
+    const [newName, setNewName] = useState(name)
+    const [newCounter, setNewCounter] = useState(counter)
+
+    useEffect(() => {
+        setNewCounter(counter)
+    }, [counter])
+
+    const [error, setError] = useState(false)
+
+    function saveChanges(){
+        let hasError = false
+        if(newName.length === 0) {
+            setError(isEn ? "Minimum string length: 1 character" : "Мінімальна довжина строки: 1 символ")
+            hasError = true
+        }
+        if(newName.length > 30){
+            setError(isEn ? "Maximum string length: 30 characters" : "Максимальна довжина строки: 30 символів")
+            hasError = true
+        }
+        if(hasError){
+            if(error) return
+            setTimeout(() => {
+                setError(false)
+            }, 10000)
+            return
+        }
+        setName(newName)
+        setCounter(+newCounter)
+        setIsOpen(false)
+        editProperty(localKey, newName, +newCounter, date, mode)
     }
 
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({id: uniqueIndex})
+    function updateMode(mode){
+        editProperty(localKey, name, counter, now, mode)
+        date = now
+        setMode(mode)
+    }
+
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({id: index})
     const style = {
         transition,
         transform: CSS.Transform.toString(transform),
     }
 
     return (
-        <div className={`gitem ${isDraggable ? "newblock" : uniqueIndex === active ? "gitem-dragging" : ""}`} style={style} ref={setNodeRef}>
-            <div className="gitem__edit">
-                <div className="gitem__circle"><p>{+index}</p></div>
-                <input className="gitem__name" type="text" value={name} onChange={(e) => {
-                    setName(e.target.value);
-                    editProperty(e.target.value, min, max, uniqueIndex, setArray);
-                }} />
-                <div className="goals__input">
-                    <input type="number" value={min} onChange={(e) => {
-                        setMin(e.target.value);
-                        editProperty(name, e.target.value, max, uniqueIndex, setArray);
-                    }} />
-                    <hr className="gdevider"/>
-                    <input type="number" value={max} onChange={(e) => {
-                        setMax(e.target.value);
-                        editProperty(name, min, e.target.value, uniqueIndex, setArray);
-                    }} />
+        <>
+            <GoalsModal isOpen={isOpen} isEn={isEn} setIsOpen={setIsOpen} error={error} newName={newName} setNewName={setNewName} 
+            newCounter={newCounter} setNewCounter={setNewCounter} mode={mode} updateMode={updateMode} localKey={localKey} setArray={setArray} saveChanges={saveChanges} />
+            <motion.div className={`gitem ${isDraggable ? "newblock" : +index === +active ? "gitem-dragging" : ""}`} onClick={() => setIsOpen(true)} {...listeners} {...attributes} style={style} ref={setNodeRef}>
+                <div className="gitem__edit">
+                    <p className="gitem__name">{name}</p>
                 </div>
-            </div>
-            <div className="titem__info">
-                <div className="titem__delete">
-                    <img draggable={false} src={deleteImg} onClick={() => deleteItem(index, localList, setArray)} alt={isEn ? "Delete" : "Видалити"} />
+                <div className="gitem__info">
+                    {counter}
                 </div>
-                <div className="titem__time">
-                    <img src={drag} alt="drag img" draggable={false} {...listeners} {...attributes}/>
+                <div className="gitem__actions">
+                    <motion.div whileHover={{ background: "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter + 1, date, mode); setCounter(+counter + 1) }}>+</motion.div>
+                    <motion.div whileHover={{ background: "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter - 1, date, mode); setCounter(+counter - 1) }}></motion.div>
                 </div>
-            </div>
-        </div>
+            </motion.div >
+        </>
     );
-}
+}   
+// () => deleteItem(index, localList, setArray)

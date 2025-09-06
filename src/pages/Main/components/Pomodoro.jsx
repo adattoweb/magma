@@ -113,7 +113,7 @@ export default function Pomodoro(){
                 {!isActive && (<StartButton key="start-rounded" isRounded={true} src={start} onClick={changeOpen}/>)}
                 {isActive &&
                     (<>
-                        <motion.div key="form" className="pform" style={{backgroundColor: "#fff"}} initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1, blur: 0, width: isStart ? 100 : 200 }} exit={{ y: 100, opacity: 0, transition: { duration: 0.35 } }}>
+                        <motion.div key="form" className="pform" id="pform2" initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1, blur: 0, width: isStart ? 100 : 200 }} exit={{ y: 100, opacity: 0, transition: { duration: 0.35 } }}>
                         <AnimatePresence mode="wait">
                             {!isStart && <motion.div className="dropdown__pform" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0}}>
                                 <input className={`pform__input${error ? " pform__error": ""}`} type="text" onChange={(e) => timeRef.current = e.target.value} placeholder="30:00"/>

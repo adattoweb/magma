@@ -1,7 +1,9 @@
-export default function deleteItem(index, localList, setArray) {
-    let newArray = localList().split("^");
-    newArray.splice(index - 1, 1);
+export default function deleteItem(localKey, setArray) {
+    localStorage.removeItem(localKey)
+    const index = localKey.split("-")[2]
+    console.log(index, localStorage.getItem("goals-list").split("^"))
+    const newArray = localStorage.getItem("goals-list").split("^").filter(i => +i !== +index)
     setArray(newArray)
-    newArray = newArray.join("^");
-    localStorage.setItem("goals-list", newArray);
+    if(newArray.length === 0) localStorage.remove("goals-list")
+    else localStorage.setItem("goals-list", newArray.join("^"))
 }

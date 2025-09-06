@@ -1,7 +1,7 @@
 import GoalsItem from "./GoalsItem";
 import { useState } from "react";
 
-import { closestCorners, DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragOverlay } from "@dnd-kit/core";
+import { closestCorners, DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragOverlay, TouchSensor } from "@dnd-kit/core";
 import { arrayMove, verticalListSortingStrategy, SortableContext  } from "@dnd-kit/sortable";
 import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 
@@ -10,14 +10,6 @@ export default function GoalsList({ array, setArray }) {
 
     if (localStorage.getItem("goals-list") !== null) {
         localStorage.setItem("goals-list", localStorage.getItem("goals-list").replace(/\^{2,}/g, ""));
-    }
-
-    let allMin = 0;
-    let allMax = 0;
-
-    for (let i = 0; i < array.length; i++) {
-        allMin += +array[i][2];
-        allMax += +array[i][3];
     }
 
     const [page, setPage] = useState(0)
@@ -31,74 +23,68 @@ export default function GoalsList({ array, setArray }) {
         return <div className={page === num ? "tpages__button newblock choosed" : "tpages__button newblock"} onClick={onClick}>{num}</div>
     }
 
-    const uniqueIndexes = []
-
-    for(let i = 0; i < array.length; i++){
-        uniqueIndexes.push(array[i][1])
-    }
-
-    console.log(uniqueIndexes)
-    console.log(array)
-
     const sensors = useSensors(
         useSensor(PointerSensor, {activationConstraint: {
             distance: 10, // активується drag тільки якщо курсор змістився на 10+ пікселів
           }}),
         useSensor(KeyboardSensor),
+        useSensor(TouchSensor)
     )
 
-    function findItemByIndex(index){
-        if(index === undefined) return []
-        for(let i = 0; i < array.length; i++){
-            if(array[i][1] === index) return [array[i], i]
-        }
-        throw new Error("Виникла критична помилка. Елементу не знайдено, це непередбачуванна поведінка.")
-    }
+    const [active1, setActive] = useState(undefined)
 
-    const [active, setActive] = useState(undefined)
+    function findPosition(index){
+        for(let i = 0; i < array.length; i++){
+            if(+index === +array[i]) return i
+        }
+        throw new Error("Позицію не знайдено.")
+    }
 
     function handleDragStart({ active }){
         setActive(active.id)
+        console.log(active.id)
     }
     function handleDragOver({ active, over }){
-        const [, activePosition] = findItemByIndex(active.id)
-        const [, overPosition] = findItemByIndex(over.id)
-        const newArray = arrayMove([...array], activePosition, overPosition)
+        const activePosition = findPosition(active.id)
+        const overPosition = findPosition(over.id)
+        console.log(activePosition, overPosition, active1)
+        let newArray = array
+        if(active.id !== over.id) newArray = arrayMove([...array], activePosition, overPosition)
         setArray(newArray)
         console.log(newArray)
-        localStorage.setItem("goals-list", newArray.map(el => el.join("@")).join("^"))
+        localStorage.setItem("goals-list", newArray.join("^"))
     }
     function handleDragEnd(){
         setActive(undefined)
     }
-    const [actualItem, actualIndex] = findItemByIndex(active)
+
+    const activeKey = active1 === undefined ? null : `goals-item-${active1}`
 
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="glist tlist newblock">
-                <div className="tlist__header newblock">
-                    {isEn ? "Goals" : "Цілі"} {allMin || 0}/{allMax || 0}
+                <div className="tlist__header newblock">🌱 {isEn ? "My habits" : "Мої звички"}
                 </div>
-                <div className="tlist__list">
-                <SortableContext items={uniqueIndexes} strategy={verticalListSortingStrategy}>
-                    {array.length === 0 ?
-                        <p className="error">{isEn ? "Unfortunately, there is nothing here!" : "Нажаль тут нічого немає!"}</p> 
+                <div className="tlist__list glist__list">
+                <SortableContext items={array} strategy={verticalListSortingStrategy}>
+                    {array[0] === "" || array.length === 0 ?
+                        <p className="error">{isEn ? "Unfortunately, there is nothing here!" : "Нажаль, тут нічого немає!"}</p>
                         : array.map((el, index) => {
-                            if(index >= elementsOnPage * (page+1) - elementsOnPage && index < elementsOnPage * (page+1)){
-                                return <GoalsItem key={el[1]} array={el} index={index + 1} setArray={setArray} active={active}/>
+                                if (index >= elementsOnPage * (page + 1) - elementsOnPage && index < elementsOnPage * (page + 1)) {
+                                    return <GoalsItem key={`goals-item-${el}`} localKey={`goals-item-${el}`} setArray={setArray} active={active1} />
+                                }
                             }
-                        }
-                    )}
+                        )}
                 </SortableContext>
                 </div>
                 {pagesArray.length > 1 && <div className="tpages">
                     {pagesArray.map((el, index) => {
-                        return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)}/>
+                        return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)} />
                     })}
                 </div>}
             </div>
-                <DragOverlay >
-                {active && <GoalsItem key={actualItem[1]} array={actualItem} index={actualIndex + 1} setArray={setArray} active={active} isDraggable={true}/>}
+            <DragOverlay>
+                {active1 && <GoalsItem key={activeKey} localKey={activeKey} setArray={setArray} active={active1} isDraggable={true}/>}
             </DragOverlay>
         </DndContext>
     );
