@@ -19,6 +19,9 @@
     border-radius: 12px;
     min-width: 350px;
   }
+  .wrapper.dark .modal{
+    background-color: #171717;
+  }
   @media screen and (max-width: 500px) {
     .modal{
       transform: scale(0.9);

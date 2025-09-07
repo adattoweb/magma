@@ -10,6 +10,9 @@ import GoalsModal from "./GoalsModal";
 
 export default function GoalsItem({ localKey, setArray, active, isDraggable }) {
     if(localStorage.getItem(localKey) === null) return
+    
+    const isDark = localStorage.getItem("settings-theme") === "dark"
+
     const index = localKey.split("-")[2]
     const array = localStorage.getItem(localKey).split("^")
     const isEn = localStorage.getItem("settings-lang") === "en";
@@ -86,8 +89,8 @@ export default function GoalsItem({ localKey, setArray, active, isDraggable }) {
                     {counter}
                 </div>
                 <div className="gitem__actions">
-                    <motion.div whileHover={{ background: "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter + 1, date, mode); setCounter(+counter + 1) }}>+</motion.div>
-                    <motion.div whileHover={{ background: "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter - 1, date, mode); setCounter(+counter - 1) }}></motion.div>
+                    <motion.div whileHover={{ background: isDark ? "#d8d8d8" : "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter + 1, date, mode); setCounter(+counter + 1) }}>+</motion.div>
+                    <motion.div whileHover={{ background: isDark ? "#d8d8d8" : "#151515" }} className="gitem__action" onClick={(e) => { e.stopPropagation(); editProperty(localKey, name, +counter - 1, date, mode); setCounter(+counter - 1) }}></motion.div>
                 </div>
             </motion.div >
         </>

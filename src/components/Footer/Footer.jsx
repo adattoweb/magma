@@ -33,6 +33,7 @@ import piano3Sound from '@/assets/audio/piano3.mp3';
 import Audio from './components/Audio';
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react';
+import { motion } from "framer-motion"
 export default function Footer() {
     const [isPause, setIsPause] = useState(false)
 
@@ -69,7 +70,7 @@ export default function Footer() {
         )
     }
     return (
-        <div className='footer'>
+        <motion.div className='footer' initial={{opacity: 0}} animate={{opacity: 1}}>
             {sounds.map((el, index) => <audio key={index} ref={el => audioRefs.current[index] = el} src={el} preload="none" loop/>)}
             <div className="footer__left">
                 <Audio array={array} setArray={(e) => setArray(e)} isPause={isPause} setIsPause={setIsPause}><img draggable={false} className="footer__img" src={audio} alt="audio" /></Audio>
@@ -85,6 +86,6 @@ export default function Footer() {
                 {/* <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" draggable={false}/></MyLink> */}
                 <MyLink to="/settings"><img className="footer__img" src={settings} alt="settings" draggable={false}/></MyLink>
             </div>
-        </div>
+        </motion.div>
     );
 }

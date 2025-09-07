@@ -54,9 +54,12 @@
     border-radius: 15px;
     z-index: 1000 !important;
     border: none;
-    background-color: rgba(0,0,0,0.05);
+    background-color: #e3e3e3;
     align-items: center;
     cursor: pointer;
+}
+.wrapper.dark .gitem{
+    background-color: #313131;
 }
 .gstart__button{
     background-color: #000;
@@ -246,6 +249,12 @@
     border-radius: 0px 10px 10px 0px;
     border-left: 1px solid #151515;
 }
+.wrapper.dark .gitem__actions .gitem__action:nth-child(1){
+    border-right: 1px solid #d2d2d2;
+}
+.wrapper.dark .gitem__actions .gitem__action:nth-child(2){
+    border-left: 1px solid #d2d2d2;
+}
 .gitem__actions .gitem__action:nth-child(2)::before {
     content: "";
     display: block;
@@ -267,12 +276,26 @@
     cursor: pointer;
     user-select: none;
 }
+.wrapper.dark .gitem__action{
+    background-color: #fff;
+    color: #000;
+}
+.wrapper.dark .gitem__actions .gitem__action:nth-child(2)::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+  }
 .gitem__info{
     margin-left: auto;
     margin-right: 15px;
     font-size: 14px;
     font-weight: 400;
     color: #292929;
+}
+.wrapper.dark .gitem__info{
+    color: #fff;
 }
 
 /*   MODAL   */
@@ -293,6 +316,11 @@
     border: 1px solid #bababa;
     transition: 0.2s linear all;
 }
+.wrapper.dark .gmodal__inputs input{
+    background-color: #282828;
+    border: 1px solid #353535;
+    color: #fff;
+}
 .gmodal__input{
     display: flex;
     gap: 2px;
@@ -300,6 +328,12 @@
 }
 .gmodal__inputs input:focus{
     border: 1px solid #606060 !important;
+}
+.wrapper.dark .gmodal__inputs input:focus{
+    border: 1px solid #606060 !important;
+}
+.wrapper.dark .gmodal__inputs label{
+    color: #fff;
 }
 .gmodal__name{
     width: 180px;
@@ -328,12 +362,19 @@
     cursor: pointer;
     user-select: none;
 }
+.wrapper.dark .gmodal__save{
+    background-color: #fff;
+    color: #000;
+}
 .gmodal__reset{
     display: flex;
     flex-direction: column;
 }
 .gmodal__reset p{
     font-size: 16px;
+}
+.wrapper.dark .gmodal__reset p{
+    color: #fff;
 }
 .greset{
     margin-top: 6px;
@@ -349,10 +390,19 @@
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
+    user-select: none;
+}
+.wrapper.dark .greset__item{
+    background-color: #323232;
+    color: #fff;
 }
 .greset__item.active{
     background-color: #000000;
     color: #fff;
+}
+.wrapper.dark .greset__item.active{
+    background-color: #fff;
+    color: #000;
 }
 .gmodal__error{
     background-color: #1f1f1fd0;

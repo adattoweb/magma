@@ -3,13 +3,14 @@ import Modal from "@/components/Modal/Modal";
 import deleteItem from "../helpers/deleteItem";
 
 export default function GoalsModal({ isOpen, isEn, setIsOpen, error, newName, setNewName, newCounter, setNewCounter, mode, updateMode, localKey, setArray, saveChanges }){
+    const isDark = localStorage.getItem("settings-theme") === "dark"
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div className="gmodal">
             <div className="gmodal__inputs">
                 <div className="gmodal__input">
                     <label htmlFor="mname">{isEn ? "Name" : "Назва"}</label>
-                    <input type="text" maxLength="30" className="gmodal__name" id="mname" style={{border: error ? "1px solid #c52d2d" : "1px solid #bababa"}} value={newName} onChange={(e) => setNewName(e.target.value)}/>
+                    <input type="text" maxLength="30" className="gmodal__name" id="mname" style={{border: error ? "1px solid #c52d2d" : isDark ? "1px solid #353535" : "1px solid #bababa"}} value={newName} onChange={(e) => setNewName(e.target.value)}/>
                 </div>
                 <div className="gmodal__input">
                     <label htmlFor="mtimes">{isEn ? "Counter" : "Лічильник"}</label>
