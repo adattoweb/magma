@@ -9,10 +9,10 @@ import Burger from "@/components/Burger/Burger"
 import Main from "./components/Main"
 import Carousel from "./components/Carousel"
 import InfoProvider from "./components/InfoProvider"
-import Info from "./components/Info"
 import Data from "./components/Data"
 
 import { useState } from 'react'
+import CustomThemes from "./components/Custom/CustomThemes"
 
 
 export default function Settings({ onChange }) {
@@ -52,19 +52,10 @@ export default function Settings({ onChange }) {
                 <Tab />
                 <div>
                     {tabSelect === 0 && <Main onChange={onChange}/>}
-                    {tabSelect === 1 && <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}>
-                        <Carousel choosed={choosed} setChoosed={setChoosed} />
-                    </SettingsBlock>}
-                    {tabSelect === 3 && <>
-                        <InfoProvider>
-                            <Info/>
-                        </InfoProvider>
-                    </>}
-                    {tabSelect === 4 && <>
-                        <SettingsBlock header={isEn ? "Data management" : "Керування даними"}>
-                            <Data onChange={onChange}/>
-                        </SettingsBlock>
-                    </>}
+                    {tabSelect === 1 && <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}><Carousel choosed={choosed} setChoosed={setChoosed} /></SettingsBlock>}
+                    {tabSelect === 2 && <CustomThemes onChange={onChange}/>}
+                    {tabSelect === 3 && <InfoProvider/>}
+                    {tabSelect === 4 && <SettingsBlock header={isEn ? "Data management" : "Керування даними"}><Data onChange={onChange}/></SettingsBlock>}
                 </div>
             </div>
         </div>

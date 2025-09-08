@@ -17,6 +17,9 @@ export default function App() {
   let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", "ua"], ["settings-theme", "light"], 
   ["magma-name", "user"], ["settings-bg", "0"], ["settings-customize-theme", "not choosed"], ["tracker-time", "0"], ["tracker-name", ""]]
 
+  if(localStorage.getItem("custom-choosed") === null) localStorage.setItem("custom-choosed", "not choosed")
+  const customChoosed = localStorage.getItem("custom-choosed")
+
   for(let i = 0; i < array.length; i++){
     if(!localStorage.getItem(array[i][0])) localStorage.setItem(array[i][0], array[i][1])
   }
@@ -27,10 +30,20 @@ export default function App() {
   const root = document.getElementById("root")
   root.style.setProperty(`--darkness`, `rgba(0,0,0,${+localStorage.getItem("magma-darkness") / 100})`)
   useEffect(() => {
-    if(choosedBackground !== "100") root.classList.add(`theme${choosedBackground}`) // 100 - своя тем
-      else {
-        root.style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
+    if(customChoosed.toLowerCase() === "not choosed") root.classList.add(`theme${choosedBackground}`) // 100 - своя тем
+    else if(customChoosed.toLowerCase() !== "not choosed"){
+      console.log("+")
+      let array = localStorage.getItem("custom-themes").split("^").map(el => el.split("@"))
+      let link = ""
+      for(let i = 0; i < array.length; i++){
+        if(array[i][0] === customChoosed) link = array[i][1]
       }
+      root.style.backgroundImage = `url(${link})`;
+      console.log(link)
+    }
+    else {
+      root.style.backgroundImage = `url("${localStorage.getItem("settings-customize-theme")}")`;
+    }
   }, [])
   if(location.pathname.includes("about")) root.classList.add(`theme0`)
 

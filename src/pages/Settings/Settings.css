@@ -5,6 +5,8 @@
     padding: 10px 15px 20px 15px;
     width: 900px;
     min-height: 350px;
+    max-height: 70vh;
+    overflow-y: scroll;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -462,3 +464,5 @@
 }
 
 /* HELP BLOCK */
+
+/*   CUSTOM THEMES   */

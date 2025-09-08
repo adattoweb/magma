@@ -17,16 +17,7 @@ import theme15 from "@/assets/smalltheme15.jpg"
 import theme16 from "@/assets/smalltheme16.jpg"
 import theme17 from "@/assets/smalltheme17.jpg"
 
-import { useState } from "react"
-import isValidUrl from '../helpers/isValidUrl'
-
 export default function Carousel({ choosed, setChoosed}) {
-    const isEn = localStorage.getItem("settings-lang") === "en";
-
-    function addItem(value) {
-        if (!isValidUrl(value)) return
-        localStorage.setItem("settings-customize-theme", value)
-    }
 
     function addTheme(id) {
         setChoosed(id)
@@ -36,26 +27,7 @@ export default function Carousel({ choosed, setChoosed}) {
             if (el !== "wrapper" && el !== "dark" && el !== "light") root.classList.remove(el)
         })
         root.classList.add(`theme${id}`)
-    }
-
-    function CustomizeTheme() {
-        const id = 100;
-        const getLink = localStorage.getItem("settings-customize-theme");
-        const [link, setLink] = useState(getLink === "not choosed" ? "" : getLink)
-        return (
-            <div className={choosed !== id ? "newblock customize" : "newblock customize choosed"} onClick={() => {
-                addTheme(id)
-            }}>
-                <img draggable={false} src={isValidUrl(link) ? link : ""} alt="" />
-                <div className="customize__field">
-                    <h4>{isEn ? "Enter a link on your background page, in more detail on information page." : "Введіть посилання на ваше фонове зображення, детальніше в інформації."}</h4>
-                    <input className="newblock" type="text" value={link} onChange={(e) => {
-                        setLink(e.target.value)
-                        addItem(e.target.value)
-                    }} />
-                </div>
-            </div>
-        )
+        localStorage.setItem("custom-choosed", "not choosed")
     }
     
     function BackItem({ image, name, id }) {
@@ -90,7 +62,6 @@ export default function Carousel({ choosed, setChoosed}) {
             <BackItem image={theme15} name="Theme 15" id={15} />
             <BackItem image={theme16} name="Theme 16" id={16} />
             <BackItem image={theme17} name="Theme 17" id={17} />
-            <CustomizeTheme />
         </div>
     )
 }

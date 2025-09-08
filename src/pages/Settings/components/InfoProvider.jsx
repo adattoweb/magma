@@ -1,11 +1,12 @@
 import SettingsBlock from "./SettingsBlock";
+import Info from "./Info";
 
-export default function InfoProvider({ children }){
+export default function InfoProvider(){
     const isEn = localStorage.getItem("settings-lang") === "en";
     return (
     <>
         <SettingsBlock>
-            {children}
+            <Info/>
         </SettingsBlock>
         <SettingsBlock header={isEn ? "Version" : "Версія"}>
             <p className="settings__name">{isEn ? "Current version: Magma Local 0.22.2" : "Поточна версія: Magma Local 0.22.2"}</p>
