@@ -37,8 +37,9 @@ export default function Settings({ onChange }) {
                     <div className={isOpen ? "tab__list active" : "tab__list"}>
                         <TabItem isActive={0 === tabSelect} setActive={() => { setTabSelect(0) }}><img src={general} alt="general settings icon" /> {isEn ? "General" : "Загальне"}</TabItem>
                         <TabItem isActive={1 === tabSelect} setActive={() => { setTabSelect(1) }}><img src={themeIcon} alt="customize settings icon" /> {isEn ? "Customize" : "Кастомізація"}</TabItem>
-                        <TabItem isActive={2 === tabSelect} setActive={() => { setTabSelect(2) }}><img src={info} alt="info settings icon" /> {isEn ? "Info" : "Інформація"}</TabItem>
-                        <TabItem isActive={3 === tabSelect} setActive={() => { setTabSelect(3) }}><img src={data} alt="data settings icon" /> {isEn ? "Data" : "Дані"}</TabItem>
+                        <TabItem isActive={2 === tabSelect} setActive={() => { setTabSelect(2) }}><img src={themeIcon} alt="data settings icon" /> {isEn ? "Custom themes" : "Власні теми"}</TabItem>
+                        <TabItem isActive={3 === tabSelect} setActive={() => { setTabSelect(3) }}><img src={info} alt="info settings icon" /> {isEn ? "Info" : "Інформація"}</TabItem>
+                        <TabItem isActive={4 === tabSelect} setActive={() => { setTabSelect(4) }}><img src={data} alt="data settings icon" /> {isEn ? "Data" : "Дані"}</TabItem>
                     </div>
                 </div>
             </>
@@ -54,12 +55,12 @@ export default function Settings({ onChange }) {
                     {tabSelect === 1 && <SettingsBlock header={isEn ? "Background image" : "Фонове зображення"}>
                         <Carousel choosed={choosed} setChoosed={setChoosed} />
                     </SettingsBlock>}
-                    {tabSelect === 2 && <>
+                    {tabSelect === 3 && <>
                         <InfoProvider>
                             <Info/>
                         </InfoProvider>
                     </>}
-                    {tabSelect === 3 && <>
+                    {tabSelect === 4 && <>
                         <SettingsBlock header={isEn ? "Data management" : "Керування даними"}>
                             <Data onChange={onChange}/>
                         </SettingsBlock>

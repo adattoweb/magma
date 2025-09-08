@@ -69,6 +69,10 @@
     cursor: pointer;
     user-select: none;
 }
+.wrapper.dark .gstart__button{
+    background-color: #fff;
+    color: #000;
+}
 .gitem-dragging{
     background-color: #d3d3d3;
     pointer-events: none;
