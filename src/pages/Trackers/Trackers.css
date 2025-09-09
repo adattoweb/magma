@@ -438,7 +438,7 @@
 .tmodal{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
 }
 .tmodal__inputs{
     display: flex;
@@ -532,8 +532,6 @@
     transform: translate(-50%, 50px);
     z-index: 100000;
 }
-
-
 .tmodal__time{
     display: flex;
     flex-direction: column;

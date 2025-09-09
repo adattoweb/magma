@@ -307,7 +307,7 @@
 .gmodal{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 5px;
 }
 .gmodal__inputs{
     display: flex;
@@ -348,7 +348,12 @@
 .gmodal__buttons{
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    padding-top: 15px;
+    margin: 15px 0px 0px 0px;
+    border-top: 1px solid #d3d3d3;
+}
+.wrapper.dark .gmodal__buttons{
+    border-top: 1px solid #363636;
 }
 .gmodal__delete{
     background-color: #ab1a1a;
@@ -373,9 +378,11 @@
 .gmodal__reset{
     display: flex;
     flex-direction: column;
+    margin: 10px 0px 0px 0px;
 }
 .gmodal__reset p{
     font-size: 16px;
+    margin: 0px 0px 3px 0px;
 }
 .wrapper.dark .gmodal__reset p{
     color: #fff;

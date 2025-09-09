@@ -79,6 +79,7 @@ export default function CustomItem({name, src, setArray, onChange}) {
         return (
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <div className="tmodal">
+                    <h3>{isEn ? "Edit theme" : "Редагування теми"}</h3>
                     <div className="tmodal__inputs">
                         <div className="tmodal__input">
                             <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>
@@ -93,7 +94,7 @@ export default function CustomItem({name, src, setArray, onChange}) {
                         <motion.div whileHover={{ scale: 1.05 }} className="tmodal__delete" onClick={deleteFunc}>{isEn ? "Delete" : "Видалити"}</motion.div>
                         <motion.div whileHover={{ scale: 1.05 }} className="tmodal__save" onClick={() => saveChanges(modalName, modalSrc)}>{isEn ? "Save" : "Зберегти"}</motion.div>
                     </div>
-                    <motion.div whileHover={{ scale: 1.05 }} className="tmodal__save settheme" onClick={setActive}>{isEn ? "Set theme" : "Застосувати тему"}</motion.div>
+                    <motion.div whileHover={{ scale: 1.05 }} className="tmodal__save settheme" onClick={setActive}>{isEn ? "Activate" : "Активувати"}</motion.div>
                 </div>
                 <AnimatePresence>
                     {error.length > 0 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="modal__error">{error}</motion.div>}

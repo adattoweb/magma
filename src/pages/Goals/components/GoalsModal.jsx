@@ -7,6 +7,7 @@ export default function GoalsModal({ isOpen, isEn, setIsOpen, error, newName, se
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div className="gmodal">
+            <h3>{isEn ? "Habit editing" : "Редагування звички"}</h3>
             <div className="gmodal__inputs">
                 <div className="gmodal__input">
                     <label htmlFor="mname">{isEn ? "Name" : "Назва"}</label>

@@ -15,7 +15,7 @@
   
   .modal {
     background: #fff;
-    padding: 20px;
+    padding: 15px 20px 20px 20px;
     border-radius: 12px;
     min-width: 350px;
   }
@@ -41,5 +41,21 @@
     .modal{
       transform: scale(0.7)
     }
+  }
+  .cross{
+    position: relative;
+  }
+  .cross__item{
+    width: 25px;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    cursor: pointer;
+  }
+  .wrapper.dark .cross__item{
+    filter: invert(1)
+  }
+  .wrapper.dark .modal h3{
+    color: #fff;
   }
   

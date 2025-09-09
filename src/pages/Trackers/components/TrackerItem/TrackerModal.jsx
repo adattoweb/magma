@@ -13,6 +13,7 @@ export default function TrackerModal({ isOpen, isEn, setIsOpen, error, newName, 
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div className="tmodal">
+            <h3>{isEn ? "Tracker editing" : "Редагування трекеру"}</h3>
             <div className="tmodal__inputs">
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>

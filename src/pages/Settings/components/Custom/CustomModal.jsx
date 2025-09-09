@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion"
 import Modal from "@/components/Modal/Modal";
 
-export default function TrackerModal({ isOpen, setIsOpen, isEn, error, name, setName, url, setUrl, addTheme, errorRef }){
+export default function CustomModal({ isOpen, setIsOpen, isEn, error, name, setName, url, setUrl, addTheme, errorRef }){
     const isDark = localStorage.getItem("settings-theme") === "dark"
 
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <div className="tmodal">
+            <h3>{isEn ? "Create a theme" : "Створення теми"}</h3>
             <div className="tmodal__inputs">
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>

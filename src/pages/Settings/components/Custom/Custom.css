@@ -1,6 +1,6 @@
 .custom h3{
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .custom__list{
     column-count: 4;
@@ -19,14 +19,17 @@
 .citem__add{
     border-radius: 10px;
     border: 2px dashed #dadada;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     break-inside: avoid;
     box-sizing: border-box;
+}
+.wrapper.dark .citem__add {
+    border: 2px dashed #414141;
 }
 .citem__add img{
     width: 25px;
@@ -43,9 +46,26 @@
     border-radius: 100%;
     transition: 0.3s ease all;
 }
+.wrapper.dark .citem__plus{
+    background-color: #414141;
+}
+.wrapper.dark .citem__add img{
+    filter: invert(0.9)
+}
 .citem__add:hover .citem__plus{
     transform: scale(1.05);
 }
 .settheme{
     margin-left: auto;
 }
+@media screen and (max-width: 1100px){
+    .settings__carousel{
+        column-count: 2;
+    }
+}
+@media screen and (max-width: 400px){
+    .settings__carousel{
+        column-count: 1;
+    }
+}
+
