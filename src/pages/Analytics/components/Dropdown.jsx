@@ -6,7 +6,7 @@ export default function AnalyticsDropdown({changeProject, startValue}) {
     const isEn = localStorage.getItem("settings-lang") === "en";
     const array = localStorage.getItem("tracker-projects") === null ? ["Без проєкту"] : localStorage.getItem("tracker-projects").split("^");
     if(startValue === undefined) startValue = array[0];
-    array.unshift("Всі");
+    array.unshift(isEn ? "All" : "Всі");
     const [select, setSelect] = useState(startValue);
     return (
         <Dropdown name={select}>

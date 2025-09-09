@@ -105,7 +105,7 @@ export default function CustomItem({name, src, setArray, onChange}) {
 return (
     <>
     <ItemModal/>
-    <div className="backitem newblock" onClick={() => {setIsOpen(true)}}>
+    <div className="backitem" onClick={() => {setIsOpen(true)}}>
         <img draggable={false} src={src} />
         <div className="backitem__footer">
             <p>{newName}</p>

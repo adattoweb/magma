@@ -3,10 +3,13 @@
     margin-bottom: 20px;
 }
 .custom__list{
-    column-count: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     text-align: center;
-    width: 80%;
 }
 .custom__list .backitem{
     cursor: pointer;
@@ -19,8 +22,8 @@
 .citem__add{
     border-radius: 10px;
     border: 2px dashed #dadada;
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -68,4 +71,3 @@
         column-count: 1;
     }
 }
-

@@ -32,7 +32,7 @@ export default function Carousel({ choosed, setChoosed}) {
     
     function BackItem({ image, name, id }) {
         return (
-            <div className={choosed === id ? "backitem newblock choosed" : "backitem newblock"} onClick={() => {
+            <div className={choosed === id ? "backitem choosed" : "backitem"} onClick={() => {
                 addTheme(id)
             }}>
                 <img draggable={false} src={image} />

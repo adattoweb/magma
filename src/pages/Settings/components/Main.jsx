@@ -1,10 +1,9 @@
-import black from "@/assets/black.png"
-import white from "@/assets/white.png"
 import SettingsBlock from "./SettingsBlock"
 import SettingsItem from "./SettingsItem"
 import EditNick from "./EditNick"
 
 import { useState } from "react"
+import Dropdown from "@/components/Dropdown/Dropdown";
 
 export default function Main({ onChange }) {
     const localTheme = localStorage.getItem("settings-theme")
@@ -13,30 +12,35 @@ export default function Main({ onChange }) {
     const [darkness, setDarkness] = useState(+localStorage.getItem("magma-darkness"))
     const [isAuto, setIsAuto] = useState(localTheme === "auto") 
     const isEn = localStorage.getItem("settings-lang") === "en";
+    const isDark = localStorage.getItem("settings-theme") === "dark"
     return (
         <div className="maintab"><SettingsBlock header={isEn ? "Main Settings" : "Основні налаштування"}>
-            <SettingsItem header={isEn ? "Language:" : "Мова:"}>
-                <div className="settings__select">
-                    <p className="lang__select" onClick={() => {
+            <SettingsItem header={isEn ? "Language" : "Мова"}>
+                <div className="settings__select small-drop">
+                    <Dropdown name={isEn ? "EN" : "UA"}>
+                    <p onClick={() => {
                         localStorage.setItem("settings-lang", "en");
                         onChange();
                     }}>EN</p>
-                    <p className="lang__select" onClick={() => {
+                    <p onClick={() => {
                         localStorage.setItem("settings-lang", "ua");
                         onChange();
                     }}>UA</p>
+                    </Dropdown>
                 </div>
             </SettingsItem>
-            <SettingsItem header={isEn ? "Theme:" : "Тема:"}>
-                <div className="settings__select">
-                    <img draggable={false} src={white} onClick={() => {
+            <SettingsItem header={isEn ? "Theme" : "Тема"}>
+                <div className="settings__select small-drop">
+                    <Dropdown name={isDark ? "Dark" : "Light"}>
+                    <p onClick={() => {
                         localStorage.setItem("settings-theme", "light");
                         onChange();
-                    }} />
-                    <img draggable={false} src={black} onClick={() => {
+                    }}>Light</p>
+                    <p onClick={() => {
                         localStorage.setItem("settings-theme", "dark");
                         onChange();
-                    }} />
+                    }}>Dark</p>
+                    </Dropdown>
                 </div>
             </SettingsItem>
             <SettingsItem header={isEn ? "Auto theme" : "Авто тема"}>
@@ -54,7 +58,7 @@ export default function Main({ onChange }) {
                     {isAuto && localTheme === "auto" ? isEn ? "Enabled" : "Увімкнено" : isEn ? "Disabled" : "Вимкнено"}
                 </div>
             </SettingsItem>
-            <SettingsItem header={isEn ? "Quotes:" : "Цитати:"}>
+            <SettingsItem header={isEn ? "Quotes" : "Цитати"}>
                 <div className="settings__btn" onClick={() => {
                     setIsQuotesEnabled(!isQuotesEnabled)
                     localStorage.setItem("magma-quotes", `${!isQuotesEnabled ? "true" : "false"}`)
@@ -62,14 +66,14 @@ export default function Main({ onChange }) {
                     {isQuotesEnabled ? isEn ? "Enabled" : "Увімкнено" : isEn ? "Disabled" : "Вимкнено"}
                 </div>
             </SettingsItem>
-            <SettingsItem header={isEn ? "Background darkness" : "Темнота фону:"}>
+            <SettingsItem header={isEn ? "Background darkness" : "Темнота фону"}>
                 <input type="range" min="5" max="30" step="1" value={darkness} onChange={(e) => {
                     setDarkness(e.target.value)
                     localStorage.setItem("magma-darkness", e.target.value)
                     onChange()
                 }} />
             </SettingsItem>
-            <SettingsItem header={isEn ? "Clock:" : "Годинник:"}>
+            <SettingsItem header={isEn ? "Clock" : "Годинник"}>
                 <div className="settings__select">
                     <p className={isTwelve ? "clock__item active" : "clock__item"} onClick={() => {
                         setIsTwelve(true)

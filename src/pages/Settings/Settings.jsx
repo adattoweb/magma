@@ -19,7 +19,9 @@ export default function Settings({ onChange }) {
 
     const isEn = localStorage.getItem("settings-lang") === "en";
 
-    const [choosed, setChoosed] = useState(+localStorage.getItem("settings-bg"))
+    const localChoosed = +localStorage.getItem("settings-bg")
+    const localCustom = localStorage.getItem("custom-choosed")
+    const [choosed, setChoosed] = useState(localCustom === "not choosed" ? localChoosed : -1)
     function TabItem({ isActive, setActive, children }) {
         return (
             <div className={isActive ? "tab__item active" : "tab__item"} onClick={setActive}>{children}</div>

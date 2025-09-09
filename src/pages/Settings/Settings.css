@@ -4,9 +4,7 @@
 .settings__main{
     padding: 10px 15px 20px 15px;
     width: 900px;
-    min-height: 350px;
-    max-height: 70vh;
-    overflow-y: scroll;
+    min-height: 370px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -48,32 +46,15 @@
 .wrapper.dark .settings__name a{
     color: #fff;
 }
+.small-drop .dropdown-btn{
+    height: 32px;
+    font-size: 16px;
+    width: 60px;
+}
 .settings__lang{
     display: flex;
     align-items: center;
     gap: 12px;
-}
-.lang__select{
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: "Montserrat Alternates", serif;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    background-color: #fff;
-    outline: 2px solid #000;
-    transition: 0.3s ease all;
-    color: #000;
-}
-.wrapper.dark .lang__select{
-    outline: 2px solid #b0b0b0;
-}
-.lang__select:hover{
-    transform: scale(1.1)
 }
 .settings__theme{
     margin-top: 5px;
@@ -83,23 +64,11 @@
     align-items: center;
     gap: 10px;
 }
-
-.settings__theme img{
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    transition: 0.3s ease all;
-}
 .settings__theme input{
     width: 100px;
 }
 .wrapper.dark .settings__auto{
     filter: invert(1)
-}
-
-.wrapper.dark .settings__theme img{
-    outline: 2px solid #b0b0b0;
-    border-radius: 200px;
 }
 .settings__info{
     font-size: 16px;
@@ -130,34 +99,42 @@
 
 /*BACKITEM*/
 .settings__carousel{
-    padding-top: 10px;
-    column-count: 4;
-    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     text-align: center;
 }
 
 .backitem{
-    display: inline-flex;
-    padding: 10px;
+    display: flex;
     flex-direction: column;
+    width: 150px;
+    height: 150px;
+    padding: 10px;
     border-radius: 10px;
     gap: 5px;
     align-items: center;
-    margin: 0 1em 1em 1em;
-    width: min-content;
-    break-inside: avoid; /* Щоб не було перенесень */
+    box-sizing: border-box;
 }
-.backitem.choosed{
+.backitem.choosed img{
     outline: 2px solid #000;
 }
-.wrapper.dark .backitem.choosed{
+.wrapper.dark .backitem.choosed img{
     outline: 2px solid #ffffff;
 }
 .backitem img{
-    width: 130px;
-    border-radius: 5px;
-    pointer-events: none;
+    border-radius: 10px;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    transition: 0.2s ease all;
+}
+.backitem:hover img{
+    transform: scale(1.03);
 }
 .backitem__footer{
     display: flex;
@@ -255,7 +232,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    z-index: 5;
+    z-index: 1001;
     top: 0;
     left: 0;
     width: 200px;
@@ -275,7 +252,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    z-index: 10;
+    z-index: 1002;
 }
 .tab__burger .burger-menu{
     align-items: center;
@@ -398,6 +375,19 @@
     .customize h4{
         font-size: 14px;
     }
+    .backitem{
+        width: 110px;
+        height: 110px;
+    }
+    .backitem img{
+        max-width: 80px;
+        max-height: 80px;
+        min-width: 80px;
+        min-height: 80px;
+    }
+    .backitem__footer p{
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 570px){
     .settings__main{
@@ -462,7 +452,3 @@
     width: fit-content;
     user-select: none;
 }
-
-/* HELP BLOCK */
-
-/*   CUSTOM THEMES   */
