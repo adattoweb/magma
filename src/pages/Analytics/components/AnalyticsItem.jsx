@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function AnalyticsItem({ local, allTime, maxHeight, uniqueColors }) {
-    console.log("AnalyticsItem render")
     let [name, project, start, end, time] = local.split("^");
 
     // Уникаємо ділення на 0

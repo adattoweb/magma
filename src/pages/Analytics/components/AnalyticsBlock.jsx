@@ -5,16 +5,18 @@ import AnalyticsItem from "./AnalyticsItem"
 
 export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueColors, selected, setSelected, setSelectedData }) {
     const dateArr = date.split('.')
+    let timestamp = new Date(+dateArr[2], +dateArr[1] - 1, +dateArr[0])
+    const now = new Date()
+    // if(now - timestamp < 0) return
     function switchSelected(){
-        let timestamp = new Date(+dateArr[2], +dateArr[1] - 1, +dateArr[0])
         const options = { weekday: "short", day: "numeric", month: "long" };
         setSelected(date)
         setSelectedData([conSecTime(allTime), timestamp.toLocaleString(undefined, options)])
     }
     function BlockLayout({ children }) {
-        console.log(date)
+        const isSelected = selected === date
         return (
-            <div className={`aitem${selected === date ? " active" : ""}`} onClick={switchSelected}>
+            <div className={`aitem${isSelected ? " active" : ""}`} onClick={switchSelected}>
                 <div className="aitem__block" style={{ height: maxHeight + "px" }}>
                     {children}
                 </div>
@@ -24,14 +26,12 @@ export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, 
             </div>
         )
     }
-    console.log("AnalyticsBlock render")
     if (isGray) {
         return (
             <BlockLayout><div className='aitem__color' style={{ backgroundColor: "#333", height: maxHeight + "px" }}></div></BlockLayout>
         );
     }
     const blockHeight = maxHeight / (max / allTime)
-    console.log(blockHeight, maxHeight, max, allTime)
     return (
         <BlockLayout>
             {Object.keys(objectTasks).map(el =>
@@ -47,5 +47,3 @@ export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, 
         </BlockLayout>
     );
 }
-// <h3>{conSecTime(allTime)}</h3>
-// {`${dateArr[0].padStart(2, "0")}.${dateArr[1].padStart(2, "0")}`},

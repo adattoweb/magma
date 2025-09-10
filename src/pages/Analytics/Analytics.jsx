@@ -18,12 +18,15 @@ import { useState, useRef } from "react";
 import getObjectTasks from "./helpers/getObjectTasks";
 import conSecTime from "./helpers/conSecTime";
 
+import { AnimatePresence, motion } from "framer-motion"
+
 export default function Analytics() {
     console.log("Analytics render")
+    const now = new Date()
 
     const isEn = localStorage.getItem("settings-lang") === "en";
 
-    const [days, setDays] = useState(7);
+    const [days, setDays] = useState(now.getDay());
     const width =  window.innerWidth
     const maxHeight = width >= 540 ? 100 : window >= 430 ? 80 : 50
     const [project, setProject] = useState("Всі");
@@ -54,19 +57,16 @@ export default function Analytics() {
 
     let max = getMax(objectDates, project)
 
-    const now = new Date()
     const today = `${now.getDate()}.${(now.getMonth() + 1)}.${now.getFullYear()}`
 
     const options = { weekday: "short", day: "numeric", month: "long" };
 
-    console.log(objectDates)
-
     const todayData = [objectDates[today] !== undefined && (objectDates[today].length === 0 ? conSecTime(0) : conSecTime(getAllTime(today, objectDates, project)), now.toLocaleString(undefined, options))]
-    console.log(today)
-    console.log(arrayDates)
 
     const [selected, setSelected] = useState(today)
     const [selectedData, setSelectedData] = useState(todayData)
+
+    console.log(objectDates)
 
     return (
         <div className="analytics content">
@@ -80,21 +80,23 @@ export default function Analytics() {
                         <Dropdown changeProject={(el) => setProject(el)} startValue={isEn ? "All" : "Всі"} />
                     </div>
                 </div>
-                <div className='analytics__content'>
-                    <h3 className="analytics__hours">{selectedData[0]}</h3>
-                     {Object.keys(objectDates).map((el, index) => {
-                        let allTime = getAllTime(el, objectDates, project);
-                        if(allTime > max) max = allTime
-                        console.log(allTime, max)
-                        if (!arrayDates.includes(el) || allTime < 60){
-                            return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true} selected={selected} 
-                            setSelected={setSelected} setSelectedData={setSelectedData}/>
-                        }
-                         let objectTasks = getObjectTasks(objectDates, el)
-                         return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project}
-                             uniqueColors={uniqueColors} selected={selected} setSelected={setSelected} setSelectedData={setSelectedData} />
-                     })}
-                </div>
+                <AnimatePresence mode="wait">
+                    <motion.div key={page.current} initial={{filter: "blur(2px)"}} animate={{filter: "blur(0px)"}} className='analytics__content'>
+                        <h3 className="analytics__hours">{selectedData[0]}</h3>
+                        {Object.keys(objectDates).map((el, index) => {
+                            let allTime = getAllTime(el, objectDates, project);
+                            if(allTime > max) max = allTime
+                            console.log(allTime, max)
+                            if (!arrayDates.includes(el) || allTime < 60){
+                                return <AnalyticsBlock key={el + index} date={el} allTime={allTime} maxHeight={maxHeight} isGray={true} selected={selected} 
+                                setSelected={setSelected} setSelectedData={setSelectedData}/>
+                            }
+                            let objectTasks = getObjectTasks(objectDates, el)
+                            return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project}
+                                uniqueColors={uniqueColors} selected={selected} setSelected={setSelected} setSelectedData={setSelectedData} />
+                        })}
+                    </motion.div>
+                </AnimatePresence>
                 <div className='analytics__action'>
                     <p>{(page.current - 1) * -1}</p>
                     <img draggable={false} src={triangle} onClick={() => switchDay(setDays, page, true)} />

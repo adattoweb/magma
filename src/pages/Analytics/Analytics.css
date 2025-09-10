@@ -53,9 +53,6 @@
     transition: 0.3s ease all;
     cursor: pointer;
 }
-.analytics__action img:hover{
-    transform: scale(1.05)
-}
 .wrapper.dark .analytics__action p{
     color: #fff;
 }
@@ -63,7 +60,7 @@
     transform: rotate(90deg)
 }
 .analytics__action img:nth-child(3){
-    transform: rotate(270deg)
+    transform: rotate(-90deg)
 }
 .wrapper.dark .analytics__action img{
     filter: invert(0)
@@ -115,6 +112,9 @@
     font-weight: 600;
     white-space: nowrap;
     transition: 0.3s ease all;
+    padding: 0px;
+    background-color: transparent;
+    border-radius: 0;
 }
 .aitem.active h3{
     background-color: rgba(0,0,0,0.1);
@@ -124,6 +124,15 @@
 .wrapper.dark .aitem.active h3{
     background-color: rgba(255,255,255,0.1);
 }
+
+/* @keyframes fade-in {
+    0%{
+        padding: 0;
+    }
+    100%{
+        padding: 10px;
+    }
+} */
 .aitem__block{
     display: flex;
     flex-direction: column;
