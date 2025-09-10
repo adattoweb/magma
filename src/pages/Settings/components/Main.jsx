@@ -13,19 +13,33 @@ export default function Main({ onChange }) {
     const [isAuto, setIsAuto] = useState(localTheme === "auto") 
     const isEn = localStorage.getItem("settings-lang") === "en";
     const isDark = localStorage.getItem("settings-theme") === "dark"
+
+    function changeLanguage(lang){
+        const localProjects = localStorage.getItem("tracker-projects")
+        const from = lang === "en" ? "Без проєкту" : "Without project"
+        const to = lang === "en" ? "Without project" : "Без проєкту"
+        if(localProjects !== null){
+            localStorage.setItem("tracker-projects", localProjects.replace(from, to))
+        }
+        const localKeys = Object.keys(localStorage)
+        for(let i = 0; i < localKeys.length; i++){
+            if(localKeys[i].includes("tracker-item")){
+                const array = localStorage.getItem(localKeys[i]).split("^")
+                const project = array[1]
+                if(project === from) array[1] = to
+                localStorage.setItem(localKeys[i], array.join("^"))
+            }
+        }
+        localStorage.setItem("settings-lang", lang);
+        onChange();
+    }
     return (
         <div className="maintab"><SettingsBlock header={isEn ? "Main Settings" : "Основні налаштування"}>
             <SettingsItem header={isEn ? "Language" : "Мова"}>
                 <div className="settings__select small-drop">
                     <Dropdown name={isEn ? "EN" : "UA"}>
-                    <p onClick={() => {
-                        localStorage.setItem("settings-lang", "en");
-                        onChange();
-                    }}>EN</p>
-                    <p onClick={() => {
-                        localStorage.setItem("settings-lang", "ua");
-                        onChange();
-                    }}>UA</p>
+                    <p onClick={() => changeLanguage("en")}>EN</p>
+                    <p onClick={() => changeLanguage("ua")}>UA</p>
                     </Dropdown>
                 </div>
             </SettingsItem>

@@ -10,6 +10,7 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
     const [start, setStart] = useState(arrayValues[2])
     const [end, setEnd] = useState(arrayValues[3])
     const [all, setAll] = useState(arrayValues[4])
+    console.log(arrayValues)
     const [newName, setNewName] = useState(name);
     const [newProject, setNewProject] = useState(project);
     const [newStart, setNewStart] = useState(start);
@@ -69,7 +70,11 @@ export default function TrackerItem({ localKey, isRender, setIsRender}) {
         }
         let startArr = newStart.split(":");
         let endArr = newEnd.split(":");
-        let myAll = Math.abs((+endArr[0] * 60 * 60 + +endArr[1] * 60) - (+startArr[0] * 60 * 60 + +startArr[1] * 60))
+        let endTotal = +endArr[0] * 60 * 60 + +endArr[1] * 60
+        if(+startArr[0] > +endArr[0]) endTotal += 24 * 3600
+        let startTotal = +startArr[0] * 60 * 60 + +startArr[1] * 60
+        let myAll = Math.abs(endTotal - startTotal)
+        console.log(endArr, startArr)
         setName(newName)
         setProject(newProject)
         setStart(newStart)

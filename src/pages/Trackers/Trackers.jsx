@@ -7,8 +7,9 @@ export default function Trackers() {
     if (!localStorage.getItem("tracker-index")) {
         localStorage.setItem("tracker-index", "0");
     }
+    const isEn = localStorage.getItem("settings-lang") === "en"
     if (!localStorage.getItem("tracker-projects")) {
-        localStorage.setItem("tracker-projects", "Без проєкту");
+        localStorage.setItem("tracker-projects", isEn ? "Without project" : "Без проєкту");
     }
     const [isAdding, setIsAdding] = useState(false); // чисто щоб рендерити наново компонент
     return (

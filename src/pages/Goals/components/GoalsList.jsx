@@ -62,9 +62,10 @@ export default function GoalsList({ array, setArray }) {
 
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
+            <div className="tlist__shell">
+            <div className="tlist__header newblock">🌱 {isEn ? "My habits" : "Мої звички"}
+            </div>
             <div className="glist tlist newblock">
-                <div className="tlist__header newblock">🌱 {isEn ? "My habits" : "Мої звички"}
-                </div>
                 <div className="tlist__list glist__list">
                 <SortableContext items={array} strategy={verticalListSortingStrategy}>
                     {array[0] === "" || array.length === 0 ?
@@ -82,6 +83,7 @@ export default function GoalsList({ array, setArray }) {
                         return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)} />
                     })}
                 </div>}
+            </div>
             </div>
             <DragOverlay>
                 {active1 && <GoalsItem key={activeKey} localKey={activeKey} setArray={setArray} active={active1} isDraggable={true}/>}

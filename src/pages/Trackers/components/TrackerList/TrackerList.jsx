@@ -46,25 +46,27 @@ export default function TrackerList() {
     pagesArray = pagesArray.map(el => el.filter(el => flatArray.includes(el)))
 
     return (
-        <div className="tlist newblock">
+        <div className="tlist__shell">
             <div className="tlist__header newblock">
-                <Dropdown project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)}/>
+                <Dropdown project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)} />
             </div>
-            <div className="tlist__list">
-                {arrayDates.length === 0 || pagesArray.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : pagesArray[page].map((el, index) => {
-                    console.log(el)
-                    let allTime = arrayKeys[flatArray.indexOf(el)].reduce((total, key) => total + +localStorage.getItem(key).split("^")[4],0);
-                        return <TrackerBlock key={el+index} header={el.split(".").map(el => el.padStart(2, "0")).join(".")} all={allTime}>{
+            <div className="tlist newblock">
+                <div className="tlist__list">
+                    {arrayDates.length === 0 || pagesArray.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : pagesArray[page].map((el, index) => {
+                        console.log(el)
+                        let allTime = arrayKeys[flatArray.indexOf(el)].reduce((total, key) => total + +localStorage.getItem(key).split("^")[4], 0);
+                        return <TrackerBlock key={el + index} header={el.split(".").map(el => el.padStart(2, "0")).join(".")} all={allTime}>{
                             arrayKeys[flatArray.indexOf(el)].map(key => {
-                                return <TrackerItem key={key} localKey={key} isRender={isRender} setIsRender={setIsRender}/>
-                        })}</TrackerBlock>;
-                })}
+                                return <TrackerItem key={key} localKey={key} isRender={isRender} setIsRender={setIsRender} />
+                            })}</TrackerBlock>;
+                    })}
+                </div>
+                {pagesArray.length > 1 && <div className="tpages">
+                    {pagesArray.map((el, index) => {
+                        return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)} />
+                    })}
+                </div>}
             </div>
-            {pagesArray.length > 1 && <div className="tpages">
-                {pagesArray.map((el, index) => {
-                    return <PagesButton key={index + el} page={page} num={index} onClick={() => setPage(index)}/>
-                })}
-            </div>}
         </div>
     );
 }

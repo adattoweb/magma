@@ -5,7 +5,7 @@ export default function DropAdd({ makeRender }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
 
     function addProject() {
-        if (projectValue === "Without project" || projectValue === "Без проєкту" || projectValue === "All" || projectValue === "Всі") return
+        if (projectValue.toLowerCase() === "without project" || projectValue.toLowerCase() === "без проєкту" || projectValue.toLowerCase() === "all" || projectValue.toLowerCase() === "всі") return
         let smallName = projectValue
         if (projectValue.length > 45) smallName = projectValue.substring(0, 44) + "..."
         let newName = smallName.replace(/(@|\^)+/g, ".");

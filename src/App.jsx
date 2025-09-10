@@ -14,7 +14,9 @@ import Calendar from "@/pages/Calendar/Calendar";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 export default function App() {
-  let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", "ua"], ["settings-theme", "light"], 
+  console.log(navigator.language)
+  const startLang = navigator.language === "uk" ? "ua" : "en"
+  let array = [["magma-clock", "24"], ["magma-quotes", "true"], ["magma-darkness", "20"], ["settings-lang", startLang], ["settings-theme", "light"], 
   ["magma-name", "user"], ["settings-bg", "0"], ["settings-customize-theme", "not choosed"], ["tracker-time", "0"], ["tracker-name", ""]]
 
   if(localStorage.getItem("custom-choosed") === null) localStorage.setItem("custom-choosed", "not choosed")

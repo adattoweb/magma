@@ -85,10 +85,14 @@
     padding: 5px 0px 10px 0px;
     border-radius: 0px 20px 20px 20px;
     position: relative;
-    margin-top: 100px;
     z-index: 2;
     border: none;
 
+}
+.tlist__shell{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
 }
 .tlist__header{
     display: flex;
@@ -100,14 +104,15 @@
     font-weight: 500;
     font-family: "Montserrat Alternates", serif;
     border-radius: 10px 10px 0px 0px;
-    position: absolute;
-    left: 0px;
-    top: -40px;
     z-index: 1;
     box-shadow: none;
+    width: max-content;
     height: 60px;
     top: -60px;
     border: none;
+}
+.tlist__header .dropdown__item{
+    height: min-content;
 }
 .tlist__header .dropdown-btn{
     min-width: 200px;
@@ -264,12 +269,12 @@
 
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1370px) {
     .trackers__info input{
         width: 300px !important;
     }
 }
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1200px) {
     .trackers__info input{
         width: 200px !important;
     }
@@ -286,7 +291,7 @@
         width: calc(75vw - 40px) !important;
     }
 }
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 950px) {
     .trackers__add{
         flex-direction: column !important;
         justify-content: center !important;
@@ -313,16 +318,13 @@
     .trackers__info .dropdown-btn{
         height: 33px !important;
     }
+    .titem__delete p, .titem__time p{
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 650px) {
     .trackers__add{
-        height: 160px !important;
         width: calc(80vw - 40px) !important;
-    }
-    .trackers__info{
-        flex-direction: column !important;
-        gap: 10px !important;
-        align-items: start !important;
     }
     .dropdown-btn img{
         width: 15px !important;
@@ -342,10 +344,31 @@
         width: 10px;
     }
 }
+@media screen and (max-width: 530px){
+    .trackers__add{
+        height: 160px !important;
+    }
+    .trackers__info{
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: start !important;
+    }
+}
 @media screen and (max-width: 350px) {
     .trackers__info input{
         width: 150px !important;
         border-radius: 7px !important;
+    }
+    .titem__time{
+        display: none;
+    }
+    .titem__info{
+        justify-content: end;
+    }
+}
+@media screen and (max-width: 300px) {
+    .trackers__add{
+        width: calc(95vw - 40px) !important;
     }
 }
 
@@ -360,9 +383,9 @@
         max-width: 170px;
     }
 }
-@media screen and (max-width: 1100px) {
-    .titem__edit input, .tblock__miniheader input{
-        max-width: 150px;
+@media screen and (max-width: 1000px) {
+    .tlist__header .dropdown-btn{
+        min-width: 160px !important;
     }
 }
 @media screen and (max-width: 900px) {
@@ -381,6 +404,12 @@
     }
     .titem__info{
         width: 50% !important;
+    }
+}
+@media screen and (max-width: 700px) {
+    .titem__name{
+        width: 120px;
+        font-size: 14px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -415,21 +444,14 @@
         min-width: 60px !important;
         font-size: 14px !important;
     }
-    /* .titem__time{
-        flex-direction: column !important;
-        text-align: start;
-        gap: 3px !important;
-    } */
     .tblock__header p, .tblock__header span{
         font-size: 15px !important;
     }
     .tlist__header{
         border-radius: 0px 10px 0px 0px !important;
     }
-}
-@media screen and (max-width: 1000px) {
-    .tlist__header .dropdown-btn{
-        min-width: 160px !important;
+    .titem__info{
+        width: 60% !important;
     }
 }
 

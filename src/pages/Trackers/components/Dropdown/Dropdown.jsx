@@ -6,7 +6,7 @@ import DropdownItem from "./components/DropdownItem";
 
 export default function TrackerDropdown({ project, setProject, setPage, setGlobalRender }) {
     const isEn = localStorage.getItem("settings-lang") === "en";
-    const array = localStorage.getItem("tracker-projects") === null ? ["Без проєкту"] : localStorage.getItem("tracker-projects").split("^");
+    const array = localStorage.getItem("tracker-projects") === null ? isEn ? ["Without project"] : ["Без проєкту"] : localStorage.getItem("tracker-projects").split("^");
     array.unshift(isEn ? "All" : "Всі")
     const [render, setRender] = useState(false)
 
