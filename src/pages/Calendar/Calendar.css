@@ -80,8 +80,9 @@
     justify-content: start;
     align-items: center;
     width: 210px;
-    padding: 5px 5px 5px 10px;
+    padding: 12px 5px 5px 10px;
     z-index: 10000;
+    cursor: pointer;
 }
 .dragging-one{
     background-color: #d3d3d3;
@@ -136,29 +137,25 @@
 .wrapper.dark .calendaritem__circle.active svg {
     color: black;
 }
-.calendaritem__text{
+.calendartext{
     display: flex;
     flex-direction: column;
     gap: 2px;
     justify-content: center;
     width: 90%;
 }
-.calendaritem__text input{
-    width: 100%;
-    outline: none;
-    border-radius: 5px;
-    padding-left: 2px;
-    border: 2px solid rgba(0,0,0,0);
-    transition: 0.3s ease all;
-    background: rgba(255,255,255,0);
+.calendartext.without-desc .calendartext__item{
+    margin-bottom: 5px;
 }
-.calendaritem__text input:hover{
-    border: 2px solid #ccc
-}
-.calendaritem__text input:focus{
-    border: 2px solid #a8a8a8;
+.calendartext__item{
+    font-size: 14px;
+    word-break: break-all;
+    max-height: 16px;
+    overflow: hidden;
 }
 .calendartext__desc{
+    font-size: 12px;
+    max-height: 14px;
     color: #393939;
 }
 .wrapper.dark .calendaritem__text input{

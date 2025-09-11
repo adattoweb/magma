@@ -19,9 +19,6 @@ export default function Calendar(){
         localStorage.setItem("calendar-index", "0");
     }
 
-    const [activeId, setActiveId] = useState(null)
-
-    const [activeMenu, setActiveMenu] = useState(null)
     const rendersCount = useRef(0)
     console.log(`Calendar renders: ${++rendersCount.current}`)
 
@@ -153,15 +150,15 @@ export default function Calendar(){
             <div className="calendar content">
                 <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar}/>
                 <div className="calendar__content newblock">
-                        {getCalendarKeys(calendar).map((el, index) => {
-                            return <CalendarDay key={el} date={el} keyArr={calendar[el]} activeId={activeId} setActiveId={setActiveId} index={index} 
-                            activeMenu={activeMenu} setActiveMenu={setActiveMenu} activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>;
+                        {getCalendarKeys(calendar).map(el => {
+                            return <CalendarDay key={el} date={el} keyArr={calendar[el]}
+                            activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>;
                         })}
                 </div>
             </div>
             <StartButton/>
             <DragOverlay >
-                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} activeMenu={activeMenu} setActiveMenu={setActiveMenu} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
+                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
             </DragOverlay>
         </DndContext>
     );    

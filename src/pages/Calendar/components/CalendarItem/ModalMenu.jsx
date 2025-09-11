@@ -55,10 +55,10 @@ export default function ModalMenu({ elKey, onChange, rect, keyArr, calendar, set
             <div onClick={onClick} className="calendarmenu__item"><img src={image}/><p>{children}</p></div>
         )
     }
-    console.log(elKey)
     return (
         <div ref={modalRef} className="calendarmenu newblock" style={{left: rect.x - 20, top: rect.y + 20}}>
             <MenuItem onClick={remove} image={deleteImg}>{isEn ? "Delete" : "Видалити"}</MenuItem>
+            <MenuItem onClick={duplicate} image={copy}>{isEn ? "Duplicate" : "Дублювати"}</MenuItem>
             <MenuItem onClick={duplicate} image={copy}>{isEn ? "Duplicate" : "Дублювати"}</MenuItem>
             <ModalPriorities elKey={elKey} onChange={onChange}/>
         </div>

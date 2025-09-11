@@ -490,6 +490,7 @@
 }
 .tmodal__inputs textarea{
     height: 60px;
+    font-size: 14px;
 }
 .wrapper.dark .tmodal__inputs label{
     color: #fff;
