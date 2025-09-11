@@ -11,7 +11,11 @@ import { closestCorners, DndContext, useSensor, useSensors, PointerSensor, Keybo
 import { arrayMove } from "@dnd-kit/sortable";
 import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 
+import { motion } from "framer-motion"
+import CalendarModal from "./CalendarModal";
+
 export default function Calendar(){
+    const isEn = localStorage.getItem("settings-lang") === "en"
     if(localStorage.getItem("calendar-index") === null){
         localStorage.setItem("calendar-index", "0");
     }
@@ -136,9 +140,59 @@ export default function Calendar(){
 
     console.log(calendar)
 
+    const [isOpen, setIsOpen] = useState(false)
+    const [error, setError] = useState(false)
+    const [name, setName] = useState("")
+    const [desc, setDesc] = useState("")
+    const [date, setDate] = useState(new Date())
+    const [choosed, setChoosed] = useState(0)
+
+    function saveChanges(){
+        if(name.includes("^")) {
+            setError(isEn ? "Remove the '^' character." : "Приберіть '^' символ.")
+            if(!error){
+                setTimeout(() => {
+                    setError(false)
+                }, 6000)
+            }
+            return
+        }
+        if(name.length === 0) {
+            setError(isEn ? "Minimum string length: 1 character" : "Мінімальна довжина рядка: 1 символ")
+            if(!error){
+                setTimeout(() => {
+                    setError(false)
+                }, 6000)
+            }
+            return
+        }
+        const localIndex = +localStorage.getItem("calendar-index")
+        const pos = 0
+
+        setName("")
+        setChoosed(0)
+        setDate(new Date())
+
+        localStorage.setItem("calendar-index", localIndex+1)
+        localStorage.setItem(`calendar-item-${localIndex}`, `${name}^${desc}^${date.getFullYear()}^${date.getMonth()+1}^${date.getDate()}^false^0^${pos}^${choosed}`)
+        setCalendar(getCalendar())
+    }
+
+    function StartButton(){
+        return (
+            <motion.div whileHover={{scale: 1.03}} whileTap={{scale: 0.97}} className="calendarstart" onClick={() => setIsOpen(true)}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="calendarstart__svg">
+                    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clipRule="evenodd" />
+                </svg>
+            </motion.div>
+
+        )
+    }
+
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="calendar content">
+                <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} error={error} name={name} setName={setName} saveChanges={saveChanges} date={date} setDate={setDate} choosed={choosed} setChoosed={setChoosed} desc={desc} setDesc={setDesc}/>
                 <div className="calendar__content newblock">
                         {getCalendarKeys(calendar).map((el, index) => {
                             return <CalendarDay key={el} date={el} keyArr={calendar[el]} activeId={activeId} setActiveId={setActiveId} index={index} 
@@ -146,6 +200,7 @@ export default function Calendar(){
                         })}
                 </div>
             </div>
+            <StartButton/>
             <DragOverlay >
                 {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} activeMenu={activeMenu} setActiveMenu={setActiveMenu} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
             </DragOverlay>

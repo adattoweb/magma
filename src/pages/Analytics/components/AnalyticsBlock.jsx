@@ -6,7 +6,7 @@ import AnalyticsItem from "./AnalyticsItem"
 export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueColors, selected, setSelected, setSelectedData }) {
     const dateArr = date.split('.')
     let timestamp = new Date(+dateArr[2], +dateArr[1] - 1, +dateArr[0])
-    const now = new Date()
+    // const now = new Date()
     // if(now - timestamp < 0) return
     function switchSelected(){
         const options = { weekday: "short", day: "numeric", month: "long" };

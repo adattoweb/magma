@@ -469,7 +469,7 @@
 }
 .tmodal__inputs input{
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px !important;
     border: 1px solid #bababa;
     transition: 0.2s linear all;
 }
@@ -493,8 +493,8 @@
     color: #fff;
 }
 .tmodal__name{
-    width: 180px;
-    margin-top: 4px;
+    width: 180px !important;
+    margin-top: 4px !important;
 }
 .tmodal__times{
     width: 50px;

@@ -222,3 +222,15 @@ img{
   animation-duration: 1s;
   animation-name: spin;
 }
+
+.react-datepicker__day--selected{
+  background-color: #000 !important;
+}
+.react-datepicker__day--keyboard-selected{
+  background-color: transparent !important;
+  outline: 1px solid #000;
+}
+.react-datepicker__day--keyboard-selected:hover{
+  background-color: #000 !important;
+  color: #fff;
+}

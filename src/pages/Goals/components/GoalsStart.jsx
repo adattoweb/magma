@@ -8,6 +8,7 @@ export default function GoalsStart({ setArray }) {
     const [name, setName] = useState("");
 
     function onClick(){
+        if(name.length === 0) return
         addItem(name, setArray)
         setName("")
     }

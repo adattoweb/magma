@@ -43,6 +43,12 @@
 .calendarday__header.active{
     color: #000
 }
+.wrapper.dark .calendarday__header{
+    color: #9b9b9b;
+}
+.wrapper.dark .calendarday__header.active{
+    color: #fff;
+}
 
 .calendarday::-webkit-scrollbar{
     width: 5px;
@@ -338,6 +344,9 @@
     top: 100px;
     z-index: 10001;
 }
+.wrapper.dark .calendarmenu{
+    background-color: rgba(0,0,0,0.2);
+}
 .calendarmenu__item{
     display: flex;
     align-items: center;
@@ -519,4 +528,26 @@
         width: 200px;
         height: 130px;
     }
+}
+
+.calendar{
+    position: relative;
+}
+.calendarstart{
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    position: absolute;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+.calendarstart__svg{
+    filter: invert(1)
+}
+.tmodal .priorities{
+    border: none;
+    padding: 0;
 }
