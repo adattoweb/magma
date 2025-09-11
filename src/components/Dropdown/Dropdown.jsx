@@ -6,12 +6,6 @@ import './Dropdown.css'
 
 
 export default function Dropdown({name, children}) {
-    // const isEn = localStorage.getItem("settings-lang") === "en";
-
-    // const array = localStorage.getItem("tracker-projects") === null ? ["Без проєкту"] : localStorage.getItem("tracker-projects").split("^");
-    // if(startValue === undefined) startValue = array[0];
-    // const [select, setSelect] = useState(startValue);
-    // {isEn && select === "Без проєкту" ? "Without project" : select}
 
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -25,8 +19,3 @@ export default function Dropdown({name, children}) {
         </motion.div>
     );
 }
-// {array.map((el, index) => <p onClick={() => {
-//     setSelect(el);
-//     changeProject !== undefined && changeProject(el);
-//     editProject !== undefined && editProject(el);
-// }} key={el + index}>{isEn && el === "Без проєкту" ? "Without project" : el}</p>)}
