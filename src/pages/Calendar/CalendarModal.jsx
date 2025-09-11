@@ -1,11 +1,65 @@
 import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
 import Modal from "@/components/Modal/Modal";
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import getCalendar from "./helpers/getCalendar";
+import { enGB, uk } from "date-fns/locale";
 
-export default function CalendarModal({ isOpen, setIsOpen, error, name, setName, saveChanges, date, setDate, choosed, setChoosed, desc, setDesc}){
-    const isDark = localStorage.getItem("settings-theme") === "dark"
-    const isEn = localStorage.getItem("settings-lang") === "en"
+registerLocale("en-GB", enGB);
+registerLocale("uk", uk);
+
+export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar}){
+        const isDark = localStorage.getItem("settings-theme") === "dark"
+        const isEn = localStorage.getItem("settings-lang") === "en"
+
+        const [error, setError] = useState(false)
+        const [name, setName] = useState("")
+        const [desc, setDesc] = useState("")
+        const [date, setDate] = useState(new Date())
+        const [choosed, setChoosed] = useState(0)
+    
+        function saveChanges(){
+            if(name.includes("^") || desc.includes("^")) {
+                setError(isEn ? "Remove the '^' character." : "Приберіть '^' символ.")
+                if(!error){
+                    setTimeout(() => {
+                        setError(false)
+                    }, 6000)
+                }
+                return
+            }
+            if(name.length === 0) {
+                setError(isEn ? "Enter the field" : "Заповніть поле")
+                if(!error){
+                    setTimeout(() => {
+                        setError(false)
+                    }, 6000)
+                }
+                return
+            }
+            const localIndex = +localStorage.getItem("calendar-index")
+            const array = calendar[`${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`]
+            let position = 0
+            if(array.length !== 0){
+                let max = 0;
+                for(let i = 0; i < array.length; i++){
+                    let localPos = +localStorage.getItem(array[i]).split("^")[7]
+                    if(localPos > max) max = localPos
+                }
+                position = max + 1
+            }
+    
+            setName("")
+            setDesc("")
+            setChoosed(0)
+            setDate(new Date())
+            setIsOpen(false)
+    
+            localStorage.setItem("calendar-index", localIndex+1)
+            localStorage.setItem(`calendar-item-${localIndex}`, `${name}^${desc}^${date.getFullYear()}^${date.getMonth()+1}^${date.getDate()}^false^0^${position}^${choosed}`)
+            setCalendar(getCalendar())
+        }
 
     function ModalPriorities(){
         const priorities = ["gray", "blue", "yellow", "red"]
@@ -27,7 +81,7 @@ export default function CalendarModal({ isOpen, setIsOpen, error, name, setName,
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} className="calendarmodal">
         <div className="tmodal">
             <h3>{isEn ? "Task creating" : "Створення задачі"}</h3>
             <div className="tmodal__inputs">
@@ -37,14 +91,16 @@ export default function CalendarModal({ isOpen, setIsOpen, error, name, setName,
                 </div>
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Description" : "Опис"}</label>
-                    <input type="text" maxLength="30" className="tmodal__name" id="tname" value={desc} onChange={(e) => setDesc(e.target.value)}/>
+                    <textarea type="text" maxLength="60" className="tmodal__name" id="tname" value={desc} onChange={(e) => setDesc(e.target.value)}/>
                 </div>
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Date" : "Дата"}</label>
-                    <DatePicker className="tmodal__name" selected={date} onChange={(date) => setDate(date)}/>
+                    <DatePicker className="tmodal__name" selected={date} onChange={(date) => setDate(date)} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>
+                </div>
+                <div className="tmodal__input">
+                    <ModalPriorities/>
                 </div>
             </div>
-            <ModalPriorities/>
             <div className="gmodal__buttons">
                 <motion.div whileHover={{scale: 1.05}} className="tmodal__save" onClick={saveChanges}>{isEn ? "Create" : "Створити"}</motion.div>
             </div>

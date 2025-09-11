@@ -15,7 +15,6 @@ import { motion } from "framer-motion"
 import CalendarModal from "./CalendarModal";
 
 export default function Calendar(){
-    const isEn = localStorage.getItem("settings-lang") === "en"
     if(localStorage.getItem("calendar-index") === null){
         localStorage.setItem("calendar-index", "0");
     }
@@ -110,7 +109,6 @@ export default function Calendar(){
         const overDate = findTaskDate(over.id)
         const overIndex = calendar[overDate].findIndex(el => el === over.id)
 
-        console.log(newCalendar)
         if(activeDateRef.current === overDate){ // якщо переміщення внутрішьно між днями
             newCalendar[activeDate] = arrayMove(newCalendar[activeDate], activeIndex, overIndex)
             updatePosition(newCalendar[activeDate])
@@ -128,7 +126,6 @@ export default function Calendar(){
             console.log("3")
         }
         setCalendar(newCalendar)
-        console.log(newCalendar)
     }
 
     const sensors = useSensors(
@@ -138,45 +135,7 @@ export default function Calendar(){
         useSensor(KeyboardSensor),
     )
 
-    console.log(calendar)
-
     const [isOpen, setIsOpen] = useState(false)
-    const [error, setError] = useState(false)
-    const [name, setName] = useState("")
-    const [desc, setDesc] = useState("")
-    const [date, setDate] = useState(new Date())
-    const [choosed, setChoosed] = useState(0)
-
-    function saveChanges(){
-        if(name.includes("^")) {
-            setError(isEn ? "Remove the '^' character." : "Приберіть '^' символ.")
-            if(!error){
-                setTimeout(() => {
-                    setError(false)
-                }, 6000)
-            }
-            return
-        }
-        if(name.length === 0) {
-            setError(isEn ? "Minimum string length: 1 character" : "Мінімальна довжина рядка: 1 символ")
-            if(!error){
-                setTimeout(() => {
-                    setError(false)
-                }, 6000)
-            }
-            return
-        }
-        const localIndex = +localStorage.getItem("calendar-index")
-        const pos = 0
-
-        setName("")
-        setChoosed(0)
-        setDate(new Date())
-
-        localStorage.setItem("calendar-index", localIndex+1)
-        localStorage.setItem(`calendar-item-${localIndex}`, `${name}^${desc}^${date.getFullYear()}^${date.getMonth()+1}^${date.getDate()}^false^0^${pos}^${choosed}`)
-        setCalendar(getCalendar())
-    }
 
     function StartButton(){
         return (
@@ -192,7 +151,7 @@ export default function Calendar(){
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="calendar content">
-                <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} error={error} name={name} setName={setName} saveChanges={saveChanges} date={date} setDate={setDate} choosed={choosed} setChoosed={setChoosed} desc={desc} setDesc={setDesc}/>
+                <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar}/>
                 <div className="calendar__content newblock">
                         {getCalendarKeys(calendar).map((el, index) => {
                             return <CalendarDay key={el} date={el} keyArr={calendar[el]} activeId={activeId} setActiveId={setActiveId} index={index} 

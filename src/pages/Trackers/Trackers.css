@@ -467,13 +467,14 @@
     flex-direction: column;
     gap: 10px;
 }
-.tmodal__inputs input{
+.tmodal__inputs input, .tmodal__inputs textarea{
     border-radius: 5px;
     padding: 5px !important;
     border: 1px solid #bababa;
     transition: 0.2s linear all;
+    resize: none;
 }
-.wrapper.dark .tmodal__inputs input{
+.wrapper.dark .tmodal__inputs input,.wrapper.dark .tmodal__inputs textarea{
     background-color: #282828;
     border: 1px solid #353535;
     color: #fff;
@@ -483,11 +484,12 @@
     gap: 2px;
     flex-direction: column;
 }
-.tmodal__inputs input:focus{
+.tmodal__inputs input:focus, .tmodal__inputs textarea:focus{
     border: 1px solid #606060 !important;
+    outline: none;
 }
-.wrapper.dark .tmodal__inputs input:focus{
-    border: 1px solid #606060 !important;
+.tmodal__inputs textarea{
+    height: 60px;
 }
 .wrapper.dark .tmodal__inputs label{
     color: #fff;

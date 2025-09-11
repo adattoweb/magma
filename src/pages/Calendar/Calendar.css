@@ -551,3 +551,9 @@
     border: none;
     padding: 0;
 }
+.wrapper.dark .tmodal .priorities label{
+    color: #fff
+}
+.calendarmodal{
+    min-width: max-content;
+}
