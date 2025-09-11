@@ -61,7 +61,7 @@ export default function Analytics() {
 
     const options = { weekday: "short", day: "numeric", month: "long" };
 
-    const todayData = [objectDates[today] !== undefined && (objectDates[today].length === 0 ? conSecTime(0) : conSecTime(getAllTime(today, objectDates, project)), now.toLocaleString(undefined, options))]
+    const todayData = [objectDates[today] !== undefined && (objectDates[today].length === 0 ? conSecTime(0) : conSecTime(getAllTime(today, objectDates, project))), now.toLocaleString(isEn ? "en" : "uk", options)]
 
     const [selected, setSelected] = useState(today)
     const [selectedData, setSelectedData] = useState(todayData)

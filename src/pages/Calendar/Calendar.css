@@ -1,3 +1,7 @@
+.calendar{
+    flex: 0 0 auto;
+    margin-bottom: auto;
+}
 .calendar__content{
     border-radius: 15px;
     max-width: 80vw;
@@ -540,9 +544,11 @@
     border-radius: 100px;
     border: 1px solid rgba(0,0,0,0.2);
     cursor: pointer;
+    bottom: -20px;
+    z-index: 100;
 }
 .calendarstart__svg{
-    filter: invert(1)
+    filter: invert(1);
 }
 .tmodal .priorities{
     border: none;

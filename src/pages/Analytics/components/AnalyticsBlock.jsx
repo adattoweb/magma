@@ -6,12 +6,11 @@ import AnalyticsItem from "./AnalyticsItem"
 export default function AnalyticsBlock({ date, allTime, max, maxHeight, isGray, objectTasks, project, uniqueColors, selected, setSelected, setSelectedData }) {
     const dateArr = date.split('.')
     let timestamp = new Date(+dateArr[2], +dateArr[1] - 1, +dateArr[0])
-    // const now = new Date()
-    // if(now - timestamp < 0) return
+    const isEn = localStorage.getItem("settings-lang") === "en"
     function switchSelected(){
         const options = { weekday: "short", day: "numeric", month: "long" };
         setSelected(date)
-        setSelectedData([conSecTime(allTime), timestamp.toLocaleString(undefined, options)])
+        setSelectedData([conSecTime(allTime), timestamp.toLocaleString(isEn ? "en" : "uk", options)])
     }
     function BlockLayout({ children }) {
         const isSelected = selected === date

@@ -3,7 +3,7 @@ import SettingsItem from "./SettingsItem"
 import EditNick from "./EditNick"
 
 import { useState } from "react"
-import Dropdown from "@/components/Dropdown/Dropdown";
+import Dropdown from "./Dropdown";
 
 export default function Main({ onChange }) {
     const localTheme = localStorage.getItem("settings-theme")
@@ -33,11 +33,13 @@ export default function Main({ onChange }) {
         localStorage.setItem("settings-lang", lang);
         onChange();
     }
+    const [isLangOpen, setIsLangOpen] = useState(false)
+    const [isThemeOpen, setIsThemeOpen] = useState(false)
     return (
         <div className="maintab"><SettingsBlock header={isEn ? "Main Settings" : "Основні налаштування"}>
             <SettingsItem header={isEn ? "Language" : "Мова"}>
                 <div className="settings__select small-drop">
-                    <Dropdown name={isEn ? "EN" : "UA"}>
+                    <Dropdown name={isEn ? "EN" : "UA"} isOpen={isLangOpen} setIsOpen={setIsLangOpen} setIsOtherOpen={setIsThemeOpen}>
                     <p onClick={() => changeLanguage("en")}>EN</p>
                     <p onClick={() => changeLanguage("ua")}>UA</p>
                     </Dropdown>
@@ -45,7 +47,7 @@ export default function Main({ onChange }) {
             </SettingsItem>
             <SettingsItem header={isEn ? "Theme" : "Тема"}>
                 <div className="settings__select small-drop">
-                    <Dropdown name={isDark ? "Dark" : "Light"}>
+                    <Dropdown name={isDark ? "Dark" : "Light"} isOpen={isThemeOpen} setIsOpen={setIsThemeOpen} setIsOtherOpen={setIsLangOpen}>
                     <p onClick={() => {
                         localStorage.setItem("settings-theme", "light");
                         onChange();

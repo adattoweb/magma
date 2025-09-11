@@ -28,6 +28,6 @@ export default function DropAdd({ makeRender }) {
     return (
         <div className="dropdown__add" onClick={(e) => e.stopPropagation()}>
             <input type="text" placeholder={isEn ? "Enter a name of project" : "Введіть назву проєкту"} value={projectValue} onChange={(e) => setProjectValue(e.target.value)} />
-            <div className="dropdown__create" onClick={addProject}>{isEn ? "Create" : "Створити"} +</div>
+            <div className="dropdown__create" onClick={addProject}>{isEn ? "Create" : "Створити"}</div>
         </div>)
 }

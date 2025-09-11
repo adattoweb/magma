@@ -148,6 +148,7 @@ export default function Calendar(){
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="calendar content">
+                <StartButton/>
                 <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar}/>
                 <div className="calendar__content newblock">
                         {getCalendarKeys(calendar).map(el => {
@@ -156,7 +157,6 @@ export default function Calendar(){
                         })}
                 </div>
             </div>
-            <StartButton/>
             <DragOverlay >
                 {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
             </DragOverlay>
