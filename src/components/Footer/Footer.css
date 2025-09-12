@@ -45,6 +45,25 @@
     background-color: #fff;
     border-radius: 10px;
 }
+/*   FIRE   */
+.fire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px 8px;
+    gap: 5px;
+}
+.fire p{
+    font-size: 16px;
+    font-weight: 600;
+}
+.fire img{
+    width: 22px;
+    height: 22px;
+}
+
 @media screen and (max-width: 600px) {
     .footer{
         width: max-content;
@@ -67,6 +86,9 @@
     }
     .footer, .footer__union, .footer__right{
         gap: 15px;
+    }
+    .fire{
+        display: none;
     }
 }
 @media screen and (max-width: 450px) {

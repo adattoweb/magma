@@ -7,6 +7,7 @@ import goal from '@/assets/goal.png'
 import settings from '@/assets/settings.png'
 import calendar from '@/assets/calendar.png'
 import audio from '@/assets/audio.png'
+import fire from '@/assets/fire.png'
 
 import rainSound from '@/assets/audio/rain.mp3';
 import thunderSound from '@/assets/audio/thunder.mp3';
@@ -69,6 +70,35 @@ export default function Footer() {
             </div>
         )
     }
+    function Fire(){
+        let lastDay = localStorage.getItem("fire-lastday")
+        let fireValue = +localStorage.getItem("fire-value")
+        if(!lastDay) {
+            localStorage.setItem("fire-lastday", new Date().getTime())
+            lastDay = new Date().getTime()
+        }
+        if(!fireValue) {
+            localStorage.setItem("fire-value", "0")
+            fireValue = 0
+        }
+        const now = new Date()
+        let diff = Math.floor((now.getTime() - +lastDay) / 864000000)
+        console.log(now.getTime() - 864000000)
+        console.log(diff, now.getTime(), +lastDay, (now.getTime() - +lastDay) / 864000000)
+        if(diff === 1){
+            fireValue++;
+            localStorage.setItem("fire-value", fireValue)
+        } else if(diff > 1){
+            fireValue = 0
+            localStorage.setItem("fire-value", fireValue)
+        }
+        if(diff >= 1){
+            localStorage.setItem("fire-lastday", new Date().getTime())
+            console.log("+")
+        }
+        if(fireValue === 0) return
+        return <div className="fire mylink"><img src={fire} alt="streak" /><p>{fireValue}</p></div>
+    }
     return (
         <motion.div className='footer' initial={{opacity: 0}} animate={{opacity: 1}}>
             {sounds.map((el, index) => <audio key={index} ref={el => audioRefs.current[index] = el} src={el} preload="none" loop/>)}
@@ -76,6 +106,7 @@ export default function Footer() {
                 <Audio array={array} setArray={(e) => setArray(e)} isPause={isPause} setIsPause={setIsPause}><img draggable={false} className="footer__img" src={audio} alt="audio" /></Audio>
             </div>
             <div className="footer__right">
+                <Fire/>
                 <div className="footer__union">
                     <MyLink to="/"><img className="footer__img" src={home} alt="home" draggable={false}/></MyLink>
                     <MyLink to="/trackers"><img className="footer__img" src={time} alt="trackers" draggable={false}/></MyLink>
