@@ -1,7 +1,6 @@
 import './Footer.css';
 
 import time from '@/assets/time.png'
-import anal1 from '@/assets/anal1.png'
 import home from '@/assets/home.png'
 import goal from '@/assets/goal.png'
 import settings from '@/assets/settings.png'
@@ -110,11 +109,9 @@ export default function Footer() {
                 <div className="footer__union">
                     <MyLink to="/"><img className="footer__img" src={home} alt="home" draggable={false}/></MyLink>
                     <MyLink to="/trackers"><img className="footer__img" src={time} alt="trackers" draggable={false}/></MyLink>
+                    <MyLink to="/goals"><img className="footer__img" src={goal} alt="goals" draggable={false}/></MyLink>
                     <MyLink to="/calendar"><img className="footer__img" src={calendar} alt="calendar" draggable={false}/></MyLink>
-                    <MyLink to="/analytics"><img className="footer__img" src={anal1} alt="analytics" draggable={false}/></MyLink>
                 </div>
-                <MyLink to="/goals"><img className="footer__img" src={goal} alt="goals" draggable={false}/></MyLink>
-                {/* <MyLink to="/notebook"><img className="footer__img" src={notebook} alt="notebook" draggable={false}/></MyLink> */}
                 <MyLink to="/settings"><img className="footer__img" src={settings} alt="settings" draggable={false}/></MyLink>
             </div>
         </motion.div>

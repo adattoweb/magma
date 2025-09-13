@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import TrackerBlock from "../TrackerBlock/TrackerBlock";
 import TrackerItem from "../TrackerItem/TrackerItem";
 import Dropdown from "../Dropdown/Dropdown"
@@ -6,6 +7,8 @@ import Dropdown from "../Dropdown/Dropdown"
 import sortTrackers from "../../helpers/sortTrackers";
 import getArrays from "./helpers/getArrays";
 import getPagesArray from "./helpers/getPagesArray";
+
+import anal1 from '@/assets/anal1.png'
 
 
 export default function TrackerList() {
@@ -49,6 +52,7 @@ export default function TrackerList() {
         <div className="tlist__shell">
             <div className="tlist__header newblock">
                 <Dropdown project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)} />
+                <Link className="tanal" to="/analytics" draggable={false}><img src={anal1}/></Link>
             </div>
             <div className="tlist newblock">
                 <div className="tlist__list">

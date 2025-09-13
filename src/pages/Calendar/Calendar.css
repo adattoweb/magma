@@ -7,13 +7,47 @@
     max-width: 80vw;
     height: 500px;
     display: flex;
-    padding: 15px 20px;
+    padding: 25px 20px 15px 20px;
     overflow-x: auto;
     overflow-y: hidden;
 }
 .calendar__content::-webkit-scrollbar {
     width: 7px;
     height: 7px;
+}
+.calendar__header{
+    position: absolute;
+    z-index: 10;
+    right: 0px;
+    bottom: -50px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+}
+.calendar__header img{
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    filter: invert(0);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.3s ease all;
+    cursor: pointer;
+}
+.calendar__header img:hover{
+    filter: invert(1)
+}
+.calendar__header .react-datepicker{
+    position: absolute !important;
+    top: 50px;
+    right: 0px;
+}
+@media screen and (max-width: 600px){
+    .calendar__header .react-datepicker{
+        right: 30px;
+    }
 }
 
 .calendar__content::-webkit-scrollbar-track, .calendarday::-webkit-scrollbar-track {

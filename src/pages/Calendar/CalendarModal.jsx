@@ -9,14 +9,14 @@ import { enGB, uk } from "date-fns/locale";
 registerLocale("en-GB", enGB);
 registerLocale("uk", uk);
 
-export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar}){
+export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar, startDate}){
         const isDark = localStorage.getItem("settings-theme") === "dark"
         const isEn = localStorage.getItem("settings-lang") === "en"
 
         const [error, setError] = useState(false)
         const [name, setName] = useState("")
         const [desc, setDesc] = useState("")
-        const [date, setDate] = useState(new Date())
+        const [date, setDate] = useState(startDate)
         const [choosed, setChoosed] = useState(0)
     
         function saveChanges(){
@@ -53,12 +53,12 @@ export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar
             setName("")
             setDesc("")
             setChoosed(0)
-            setDate(new Date())
+            setDate(startDate)
             setIsOpen(false)
     
             localStorage.setItem("calendar-index", localIndex+1)
             localStorage.setItem(`calendar-item-${localIndex}`, `${name}^${desc}^${date.getFullYear()}^${date.getMonth()+1}^${date.getDate()}^false^0^${position}^${choosed}`)
-            setCalendar(getCalendar())
+            setCalendar(getCalendar(startDate))
         }
 
     function ModalPriorities(){

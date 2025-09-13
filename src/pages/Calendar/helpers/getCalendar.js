@@ -1,9 +1,22 @@
 import getDayDiff from "@/helpers/getDayDiff";
 
-export default function getCalendar() {
+export default function getCalendar(startDate = new Date()) {
     let localKeys = Object.keys(localStorage);
 
     let calendar = {};
+
+    let sevenDays = [];
+    for (let i = 1; i <= 7; i++) {
+        let date = new Date(startDate)
+        date.setDate(date.getDate() + i - 1);
+        sevenDays.push(`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`);
+    }
+    for (let i = 0; i < sevenDays.length; i++) {
+        if (calendar[sevenDays[i]] === undefined) {
+            calendar[sevenDays[i]] = [];
+        }
+    }
+
     for (let i = 0; i < localKeys.length; i++) { // Створюємо об'єкт в якому будуть наші ключики і значення
         if (localKeys[i].includes("calendar-item")) {
             let localArr = localStorage.getItem(localKeys[i]).split("^")
@@ -21,28 +34,16 @@ export default function getCalendar() {
                 } else {
                     calendar.overdue.push(localKeys[i])
                 }
-            } else if (!calendar[date]) {
-                calendar[date] = [localKeys[i]];
-            } else {
+            } else if(calendar[date]) {
                 calendar[date].push(localKeys[i]);
             }
         }
     }
-    let sevenDays = [];
-    for (let i = 1; i <= 7; i++) {
-        let date = new Date();
-        date.setDate(date.getDate() + i - 1);
-        sevenDays.push(`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`);
-    }
-    // console.log(sevenDays);
-    for (let i = 0; i < sevenDays.length; i++) {
-        if (calendar[sevenDays[i]] === undefined) {
-            calendar[sevenDays[i]] = [];
-        }
-    }
+    console.log(calendar)
     for (let key in calendar) { // сортуємо задачі (спочатку найновіші потім внизу найстаріші)
         calendar[key].sort((a, b) => +localStorage.getItem(a).split("^")[7] - +localStorage.getItem(b).split("^")[7])
     }
     // console.log(Object.keys(calendar));
+    console.log(sevenDays)
     return calendar
 }

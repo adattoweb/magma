@@ -14,7 +14,30 @@ import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 import { motion } from "framer-motion"
 import CalendarModal from "./CalendarModal";
 
+import calendarImg from "@/assets/calendar.png"
+import analImg from "@/assets/anal1.png"
+
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { enGB, uk } from "date-fns/locale";
+
+registerLocale("en-GB", enGB);
+registerLocale("uk", uk);
+
 export default function Calendar(){
+    
+    const [date, setDate] = useState(new Date())
+    const [isOpenDate, setIsOpenDate] = useState(false)
+    function CalendarSwitch(){
+        return (
+            <>
+                <img draggable={false} src={calendarImg} onClick={() => setIsOpenDate(!isOpenDate)}/>
+                {isOpenDate && <DatePicker inline className="tmodal__name cdate" selected={date} onChange={(date) => {setDate(date); setCalendar(getCalendar(date))}} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>}
+            </>
+        )
+    }
+
+    const isEn = localStorage.getItem("settings-lang") === "en"
     if(localStorage.getItem("calendar-index") === null){
         localStorage.setItem("calendar-index", "0");
     }
@@ -22,7 +45,7 @@ export default function Calendar(){
     const rendersCount = useRef(0)
     console.log(`Calendar renders: ${++rendersCount.current}`)
 
-    const [calendar, setCalendar] = useState(getCalendar())
+    const [calendar, setCalendar] = useState(getCalendar(date))
 
     const [activeTaskId, setActiveTaskId] = useState(null)
     const activeDateRef = useRef(null)
@@ -149,13 +172,14 @@ export default function Calendar(){
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="calendar content">
                 <StartButton/>
-                <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar}/>
+                <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} startDate={date}/>
                 <div className="calendar__content newblock">
                         {getCalendarKeys(calendar).map(el => {
                             return <CalendarDay key={el} date={el} keyArr={calendar[el]}
                             activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>;
                         })}
                 </div>
+                <div className="calendar__header"><CalendarSwitch/><img draggable={false} src={analImg}/></div>
             </div>
             <DragOverlay >
                 {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}

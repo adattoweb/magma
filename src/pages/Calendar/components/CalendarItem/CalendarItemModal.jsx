@@ -9,7 +9,7 @@ import { enGB, uk } from "date-fns/locale";
 registerLocale("en-GB", enGB);
 registerLocale("uk", uk);
 
-export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCalendar, elKey, name, desc, priority, taskDate, indexPos }){
+export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCalendar, elKey, name, desc, priority, taskDate, indexPos, isOverdue }){
         const isDark = localStorage.getItem("settings-theme") === "dark"
         const isEn = localStorage.getItem("settings-lang") === "en"
 
@@ -79,8 +79,11 @@ export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCale
     }
     function remove(){
         const newCalendar = {...calendar}
-        console.log(taskDate)
-        newCalendar[taskDate] = newCalendar[taskDate].filter(el => el !== elKey)
+        if(isOverdue){
+            newCalendar.overdue = newCalendar.overdue.filter(el => el !== elKey)
+        } else {
+            newCalendar[taskDate] = newCalendar[taskDate].filter(el => el !== elKey)
+        }
         localStorage.removeItem(elKey)
         setCalendar(newCalendar)
         setIsOpen(false)

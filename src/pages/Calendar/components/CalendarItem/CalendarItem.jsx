@@ -60,7 +60,7 @@ export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging,
 
     return (
         <div className="calendaritem__provider" onClick={() => setIsOpen(true)}>
-            <CalendarItemModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} elKey={elKey} name={name} desc={desc} priority={priority} taskDate={taskDate} indexPos={indexPos}/>
+            <CalendarItemModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} elKey={elKey} name={name} desc={desc} priority={priority} taskDate={taskDate} indexPos={indexPos} isOverdue={isOverdue}/>
             <div className= {`calendaritem ${priorities[priority]} ${draggingClasses}`} style={style} ref={setNodeRef}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className={`calendartext${desc.length === 0 ? " without-desc" : ""}`}>

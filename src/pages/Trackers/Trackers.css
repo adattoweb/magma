@@ -365,6 +365,9 @@
     .titem__info{
         justify-content: end;
     }
+    .tblock__header p:nth-child(2){
+        display: none;
+    }
 }
 @media screen and (max-width: 300px) {
     .trackers__add{
@@ -584,4 +587,35 @@
 }
 .tlist__header{
     z-index: 3;
+}
+.tanal{
+    background-color: #000;
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.1s ease all;
+}
+.tanal img{
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    margin: auto;
+}
+@media screen and (max-width: 1200px){
+    .tanal{
+        width: 32px;
+        height: 32px;
+        margin-left: 15px;
+        border-radius: 7px;
+    }
+    .tanal img{
+        width: 22px;
+        height: 22px;
+    }
 }
