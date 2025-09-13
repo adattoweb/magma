@@ -6,7 +6,7 @@ import updateTime from "./helpers/updateTime";
 import useTimeRunning from "./hooks/useTimeRunning";
 
 import React, { useState, useRef } from 'react'
-import CalendarCircle from "../CalendarCircle/CalendarCircle";
+import CalendarCircle from "./CalendarCircle/CalendarCircle";
 import CalendarItemModal from "./CalendarItemModal";
 import formatTime from "@/helpers/formatTime"
 import { useSortable } from "@dnd-kit/sortable";

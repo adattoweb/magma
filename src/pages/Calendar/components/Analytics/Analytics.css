@@ -1,0 +1,41 @@
+.amodal{
+
+}
+.amodal__name{
+    font-weight: 600;
+    border-bottom: 1px solid #cbcbcb;
+    padding: 5px 0px;
+}
+.amodal__content{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.amodal__content h4{
+    font-size: 16px;
+    font-weight: 500;
+    color: #303030;
+}
+.amodal__list{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.amodalitem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.amodalitem__progress{
+    width: 100px;
+    height: 10px;
+    background-color: #8d8d8d;
+    border-radius: 3px;
+}
+.amodalitem__name{
+    color: #303030;
+}
+.amodalitem__name span{
+    font-weight: 600;
+}

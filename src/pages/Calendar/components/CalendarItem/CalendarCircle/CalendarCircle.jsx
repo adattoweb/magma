@@ -1,10 +1,13 @@
 export default function CalendarCircle({ setNewIsActive, newIsActive, editItem, newName, newDesc, setIsStart }){
+    function switchActive(e){
+        e.stopPropagation()
+        setNewIsActive(!newIsActive);
+        editItem(newName, newDesc, !newIsActive);
+        if(!newIsActive) setIsStart(false)
+        
+    }
     return (
-        <div className={newIsActive ? "calendaritem__circle active" : "calendaritem__circle"} onClick={() => {
-            setNewIsActive(!newIsActive);
-            editItem(newName, newDesc, !newIsActive);
-            if(!newIsActive) setIsStart(false)
-        }}>
+        <div className={newIsActive ? "calendaritem__circle active" : "calendaritem__circle"} onClick={(e) => switchActive(e)}>
             {newIsActive && (
                 <svg
                     width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

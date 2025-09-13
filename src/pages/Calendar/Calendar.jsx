@@ -12,10 +12,11 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 
 import { motion } from "framer-motion"
+
 import CalendarModal from "./CalendarModal";
+import Analytics from "./components/Analytics/Analytics";
 
 import calendarImg from "@/assets/calendar.png"
-import analImg from "@/assets/anal1.png"
 
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -179,7 +180,7 @@ export default function Calendar(){
                             activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>;
                         })}
                 </div>
-                <div className="calendar__header"><CalendarSwitch/><img draggable={false} src={analImg}/></div>
+                <div className="calendar__header"><CalendarSwitch/><Analytics/></div>
             </div>
             <DragOverlay >
                 {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
