@@ -9,7 +9,7 @@ import { enGB, uk } from "date-fns/locale";
 registerLocale("en-GB", enGB);
 registerLocale("uk", uk);
 
-export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCalendar, elKey, name, desc, priority, taskDate, indexPos, isOverdue }){
+export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCalendar, elKey, name, desc, priority, taskDate, indexPos, isOverdue, startDate }){
         const isDark = localStorage.getItem("settings-theme") === "dark"
         const isEn = localStorage.getItem("settings-lang") === "en"
 
@@ -56,7 +56,8 @@ export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCale
             setIsOpen(false)
     
             localStorage.setItem(elKey, `${newName}^${newDesc}^${date.getFullYear()}^${date.getMonth()+1}^${date.getDate()}^false^0^${position}^${choosed}`)
-            setCalendar(getCalendar())
+            console.log(startDate)
+            setCalendar(getCalendar(startDate))
         }
 
     function ModalPriorities(){

@@ -7,7 +7,7 @@ import getCalendarKeys from "./helpers/sortKeys";
 import { useState, useRef } from "react";
 import "./Calendar.css";
 
-import { closestCorners, DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragOverlay } from "@dnd-kit/core";
+import { closestCorners, DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragOverlay, TouchSensor } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { restrictToWindowEdges } from '@dnd-kit/modifiers';
 
@@ -26,8 +26,13 @@ registerLocale("en-GB", enGB);
 registerLocale("uk", uk);
 
 export default function Calendar(){
+    const isAdaptive = window.innerWidth < 1024
+
+    const now = new Date()
+
+    const threeDayAgo = new Date(now.getTime() - 86400 * 1000 * 3)
     
-    const [date, setDate] = useState(new Date())
+    const [date, setDate] = useState(isAdaptive ? threeDayAgo : now)
     const [isOpenDate, setIsOpenDate] = useState(false)
     function CalendarSwitch(){
         return (
@@ -153,6 +158,10 @@ export default function Calendar(){
         useSensor(PointerSensor, {activationConstraint: {
             distance: 10, // активується drag тільки якщо курсор змістився на 10+ пікселів
           }}),
+          useSensor(TouchSensor, {
+            activationConstraint: {
+                distance: 10, // активується drag тільки якщо курсор змістився на 10+ пікселів
+            }}),
         useSensor(KeyboardSensor),
     )
 
@@ -169,21 +178,23 @@ export default function Calendar(){
         )
     }
 
+    const [activeDay, setActiveDay] = useState(`${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}`)
+    console.log(date)
+
     return (
         <DndContext collisionDetection={closestCorners} onDragStart={handleDragStart} onDragOver={handleDragOver} onDragEnd={handleDragEnd} sensors={sensors} modifiers={[restrictToWindowEdges]}>
             <div className="calendar content">
                 <StartButton/>
                 <CalendarModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} startDate={date}/>
+                <div className="calendar__header"><CalendarSwitch/><Analytics startDate={date}/></div>
                 <div className="calendar__content newblock">
-                        {getCalendarKeys(calendar).map(el => {
-                            return <CalendarDay key={el} date={el} keyArr={calendar[el]}
-                            activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar}/>;
-                        })}
+                    {getCalendarKeys(calendar).map(el => {
+                        return <CalendarDay key={el} date={el} keyArr={calendar[el]} activeTaskId={activeTaskId} calendar={calendar} setCalendar={setCalendar} activeDay={activeDay} setActiveDay={setActiveDay} setDate={setDate} startDate={date}/>;
+                    })}
                 </div>
-                <div className="calendar__header"><CalendarSwitch/><Analytics/></div>
             </div>
             <DragOverlay >
-                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true}/>}
+                {activeTaskId && <CalendarItem elKey={activeTaskId} dayDate={findTaskDate(activeTaskId)} keyArr={calendar[findTaskDate(activeTaskId)]} activeTaskId={activeTaskId} isDragging={true} startDate={date}/>}
             </DragOverlay>
         </DndContext>
     );    

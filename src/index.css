@@ -83,10 +83,27 @@ html {
   border-radius: 0.12rem;
   background-color: #000000;
 }
+.wrapper.dark ::-webkit-scrollbar-thumb {
+  border-radius: 0.12rem;
+  background-color: #ffffff;
+}
 
 ::-webkit-scrollbar-track {
   border-radius: 0.125rem;
   background-color: #ffffff;
+}
+
+.wrapper.dark ::-webkit-scrollbar-track {
+  border-radius: 0.125rem;
+  background-color: #131313;
+}
+* {
+  scrollbar-width: thin; /* робить тонший скролбар */
+  scrollbar-color: #000000 #ffffff; /* thumb = чорний, track = білий */
+}
+
+.wrapper.dark * {
+  scrollbar-color: #ffffff #131313; /* thumb = білий, track = темний */
 }
 ::selection {
   background-color: #141416;

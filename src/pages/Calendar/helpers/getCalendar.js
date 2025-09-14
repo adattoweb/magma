@@ -2,6 +2,7 @@ import getDayDiff from "@/helpers/getDayDiff";
 
 export default function getCalendar(startDate = new Date()) {
     let localKeys = Object.keys(localStorage);
+    const isAdaptive = window.innerWidth < 1024
 
     let calendar = {};
 
@@ -28,7 +29,7 @@ export default function getCalendar(startDate = new Date()) {
             newDateFormat[2] = temp;
             let newDate = newDateFormat.map(el => el.padStart(2, "0")).join(".");
             let dayDiff = getDayDiff(newDate);
-            if (dayDiff >= 1) {
+            if (dayDiff >= 1 && !isAdaptive) {
                 if (!calendar.overdue) {
                     calendar.overdue = [localKeys[i]]
                 } else {

@@ -7,7 +7,7 @@
     max-width: 80vw;
     height: 500px;
     display: flex;
-    padding: 25px 20px 15px 20px;
+    padding: 15px 20px 15px 20px;
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -26,6 +26,9 @@
     gap: 5px;
     padding: 5px;
 }
+.wrapper.dark .calendar__header{
+    background-color: #000000;
+}
 .calendar__header img{
     width: 22px;
     height: 22px;
@@ -35,6 +38,12 @@
     border-radius: 10px;
     transition: 0.3s ease all;
     cursor: pointer;
+}
+.wrapper.dark .calendar__header img{
+    filter: invert(1)
+}
+.wrapper.dark .calendar__header img:hover{
+    filter: invert(0)
 }
 .calendar__header img:hover{
     filter: invert(1)
@@ -472,6 +481,39 @@
     border-left: 4px solid #979797 !important;
 }
 
+.calendar{
+    position: relative;
+}
+.calendarstart{
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    position: absolute;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+    bottom: -20px;
+    z-index: 100;
+}
+.calendarstart__svg{
+    filter: invert(1);
+}
+.tmodal .priorities{
+    border: none;
+    padding: 0;
+}
+.wrapper.dark .tmodal .priorities label{
+    color: #fff
+}
+.calendarmodal{
+    min-width: max-content;
+}
+.calendarmodal .gmodal__buttons{
+    gap: 10px
+}
+
 /* EXPIRED DATE */
 .expired__date{
     background-color: #be3232;
@@ -518,7 +560,143 @@
         height: 15px;
     }
 }
+@media screen and (max-width: 1024px){
+    .calendar__content{
+        overflow-x: hidden;
+        justify-content: center;
+        width: 300px;
+    }
+    .calendarday{
+        width: 35px;
+        min-width: 35px;
+        border: none !important;
+        padding: 0;
+        position: relative;
+    }
+    .calendarday.active {
+        width: 200px;
+        min-width: 200px;
+        padding: 10px 15px;
+        position: static;
+    }
+    .calendarlist{
+        display: none;
+    }
+    .calendarday.active .calendarlist{
+        display: flex;
+    }
+    .calendarday__header{
+        color: #9b9b9b !important;
+        user-select: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s linear ease;
+        cursor: pointer;
+    }
+    .calendarday__header:hover{
+        color: #fff !important;
+        background-color: #3d3d3d;
+    }
+    .calendarday.active .calendarday__header{
+        color: #000 !important;
+        background-color: #fff;
+    }
+    .calendarstart{
+        width: 50px;
+        height: 50px;
+    }
+    .calendar__content{
+        height: 50vh;
+    }
+    .calendarday:nth-of-type(1),
+    .calendarday:nth-of-type(2),
+    .calendarday:nth-of-type(3) {
+      left: 70px;
+    }
+    .calendarday:nth-of-type(5),
+    .calendarday:nth-of-type(6),
+    .calendarday:nth-of-type(7) {
+      right: 70px;
+    }
+    
+}
+@media screen and (max-width: 720px){
+    .calendar__content{
+        width: 270px;
+    }
+    .calendarday{
+        width: 30px;
+        min-width: 30px;
+    }
+    .calendarday__header{
+        width: 30px;
+        height: 30px;
+    }
+    .calendar__content{
+        padding: 10px 15px 10px 15px;
+    }
+    .calendarday.active {
+        width: 160px;
+        min-width: 160px;
+        padding: 10px 5px;
+    }
+    .calendaritem{
+        width: 150px;
+    }
+    .calendarday:nth-of-type(1),
+    .calendarday:nth-of-type(2),
+    .calendarday:nth-of-type(3) {
+      left: 40px;
+    }
+    .calendarday:nth-of-type(5),
+    .calendarday:nth-of-type(6),
+    .calendarday:nth-of-type(7) {
+      right: 40px;
+    }
+}
 @media screen and (max-width: 500px){
+    .calendarday{
+        width: 25px;
+        min-width: 25px;
+    }
+    .calendarday__header{
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    .calendar__content{
+        padding: 10px 0px 10px 0px;
+        width: 250px;
+    }
+    .calendarday.active {
+        width: 160px;
+        min-width: 160px;
+        padding: 10px 5px;
+    }
+    .calendaritem{
+        width: 150px;
+    }
+    .calendarstart{
+        width: 40px;
+        height: 40px;
+    }
+    .calendarday:nth-of-type(1),
+    .calendarday:nth-of-type(2),
+    .calendarday:nth-of-type(3) {
+      left: 50px;
+    }
+    .calendarday:nth-of-type(5),
+    .calendarday:nth-of-type(6),
+    .calendarday:nth-of-type(7) {
+      right: 50px;
+    }
+}
+
+/* @media screen and (max-width: 500px){
     .calendar__content{
         flex-direction: column;
         min-width: 100vw;
@@ -563,37 +741,4 @@
         width: 200px;
         height: 130px;
     }
-}
-
-.calendar{
-    position: relative;
-}
-.calendarstart{
-    width: 60px;
-    height: 60px;
-    padding: 5px;
-    position: absolute;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-    border-radius: 100px;
-    border: 1px solid rgba(0,0,0,0.2);
-    cursor: pointer;
-    bottom: -20px;
-    z-index: 100;
-}
-.calendarstart__svg{
-    filter: invert(1);
-}
-.tmodal .priorities{
-    border: none;
-    padding: 0;
-}
-.wrapper.dark .tmodal .priorities label{
-    color: #fff
-}
-.calendarmodal{
-    min-width: max-content;
-}
-.calendarmodal .gmodal__buttons{
-    gap: 10px
-}
+} */

@@ -5,11 +5,12 @@ import analImg from "@/assets/anal1.png"
 import Modal from "@/components/Modal/Modal"
 import getCalendar from "../../helpers/getCalendar"
 
-export default function Analytics() {
+export default function Analytics({ startDate }) {
+    console.log(startDate)
     const [isOpen, setIsOpen] = useState(false)
     const isEn = localStorage.getItem("settings-lang") === "en"
     const maxWidth = 200;
-    const calendar = getCalendar()
+    const calendar = getCalendar(startDate)
     const calendarKeys = Object.keys(calendar)
     const completedTasks = {}
     let maxCompletedTasks = 0;

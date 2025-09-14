@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@/components/Modal/Modal";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,15 +9,20 @@ import { enGB, uk } from "date-fns/locale";
 registerLocale("en-GB", enGB);
 registerLocale("uk", uk);
 
-export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar, startDate}){
+export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar, startDate }){
         const isDark = localStorage.getItem("settings-theme") === "dark"
         const isEn = localStorage.getItem("settings-lang") === "en"
+        const isAdaptive = window.innerWidth < 1024
 
         const [error, setError] = useState(false)
         const [name, setName] = useState("")
         const [desc, setDesc] = useState("")
-        const [date, setDate] = useState(startDate)
+        const [date, setDate] = useState(!isAdaptive ? startDate : new Date(startDate.getTime() + 86400 * 1000 * 3))
         const [choosed, setChoosed] = useState(0)
+
+        useEffect(() => {
+            setDate(!isAdaptive ? startDate : new Date(startDate.getTime() + 86400 * 1000 * 3))
+        }, [isOpen])
     
         function saveChanges(){
             if(name.includes("^") || desc.includes("^")) {
@@ -53,7 +58,8 @@ export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar
             setName("")
             setDesc("")
             setChoosed(0)
-            setDate(startDate)
+            setDate(!isAdaptive ? startDate : new Date(startDate.getTime() + 86400 * 1000 * 3))
+            console.log(startDate)
             setIsOpen(false)
     
             localStorage.setItem("calendar-index", localIndex+1)

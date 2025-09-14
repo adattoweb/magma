@@ -12,7 +12,8 @@ import formatTime from "@/helpers/formatTime"
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging, calendar, setCalendar }){
+export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging, calendar, setCalendar, startDate }){
+    const isAdaptive = window.innerWidth < 1024
     const index = elKey.split("@")[0].split("-")[2];
 
     const array = localStorage.getItem(elKey).split("^")
@@ -48,7 +49,7 @@ export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging,
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({id: elKey})
 
     const style = {
-        borderRadius: isOverdue ? `${borderRadius}px ${borderRadius}px ${borderRadius}px 0px` : `${borderRadius}px`,
+        borderRadius: isOverdue && !isAdaptive ? `${borderRadius}px ${borderRadius}px ${borderRadius}px 0px` : `${borderRadius}px`,
         transition,
         transform: CSS.Transform.toString(transform),
     }
@@ -60,7 +61,7 @@ export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging,
 
     return (
         <div className="calendaritem__provider" onClick={() => setIsOpen(true)}>
-            <CalendarItemModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} elKey={elKey} name={name} desc={desc} priority={priority} taskDate={taskDate} indexPos={indexPos} isOverdue={isOverdue}/>
+            <CalendarItemModal isOpen={isOpen} setIsOpen={setIsOpen} calendar={calendar} setCalendar={setCalendar} elKey={elKey} name={name} desc={desc} priority={priority} taskDate={taskDate} indexPos={indexPos} isOverdue={isOverdue} startDate={startDate}/>
             <div className= {`calendaritem ${priorities[priority]} ${draggingClasses}`} style={style} ref={setNodeRef}>
                 <CalendarCircle setNewIsActive={setIsActive} newIsActive={isActive} editItem={editItem} newName={name} newDesc={desc} setIsStart={setIsStart} />
                 <div className={`calendartext${desc.length === 0 ? " without-desc" : ""}`}>
@@ -75,7 +76,7 @@ export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging,
                     <img src={drag} onClick={(e) => e.stopPropagation()} className="calendaritem__img" alt="drag image" draggable={false} {...listeners} {...attributes}/>
                 </div>
             </div>
-            {isOverdue && <div className="expired__date"><p>{taskDate}</p></div>}
+            {isOverdue && !isAdaptive && <div className="expired__date"><p>{taskDate}</p></div>}
         </div>
     );
 }
