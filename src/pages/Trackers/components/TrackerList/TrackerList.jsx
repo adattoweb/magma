@@ -52,8 +52,8 @@ export default function TrackerList() {
         <div className="tlist__shell">
             <div className="tlist__header newblock">
                 <Dropdown project={project} setProject={setProject} setPage={setPage} setGlobalRender={() => setIsRender(!isRender)} />
-                <Link className="tanal" to="/analytics" draggable={false}><img src={anal1}/></Link>
             </div>
+            <div className="trackers__header"><Link className="tanal" to="/analytics" draggable={false}><img src={anal1}/></Link></div>
             <div className="tlist newblock">
                 <div className="tlist__list">
                     {arrayDates.length === 0 || pagesArray.length === 0 ? <p className="error">{isEn ? "Sorry, nothing here" : "Нажаль, тут нічого нема"}</p> : pagesArray[page].map((el, index) => {

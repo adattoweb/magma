@@ -81,8 +81,8 @@
     align-items: center;
     padding: 10px 15px;
     overflow-x: hidden;
-    width: 240px;
-    min-width: 240px;
+    width: 220px;
+    min-width: 220px;
 }
 .calendarday__header{
     color: #535353;
@@ -126,16 +126,26 @@
     gap: 15px;
     justify-content: start;
     align-items: center;
-    width: 210px;
+    width: 190px;
     padding: 12px 5px 5px 10px;
     z-index: 10000;
     cursor: pointer;
+}
+.calendaritem__modal .tmodal{
+    align-items: center;
+}
+.wrapper.dark .calendaritem{
+    border: 1px solid #666666 !important;
+    background-color: rgba(255,255,255,0.05);
 }
 .dragging-one{
     background-color: #d3d3d3;
     pointer-events: none;
     transform-origin: top left;
     margin: 0;
+}
+.wrapper.dark .dragging-one{
+    background-color: #212121;
 }
 .dragging-one  *{
     visibility: hidden !important;
@@ -145,8 +155,11 @@
     background-color: rgba(255,255,255,0.8);
     backdrop-filter: blur(4px);
 }
-.wrapper.dark .calendaritem{
-    border: 1px solid #666666 !important;
+.wrapper.dark .dragging-two{
+    background-color: rgba(39, 39, 39, 0.8);
+}
+.wrapper.dark .calendartext__item {
+    color: #fff !important;
 }
 .calendaritem__circle{
     width: 18px;
@@ -524,21 +537,16 @@
     margin-left: 0px;
     text-align: center;
 }
-@media screen and (max-width: 2000px){
+@media screen and (max-width: 2500px){
     .calendar__content{
         max-width: 85vw;
     }
-}
-@media screen and (max-width: 1600px){
     .calendarday{
-        width: 215px;
-        min-width: 215px;
+        width: 200px;
+        min-width: 200px;
     }
     .calendaritem, .dragitem{
-        width: 200px;
-    }
-    .calendaradd p{
-        font-size: 16px;
+        width: 180px;
     }
 }
 @media screen and (max-width: 1200px){
@@ -656,6 +664,10 @@
     .calendarday:nth-of-type(6),
     .calendarday:nth-of-type(7) {
       right: 40px;
+    }
+    .calendar__header img{
+        width: 18px;
+        height: 18px;
     }
 }
 @media screen and (max-width: 500px){

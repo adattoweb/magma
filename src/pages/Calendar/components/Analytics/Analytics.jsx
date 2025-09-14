@@ -6,14 +6,15 @@ import Modal from "@/components/Modal/Modal"
 import getCalendar from "../../helpers/getCalendar"
 
 export default function Analytics({ startDate }) {
-    console.log(startDate)
+    let newDate = new Date(startDate.getTime() - 86400 * 1000 * 6)
     const [isOpen, setIsOpen] = useState(false)
     const isEn = localStorage.getItem("settings-lang") === "en"
     const maxWidth = 200;
-    const calendar = getCalendar(startDate)
+    const calendar = getCalendar(newDate, false)
+    console.log(calendar)
     const calendarKeys = Object.keys(calendar)
     const completedTasks = {}
-    let maxCompletedTasks = 0;
+    let maxCompletedTasks = 1;
     for(let i = 0; i < calendarKeys.length; i++){
         const key = calendarKeys[i]
         let countCompleted = 0;

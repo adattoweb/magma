@@ -17,6 +17,9 @@
     font-weight: 500;
     color: #303030;
 }
+.wrapper.dark .amodal__content h4{
+    color: #b9b9b9;
+}
 .amodal__list{
     display: flex;
     flex-direction: column;
@@ -35,6 +38,9 @@
 }
 .amodalitem__name{
     color: #303030;
+}
+.wrapper.dark .amodalitem__name{
+    color: #fff;
 }
 .amodalitem__name span{
     font-weight: 600;

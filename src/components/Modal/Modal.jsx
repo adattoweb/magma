@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import "./Modal.css"
 
 export default function Modal({isOpen, onClose, children, className }){
+    console.log(isOpen, className)
     return createPortal(
       <AnimatePresence mode="wait">
         {isOpen && <motion.div key="overlay" initial={{background: "rgba(0,0,0,0.0)", backdropFilter: "blur(0px)"}} animate={{background: "rgba(0,0,0,0.5)", backdropFilter: "blur(1px)"}} exit={{background: "rgba(0,0,0,0.0)", backdropFilter: "blur(0px)"}} className="modal-overlay" onClick={onClose}>

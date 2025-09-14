@@ -18,8 +18,6 @@ import { useState, useRef } from "react";
 import getObjectTasks from "./helpers/getObjectTasks";
 import conSecTime from "./helpers/conSecTime";
 
-import { AnimatePresence, motion } from "framer-motion"
-
 export default function Analytics() {
     console.log("Analytics render")
     const now = new Date()
@@ -80,8 +78,7 @@ export default function Analytics() {
                         <Dropdown changeProject={(el) => setProject(el)} startValue={isEn ? "All" : "Всі"} />
                     </div>
                 </div>
-                <AnimatePresence mode="wait">
-                    <motion.div key={page.current} initial={{filter: "blur(2px)"}} animate={{filter: "blur(0px)"}} className='analytics__content'>
+                    <div className='analytics__content'>
                         <h3 className="analytics__hours">{selectedData[0]}</h3>
                         {Object.keys(objectDates).map((el, index) => {
                             let allTime = getAllTime(el, objectDates, project);
@@ -95,8 +92,7 @@ export default function Analytics() {
                             return <AnalyticsBlock key={el + index} date={el} allTime={allTime} max={max} maxHeight={maxHeight} objectTasks={objectTasks} project={project}
                                 uniqueColors={uniqueColors} selected={selected} setSelected={setSelected} setSelectedData={setSelectedData} />
                         })}
-                    </motion.div>
-                </AnimatePresence>
+                    </div>
                 <div className='analytics__action'>
                     <p>{(page.current - 1) * -1}</p>
                     <img draggable={false} src={triangle} onClick={() => switchDay(setDays, page, true)} />

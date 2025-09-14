@@ -91,10 +91,10 @@ export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCale
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} className="calendarmodal">
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} className="calendarmodal calendaritem__modal">
         <div className="tmodal">
-            <h3>{isEn ? "Task editing" : "Редагування"}</h3>
             <div className="tmodal__inputs">
+                <h3>{isEn ? "Task editing" : "Редагування"}</h3>
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>
                     <input type="text" maxLength="30" className="tmodal__name" id="tname" style={{border: error ? "1px solid #c52d2d" : isDark ? "1px solid #353535" : "1px solid #bababa"}} value={newName} onChange={(e) => setNewName(e.target.value)}/>

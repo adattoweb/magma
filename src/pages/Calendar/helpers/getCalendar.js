@@ -1,6 +1,6 @@
 import getDayDiff from "@/helpers/getDayDiff";
 
-export default function getCalendar(startDate = new Date()) {
+export default function getCalendar(startDate = new Date(), withOverdue = true) {
     let localKeys = Object.keys(localStorage);
     const isAdaptive = window.innerWidth < 1024
 
@@ -12,11 +12,13 @@ export default function getCalendar(startDate = new Date()) {
         date.setDate(date.getDate() + i - 1);
         sevenDays.push(`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`);
     }
+    console.log(sevenDays)
     for (let i = 0; i < sevenDays.length; i++) {
         if (calendar[sevenDays[i]] === undefined) {
             calendar[sevenDays[i]] = [];
         }
     }
+    console.log(calendar)
 
     for (let i = 0; i < localKeys.length; i++) { // Створюємо об'єкт в якому будуть наші ключики і значення
         if (localKeys[i].includes("calendar-item")) {
@@ -29,7 +31,7 @@ export default function getCalendar(startDate = new Date()) {
             newDateFormat[2] = temp;
             let newDate = newDateFormat.map(el => el.padStart(2, "0")).join(".");
             let dayDiff = getDayDiff(newDate);
-            if (dayDiff >= 1 && !isAdaptive) {
+            if (dayDiff >= 1 && !isAdaptive && withOverdue) {
                 if (!calendar.overdue) {
                     calendar.overdue = [localKeys[i]]
                 } else {
@@ -44,7 +46,5 @@ export default function getCalendar(startDate = new Date()) {
     for (let key in calendar) { // сортуємо задачі (спочатку найновіші потім внизу найстаріші)
         calendar[key].sort((a, b) => +localStorage.getItem(a).split("^")[7] - +localStorage.getItem(b).split("^")[7])
     }
-    // console.log(Object.keys(calendar));
-    console.log(sevenDays)
     return calendar
 }
