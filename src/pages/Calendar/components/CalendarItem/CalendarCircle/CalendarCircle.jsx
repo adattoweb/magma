@@ -1,9 +1,15 @@
+import taskSound from '@/assets/audio/task-completed.mp3';
+
 export default function CalendarCircle({ setNewIsActive, newIsActive, editItem, newName, newDesc, setIsStart }){
     function switchActive(e){
         e.stopPropagation()
         setNewIsActive(!newIsActive);
         editItem(newName, newDesc, !newIsActive);
-        if(!newIsActive) setIsStart(false)
+        if(!newIsActive) {
+            setIsStart(false)
+            const audio = new Audio(taskSound)
+            audio.play();
+        }
         
     }
     return (

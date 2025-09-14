@@ -83,7 +83,7 @@ export default function CalendarModal({ isOpen, setIsOpen, calendar, setCalendar
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} className="calendarmodal">
         <div className="tmodal">
-            <h3>{isEn ? "Task creating" : "Створення задачі"}</h3>
+            <h3>{isEn ? "Task creating" : "Створення"}</h3>
             <div className="tmodal__inputs">
                 <div className="tmodal__input">
                     <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>

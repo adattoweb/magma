@@ -594,3 +594,6 @@
 .calendarmodal{
     min-width: max-content;
 }
+.calendarmodal .gmodal__buttons{
+    gap: 10px
+}

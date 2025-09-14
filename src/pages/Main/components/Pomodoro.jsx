@@ -152,6 +152,7 @@ export default function Pomodoro(){
                 setTime(0)
                 isTrackingRef.current = false
                 stopTracking()
+
             }
         }, [time])
         function timeToNumber(timeStr){
