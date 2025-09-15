@@ -131,6 +131,9 @@
     z-index: 10000;
     cursor: pointer;
 }
+.calendaritem.overdue-active{
+    border-radius: 10px 10px 10px 0px !important;
+}
 .calendaritem__modal .tmodal{
     align-items: center;
 }
