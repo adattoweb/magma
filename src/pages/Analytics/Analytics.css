@@ -153,10 +153,13 @@
     padding: 5px;
     color: #fff;
     backdrop-filter: blur(4px);
-    left: 20px;
-    max-width: 80px;
+    right: 20px;
+    width: 80px;
     overflow: hidden;
     user-select: none;
+}
+.analytics__content .aitem:nth-child(2) .aitem__show{
+    left: 20px;
 }
 .wrapper.dark .aitem__show{
     background-color: rgba(255,255,255, 0.3);

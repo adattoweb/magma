@@ -33,14 +33,21 @@ export default function Calendar(){
     const threeDayAgo = new Date(now.getTime() - 86400 * 1000 * 3)
     
     const [date, setDate] = useState(isAdaptive ? threeDayAgo : now)
+    console.log(date.getDate())
     console.log(date)
     const [isOpenDate, setIsOpenDate] = useState(false)
     const isToday = +now.getTime() === +date.getTime();
+    function switchDate(calendarDate){
+        const threeDayAgo = new Date(calendarDate.getTime() - 86400 * 1000 * 3)
+        setCalendar(getCalendar(isAdaptive ? threeDayAgo : calendarDate, isToday))
+        setDate(calendarDate)
+        setActiveDay(`${calendarDate.getFullYear()}.${calendarDate.getMonth() + 1}.${calendarDate.getDate()}`)
+    }
     function CalendarSwitch(){
         return (
             <>
                 <img draggable={false} src={calendarImg} onClick={() => setIsOpenDate(!isOpenDate)}/>
-                {isOpenDate && <DatePicker inline className="tmodal__name cdate" selected={date} onChange={(date) => {const threeDayAgo = new Date(date.getTime() - 86400 * 1000 * 3);setDate(date);setCalendar(getCalendar(isAdaptive ? threeDayAgo : date, isToday))}} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>}
+                {isOpenDate && <DatePicker inline className="tmodal__name cdate" selected={date} onChange={(date) => {switchDate(date)}} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>}
             </>
         )
     }

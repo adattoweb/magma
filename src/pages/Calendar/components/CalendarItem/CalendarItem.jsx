@@ -80,11 +80,3 @@ export default function CalendarItem({ elKey, dayDate, activeTaskId, isDragging,
         </div>
     );
 }
-// <input type="text" value={name} placeholder={isEn ? "Task Name" : "Назва задачі"} onChange={(e) => {
-//     setName(e.target.value.replaceAll("^", "."));
-//     editItem(e.target.value.replaceAll("^", "."), desc, isActive);
-// }} />
-
-//  setDesc(e.target.value);
-// editItem(name, e.target.value, isActive);
-// {isActiveMenu && createPortal(<ModalMenu onChange={() => setIsRender(!isRender)} elKey={elKey} rect={menuBtn.current} priorities={priorities.current} keyArr={keyArr} calendar={calendar} setCalendar={setCalendar} setActiveMenu={setActiveMenu} menuBtnRef={menuBtn}/>, document.getElementById("root"))}

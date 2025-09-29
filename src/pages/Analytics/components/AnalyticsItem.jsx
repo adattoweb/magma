@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function AnalyticsItem({ local, allTime, maxHeight, uniqueColors }) {
-    let [name, project, start, end, time] = local.split("^");
+    let [name, , , , time] = local.split("^");
 
     // Уникаємо ділення на 0
     // let height = allTime > 0 ? +arr[4] / Math.max(1, Math.floor(allTime / maxHeight)) : 0;

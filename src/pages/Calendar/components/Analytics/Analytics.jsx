@@ -6,7 +6,9 @@ import Modal from "@/components/Modal/Modal"
 import getCalendar from "../../helpers/getCalendar"
 
 export default function Analytics({ startDate }) {
-    let newDate = new Date(startDate.getTime() - 86400 * 1000 * 6)
+    const isAdaptive = window.innerWidth < 1024
+    const days = isAdaptive ? 3 : 6
+    let newDate = new Date(startDate.getTime() - 86400 * 1000 * days)
     const [isOpen, setIsOpen] = useState(false)
     const isEn = localStorage.getItem("settings-lang") === "en"
     const maxWidth = 200;
