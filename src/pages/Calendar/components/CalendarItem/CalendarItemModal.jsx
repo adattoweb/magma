@@ -92,33 +92,33 @@ export default function CalendarItemModal({ isOpen, setIsOpen, calendar, setCale
 
     return (
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} className="calendarmodal calendaritem__modal">
-        <div className="tmodal">
-            <div className="tmodal__inputs">
-                <h3>{isEn ? "Task editing" : "Редагування"}</h3>
-                <div className="tmodal__input">
-                    <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>
-                    <input type="text" maxLength="30" className="tmodal__name" id="tname" style={{border: error ? "1px solid #c52d2d" : isDark ? "1px solid #353535" : "1px solid #bababa"}} value={newName} onChange={(e) => setNewName(e.target.value)}/>
+            <div className="tmodal">
+                <div className="tmodal__inputs">
+                    <h3>{isEn ? "Task editing" : "Редагування"}</h3>
+                    <div className="tmodal__input">
+                        <label htmlFor="tname">{isEn ? "Name" : "Назва"}</label>
+                        <input type="text" maxLength="30" className="tmodal__name" id="tname" style={{ border: error ? "1px solid #c52d2d" : isDark ? "1px solid #353535" : "1px solid #bababa" }} value={newName} onChange={(e) => setNewName(e.target.value)} />
+                    </div>
+                    <div className="tmodal__input">
+                        <label htmlFor="tname">{isEn ? "Description" : "Опис"}</label>
+                        <textarea type="text" maxLength="60" className="tmodal__name" id="tname" value={newDesc} onChange={(e) => setNewDesc(e.target.value)} />
+                    </div>
+                    <div className="tmodal__input">
+                        <label htmlFor="tname">{isEn ? "Date" : "Дата"}</label>
+                        <DatePicker className="tmodal__name" selected={date} onChange={(date) => setDate(date)} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"} />
+                    </div>
+                    <div className="tmodal__input">
+                        <ModalPriorities />
+                    </div>
                 </div>
-                <div className="tmodal__input">
-                    <label htmlFor="tname">{isEn ? "Description" : "Опис"}</label>
-                    <textarea type="text" maxLength="60" className="tmodal__name" id="tname" value={newDesc} onChange={(e) => setNewDesc(e.target.value)}/>
-                </div>
-                <div className="tmodal__input">
-                    <label htmlFor="tname">{isEn ? "Date" : "Дата"}</label>
-                    <DatePicker className="tmodal__name" selected={date} onChange={(date) => setDate(date)} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>
-                </div>
-                <div className="tmodal__input">
-                    <ModalPriorities/>
+                <div className="gmodal__buttons">
+                    <motion.div whileHover={{ scale: 1.05 }} className="tmodal__delete" onClick={remove}>{isEn ? "Delete" : "Видалити"}</motion.div>
+                    <motion.div whileHover={{ scale: 1.05 }} className="tmodal__save" onClick={saveChanges}>{isEn ? "Save" : "Зберегти"}</motion.div>
                 </div>
             </div>
-            <div className="gmodal__buttons">
-                <motion.div whileHover={{scale: 1.05}} className="tmodal__delete" onClick={remove}>{isEn ? "Delete" : "Видалити"}</motion.div>
-                <motion.div whileHover={{scale: 1.05}} className="tmodal__save" onClick={saveChanges}>{isEn ? "Save" : "Зберегти"}</motion.div>
-            </div>
-        </div>
-        <AnimatePresence>
-            {error.length > 0 && <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className="modal__error">{error}</motion.div>}
-        </AnimatePresence>
-    </Modal>
+            <AnimatePresence>
+                {error.length > 0 && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="modal__error">{error}</motion.div>}
+            </AnimatePresence>
+        </Modal>
     )
 }
