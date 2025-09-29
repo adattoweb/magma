@@ -33,12 +33,14 @@ export default function Calendar(){
     const threeDayAgo = new Date(now.getTime() - 86400 * 1000 * 3)
     
     const [date, setDate] = useState(isAdaptive ? threeDayAgo : now)
+    console.log(date)
     const [isOpenDate, setIsOpenDate] = useState(false)
+    const isToday = +now.getTime() === +date.getTime();
     function CalendarSwitch(){
         return (
             <>
                 <img draggable={false} src={calendarImg} onClick={() => setIsOpenDate(!isOpenDate)}/>
-                {isOpenDate && <DatePicker inline className="tmodal__name cdate" selected={date} onChange={(date) => {setDate(date); setCalendar(getCalendar(date))}} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>}
+                {isOpenDate && <DatePicker inline className="tmodal__name cdate" selected={date} onChange={(date) => {const threeDayAgo = new Date(date.getTime() - 86400 * 1000 * 3);setDate(date);setCalendar(getCalendar(isAdaptive ? threeDayAgo : date, isToday))}} locale={isEn ? "en-GB" : "uk"} dateFormat={"dd.MM.yyyy"}/>}
             </>
         )
     }
@@ -51,7 +53,7 @@ export default function Calendar(){
     const rendersCount = useRef(0)
     console.log(`Calendar renders: ${++rendersCount.current}`)
 
-    const [calendar, setCalendar] = useState(getCalendar(date))
+    const [calendar, setCalendar] = useState(getCalendar(date, isToday))
 
     const [activeTaskId, setActiveTaskId] = useState(null)
     const activeDateRef = useRef(null)

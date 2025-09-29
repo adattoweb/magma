@@ -86,6 +86,7 @@
 }
 .calendarday__header{
     color: #535353;
+    text-align: center;
 }
 .calendarday__header.active{
     color: #000
@@ -621,7 +622,7 @@
         height: 50px;
     }
     .calendar__content{
-        height: 50vh;
+        height: 500px;
     }
     .calendarday:nth-of-type(1),
     .calendarday:nth-of-type(2),
