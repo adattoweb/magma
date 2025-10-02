@@ -12,9 +12,6 @@ export default function InfoProvider(){
             <p className="settings__name">{isEn ? "Current version: Magma Local 0.22.2" : "Поточна версія: Magma Local 0.22.2"}</p>
             <p className="settings__name">{isEn ? "Read the latest changes here:" : "Прочитати останні зміни можна:"} <a href="#">adattoweb.xyz</a></p>
         </SettingsBlock>
-        <SettingsBlock header={isEn ? "Developer Contacts" : "Контакти розробника"}>
-            <p className="settings__name">{isEn ? "Discord: @adattoweb" : "Діскорд: @adattoweb"}</p>
-        </SettingsBlock>
     </>
     )
 }
